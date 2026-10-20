@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="420" viewBox="0 0 1440 420" role="img" aria-labelledby="title desc">
+  <title id="title">Sentinel Replay</title>
+  <desc id="desc">A restrained dark banner showing an agent incident timeline rewinding into three policy-controlled futures.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#070b14"/>
+      <stop offset="0.55" stop-color="#0b1220"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#38bdf8"/>
+      <stop offset="1" stop-color="#818cf8"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#94a3b8" stroke-opacity="0.055" stroke-width="1"/>
+    </pattern>
+    <filter id="glow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="7" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1440" height="420" rx="26" fill="url(#bg)"/>
+  <rect width="1440" height="420" rx="26" fill="url(#grid)"/>
+  <rect x="1" y="1" width="1438" height="418" rx="25" fill="none" stroke="#334155" stroke-opacity="0.7"/>
+
+  <g transform="translate(92 76)">
+    <rect width="54" height="54" rx="14" fill="#0f172a" stroke="#38bdf8" stroke-opacity="0.8"/>
+    <path d="M16 14h22v8H23v8h15v10H16z" fill="none" stroke="url(#accent)" stroke-width="4" stroke-linejoin="round"/>
+    <circle cx="38" cy="35" r="4" fill="#f43f5e"/>
+
+    <text x="76" y="38" fill="#f8fafc" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="48" font-weight="760" letter-spacing="1.5">SENTINEL REPLAY</text>
+    <text x="2" y="102" fill="#cbd5e1" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="24">Counterfactual incident forensics for autonomous AI agents</text>
+    <text x="2" y="148" fill="#7dd3fc" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" font-weight="600" letter-spacing="2.4">RECONSTRUCT  ·  REWIND  ·  EXPLORE  ·  PREVENT</text>
+  </g>
+
+  <g transform="translate(720 120)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 88H250" stroke="#475569" stroke-width="3"/>
+    <circle cx="20" cy="88" r="7" fill="#38bdf8" stroke="#0b1220" stroke-width="3"/>
+    <circle cx="80" cy="88" r="7" fill="#38bdf8" stroke="#0b1220" stroke-width="3"/>
+    <circle cx="140" cy="88" r="7" fill="#38bdf8" stroke="#0b1220" stroke-width="3"/>
+    <circle cx="200" cy="88" r="11" fill="#f43f5e" stroke="#fecdd3" stroke-width="2" filter="url(#glow)"/>
+    <circle cx="250" cy="88" r="7" fill="#64748b" stroke="#0b1220" stroke-width="3"/>
+
+    <path d="M200 88C200 30 304 28 340 76" stroke="#818cf8" stroke-width="3" stroke-dasharray="7 9"/>
+    <path d="M320 67l22 10-19 14" stroke="#818cf8" stroke-width="3"/>
+
+    <path d="M340 88C390 88 420 24 500 24H610" stroke="#38bdf8" stroke-width="3"/>
+    <path d="M340 88H610" stroke="#a78bfa" stroke-width="3"/>
+    <path d="M340 88C390 88 420 152 500 152H610" stroke="#34d399" stroke-width="3"/>
+    <circle cx="340" cy="88" r="9" fill="#f8fafc" stroke="#818cf8" stroke-width="4"/>
+    <circle cx="610" cy="24" r="8" fill="#38bdf8"/>
+    <circle cx="610" cy="88" r="8" fill="#a78bfa"/>
+    <circle cx="610" cy="152" r="8" fill="#34d399"/>
+
+    <text x="165" y="125" fill="#fda4af" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13">INCIDENT</text>
+    <text x="362" y="116" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13">FORK</text>
+    <text x="628" y="29" fill="#bae6fd" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13">POLICY A</text>
+    <text x="628" y="93" fill="#ddd6fe" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13">POLICY B</text>
+    <text x="628" y="157" fill="#a7f3d0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13">MINIMAL FIX</text>
+  </g>
+
+  <g transform="translate(94 350)">
+    <circle cx="6" cy="-5" r="5" fill="#34d399"/>
+    <text x="22" y="0" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14">FAIL-CLOSED REPLAY</text>
+    <circle cx="228" cy="-5" r="5" fill="#38bdf8"/>
+    <text x="244" y="0" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14">EVIDENCE-BACKED PROVENANCE</text>
+    <circle cx="548" cy="-5" r="5" fill="#a78bfa"/>
+    <text x="564" y="0" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14">BOUNDED POLICY SEARCH</text>
+  </g>
+</svg>

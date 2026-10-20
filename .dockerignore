@@ -1,0 +1,16 @@
+.git
+.github
+.venv
+.uv-cache
+.pytest_cache
+.mypy_cache
+.ruff_cache
+.env
+.env.*
+!.env.example
+.local-controller
+*.ed25519.key
+__pycache__
+tests
+benchmarks
+deploy/aws

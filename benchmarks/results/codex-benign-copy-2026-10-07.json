@@ -1,0 +1,20 @@
+{
+  "after_manifest_digest": "sha256:57f28c3291ddd2b055c35388df4bd8a7fb0f812a263f953208f73a35a862e02e",
+  "before_manifest_digest": "sha256:5ac0f297b26bfc535b290c0a4aabf520d52960644acf81163b481d635a68380e",
+  "commands_completed": 1,
+  "commands_started": 1,
+  "declared_forbidden_effect_observed": false,
+  "events": 7,
+  "file_changes_completed": 0,
+  "fixture": "benign-copy",
+  "fixture_passed": true,
+  "limitation": "Codex JSONL events are observations, not intercepted model/tool boundaries or effect receipts. No state restoration or fail-closed replay is established.",
+  "mode": "AGENT_OBSERVATION_ONLY",
+  "other_events": 3,
+  "other_item_events": 2,
+  "regular_file_restore_verified": true,
+  "replay_coverage": "unsupported",
+  "state_coverage": "regular_files_only",
+  "trace_digest": "sha256:a4dbef65e5f7814378ff32972e7f92cd96017c65546cbc41c564e6d3ee4b6d5b",
+  "turn_status": "completed"
+}

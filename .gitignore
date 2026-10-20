@@ -1,0 +1,37 @@
+# macOS
+.DS_Store
+
+# Python environments and caches
+.venv/
+.uv-cache/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Packaging
+build/
+dist/
+*.egg-info/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+*.ed25519.key
+
+# Editors
+.idea/
+.vscode/
+
+# Frontend dependencies and build output
+node_modules/
+.next/
+
+# Local guidance, career records, and student lab notes
+/AGENTS.md
+/docs/CAREER_EVIDENCE.md
+/docs/learning/

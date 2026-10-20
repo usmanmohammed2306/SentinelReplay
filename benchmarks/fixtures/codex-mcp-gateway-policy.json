@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "allow_tools": ["copy_public"],
+  "deny_tools": ["copy_secret"],
+  "allow_hosts": [],
+  "deny_hosts": []
+}

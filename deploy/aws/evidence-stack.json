@@ -1,0 +1,156 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "Sentinel Replay evidence foundation: separate SSE-KMS versioned blobs and Object Lock root anchors. Does not deploy compute or databases.",
+  "Parameters": {
+    "EvidenceBucketName": { "Type": "String", "MinLength": 3 },
+    "AnchorBucketName": { "Type": "String", "MinLength": 3 },
+    "AnchorRetentionDays": { "Type": "Number", "Default": 30, "MinValue": 1, "MaxValue": 3650 }
+  },
+  "Resources": {
+    "EvidenceEncryptionKey": {
+      "Type": "AWS::KMS::Key",
+      "DeletionPolicy": "Retain",
+      "UpdateReplacePolicy": "Retain",
+      "Properties": {
+        "Description": "Sentinel Replay symmetric evidence encryption key",
+        "KeySpec": "SYMMETRIC_DEFAULT",
+        "KeyUsage": "ENCRYPT_DECRYPT",
+        "EnableKeyRotation": true,
+        "KeyPolicy": {
+          "Version": "2012-10-17",
+          "Statement": [{
+            "Sid": "AllowAccountToManageKeyThroughIAM",
+            "Effect": "Allow",
+            "Principal": { "AWS": { "Fn::Sub": "arn:${AWS::Partition}:iam::${AWS::AccountId}:root" } },
+            "Action": "kms:*",
+            "Resource": "*"
+          }]
+        }
+      }
+    },
+    "RootSigningKey": {
+      "Type": "AWS::KMS::Key",
+      "DeletionPolicy": "Retain",
+      "UpdateReplacePolicy": "Retain",
+      "Properties": {
+        "Description": "Sentinel Replay asymmetric journal-root signing key",
+        "KeySpec": "RSA_3072",
+        "KeyUsage": "SIGN_VERIFY",
+        "KeyPolicy": {
+          "Version": "2012-10-17",
+          "Statement": [{
+            "Sid": "AllowAccountToManageKeyThroughIAM",
+            "Effect": "Allow",
+            "Principal": { "AWS": { "Fn::Sub": "arn:${AWS::Partition}:iam::${AWS::AccountId}:root" } },
+            "Action": "kms:*",
+            "Resource": "*"
+          }]
+        }
+      }
+    },
+    "EvidenceBucket": {
+      "Type": "AWS::S3::Bucket",
+      "DeletionPolicy": "Retain",
+      "UpdateReplacePolicy": "Retain",
+      "Properties": {
+        "BucketName": { "Ref": "EvidenceBucketName" },
+        "VersioningConfiguration": { "Status": "Enabled" },
+        "PublicAccessBlockConfiguration": {
+          "BlockPublicAcls": true,
+          "IgnorePublicAcls": true,
+          "BlockPublicPolicy": true,
+          "RestrictPublicBuckets": true
+        },
+        "BucketEncryption": {
+          "ServerSideEncryptionConfiguration": [{
+            "ServerSideEncryptionByDefault": {
+              "SSEAlgorithm": "aws:kms",
+              "KMSMasterKeyID": { "Fn::GetAtt": ["EvidenceEncryptionKey", "Arn"] }
+            },
+            "BucketKeyEnabled": true
+          }]
+        }
+      }
+    },
+    "AnchorBucket": {
+      "Type": "AWS::S3::Bucket",
+      "DeletionPolicy": "Retain",
+      "UpdateReplacePolicy": "Retain",
+      "Properties": {
+        "BucketName": { "Ref": "AnchorBucketName" },
+        "ObjectLockEnabled": true,
+        "ObjectLockConfiguration": {
+          "ObjectLockEnabled": "Enabled",
+          "Rule": {
+            "DefaultRetention": {
+              "Mode": "GOVERNANCE",
+              "Days": { "Ref": "AnchorRetentionDays" }
+            }
+          }
+        },
+        "VersioningConfiguration": { "Status": "Enabled" },
+        "PublicAccessBlockConfiguration": {
+          "BlockPublicAcls": true,
+          "IgnorePublicAcls": true,
+          "BlockPublicPolicy": true,
+          "RestrictPublicBuckets": true
+        },
+        "BucketEncryption": {
+          "ServerSideEncryptionConfiguration": [{
+            "ServerSideEncryptionByDefault": {
+              "SSEAlgorithm": "aws:kms",
+              "KMSMasterKeyID": { "Fn::GetAtt": ["EvidenceEncryptionKey", "Arn"] }
+            },
+            "BucketKeyEnabled": true
+          }]
+        }
+      }
+    },
+    "EvidenceTransportPolicy": {
+      "Type": "AWS::S3::BucketPolicy",
+      "Properties": {
+        "Bucket": { "Ref": "EvidenceBucket" },
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [{
+            "Sid": "DenyInsecureTransport",
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": "s3:*",
+            "Resource": [
+              { "Fn::GetAtt": ["EvidenceBucket", "Arn"] },
+              { "Fn::Sub": "${EvidenceBucket.Arn}/*" }
+            ],
+            "Condition": { "Bool": { "aws:SecureTransport": "false" } }
+          }]
+        }
+      }
+    },
+    "AnchorTransportPolicy": {
+      "Type": "AWS::S3::BucketPolicy",
+      "Properties": {
+        "Bucket": { "Ref": "AnchorBucket" },
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [{
+            "Sid": "DenyInsecureTransport",
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": "s3:*",
+            "Resource": [
+              { "Fn::GetAtt": ["AnchorBucket", "Arn"] },
+              { "Fn::Sub": "${AnchorBucket.Arn}/*" }
+            ],
+            "Condition": { "Bool": { "aws:SecureTransport": "false" } }
+          }]
+        }
+      }
+    }
+  },
+  "Outputs": {
+    "EvidenceBucketName": { "Value": { "Ref": "EvidenceBucket" } },
+    "AnchorBucketName": { "Value": { "Ref": "AnchorBucket" } },
+    "EvidenceEncryptionKeyArn": { "Value": { "Fn::GetAtt": ["EvidenceEncryptionKey", "Arn"] } },
+    "RootSigningKeyArn": { "Value": { "Fn::GetAtt": ["RootSigningKey", "Arn"] } }
+  }
+}

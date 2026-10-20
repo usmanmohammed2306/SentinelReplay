@@ -1,0 +1,67 @@
+name: sentinel-replay-preview
+
+services:
+  db:
+    image: postgres:17-alpine@sha256:b0f9560a2de083e2cc7382e75f808c7381a32852a7ec49117deedb300e552b24
+    environment:
+      POSTGRES_DB: sentinel
+      POSTGRES_PASSWORD: ${SENTINEL_DB_PASSWORD:?set a URL-safe local database password}
+      SENTINEL_APP_DB_PASSWORD: ${SENTINEL_APP_DB_PASSWORD:?set a URL-safe application database password}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./initdb/10-app-role.sh:/docker-entrypoint-initdb.d/10-app-role.sh:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d sentinel"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks: [internal]
+
+  migrate:
+    build:
+      context: ../..
+      dockerfile: Dockerfile
+    image: sentinel-replay-api:local
+    command: ["alembic", "upgrade", "head"]
+    environment:
+      SENTINEL_DATABASE_URL: postgresql+psycopg://postgres:${SENTINEL_DB_PASSWORD}@db:5432/sentinel
+    depends_on:
+      db:
+        condition: service_healthy
+    networks: [internal]
+
+  api:
+    build:
+      context: ../..
+      dockerfile: Dockerfile
+    image: sentinel-replay-api:local
+    environment:
+      SENTINEL_DATABASE_URL: postgresql+psycopg://sentinel_api:${SENTINEL_APP_DB_PASSWORD}@db:5432/sentinel
+      SENTINEL_API_TOKEN: ${SENTINEL_API_TOKEN:?set a 32-character or longer local token}
+    volumes:
+      - evidence_data:/var/lib/sentinel/evidence
+      - ${SENTINEL_TRUSTED_PUBLIC_KEY_HOST:?point to a trusted public key file}:/run/sentinel/trusted.pub:ro
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    ports:
+      - "127.0.0.1:8000:8000"
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/healthz', timeout=2).read()"
+      interval: 10s
+      timeout: 3s
+      retries: 6
+    networks: [internal, edge]
+
+networks:
+  internal:
+    internal: true
+  edge: {}
+
+volumes:
+  postgres_data:
+  evidence_data:

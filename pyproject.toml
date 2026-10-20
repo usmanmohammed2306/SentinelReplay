@@ -1,0 +1,65 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "sentinel-replay"
+version = "0.1.0.dev0"
+description = "Counterfactual incident forensics for autonomous AI agents"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "alembic>=1.15,<2",
+    "cryptography>=45,<51",
+    "fastapi>=0.115,<1",
+    "mcp>=2,<3",
+    "pydantic>=2,<3",
+    "psycopg[binary]>=3.2,<4",
+    "sqlalchemy>=2.0,<3",
+    "typer>=0.12,<1",
+    "uvicorn>=0.30,<1",
+]
+
+[project.scripts]
+sentinel = "sentinel_replay.cli:app"
+
+[project.optional-dependencies]
+aws = [
+    "boto3>=1.35,<2",
+]
+
+[dependency-groups]
+aws-dev = [
+    "cfn-lint>=1,<2",
+]
+dev = [
+    "httpx>=0.27,<1",
+    "hypothesis>=6,<7",
+    "mypy>=1.15,<2",
+    "pytest>=8,<10",
+    "ruff>=0.11,<1",
+]
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-config --strict-markers"
+testpaths = ["tests"]
+markers = [
+    "aws_optional: offline tests for the optional AWS evidence experiment",
+    "postgres_integration: requires an explicitly disposable PostgreSQL database",
+    "opa_integration: uses a pinned local Docker image to test compiled Rego on real OPA",
+]
+
+[tool.uv]
+required-version = "==0.12.17"
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["src", "tests"]

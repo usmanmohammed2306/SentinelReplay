@@ -1,0 +1,347 @@
+{
+  "benchmark_source_digest": "sha256:8d902578e58524ed5aba9a4291b07db43342f63fec392f28e390b9cc9e88720c",
+  "claim": "local_synthetic_component_benchmark_not_release_or_real_agent",
+  "environment": {
+    "logical_cpus": 10,
+    "machine": "arm64",
+    "platform": "macOS-26.6-arm64-arm-64bit",
+    "python": "3.12.14"
+  },
+  "events_per_trial": 50000,
+  "isolation": "fresh_process_per_trial",
+  "journal_bytes_all_trials": 16616674,
+  "journal_root_all_trials": "sha256:c13463f0af60123067800626887f98f12c2d13f893453dd11c0acb8a16f34d31",
+  "journal_source_digest": "sha256:ac61e3c4d5c07f2f0a6944610209d1c31095ea5666f95bb313c123d7e593adc0",
+  "limitations": [
+    "synthetic public metadata only; no model or external tool latency",
+    "one macOS host, one sequential process at a time; no concurrent throughput or p95 claim",
+    "memory is peak process RSS for append, verify, timeline, and provenance together"
+  ],
+  "order": "balanced_alternating_batch_stream",
+  "raw_trials": [
+    {
+      "mode": "batch",
+      "result": {
+        "append_seconds": 0.439363,
+        "benchmark": "journal_append_verify_timeline_and_declared_provenance",
+        "claim": "local_probe_only_not_release_gate",
+        "environment": {
+          "logical_cpus": 10,
+          "machine": "arm64",
+          "platform": "macOS-26.6-arm64-arm-64bit",
+          "python": "3.12.14"
+        },
+        "events": 50000,
+        "journal_bytes": 16616674,
+        "max_rss_bytes": 48365568,
+        "mode": "batch",
+        "provenance_edges": 49999,
+        "provenance_seconds": 0.528386,
+        "root": "sha256:c13463f0af60123067800626887f98f12c2d13f893453dd11c0acb8a16f34d31",
+        "schema_version": 2,
+        "timeline_phases": 1,
+        "timeline_seconds": 0.505375,
+        "verify_seconds": 0.463607
+      },
+      "round": 1
+    },
+    {
+      "mode": "stream",
+      "result": {
+        "append_seconds": 1.394728,
+        "benchmark": "journal_append_verify_timeline_and_declared_provenance",
+        "claim": "local_probe_only_not_release_gate",
+        "environment": {
+          "logical_cpus": 10,
+          "machine": "arm64",
+          "platform": "macOS-26.6-arm64-arm-64bit",
+          "python": "3.12.14"
+        },
+        "events": 50000,
+        "journal_bytes": 16616674,
+        "max_rss_bytes": 48332800,
+        "mode": "stream",
+        "provenance_edges": 49999,
+        "provenance_seconds": 0.529677,
+        "root": "sha256:c13463f0af60123067800626887f98f12c2d13f893453dd11c0acb8a16f34d31",
+        "schema_version": 2,
+        "timeline_phases": 1,
+        "timeline_seconds": 0.512903,
+        "verify_seconds": 0.462534
+      },
+      "round": 1
+    },
+    {
+      "mode": "stream",
+      "result": {
+        "append_seconds": 1.43211,
+        "benchmark": "journal_append_verify_timeline_and_declared_provenance",
+        "claim": "local_probe_only_not_release_gate",
+        "environment": {
+          "logical_cpus": 10,
+          "machine": "arm64",
+          "platform": "macOS-26.6-arm64-arm-64bit",
+          "python": "3.12.14"
+        },
+        "events": 50000,
+        "journal_bytes": 16616674,
+        "max_rss_bytes": 48250880,
+        "mode": "stream",
+        "provenance_edges": 49999,
+        "provenance_seconds": 0.546269,
+        "root": "sha256:c13463f0af60123067800626887f98f12c2d13f893453dd11c0acb8a16f34d31",
+        "schema_version": 2,
+        "timeline_phases": 1,
+        "timeline_seconds": 0.564033,
+        "verify_seconds": 0.486542
+      },
+      "round": 2
+    },
+    {
+      "mode": "batch",
+      "result": {
+        "append_seconds": 0.446308,
+        "benchmark": "journal_append_verify_timeline_and_declared_provenance",
+        "claim": "local_probe_only_not_release_gate",
+        "environment": {
+          "logical_cpus": 10,
+          "machine": "arm64",
+          "platform": "macOS-26.6-arm64-arm-64bit",
+          "python": "3.12.14"
+        },
+        "events": 50000,
+        "journal_bytes": 16616674,
+        "max_rss_bytes": 48316416,
+        "mode": "batch",
+        "provenance_edges": 49999,
+        "provenance_seconds": 0.549207,
+        "root": "sha256:c13463f0af60123067800626887f98f12c2d13f893453dd11c0acb8a16f34d31",
+        "schema_version": 2,
+        "timeline_phases": 1,
+        "timeline_seconds": 0.514838,
+        "verify_seconds": 0.47443
+      },
+      "round": 2
+    },
+    {
+      "mode": "batch",
+      "result": {
+        "append_seconds": 0.447392,
+        "benchmark": "journal_append_verify_timeline_and_declared_provenance",
+        "claim": "local_probe_only_not_release_gate",
+        "environment": {
+          "logical_cpus": 10,
+          "machine": "arm64",
+          "platform": "macOS-26.6-arm64-arm-64bit",
+          "python": "3.12.14"
+        },
+        "events": 50000,
+        "journal_bytes": 16616674,
+        "max_rss_bytes": 48349184,
+        "mode": "batch",
+        "provenance_edges": 49999,
+        "provenance_seconds": 0.540491,
+        "root": "sha256:c13463f0af60123067800626887f98f12c2d13f893453dd11c0acb8a16f34d31",
+        "schema_version": 2,
+        "timeline_phases": 1,
+        "timeline_seconds": 0.521153,
+        "verify_seconds": 0.478665
+      },
+      "round": 3
+    },
+    {
+      "mode": "stream",
+      "result": {
+        "append_seconds": 1.626162,
+        "benchmark": "journal_append_verify_timeline_and_declared_provenance",
+        "claim": "local_probe_only_not_release_gate",
+        "environment": {
+          "logical_cpus": 10,
+          "machine": "arm64",
+          "platform": "macOS-26.6-arm64-arm-64bit",
+          "python": "3.12.14"
+        },
+        "events": 50000,
+        "journal_bytes": 16616674,
+        "max_rss_bytes": 45662208,
+        "mode": "stream",
+        "provenance_edges": 49999,
+        "provenance_seconds": 0.682485,
+        "root": "sha256:c13463f0af60123067800626887f98f12c2d13f893453dd11c0acb8a16f34d31",
+        "schema_version": 2,
+        "timeline_phases": 1,
+        "timeline_seconds": 0.670513,
+        "verify_seconds": 0.528012
+      },
+      "round": 3
+    },
+    {
+      "mode": "stream",
+      "result": {
+        "append_seconds": 1.591657,
+        "benchmark": "journal_append_verify_timeline_and_declared_provenance",
+        "claim": "local_probe_only_not_release_gate",
+        "environment": {
+          "logical_cpus": 10,
+          "machine": "arm64",
+          "platform": "macOS-26.6-arm64-arm-64bit",
+          "python": "3.12.14"
+        },
+        "events": 50000,
+        "journal_bytes": 16616674,
+        "max_rss_bytes": 48300032,
+        "mode": "stream",
+        "provenance_edges": 49999,
+        "provenance_seconds": 0.5704,
+        "root": "sha256:c13463f0af60123067800626887f98f12c2d13f893453dd11c0acb8a16f34d31",
+        "schema_version": 2,
+        "timeline_phases": 1,
+        "timeline_seconds": 0.613495,
+        "verify_seconds": 0.776105
+      },
+      "round": 4
+    },
+    {
+      "mode": "batch",
+      "result": {
+        "append_seconds": 0.481479,
+        "benchmark": "journal_append_verify_timeline_and_declared_provenance",
+        "claim": "local_probe_only_not_release_gate",
+        "environment": {
+          "logical_cpus": 10,
+          "machine": "arm64",
+          "platform": "macOS-26.6-arm64-arm-64bit",
+          "python": "3.12.14"
+        },
+        "events": 50000,
+        "journal_bytes": 16616674,
+        "max_rss_bytes": 48365568,
+        "mode": "batch",
+        "provenance_edges": 49999,
+        "provenance_seconds": 0.562513,
+        "root": "sha256:c13463f0af60123067800626887f98f12c2d13f893453dd11c0acb8a16f34d31",
+        "schema_version": 2,
+        "timeline_phases": 1,
+        "timeline_seconds": 0.558025,
+        "verify_seconds": 0.493608
+      },
+      "round": 4
+    },
+    {
+      "mode": "batch",
+      "result": {
+        "append_seconds": 0.493207,
+        "benchmark": "journal_append_verify_timeline_and_declared_provenance",
+        "claim": "local_probe_only_not_release_gate",
+        "environment": {
+          "logical_cpus": 10,
+          "machine": "arm64",
+          "platform": "macOS-26.6-arm64-arm-64bit",
+          "python": "3.12.14"
+        },
+        "events": 50000,
+        "journal_bytes": 16616674,
+        "max_rss_bytes": 48332800,
+        "mode": "batch",
+        "provenance_edges": 49999,
+        "provenance_seconds": 0.573612,
+        "root": "sha256:c13463f0af60123067800626887f98f12c2d13f893453dd11c0acb8a16f34d31",
+        "schema_version": 2,
+        "timeline_phases": 1,
+        "timeline_seconds": 0.543608,
+        "verify_seconds": 0.538034
+      },
+      "round": 5
+    },
+    {
+      "mode": "stream",
+      "result": {
+        "append_seconds": 1.529381,
+        "benchmark": "journal_append_verify_timeline_and_declared_provenance",
+        "claim": "local_probe_only_not_release_gate",
+        "environment": {
+          "logical_cpus": 10,
+          "machine": "arm64",
+          "platform": "macOS-26.6-arm64-arm-64bit",
+          "python": "3.12.14"
+        },
+        "events": 50000,
+        "journal_bytes": 16616674,
+        "max_rss_bytes": 48316416,
+        "mode": "stream",
+        "provenance_edges": 49999,
+        "provenance_seconds": 0.56255,
+        "root": "sha256:c13463f0af60123067800626887f98f12c2d13f893453dd11c0acb8a16f34d31",
+        "schema_version": 2,
+        "timeline_phases": 1,
+        "timeline_seconds": 0.628192,
+        "verify_seconds": 0.520818
+      },
+      "round": 5
+    }
+  ],
+  "schema_version": 1,
+  "summary": {
+    "batch": {
+      "append_records_per_second_at_median": 111758.8,
+      "append_seconds": {
+        "max": 0.493207,
+        "median": 0.447392,
+        "min": 0.439363
+      },
+      "max_rss_bytes": {
+        "max": 48365568,
+        "median": 48349184,
+        "min": 48316416
+      },
+      "provenance_seconds": {
+        "max": 0.573612,
+        "median": 0.549207,
+        "min": 0.528386
+      },
+      "timeline_seconds": {
+        "max": 0.558025,
+        "median": 0.521153,
+        "min": 0.505375
+      },
+      "trials": 5,
+      "verify_records_per_second_at_median": 104457.2,
+      "verify_seconds": {
+        "max": 0.538034,
+        "median": 0.478665,
+        "min": 0.463607
+      }
+    },
+    "stream": {
+      "append_records_per_second_at_median": 32693.0,
+      "append_seconds": {
+        "max": 1.626162,
+        "median": 1.529381,
+        "min": 1.394728
+      },
+      "max_rss_bytes": {
+        "max": 48332800,
+        "median": 48300032,
+        "min": 45662208
+      },
+      "provenance_seconds": {
+        "max": 0.682485,
+        "median": 0.56255,
+        "min": 0.529677
+      },
+      "timeline_seconds": {
+        "max": 0.670513,
+        "median": 0.613495,
+        "min": 0.512903
+      },
+      "trials": 5,
+      "verify_records_per_second_at_median": 96002.8,
+      "verify_seconds": {
+        "max": 0.776105,
+        "median": 0.520818,
+        "min": 0.462534
+      }
+    }
+  },
+  "trials_per_mode": 5
+}

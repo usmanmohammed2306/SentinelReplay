@@ -1,0 +1,15 @@
+{
+  "commands_completed": 1,
+  "commands_started": 1,
+  "events": 7,
+  "file_changes_completed": 0,
+  "fixture": "synthetic_result_file_v1",
+  "fixture_passed": true,
+  "limitation": "Codex JSONL events are observations, not intercepted model/tool boundaries or effect receipts. No state restoration or fail-closed replay is established.",
+  "mode": "AGENT_OBSERVATION_ONLY",
+  "other_events": 3,
+  "other_item_events": 2,
+  "replay_coverage": "unsupported",
+  "trace_digest": "sha256:34d26a87b67ccc494b94d67c6d1762af08b8eed4af15cb008a0344873ae2e506",
+  "turn_status": "completed"
+}
