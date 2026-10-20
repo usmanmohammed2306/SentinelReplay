@@ -245,14 +245,10 @@ Current roles make that a useful bar. OpenAI's [Agent Infrastructure](https://op
 | Document | Why it exists |
 | --- | --- |
 | [`FROZEN_PRODUCT_CHARTER.md`](docs/FROZEN_PRODUCT_CHARTER.md) | Defines the complete V1, its guarantees, boundaries, and definition of done |
-| [`EXECUTION_PLAN.md`](docs/EXECUTION_PLAN.md) | Breaks the build into one binding sequence of 60 slices |
 | [`STATUS.md`](docs/STATUS.md) | Records the active slice, evidence, blockers, and measured pace |
 | [`SCOPE_TRACEABILITY.md`](docs/SCOPE_TRACEABILITY.md) | Prevents any source requirement from quietly disappearing |
-| [`LEARNING_PYRAMID.md`](docs/LEARNING_PYRAMID.md) | Defines how every slice is built, tested, understood, and explained |
-| [`GITHUB_WORKFLOW.md`](docs/GITHUB_WORKFLOW.md) | Keeps contributions small, meaningful, tested, and reviewable |
 | [`SELF_HOSTED_PREVIEW.md`](docs/SELF_HOSTED_PREVIEW.md) | Runs the bounded PostgreSQL/API preview and names its unpassed security and recovery gates |
 | [`THREAT_MODEL.md`](docs/THREAT_MODEL.md) | Separates proven local evidence behavior from the attacks and trust boundaries V1 must still pass |
-| [`BUILD_LEARN_COMMIT_GUIDE.md`](docs/BUILD_LEARN_COMMIT_GUIDE.md) | Gives each workday a build, break, learn, and suggested commit target |
 | [`ADR-0001`](docs/adr/0001-replay-and-counterfactual-modes.md) | Defines the semantics of replay and counterfactual branches |
 | [`ADR-0002`](docs/adr/0002-aws-evidence-profile.md) | Preserves the optional AWS evidence design and its unproven claims |
 | [`ADR-0003`](docs/adr/0003-local-first-release.md) | Makes the self-hosted deployment the only required V1 release path |

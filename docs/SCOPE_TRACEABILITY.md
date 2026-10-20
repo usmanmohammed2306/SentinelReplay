@@ -2,7 +2,7 @@
 
 Status: **BINDING SCOPE CROSS-CHECK**  
 Source: the complete 43-section flagship specification supplied on 2026-09-17 and reconfirmed on 2026-09-20  
-Implementation authority: `FROZEN_PRODUCT_CHARTER.md` and `EXECUTION_PLAN.md`
+Public scope authority: `FROZEN_PRODUCT_CHARTER.md`. The detailed execution and teaching plan remains local; its stable slice identifiers are retained in this matrix.
 
 This matrix prevents the complete product from gradually turning into a smaller demo. Every source section maps to implementation tasks, acceptance evidence, or an explicit non-goal.
 

@@ -58,4 +58,4 @@ The current preview uses one macOS user for both synthetic agent and controller 
 4. Enumerate replay-sensitive boundaries and external effects for the real-agent adapter. Inject a missing recording and an uncovered effect; verify that the system refuses `VERIFIED_REPLAY` and names the gap.
 5. Publish a redacted attack-test report with exact commands, platform, raw pass/fail results, and residual risks. Repeat it on a clean-room self-hosted installation and after backup recovery.
 
-This is a testable contract, not a claim that those five conditions already pass. See [ADR-0003](adr/0003-local-first-release.md) for the local-first decision, [the capsule contract](CAPSULE_CONTRACT.md) for the current portable format, and [the execution plan](EXECUTION_PLAN.md) for the owning slices.
+This is a testable contract, not a claim that those five conditions already pass. See [ADR-0003](adr/0003-local-first-release.md) for the local-first decision, [the capsule contract](CAPSULE_CONTRACT.md) for the current portable format, and [the frozen charter](FROZEN_PRODUCT_CHARTER.md) for the release requirements.

@@ -25,4 +25,4 @@ Import is preflighted but not transactional if the local disk fails midway throu
 3. Change one byte in the imported journal. Confirm the replay command rejects it *before* invoking the mini-agent.
 4. Read `tests/test_capsule.py`, then add one malformed archive case of your own. Explain whether it protects structure, byte integrity, journal semantics, or authenticity. The last category is **not yet protected**.
 
-The binding target for a complete capsule is [Slice 27](EXECUTION_PLAN.md), with signature and hostile-import hardening in S53/S55. This preview does not mark any of those slices accepted.
+The [frozen product charter](FROZEN_PRODUCT_CHARTER.md) defines the complete capsule target. The local teaching plan assigns capsule delivery to S27 and signature and hostile-import hardening to S53/S55. This preview does not mark any of those slices accepted.

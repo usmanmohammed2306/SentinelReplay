@@ -1,6 +1,6 @@
 # Sentinel Replay - Project Status
 
-Last updated: **2026-10-10**  
+Last updated: **2026-10-20 (publication metadata only; engineering results retain their original dates)**  
 Plan version: **4.2.0 (local-first release under ADR-0003)**  
 Overall state: **IMPLEMENTATION ACTIVE**
 
@@ -24,17 +24,13 @@ Plan lock: **Plan 4.2 is the only active plan. It preserves the original forty-t
 
 - `README.md`
 - `docs/FROZEN_PRODUCT_CHARTER.md`
-- `docs/EXECUTION_PLAN.md`
-- `docs/LEARNING_PYRAMID.md`
-- `docs/GITHUB_WORKFLOW.md`
 - `docs/SCOPE_TRACEABILITY.md`
 - `docs/adr/0001-replay-and-counterfactual-modes.md`
 - `pyproject.toml` and `uv.lock`
 - `src/sentinel_replay/cli.py`
 - `tests/test_cli.py`
 - `.github/workflows/ci.yml`
-- `docs/learning/S01-project-pulse.md`
-- `docs/BUILD_LEARN_COMMIT_GUIDE.md`
+- Detailed execution, learning, Git workflow and student lab records remain local and are excluded from the release surface.
 - Local foundation preview: canonical hashes, journal, boundary matching, scripted incident/benign trajectories
 - Scale and timeline preview: bounded batch append, exclusive per-call durable writer, streaming journal verification, metadata-only phase compression, and local 3k/10k/50k probes
 - Optional AWS evidence preview: local/S3 CAS, KMS root attestations, version-pinned S3 anchors, offline SDK tests, linted retained CloudFormation evidence stack
@@ -64,13 +60,9 @@ Plan lock: **Plan 4.2 is the only active plan. It preserves the original forty-t
 
 ## Required next work
 
-Finish `S01: Project pulse` (the user handles all GitHub actions):
+The existing private repository received its initial code import on 2026-10-20 under a one-time publication instruction. This preserved the original README commit and the actual import date. GitHub identity and remote were verified; no learning slice was accepted by the push.
 
-1. the user configures their Git author name and GitHub-associated email;
-2. the user reviews and publishes the tested planning baseline plus local foundation preview as an honest initial import (do not manufacture historical commits);
-3. the user makes one genuine S01 test or modification on a branch, runs GitHub Actions, and self-reviews that PR;
-4. record the student's S01 teach-back answers;
-5. accept S01 only after remote CI and review pass, then follow Days 2–5 of the guide to harden later concepts.
+Finish `S01: Project pulse` through the existing student workflow: make one genuine modification on a branch, review its PR, run the required CI under the applicable resource permissions, and complete the teach-back. Those acceptance requirements remain pending in the local learning records.
 
 ## Test status
 
@@ -109,22 +101,21 @@ Finish `S01: Project pulse` (the user handles all GitHub actions):
 - On 2026-10-10, five fresh-process 50K-event trials per mode measured median **0.490099 s batch append (102,020 records/s)**, **0.546619 s batch-journal verification (91,471 records/s)**, and **1.652650 s per-event durable-stream append (30,254 records/s)**. A separate five-pair alternating comparison against a benchmark-only reconstruction of the former joined writer measured **29.65% lower median peak whole-process RSS** (67,190,784 → 47,267,840 bytes) with ~0.5 s median batch append for both. [Raw trials and limitations](PERFORMANCE_EVIDENCE.md) are retained; these are synthetic one-host component measurements, not real-agent throughput, concurrent p95, or a production SLO.
 - These are synthetic local boundary matches; no checkpoint restoration, real external effect, or `VERIFIED_REPLAY` claim exists yet.
 - AWS signing/encryption requests remain an **optional offline-only experiment**. No real AWS account, IAM boundary, Object Lock behavior, CloudFormation deployment, or full AWS runtime has been verified or is required for local V1.
-- GitHub CI: **pending first push**.
+- GitHub CI: **pending successful run**. The initial private code import used `[skip ci]` under the instruction against new test runs.
 - Production release gate: **not implemented or passed**. PostgreSQL metadata, a narrow API, and one OPA-backed real-agent MCP tool exist as previews, but the full API/UI, OTel, all-action interception/coverage, comprehensive restore/effect reconciliation, full policy grammar/search, twelve-scenario corpus, repeated end-to-end scale benchmarks, independent signer/anchor trust proof, scoped authorization/privacy, backup/recovery, and self-hosted clean-room install remain missing. AWS is not a gate.
 
 ## Blockers
 
-- GitHub identity, remote, push, CI, PR, and merge are user-owned and pending.
+- Initial private code import is pushed to `usmanmohammed2306/SentinelReplay`; successful CI, student PR/review and teach-back remain pending.
 - GitHub CLI is not installed; the PR can be created in the browser or after installing/authenticating `gh`.
 - The public-repository license choice remains unresolved.
 
 ## Decisions pending during S01
 
 - select the project license before making the repository public;
-- choose the GitHub repository name, URL/owner, and initial visibility;
 - confirm the exact Python/tooling versions captured by the Slice 1 lockfile; later dependencies are pinned just in time by their owning task.
 
-These choices do not block local planning. Repository owner, visibility, and commit identity must be resolved before the first remote push.
+The repository owner, private visibility, and commit identity were verified for the initial import. The unresolved license choice still blocks a public release.
 
 ## Schedule confidence
 
