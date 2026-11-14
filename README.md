@@ -8,7 +8,7 @@ An agent reads a credential. Two steps later, its value reaches an outbound requ
 
 Sentinel Replay turns that trace into an investigation. Collapse the routine steps. Follow a declared dependency. Restore the covered state. Replay the recorded path, then execute a supported alternate future and compare the resulting files. Carry the investigation to another installation in a signed capsule.
 
-The implementation runs locally with a professional investigation UI, PostgreSQL, encrypted evidence storage, OPA enforcement, and bounded background operations. **Full V1 release remains gated** by independent validation, representative performance evidence, hosted CI, and owner review. [Current status and results](docs/STATUS.md) make those boundaries explicit.
+The implementation runs locally with a professional investigation UI, PostgreSQL, encrypted evidence storage, OPA enforcement, and bounded background operations. **Full V1 release remains gated** by independent validation, representative performance evidence, versioned replay compatibility, and owner review. [Current status and results](docs/STATUS.md) make those boundaries explicit.
 
 ![A real Sentinel Replay investigation showing the declared secret-to-export dependency](docs/assets/investigation.png)
 
@@ -75,6 +75,8 @@ pnpm --dir ui test:e2e      # requires the matching Playwright Chromium install
 uv run --frozen sentinel release-check --stage release
 ```
 
-The release command audits exact source and artifact bytes and returns nonzero while required evidence or reviews remain missing. It does not publish or accept a learning slice. Local checks are not a hosted CI result.
+The release command audits exact source and artifact bytes and returns nonzero while required evidence or reviews remain missing. It does not publish or accept a learning slice. [Hosted CI](https://github.com/usmanmohammed2306/SentinelReplay/actions/runs/43552561371) now passes Python, the production UI image, PostgreSQL integration and OPA conformance on `c895b0f`. Browser E2E and the broader isolation suite were validated locally. The first hosted OPA permission failure is retained with its fix.
 
 Start with the [frozen product charter](docs/FROZEN_PRODUCT_CHARTER.md), [coverage contract](docs/ENVIRONMENT_PACK_CONTRACT.md), [acceptance matrix](docs/V1_ACCEPTANCE.md), [threat model](docs/THREAT_MODEL.md), and [deployment/recovery runbook](docs/SELF_HOSTED_PREVIEW.md). The separate local sixty-slice guide maps daily builds, tests, reading, teach-backs and user-owned commits to this reference implementation. Engineering progress does not certify independent authorship or learning completion.
+
+The archived benchmark capsules bind their original runtime source. The Linux OPA portability fix changed that identity; use `sentinel demo` to generate a fresh current-runtime investigation, or the recorded source revision to reproduce an older capsule. The frozen release audit deliberately names this source mismatch until the full evidence baseline is refreshed.

@@ -1,0 +1,33 @@
+{
+  "commit": "c895b0f0c7c518c9a14260eaccf7b0ad33eba63a",
+  "conclusion": "success",
+  "first_run": "https://github.com/usmanmohammed2306/SentinelReplay/actions/runs/43552119885",
+  "first_run_conclusion": "failure_preserved_Linux_OPA_permissions",
+  "jobs": [
+    {
+      "conclusion": "success",
+      "job_id": "132318070228",
+      "name": "Production UI image"
+    },
+    {
+      "conclusion": "success",
+      "job_id": "132318070323",
+      "name": "Python 3.12 checks"
+    },
+    {
+      "conclusion": "success",
+      "job_id": "132318070479",
+      "name": "PostgreSQL 17 signed-ingest integration"
+    },
+    {
+      "conclusion": "success",
+      "job_id": "132318070446",
+      "name": "OPA 1.0 policy conformance"
+    }
+  ],
+  "limitations": "No hosted browser E2E, full guarded branch/isolation suite, full release acceptance or student acceptance inferred.",
+  "observation": "authenticated GitHub workflow summary; not a separately signed service attestation",
+  "run_url": "https://github.com/usmanmohammed2306/SentinelReplay/actions/runs/43552561371",
+  "schema_version": 1,
+  "source_root": "sha256:fec9e6f6d6c54c117d4734d4ace95fd17fa8506d94e4bc8ae32abd57451ec8fb"
+}

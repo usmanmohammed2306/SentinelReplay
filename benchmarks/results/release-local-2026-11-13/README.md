@@ -38,3 +38,5 @@ The command returns nonzero until missing requirements are resolved and reviewed
 ## Hosted CI portability follow-up
 
 The first source push passed hosted Python/UI/PostgreSQL jobs and exposed an OPA Linux bind-mount permission failure. The caller-identity fix and fresh local integrated-demo proof are in `post-ci-portability-fix.json`. Frozen reports/source hashes remain unchanged; the current runtime now differs and the default audit correctly flags that mismatch. Rebaselining current source and defining supported replay-version compatibility remain release work. A report-presence pass is not a performance-budget pass.
+
+Hosted run2 passed all four configured jobs on `c895b0f`; see `hosted-ci.json`. This closes the first Linux OPA conformance failure, not the full production release. The original report/source baseline remains frozen.
