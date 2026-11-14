@@ -12,16 +12,18 @@ from sentinel_replay.pack_capsule import materialize_pack
 ROOT = Path(__file__).resolve().parents[1]
 
 
+@pytest.mark.parametrize("date", ["2026-11-13", "2026-11-14"])
 def test_historical_capsule_uses_installed_interpreter_and_recorded_nondeterminism(
     monkeypatch: pytest.MonkeyPatch,
+    date: str,
 ) -> None:
     def forbid_live(*args: object) -> None:
         raise AssertionError("historical replay attempted live nondeterminism")
 
     capsule = CapsuleInvestigation(
-        (ROOT / "tests/fixtures/replay/finite-pack-2026-11-13.sentinel").read_bytes()
+        (ROOT / f"tests/fixtures/replay/finite-pack-{date}.sentinel").read_bytes()
     )
-    expected = json.loads((ROOT / "tests/fixtures/replay/finite-pack-2026-11-13.json").read_text())
+    expected = json.loads((ROOT / f"tests/fixtures/replay/finite-pack-{date}.json").read_text())
     monkeypatch.setattr("sentinel_replay.environment_pack.random.Random", forbid_live)
     monkeypatch.setattr("sentinel_replay.environment_pack.time.time_ns", forbid_live)
     result = capsule.replay()

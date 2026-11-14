@@ -81,7 +81,7 @@ The release command audits exact source and artifact bytes and returns nonzero w
 
 Start with the [frozen product charter](docs/FROZEN_PRODUCT_CHARTER.md), [coverage contract](docs/ENVIRONMENT_PACK_CONTRACT.md), [acceptance matrix](docs/V1_ACCEPTANCE.md), [threat model](docs/THREAT_MODEL.md), and [deployment/recovery runbook](docs/SELF_HOSTED_PREVIEW.md). The separate local sixty-slice guide maps daily builds, tests, reading, teach-backs and user-owned commits to this reference implementation. Engineering progress does not certify independent authorship or learning completion.
 
-Historical capsules bind their original source. An [explicit compatibility registry](docs/REPLAY_COMPATIBILITY.md) now supports the two validated November13 finite-pack profiles, including the published three-adapter capsule. Unknown profiles still fail closed; archived code is never executed. The release verifier checks raw numeric budgets, exact named workflow/corpus checks, current-source execution receipts and all43 scope rows. A report that exists but misses its budget cannot pass release.
+Historical capsules bind their original source. An [explicit compatibility registry](docs/REPLAY_COMPATIBILITY.md) now supports three validated November13/14 finite-pack profiles, including the published three-adapter capsule. Unknown profiles still fail closed; archived code is never executed. The release verifier checks raw numeric budgets, exact named workflow/corpus checks, current-source execution receipts and all43 scope rows. A report that exists but misses its budget cannot pass release.
 
 ## License
 

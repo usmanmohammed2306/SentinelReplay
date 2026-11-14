@@ -108,7 +108,7 @@ def _write_json(path: Path, value: object) -> None:
     with tempfile.NamedTemporaryFile(dir=path.parent, prefix=".metadata-", delete=False) as stream:
         temporary = Path(stream.name)
         try:
-            stream.write((json.dumps(value, indent=2, sort_keys=True) + "\n").encode())
+            stream.write((json.dumps(value, separators=(",", ":"), sort_keys=True) + "\n").encode())
             stream.flush()
             os.fsync(stream.fileno())
             os.link(temporary, path, follow_symlinks=False)

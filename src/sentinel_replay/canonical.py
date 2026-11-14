@@ -8,6 +8,8 @@ from datetime import UTC, datetime
 from enum import Enum
 from typing import Any
 
+_ENCODER = json.JSONEncoder(ensure_ascii=False, separators=(",", ":"))
+
 
 class CanonicalizationError(ValueError):
     """A value cannot be represented under the current evidence contract."""
@@ -61,7 +63,7 @@ def _normalize(value: object, depth: int = 0) -> object:
 def canonical_bytes(value: object) -> bytes:
     """Encode a supported value without ambiguous JSON types or key order."""
     normalized = _normalize(value)
-    return json.dumps(normalized, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+    return _ENCODER.encode(normalized).encode("utf-8")
 
 
 def event_digest(value: object) -> str:

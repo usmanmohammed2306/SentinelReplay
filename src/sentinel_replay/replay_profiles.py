@@ -79,6 +79,45 @@ VALIDATED_PROFILES: dict[str, dict[str, Any]] = {
             "python_major_minor": [3, 12],
         },
     },
+    "sha256:ab29a43e8d175112c84dc24329a9dce935d76c877cff3d13fbd6c3ae02785eaa": {
+        "name": "finite-pack-v1-2026-11-14-1",
+        "contract": "finite-pack/1",
+        "material": {
+            "adapter_digest": (
+                "sha256:cf59b3dfc9559a6a8d9127780f74c9324b544cdd1be490d3b0cf6c1fdc5c3f46"
+            ),
+            "runtime_digests": {
+                "environment_pack.py": (
+                    "sha256:cf59b3dfc9559a6a8d9127780f74c9324b544cdd1be490d3b0cf6c1fdc5c3f46"
+                ),
+                "policy_language.py": (
+                    "sha256:dd19545e116e8fb56c01aedd7a779829fbe9e77c393bf3405f79baae6c4a903b"
+                ),
+                "canonical.py": (
+                    "sha256:022a3ee9b91de7e735526af75352303f9206e7a3f6c4e781052315b99202d101"
+                ),
+                "journal.py": (
+                    "sha256:7db379d869689761de2c4d99d69a1fdcc80308f7266c4d4d67edb0d57c7e08ff"
+                ),
+                "workspace_snapshot.py": (
+                    "sha256:d681c01dcde5af8bc94b41bfd484b2aeaee3fd8d7082d148f6a415b91f2e5c81"
+                ),
+                "evidence_store.py": (
+                    "sha256:ec3fe3b83b808a0ffa93570eb469cd894a4685805d9b062a57ffcf449d203f9b"
+                ),
+                "telemetry.py": (
+                    "sha256:6d97994818598a0e877d8a96dcae329f792c4c8131dbf3bc0169f68a5142735d"
+                ),
+                "progress_anchor.py": (
+                    "sha256:7d53a1fee496ee538be5983da0843234701e5b4bc4f56944201b8a1ae32e6eab"
+                ),
+                "replay_profiles.py": (
+                    "sha256:509e82235894e69b95997f0ba898879fe2f91dbc6095b6817ba7178b8b69b2d9"
+                ),
+            },
+            "python_major_minor": [3, 12],
+        },
+    },
 }
 
 

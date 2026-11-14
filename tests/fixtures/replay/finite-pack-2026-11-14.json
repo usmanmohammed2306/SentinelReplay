@@ -1,0 +1,7 @@
+{
+  "journal_root": "sha256:113713f5700ce8713e357557866d1ac8cd62a37a29bada1d21d357bd2cf22f2e",
+  "profile_identity": "sha256:ab29a43e8d175112c84dc24329a9dce935d76c877cff3d13fbd6c3ae02785eaa",
+  "source_commit": "939de2a168b83f222567df5ce94cb98885a6f0f3",
+  "records": 6,
+  "scope": "Pre-optimization trusted finite-pack fixture with recorded clock/RNG/model inputs and a materialized local file effect; no live replay fallback."
+}
