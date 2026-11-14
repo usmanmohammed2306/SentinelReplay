@@ -25,7 +25,13 @@ test("3k timeline becomes interactive after data arrival in 25 fresh navigations
   await expect(
     page.getByRole("heading", { name: "Follow the evidence." }),
   ).toBeVisible();
-  const response = await page.request.get("/api/backend/v1/runs?limit=100");
+  // Discovery is outside the render measurement and observes the same admission
+  // contract as the app. A previous test's request may still be draining.
+  let response = await page.request.get("/api/backend/v1/runs?limit=100");
+  for (let attempt = 0; response.status() === 429 && attempt < 4; attempt++) {
+    await page.waitForTimeout(250 * 2 ** attempt);
+    response = await page.request.get("/api/backend/v1/runs?limit=100");
+  }
   expect(response.status()).toBe(200);
   const listing = await response.json();
   const run = listing.runs.find(
