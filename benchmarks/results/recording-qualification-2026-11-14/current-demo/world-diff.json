@@ -1,0 +1,15 @@
+[
+  {
+    "arm": "targeted",
+    "changed_paths": [
+      "egress.txt"
+    ]
+  },
+  {
+    "arm": "deny_all",
+    "changed_paths": [
+      "egress.txt",
+      "report.txt"
+    ]
+  }
+]

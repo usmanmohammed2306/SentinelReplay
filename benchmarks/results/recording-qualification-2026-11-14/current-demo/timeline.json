@@ -1,0 +1,58 @@
+{
+  "actions": 3186,
+  "coverage": "boundary_evidence_metadata_only",
+  "findings": [
+    {
+      "evidence": "declared secret-classified file read",
+      "rule_id": "secret_read_v1",
+      "step": 3181
+    }
+  ],
+  "journal_root": "sha256:59d4586425297f7210c5a539f020f584edd8a6fded843478e737b11b206b249a",
+  "limitation": "Rules inspect declared boundary metadata only. A rule hit is not proof of intent, dataflow, policy violation, or downstream causation; absent hits do not prove safety.",
+  "mode": "TRACE_CLASSIFICATION",
+  "phases": [
+    {
+      "actions": 3181,
+      "finding_count": 0,
+      "first_step": 0,
+      "label": "model_call",
+      "last_step": 3180
+    },
+    {
+      "actions": 1,
+      "finding_count": 1,
+      "first_step": 3181,
+      "label": "secret_read_v1",
+      "last_step": 3181
+    },
+    {
+      "actions": 1,
+      "finding_count": 0,
+      "first_step": 3182,
+      "label": "other_action",
+      "last_step": 3182
+    },
+    {
+      "actions": 1,
+      "finding_count": 0,
+      "first_step": 3183,
+      "label": "network_write",
+      "last_step": 3183
+    },
+    {
+      "actions": 1,
+      "finding_count": 0,
+      "first_step": 3184,
+      "label": "other_action",
+      "last_step": 3184
+    },
+    {
+      "actions": 1,
+      "finding_count": 0,
+      "first_step": 3185,
+      "label": "file_write",
+      "last_step": 3185
+    }
+  ]
+}

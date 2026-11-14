@@ -1,0 +1,26 @@
+{
+  "artifact": {
+    "digest": "sha256:a05b83e8b0f11c98280cddab808efb295000b3412fad626685efbe4d254e6053",
+    "path": "benchmarks/results/recording-qualification-2026-11-14/current-overhead/results.json"
+  },
+  "command": [
+    ".venv/bin/python",
+    "benchmarks/recording_overhead.py",
+    "--output",
+    "benchmarks/results/recording-qualification-2026-11-14/current-overhead"
+  ],
+  "command_exit_code": 0,
+  "elapsed_seconds": "10.891111625",
+  "exit_code": 0,
+  "log": {
+    "digest": "sha256:bf4afc69c20b9cfb0294c42c560dbbde2e42652851b9498e15eb7025ecd5637d",
+    "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-overhead/command.log"
+  },
+  "schema_version": 1,
+  "scope": "local execution receipt; no independent authentication of experimenter identity",
+  "source_root": "sha256:76c1c6744a9166cfde434aad3448e3794391a2918d8f9c0d4f4fff8264e77607",
+  "source_root_after": "sha256:76c1c6744a9166cfde434aad3448e3794391a2918d8f9c0d4f4fff8264e77607",
+  "source_root_before": "sha256:76c1c6744a9166cfde434aad3448e3794391a2918d8f9c0d4f4fff8264e77607",
+  "source_unchanged": true,
+  "started_at_utc": "2026-11-14T18:14:51.020225+00:00"
+}

@@ -1,0 +1,467 @@
+{
+  "accepted_student_slices": "unchanged_by_this_command",
+  "current_source_execution": {
+    "browser_tests": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:ab9a39248190bc953d1a1cd80a3a7e0a955ba7ab2ce0cfe02e543a58bd716494",
+        "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-browser/receipt.json"
+      }
+    },
+    "corpus": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:51bb3ad60f1dbe19d2c28c0fa9d9abd7c675621ea1e6c7d78009ad46d44331f0",
+        "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-corpus/receipt.json"
+      }
+    },
+    "deployment_recovery": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:ddd82f7afc76e21c75d5cc32f10b958e4d759c1c6680cd6fb12a52c7d4d352f3",
+        "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-deployment/receipt.json"
+      }
+    },
+    "guarded_tests": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:9cb5ae1968eebe7ee98d2bb3a614795eac84403ca907f721233b7d45c65afe72",
+        "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-guarded/receipt.json"
+      }
+    },
+    "local_tests": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:bef597fd8328b94c4722268cf2a75389f0b64d225c48fdc80695c5a096440114",
+        "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-local/receipt.json"
+      }
+    },
+    "operational_validation": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:09ad089a0a2da92d868fc96cd1d3ae3020acb585579c6706b644708c85fb3be0",
+        "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-operational/receipt.json"
+      }
+    },
+    "policy_search": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:3d0762268be9bf54dc56a524e5493a7ad739fb6d9d17bd5636bda9d145928d23",
+        "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-search/receipt.json"
+      }
+    },
+    "postgres_http": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:9a6b3360161b129c327a764551b75f99eec5e49acb9485d7a5931d7b39a81f1c",
+        "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-postgres/receipt.json"
+      }
+    },
+    "product_demo": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:aa1918f57c90f6d0184ed18f93f7af4d8cd323676e749086f22dd9c03cda6e6e",
+        "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-demo/receipt.json"
+      }
+    },
+    "proof_video": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:e1b34f3f5101021244f95c7cf99c2ec6c39afb85adfc7fc341de65d4e6d44284",
+        "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-proof/receipt.json"
+      }
+    },
+    "provenance_validation": {
+      "passed": false,
+      "reason": "missing current-source execution receipt"
+    },
+    "recording_overhead": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:fc237761e7b65e3bd88326be8eb9a5d3a30c2bc3a83a6e22475dea8f58021b30",
+        "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-overhead/receipt.json"
+      }
+    },
+    "scale": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:b4ca01dde8d3f230136b2db9c132038651ff0475ed36bd82f19c64e90edc1472",
+        "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/scale-with-docker-access/receipt.json"
+      }
+    },
+    "ui_build": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:8489071be0634479e2de224b1e04df4c4f6bfa8b42243d462cfdcae050f011f7",
+        "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-ui-build/receipt.json"
+      }
+    }
+  },
+  "diagnostic_targets": {
+    "legacy_recording_overhead_20pct": {
+      "binding": false,
+      "observed": "4066.637845675658651963219059",
+      "passed": false,
+      "required": "median <=20%, excluding model latency",
+      "scope": "Historical engineering target, explicitly superseded by owner-approved absolute budgets; original failure retained. Not evidence of <=20% real-agent overhead.",
+      "superseded_by": "ADR-0004"
+    }
+  },
+  "engineering_checks": {
+    "browser_tests": {
+      "evidence": {
+        "digest": "sha256:d4303da14988005333cc38fa9210fbe36b3bf5ca8b07356d788bf25d7c53fa5f",
+        "path": "benchmarks/results/recording-qualification-2026-11-14/current-browser.json"
+      },
+      "passed": true
+    },
+    "corpus": {
+      "evidence": {
+        "digest": "sha256:18dca8e302a8054f3196588519ab393e02ad8895244011f2bf09cc1c334ab83e",
+        "path": "benchmarks/results/recording-qualification-2026-11-14/current-corpus/results.json"
+      },
+      "passed": true
+    },
+    "deployment_recovery": {
+      "evidence": {
+        "digest": "sha256:e78e439b465b8a63dfac6dee3f1a7a2b59a96129fc04dfecbc5a8821dc95929e",
+        "path": "benchmarks/results/recording-qualification-2026-11-14/current-deployment.json"
+      },
+      "passed": true
+    },
+    "guarded_tests": {
+      "evidence": {
+        "digest": "sha256:97fef3467ad17ad6ee8806354d30c5e9488c8c5aae9a65cd9e3e87bded12c7db",
+        "path": "benchmarks/results/recording-qualification-2026-11-14/current-guarded.json"
+      },
+      "passed": true
+    },
+    "local_tests": {
+      "evidence": {
+        "digest": "sha256:e0648b7819359fb4c56dc7f1ad75dae2fea9891cfb07565a816c9eee8fae0d05",
+        "path": "benchmarks/results/recording-qualification-2026-11-14/current-local.json"
+      },
+      "passed": true
+    },
+    "operational_validation": {
+      "evidence": {
+        "digest": "sha256:4474c918b7537697cb1445295b6cff081ca7397475a7bf0c45d5ee21c617ee17",
+        "path": "benchmarks/results/recording-qualification-2026-11-14/current-operational.json"
+      },
+      "passed": true
+    },
+    "policy_search": {
+      "evidence": {
+        "digest": "sha256:53c4566d5a26b6be642ed1e60f674db592c04b5a4d829029fdbedde64ee851fb",
+        "path": "benchmarks/results/recording-qualification-2026-11-14/current-search-revalidation.json"
+      },
+      "passed": true
+    },
+    "postgres_http": {
+      "evidence": {
+        "digest": "sha256:fc85c160b58a29a46fcfa8ad0f40ad23b813b157cd99bb19c38d136756906e86",
+        "path": "benchmarks/results/recording-qualification-2026-11-14/current-postgres.json"
+      },
+      "passed": true
+    },
+    "product_demo": {
+      "evidence": {
+        "digest": "sha256:17e3f88906b677164948d42d38d294d9ef98970afcbff0aa77ee0c63c0609701",
+        "path": "benchmarks/results/recording-qualification-2026-11-14/current-demo/demo-report.json"
+      },
+      "passed": true
+    },
+    "proof_video": {
+      "evidence": {
+        "digest": "sha256:dcc2dc4bfd3dc4daa95373684aee9e8174892ec1373a9b7b7373831868b6ee8e",
+        "path": "benchmarks/results/recording-qualification-2026-11-14/current-proof.json"
+      },
+      "passed": true
+    },
+    "provenance_validation": {
+      "evidence": {
+        "digest": "sha256:dc72d7cf427080e4557e58a3e69e9c8359c53c44e84832e2db17d479123b6f19",
+        "path": "benchmarks/results/recording-qualification-2026-11-14/provenance-pending.json"
+      },
+      "passed": false
+    },
+    "recording_overhead": {
+      "evidence": {
+        "digest": "sha256:a05b83e8b0f11c98280cddab808efb295000b3412fad626685efbe4d254e6053",
+        "path": "benchmarks/results/recording-qualification-2026-11-14/current-overhead/results.json"
+      },
+      "passed": true
+    },
+    "scale": {
+      "evidence": {
+        "digest": "sha256:2f97488bd3baefc4c30993c6edf1492939d66c7cab5aca4df498b0e9a6ac9bb7",
+        "path": "benchmarks/results/recording-qualification-2026-11-14/scale-with-docker-access/results.json"
+      },
+      "passed": true
+    },
+    "ui_build": {
+      "evidence": {
+        "digest": "sha256:ccbff34b230fcf4125de53c547e7419bc43d3a28c95efd226ce5f394d9fdcd70",
+        "path": "benchmarks/results/recording-qualification-2026-11-14/current-ui-build.json"
+      },
+      "passed": true
+    }
+  },
+  "limitation": "Local artifact audit and declared reviews; not independent validation of reviewer identity, publication, latest-root freshness or a production safety guarantee.",
+  "quality_budgets": {
+    "journal_verification_50k": {
+      "observed": "0.819630749989301",
+      "passed": true,
+      "required": "p95 <=1s (50k/s)"
+    },
+    "provenance_and_blast_radius": {
+      "observed": "missing or invalid independent label evidence",
+      "passed": false,
+      "required": "F1>=0.85, nonempty positives, root-bound labels and blast-radius adjudication"
+    },
+    "recording_added_time_per_boundary": {
+      "observed": "0.00009389517393612707197600799733",
+      "passed": true,
+      "required": "ADR-0004: median amortized added wall time <=150us per actual durable boundary"
+    },
+    "recording_latency_3k": {
+      "observed": "0.5383338749816176",
+      "passed": false,
+      "required": "ADR-0004: p95 <=0.5s for3000 fixed-stub actions; >=25 pairs"
+    },
+    "selected_graph_50k": {
+      "observed": "0.0014877909852657467",
+      "passed": true,
+      "required": "p95 <=0.3s"
+    },
+    "timeline_first_page_3k": {
+      "observed": "0.000809333025244996",
+      "passed": true,
+      "required": "p95 <=0.3s"
+    },
+    "timeline_interactive_3k": {
+      "observed": "0.2917999999821186",
+      "passed": true,
+      "required": "p95 <=1s after data arrival; >=3k boundaries"
+    }
+  },
+  "review_gates": {
+    "clean_room_reproduction": {
+      "evidence": {
+        "digest": "sha256:4dc8c77be99be328bc34f34c89529b3c8bfb984d8eb80ad366e4618d6db180cf",
+        "path": "benchmarks/results/recording-qualification-2026-11-14/clean_room_reproduction-review.json"
+      },
+      "reviewer": "Fresh Ubuntu CI checkout and empty volumes (automated transcript)",
+      "state": "DECLARED_EXTERNAL_REVIEW"
+    },
+    "end_to_end_load_and_latency": {
+      "state": "PENDING"
+    },
+    "hosted_ci": {
+      "evidence": {
+        "digest": "sha256:251743da5aeff3ad3f6d5483085b9eff051b2a282af790aadccbda684e48dde3",
+        "path": "benchmarks/results/recording-qualification-2026-11-14/hosted_ci-review.json"
+      },
+      "reviewer": "GitHub Actions (automated; not human peer review)",
+      "state": "DECLARED_EXTERNAL_REVIEW"
+    },
+    "independent_provenance": {
+      "state": "PENDING"
+    },
+    "license_and_distribution": {
+      "evidence": {
+        "digest": "sha256:3a9842eafeb7b62944867d22d0ed41fd5ddb0a8c41d32a7bd87a091719c713ca",
+        "path": "benchmarks/results/recording-qualification-2026-11-14/license_and_distribution-review.json"
+      },
+      "reviewer": "Explicit owner MIT/public-main authorization; mechanical verification",
+      "state": "DECLARED_EXTERNAL_REVIEW"
+    },
+    "owner_teach_back": {
+      "state": "PENDING"
+    },
+    "representative_recording_overhead": {
+      "state": "PENDING"
+    },
+    "signer_boundary_and_freshness": {
+      "state": "PENDING"
+    }
+  },
+  "schema_version": 2,
+  "scope_traceability": {
+    "1": {
+      "passed": true,
+      "title": "Exact problem"
+    },
+    "10": {
+      "passed": true,
+      "title": "Incident compression"
+    },
+    "11": {
+      "passed": false,
+      "title": "Provenance DAG"
+    },
+    "12": {
+      "passed": false,
+      "title": "Blast-radius engine"
+    },
+    "13": {
+      "passed": true,
+      "title": "Replay engine"
+    },
+    "14": {
+      "passed": true,
+      "title": "Structural/effect divergence"
+    },
+    "15": {
+      "passed": true,
+      "title": "Incident bisect"
+    },
+    "16": {
+      "passed": true,
+      "title": "Policy engine"
+    },
+    "17": {
+      "passed": true,
+      "title": "Policy DSL"
+    },
+    "18": {
+      "passed": true,
+      "title": "Alternate Futures"
+    },
+    "19": {
+      "passed": true,
+      "title": "Minimal Intervention"
+    },
+    "2": {
+      "passed": true,
+      "title": "Six signature capabilities"
+    },
+    "20": {
+      "passed": true,
+      "title": "Pareto frontier"
+    },
+    "21": {
+      "passed": true,
+      "title": "Benign regression suite"
+    },
+    "22": {
+      "passed": true,
+      "title": "Causal World Diff"
+    },
+    "23": {
+      "passed": true,
+      "title": "Incident Capsules"
+    },
+    "24": {
+      "passed": true,
+      "title": "Capsule verification"
+    },
+    "25": {
+      "passed": true,
+      "title": "Storage architecture"
+    },
+    "26": {
+      "passed": true,
+      "title": "Main data models"
+    },
+    "27": {
+      "passed": true,
+      "title": "API surface"
+    },
+    "28": {
+      "passed": true,
+      "title": "CLI"
+    },
+    "29": {
+      "passed": true,
+      "title": "Frontend"
+    },
+    "3": {
+      "passed": true,
+      "title": "End-to-end workflow"
+    },
+    "30": {
+      "passed": true,
+      "title": "Product screens"
+    },
+    "31": {
+      "passed": true,
+      "title": "Exact homepage"
+    },
+    "32": {
+      "passed": true,
+      "title": "Demo corpus"
+    },
+    "33": {
+      "passed": false,
+      "title": "Metrics"
+    },
+    "34": {
+      "passed": false,
+      "title": "Testing"
+    },
+    "35": {
+      "passed": true,
+      "title": "Tech stack"
+    },
+    "36": {
+      "passed": true,
+      "title": "Innovation framing"
+    },
+    "37": {
+      "passed": true,
+      "title": "Explicit non-goals"
+    },
+    "38": {
+      "passed": true,
+      "title": "Job-market rationale"
+    },
+    "39": {
+      "passed": true,
+      "title": "Relation to AutoSeal"
+    },
+    "4": {
+      "passed": true,
+      "title": "Recorder architecture"
+    },
+    "40": {
+      "passed": true,
+      "title": "Resume positioning"
+    },
+    "41": {
+      "passed": false,
+      "title": "Build schedule"
+    },
+    "42": {
+      "passed": false,
+      "title": "Mandatory definition of done"
+    },
+    "43": {
+      "passed": true,
+      "title": "75-second video"
+    },
+    "5": {
+      "passed": true,
+      "title": "Conformance ladder"
+    },
+    "6": {
+      "passed": true,
+      "title": "OTel ingestion"
+    },
+    "7": {
+      "passed": true,
+      "title": "Snapshot engine"
+    },
+    "8": {
+      "passed": true,
+      "title": "Tamper-evident journal"
+    },
+    "9": {
+      "passed": true,
+      "title": "Incident classifier"
+    }
+  },
+  "source_mismatches": [],
+  "source_root": "sha256:76c1c6744a9166cfde434aad3448e3794391a2918d8f9c0d4f4fff8264e77607",
+  "status": "RELEASE_BLOCKED"
+}

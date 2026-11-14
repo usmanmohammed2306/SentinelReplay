@@ -1,0 +1,213 @@
+{
+  "api_image": "sentinel-replay-api:validation-20261113",
+  "backup_metadata_digest": "sha256:2f91e798a5845c8e4a7abbca0d6bae4e9b5fdf277d2dbf0d07a12881e23b62ba",
+  "checks": {
+    "API_nonroot_public_key_readonly": true,
+    "HTTP_50k_scale": {
+      "cold_first_timeline_seconds": 7.577872583002318,
+      "concurrent_clients": 8,
+      "concurrent_requests": 32,
+      "journal_root": "sha256:2be4b0a08fbee9b9ada44cdcead0ca733d16b13be09c8a06ab97e4755505b65a",
+      "query_samples": {
+        "sparse_graph": {
+          "n": 25,
+          "p50_seconds": 0.007503125001676381,
+          "p95_seconds": 0.00870541698532179,
+          "seconds": [
+            0.00870541698532179,
+            0.008689167007105425,
+            0.012294082989683375,
+            0.008112624986097217,
+            0.008122707979055122,
+            0.007848874985938892,
+            0.007264125015353784,
+            0.0073977500142063946,
+            0.007204333989648148,
+            0.007482499990146607,
+            0.007335958012845367,
+            0.0072504169947933406,
+            0.0072775840235408396,
+            0.008493708010064438,
+            0.008428000001003966,
+            0.008191750006517395,
+            0.007561625010566786,
+            0.008024041977478191,
+            0.007396500004688278,
+            0.007593999995151535,
+            0.007414791005430743,
+            0.007267042004968971,
+            0.007354000001214445,
+            0.007287791988346726,
+            0.007503125001676381
+          ]
+        },
+        "timeline_first_page": {
+          "n": 25,
+          "p50_seconds": 0.006044374982593581,
+          "p95_seconds": 0.016888499987544492,
+          "seconds": [
+            7.577872583002318,
+            0.016888499987544492,
+            0.007763875008095056,
+            0.006571208010427654,
+            0.006054584024241194,
+            0.006077375001041219,
+            0.006018000014591962,
+            0.005980083980830386,
+            0.007811582996509969,
+            0.007716167019680142,
+            0.008534124994184822,
+            0.006639958010055125,
+            0.006211125000845641,
+            0.0059872080164495856,
+            0.0058170419943053275,
+            0.00603770898305811,
+            0.006247915996937081,
+            0.006007125019095838,
+            0.005662667012074962,
+            0.0058156250161118805,
+            0.005697999993572012,
+            0.006044374982593581,
+            0.005952125007752329,
+            0.005719790991861373,
+            0.0058763750130310655
+          ]
+        }
+      },
+      "response_statuses": [
+        200,
+        200,
+        429,
+        429,
+        429,
+        429,
+        429,
+        429,
+        429,
+        429,
+        429,
+        429,
+        429,
+        429,
+        429,
+        429,
+        429,
+        429,
+        429,
+        429,
+        429,
+        429,
+        429,
+        429,
+        429,
+        429,
+        429,
+        429,
+        429,
+        429,
+        429,
+        429
+      ],
+      "scope": "same_host_loopback_Docker_PostgreSQL_sparse_graph; first timeline sample includes cold index build, remaining samples warm; not UI or production SLO"
+    },
+    "abrupt_running_job_recovery": {
+      "event_stream_digest": "sha256:7cc269e2438b62f88c0f1bfe3ffdb1f9a1ff4d1ed4b76a42f431f5388fe4cffd",
+      "job_id": "d9c3fcbaecc84d2eb0a40beec484dc0a",
+      "state": "interrupted"
+    },
+    "bounded_API_cgroup": {
+      "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+      "memory.max": "1073741824",
+      "memory.peak": "191795200",
+      "pids.current": "4",
+      "pids.max": "128"
+    },
+    "bounded_API_cgroup_before_crash": {
+      "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0",
+      "memory.max": "1073741824",
+      "memory.peak": "634109952",
+      "pids.current": "5",
+      "pids.max": "128"
+    },
+    "continuous_browser_capture": true,
+    "interrupted_job_survives_backup_restore": true,
+    "missing_operator_witness_quarantines_replay": true,
+    "native_OPA_future": {
+      "changed_paths": [
+        "egress.txt"
+      ],
+      "incidents": 1,
+      "mode": "DETERMINISTIC_SIMULATION"
+    },
+    "operator_witness_readonly": true,
+    "original": {
+      "exact_decrypted_capsule": true,
+      "incidents": 200,
+      "investigation": 200,
+      "persistent_job_and_terminal_SSE": true,
+      "persistent_job_id": "6df9157250184e03ae2874ce1f9d3f8b",
+      "persistent_job_result_digest": "sha256:46c8b389bdd52b00786117e61176e9a4587fe290547bb6de15240bc706edd5e1",
+      "phases": 200,
+      "provenance": 200,
+      "sealed_export_decrypted": true,
+      "telemetry": 200,
+      "three_adapter_replay": true,
+      "timeline": 200,
+      "verification": 200
+    },
+    "oversized_JSON": 413,
+    "restarted": {
+      "exact_decrypted_capsule": true,
+      "incidents": 200,
+      "investigation": 200,
+      "persistent_job_and_terminal_SSE": true,
+      "persistent_job_id": "6df9157250184e03ae2874ce1f9d3f8b",
+      "persistent_job_result_digest": "sha256:46c8b389bdd52b00786117e61176e9a4587fe290547bb6de15240bc706edd5e1",
+      "phases": 200,
+      "provenance": 200,
+      "sealed_export_decrypted": true,
+      "telemetry": 200,
+      "three_adapter_replay": true,
+      "timeline": 200,
+      "verification": 200
+    },
+    "restored": {
+      "exact_decrypted_capsule": true,
+      "incidents": 200,
+      "investigation": 200,
+      "persistent_job_and_terminal_SSE": true,
+      "persistent_job_id": "6df9157250184e03ae2874ce1f9d3f8b",
+      "persistent_job_result_digest": "sha256:46c8b389bdd52b00786117e61176e9a4587fe290547bb6de15240bc706edd5e1",
+      "phases": 200,
+      "provenance": 200,
+      "sealed_export_decrypted": true,
+      "telemetry": 200,
+      "three_adapter_replay": true,
+      "timeline": 200,
+      "verification": 200
+    },
+    "stopped_writer_encrypted_backup": true,
+    "unauthenticated": 401
+  },
+  "cleanup": {
+    "sentinel-proof-9fc10c811def43c7": true,
+    "sentinel-restore-47b0332fada449e9": true
+  },
+  "completed": true,
+  "image_config_ids": {
+    "sentinel-replay-api:validation-20261113": "sha256:34e627fc14bd510304505bac099c4ffd06d0bf9218583d976f51dc67886ecb47",
+    "sentinel-replay-ui:validation-20261113": "sha256:bcebeaa1d980430b0d13e533ef30444f5aaa592e473e19edd3e533a618d314e1"
+  },
+  "journal_root": "sha256:59d4586425297f7210c5a539f020f584edd8a6fded843478e737b11b206b249a",
+  "records": 3186,
+  "run_id": "pack-19baf01102733b846d6e8e678694aa4edfeb51d53e1d3a3ddd7df11535cd412a",
+  "schema_version": 1,
+  "scope": "disposable_local_Compose_encrypted_CAS_recovery",
+  "source_digests": {
+    "Dockerfile": "sha256:dd32ffa1b802db55d191d873458bd054ca4156d5edb0db6832616533e30e31a1",
+    "deploy/local/compose.yaml": "sha256:22b560001e2345c8ced3f1c32aae335ce4450d1142321d93d14a679a98b5bac6",
+    "scripts/validate_deployment.py": "sha256:c142851b800b8e8d45e04fe355f5d6a7c3779aeaa89dfe123afa992afddc8f34",
+    "ui/Dockerfile": "sha256:3316cfe37fb669bb7dd5c511f5246fab881a349603908a76a69de9b447ff7374"
+  },
+  "ui_image": "sentinel-replay-ui:validation-20261113"
+}

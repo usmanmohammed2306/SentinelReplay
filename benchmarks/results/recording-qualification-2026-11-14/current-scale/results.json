@@ -1,0 +1,24 @@
+{
+  "attempts": [
+    {
+      "completed": false,
+      "failure_message": "OPA rejected the compiled policy or input",
+      "failure_type": "PolicyUnavailable",
+      "target_boundaries": 3000
+    },
+    {
+      "completed": false,
+      "failure_message": "OPA rejected the compiled policy or input",
+      "failure_type": "PolicyUnavailable",
+      "target_boundaries": 10000
+    },
+    {
+      "completed": false,
+      "failure_message": "OPA rejected the compiled policy or input",
+      "failure_type": "PolicyUnavailable",
+      "target_boundaries": 50000
+    }
+  ],
+  "definition_digest": "sha256:6211a98cb24e862b92e455669ee5fd3765e7a80f562d0317efbb1d234ca51dd9",
+  "limitation": "Source-bound synthetic recorder/index scale, with cold and warm costs separated.\n\nUses real cached OPA, real fsync journal writes, a file-backed SQLite derived index\nand CAS. Warm query latencies exclude HTTP/browser/network time; they are not\nproduction throughput. Every attempted size and failure is retained.\n"
+}

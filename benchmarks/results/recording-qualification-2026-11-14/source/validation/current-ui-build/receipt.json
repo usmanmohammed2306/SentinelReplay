@@ -1,0 +1,26 @@
+{
+  "artifact": {
+    "digest": "sha256:ccbff34b230fcf4125de53c547e7419bc43d3a28c95efd226ce5f394d9fdcd70",
+    "path": "benchmarks/results/recording-qualification-2026-11-14/current-ui-build.json"
+  },
+  "command": [
+    "pnpm",
+    "--dir",
+    "ui",
+    "build"
+  ],
+  "command_exit_code": 0,
+  "elapsed_seconds": "9.551761250",
+  "exit_code": 0,
+  "log": {
+    "digest": "sha256:17bc90889b818251e18ad9a80a4d402b5221a34baf9025eccef4915d2c40190d",
+    "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-ui-build/command.log"
+  },
+  "schema_version": 1,
+  "scope": "local execution receipt; no independent authentication of experimenter identity",
+  "source_root": "sha256:76c1c6744a9166cfde434aad3448e3794391a2918d8f9c0d4f4fff8264e77607",
+  "source_root_after": "sha256:76c1c6744a9166cfde434aad3448e3794391a2918d8f9c0d4f4fff8264e77607",
+  "source_root_before": "sha256:76c1c6744a9166cfde434aad3448e3794391a2918d8f9c0d4f4fff8264e77607",
+  "source_unchanged": true,
+  "started_at_utc": "2026-11-14T18:17:40.848876+00:00"
+}

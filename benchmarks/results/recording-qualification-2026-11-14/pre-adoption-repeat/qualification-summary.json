@@ -1,0 +1,12 @@
+{
+  "pairs": 25,
+  "actual_boundary_counts": [
+    3001
+  ],
+  "recorded_p95_seconds": 0.29260499999509193,
+  "median_amortized_added_microseconds": 88.28934787604082,
+  "median_relative_overhead_percent": 4366.2930716386445,
+  "original_20pct_target_passed": false,
+  "proposed_absolute_targets_passed": true,
+  "scope": "25 alternating paired trials in one process; imports excluded; fixed model stubs; no OPA/model latency in timed region. Proposed budget is not yet accepted."
+}

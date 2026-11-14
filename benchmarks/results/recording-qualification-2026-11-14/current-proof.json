@@ -1,0 +1,22 @@
+{
+  "capture_source_digest": "sha256:243774d8c0e8566e3580d67de09bd6be59dad05a09706a5ac2139d66588a2d53",
+  "continuous_capture": true,
+  "duration_seconds": 75.16,
+  "journal_root": "sha256:59d4586425297f7210c5a539f020f584edd8a6fded843478e737b11b206b249a",
+  "measurement": "Actual uninterrupted local Compose UI, declared synthetic finite pack; duration inspected with bundled FFmpeg. No edited or generated outcomes.",
+  "schema_version": 1,
+  "source_inputs": [
+    {
+      "digest": "sha256:4ace3c7a3db2116d874088cac8d51318a730d0e813d75035fe3dbbebd5c5f3c8",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/current-capture.json"
+    },
+    {
+      "digest": "sha256:e78e439b465b8a63dfac6dee3f1a7a2b59a96129fc04dfecbc5a8821dc95929e",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/current-deployment.json"
+    }
+  ],
+  "video": {
+    "digest": "sha256:82d55113389081205cf692306c2e06a0dd399e4c3cb216dc77b0a4ff375ca16d",
+    "path": "docs/assets/sentinel-replay-proof-v3.webm"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "artifact": {
+    "digest": "sha256:d4303da14988005333cc38fa9210fbe36b3bf5ca8b07356d788bf25d7c53fa5f",
+    "path": "benchmarks/results/recording-qualification-2026-11-14/current-browser.json"
+  },
+  "command": [
+    "/Users/usmanmehboobmohammed/Documents/SentinelReplay/.venv/bin/python",
+    "-c",
+    "import subprocess,shutil;from pathlib import Path;subprocess.run(['pnpm','--dir','ui','test:e2e'],check=True);a=Path('.local-controller/ui-validation');b=Path('benchmarks/results/recording-qualification-2026-11-14');[(shutil.copyfile(a/x,b/y)) for x,y in [('results.json','current-browser.json'),('timeline-performance.json','current-timeline-3k.json'),('timeline-performance-50000.json','current-timeline-50k.json')]]"
+  ],
+  "command_exit_code": 0,
+  "elapsed_seconds": "63.780545750",
+  "exit_code": 0,
+  "log": {
+    "digest": "sha256:09440f79a9a452c7c196ee0be15fb658bbf76f9149d9106944d12d694e51d32c",
+    "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-browser/command.log"
+  },
+  "schema_version": 1,
+  "scope": "local execution receipt; no independent authentication of experimenter identity",
+  "source_root": "sha256:76c1c6744a9166cfde434aad3448e3794391a2918d8f9c0d4f4fff8264e77607",
+  "source_root_after": "sha256:76c1c6744a9166cfde434aad3448e3794391a2918d8f9c0d4f4fff8264e77607",
+  "source_root_before": "sha256:76c1c6744a9166cfde434aad3448e3794391a2918d8f9c0d4f4fff8264e77607",
+  "source_unchanged": true,
+  "started_at_utc": "2026-11-14T18:17:50.455952+00:00"
+}

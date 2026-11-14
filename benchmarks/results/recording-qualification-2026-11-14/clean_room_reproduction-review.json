@@ -1,0 +1,12 @@
+{
+  "decision": "accepted",
+  "evidence": [
+    {
+      "digest": "sha256:44169ede6d4f2ad4d93e1e2416dce905759d8c3ec45790a9c125882426f78a81",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/hosted-ci-complete.json"
+    }
+  ],
+  "reviewer": "Fresh Ubuntu CI checkout and empty volumes (automated transcript)",
+  "scope": "Only the named mechanically verified gate; no independent human adjudication, mastery or general production guarantee.",
+  "source_root": "sha256:76c1c6744a9166cfde434aad3448e3794391a2918d8f9c0d4f4fff8264e77607"
+}

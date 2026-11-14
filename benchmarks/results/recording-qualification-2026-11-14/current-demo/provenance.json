@@ -1,0 +1,38 @@
+{
+  "blast_radius": [
+    3183
+  ],
+  "edges": [
+    {
+      "kind": "declared_carrier",
+      "rationale": "recorder-declared source and sink share a keyed carrier marker",
+      "source": 3181,
+      "target": 3183
+    }
+  ],
+  "journal_root": "sha256:59d4586425297f7210c5a539f020f584edd8a6fded843478e737b11b206b249a",
+  "limitation": "Edges come from declared boundary metadata, not observed causal proof. Chronology is excluded from reachability; untyped carriers produce no dependency. Uninstrumented actions and agent adaptation remain outside this graph.",
+  "mode": "DECLARED_PROVENANCE_PREVIEW",
+  "nodes": [
+    {
+      "call_id": "action-3181",
+      "coverage": "environment_pack_v1",
+      "kind": "tool",
+      "operation": "read_file",
+      "request_digest": null,
+      "sensitivity": "secret",
+      "step": 3181
+    },
+    {
+      "call_id": "action-3182",
+      "coverage": "environment_pack_v1",
+      "kind": "tool",
+      "operation": "http_post",
+      "request_digest": null,
+      "sensitivity": "secret",
+      "step": 3183
+    }
+  ],
+  "root_step": 3181,
+  "total_nodes": 3186
+}

@@ -1,0 +1,49 @@
+{
+  "decision": "Owner explicitly adopted ADR-0004; retain and publish original failed20% comparison.",
+  "interpretation": "The new25-pair run misses p95 despite passing amortized added time. No second run is substituted to obtain a pass. Original ten-pair and pre-adoption25-pair data remain distinct historical measurements. This is acceptance-criterion revision, not a speed improvement.",
+  "legacy_diagnostic": {
+    "legacy_recording_overhead_20pct": {
+      "binding": false,
+      "observed": "4066.637845675658651963219059",
+      "passed": false,
+      "required": "median <=20%, excluding model latency",
+      "scope": "Historical engineering target, explicitly superseded by owner-approved absolute budgets; original failure retained. Not evidence of <=20% real-agent overhead.",
+      "superseded_by": "ADR-0004"
+    }
+  },
+  "measurements": {
+    "post_adoption_run": {
+      "median_added_seconds_per_boundary": "0.00009389517393612707197600799733",
+      "median_relative_overhead_percent": "4066.637845675658651963219059",
+      "p95_recorded_seconds": "0.5383338749816176"
+    },
+    "pre_adoption_repeat": {
+      "actual_boundary_counts": [
+        3001
+      ],
+      "median_amortized_added_microseconds": 88.28934787604082,
+      "median_relative_overhead_percent": 4366.2930716386445,
+      "original_20pct_target_passed": false,
+      "pairs": 25,
+      "proposed_absolute_targets_passed": true,
+      "recorded_p95_seconds": 0.29260499999509193,
+      "scope": "25 alternating paired trials in one process; imports excluded; fixed model stubs; no OPA/model latency in timed region. Proposed budget is not yet accepted."
+    }
+  },
+  "original_failed_comparison": "benchmarks/results/production-hardening-2026-11-13/current-overhead/results.json",
+  "post_adoption_budgets": {
+    "recording_added_time_per_boundary": {
+      "limit_seconds": 0.00015,
+      "passed": true
+    },
+    "recording_latency_3k": {
+      "limit_seconds": 0.5,
+      "passed": false
+    }
+  },
+  "progress_signing": "disabled in both timed arms",
+  "representative_load_review": "pending",
+  "same_interpreter_trials": true,
+  "schema_version": 1,
+  "source_commit": "939de2a168b83f222567df5ce94cb98885a6f0f3"
+}

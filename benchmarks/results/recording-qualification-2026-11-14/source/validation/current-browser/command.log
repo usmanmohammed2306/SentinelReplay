@@ -1,0 +1,26 @@
+$ playwright test
+[WebServer] INFO:     Started server process [19636]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:18771 (Press CTRL+C to quit)
+[WebServer] $ node scripts/start.mjs --port 18772
+[WebServer] (node:19713) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 6 tests using 1 worker
+
+(node:19714) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/investigation.spec.ts:18:1 › evidence journey, mode labels, restored boundaries, comparison and logout (3.5s)
+  ✓  2 tests/investigation.spec.ts:151:1 › session rejects missing origin and invalid credentials (561ms)
+  ✓  3 tests/investigation.spec.ts:167:1 › transient admission refusal preserves the investigator session (1.9s)
+  ✓  4 tests/investigation.spec.ts:204:1 › recorded operation stream localizes a real restored file effect (2.4s)
+  ✓  5 tests/timeline-performance.spec.ts:5:3 › 3186-boundary timeline becomes interactive after data arrival in25 fresh navigations (35.5s)
+  ✓  6 tests/timeline-performance.spec.ts:5:3 › 50000-boundary timeline becomes interactive after data arrival in25 fresh navigations (8.6s)
+[WebServer] [ELIFECYCLE] Command failed with exit code 143.
+[WebServer] INFO:     Shutting down
+[WebServer] INFO:     Waiting for application shutdown.
+[WebServer] INFO:     Application shutdown complete.
+[WebServer] INFO:     Finished server process [19636]
+
+  6 passed (1.1m)

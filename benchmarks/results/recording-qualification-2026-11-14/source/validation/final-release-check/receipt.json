@@ -1,0 +1,28 @@
+{
+  "artifact": {
+    "digest": "sha256:5e5d562d1dd0c2e9828226028473c6aa3f138695f23956b3ab91cef935862274",
+    "path": "benchmarks/results/recording-qualification-2026-11-14/release-cli-report.json"
+  },
+  "command": [
+    ".venv/bin/sentinel",
+    "release-check",
+    "--stage",
+    "release",
+    "--output",
+    "benchmarks/results/recording-qualification-2026-11-14/release-cli-report.json"
+  ],
+  "command_exit_code": 1,
+  "elapsed_seconds": "0.441041958",
+  "exit_code": 1,
+  "log": {
+    "digest": "sha256:b5aa7bc06c1f3412fdede14cd0b663e573c4e499ecfafeb1620f713b772c7a57",
+    "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/final-release-check/command.log"
+  },
+  "schema_version": 1,
+  "scope": "local execution receipt; no independent authentication of experimenter identity",
+  "source_root": "sha256:76c1c6744a9166cfde434aad3448e3794391a2918d8f9c0d4f4fff8264e77607",
+  "source_root_after": "sha256:76c1c6744a9166cfde434aad3448e3794391a2918d8f9c0d4f4fff8264e77607",
+  "source_root_before": "sha256:76c1c6744a9166cfde434aad3448e3794391a2918d8f9c0d4f4fff8264e77607",
+  "source_unchanged": true,
+  "started_at_utc": "2026-11-14T18:25:22.496212+00:00"
+}

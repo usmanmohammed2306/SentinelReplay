@@ -1,6 +1,8 @@
-# Sentinel Replay — current engineering evidence
+# Sentinel Replay — historical engineering baseline
 
 Validated November 14, 2026 on source commit **541a09d**, with **944 frozen code/config/test-fixture files**. The directory date identifies this hardening cohort; each receipt records its actual UTC execution time.
+
+Superseded by the [recording-qualification cohort](../recording-qualification-2026-11-14/README.md); measurements below retain their original source and criteria.
 
 **Engineering checks passed; the full V1 release remains blocked.** See the [release report](release-report.json), [43-row manifest](manifest.json), [status](../../../docs/STATUS.md) and [methods](../../../docs/PRODUCTION_EVIDENCE_2026-11-14.md).
 

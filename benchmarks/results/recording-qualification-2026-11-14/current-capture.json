@@ -1,0 +1,36 @@
+{
+  "continuous_capture": true,
+  "requested_seconds": 75,
+  "run_id": "pack-19baf01102733b846d6e8e678694aa4edfeb51d53e1d3a3ddd7df11535cd412a",
+  "moments": [
+    {
+      "seconds": 0.17337029199999995,
+      "caption": "Sentinel Replay · An investigation backed by recorded evidence"
+    },
+    {
+      "seconds": 0.651614042,
+      "caption": "3,186 recorded boundaries. Six phases. Follow the protected value."
+    },
+    {
+      "seconds": 13.865850917,
+      "caption": "Declared provenance separates data dependencies from simple sequence."
+    },
+    {
+      "seconds": 24.944816833999997,
+      "caption": "Restored workspace, Git and SQLite. Covered finite effects re-executed."
+    },
+    {
+      "seconds": 38.36716975,
+      "caption": "Three executed policies: preserve the public task while blocking the simulated export."
+    },
+    {
+      "seconds": 52.0487185,
+      "caption": "Compare actual covered file changes. These futures are labeled simulations."
+    },
+    {
+      "seconds": 62.847270875,
+      "caption": "Signed portable capsule. Encrypted storage. Explicit coverage and freshness limits."
+    }
+  ],
+  "errors": []
+}

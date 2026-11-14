@@ -1,0 +1,414 @@
+{
+  "files": [
+    {
+      "digest": "sha256:69d6863407c6a09cd35bd1d81e810a72c14cca1287ea840438fe740b9f612b41",
+      "path": "README.md"
+    },
+    {
+      "digest": "sha256:1ba6fa5bcccc3572868378f121d67844d2d23aaab5cbac16c0b9915f6309ebbc",
+      "path": "benchmarks/evidence-archives/README.md"
+    },
+    {
+      "digest": "sha256:f22dea1ed7fcd1d592b0dac3b50b5ae85e333937f649bdd32ca66ac70e2afff5",
+      "path": "benchmarks/evidence-archives/sentinel-recording-corpus-2026-11-14.tar.gz"
+    },
+    {
+      "digest": "sha256:eaae67ca84f166ab528d72d4afec4294b51f280b9cc0c7a220ec77861bd82039",
+      "path": "benchmarks/evidence-archives/sentinel-recording-demo-2026-11-14.tar.gz"
+    },
+    {
+      "digest": "sha256:c980b9b1c15df8f580d2aa8df582daf6a02b815cdf1eab262f08f59957e4cb5b",
+      "path": "benchmarks/evidence-archives/sentinel-recording-manifest-2026-11-14.json"
+    },
+    {
+      "digest": "sha256:6de2a9acc3251d8fe87fa5e61829dd302328e3e71451962a2b26c43b792f6b3f",
+      "path": "benchmarks/evidence-archives/sentinel-recording-overhead-2026-11-14.tar.gz"
+    },
+    {
+      "digest": "sha256:f30fdac9cfacdadb8525055edf1aec94daac02d58cdd9796705ff790cf46b142",
+      "path": "benchmarks/evidence-archives/sentinel-recording-pre-adoption-2026-11-14.tar.gz"
+    },
+    {
+      "digest": "sha256:670d459af33d088a4abf134066d6e276ef9ccbf0542faeb5f6197e016f76b146",
+      "path": "benchmarks/evidence-archives/sentinel-recording-scale-2026-11-14.tar.gz"
+    },
+    {
+      "digest": "sha256:ed1aed1bbdb15a9acb355eb4570323beb199186a3216cf40ef0df4ca5c495554",
+      "path": "benchmarks/evidence-archives/sentinel-recording-scale-permission-failure-2026-11-14.tar.gz"
+    },
+    {
+      "digest": "sha256:b9dc81ff697d08bc77ce889e0e13e573a7df7ec62eacce8a319f89b029f22a54",
+      "path": "benchmarks/results/production-hardening-2026-11-13/README.md"
+    },
+    {
+      "digest": "sha256:a4c0ff74665e615083c4e5b6fc8464fa50f80985dea09ffa9ada1239a0b2ab65",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/README.md"
+    },
+    {
+      "digest": "sha256:b876057b2cd6b7a0deb97187cbe410229ab6f894ff009ba5aa7e412a3d8af6bc",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/api-image-source.json"
+    },
+    {
+      "digest": "sha256:d4303da14988005333cc38fa9210fbe36b3bf5ca8b07356d788bf25d7c53fa5f",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/current-browser.json"
+    },
+    {
+      "digest": "sha256:4ace3c7a3db2116d874088cac8d51318a730d0e813d75035fe3dbbebd5c5f3c8",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/current-capture.json"
+    },
+    {
+      "digest": "sha256:db8f4bfa8382f76d86fd821f2993d6907022468c763886669a69007677abfdbe",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/current-corpus/definition.json"
+    },
+    {
+      "digest": "sha256:1902248f895086e5a50c760cf3b612befa87855be601d16fdfb48aefd987155f",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/current-corpus/progress.json"
+    },
+    {
+      "digest": "sha256:18dca8e302a8054f3196588519ab393e02ad8895244011f2bf09cc1c334ab83e",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/current-corpus/results.json"
+    },
+    {
+      "digest": "sha256:9e6a7bfd69280b66abc781e7939b2a9b7a8d33200691abe707967b8fd7c3671b",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/current-demo/definition.json"
+    },
+    {
+      "digest": "sha256:17e3f88906b677164948d42d38d294d9ef98970afcbff0aa77ee0c63c0609701",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/current-demo/demo-report.json"
+    },
+    {
+      "digest": "sha256:0fc20ab9408f77057f99251d83ccf2c234f4d1ae910b227ba6363c5353805daa",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/current-demo/development-signing.pub"
+    },
+    {
+      "digest": "sha256:1d5541350ee4de4eeeeab226566de96f38210aaca2939aefb313a246dd4b9a4b",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/current-demo/incidents.json"
+    },
+    {
+      "digest": "sha256:de2889248a629c791d4605245851d03c946acc78a1f536af4b32222111e18a54",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/current-demo/investigation.sentinel"
+    },
+    {
+      "digest": "sha256:049d8a41c4779ca31a7374aee44c50fd2d14a087c463a9c72403c71c541e0421",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/current-demo/investigation.sig.json"
+    },
+    {
+      "digest": "sha256:66606e4f8b8d3dbb90a5fbb247db7960f23f627fbd96e444a70bc978f7e419c7",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/current-demo/metrics.json"
+    },
+    {
+      "digest": "sha256:b49ca02ab1eccc113ac1aa278b3975810f749ea34f6ebe0a6ceab1b80a7de323",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/current-demo/policies.json"
+    },
+    {
+      "digest": "sha256:a13d425d568a4b7584c23828599d58f21836ac0cdc6b4b9ca4e3d18bed08d128",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/current-demo/provenance.json"
+    },
+    {
+      "digest": "sha256:902d588c30627971587a53815a8eafdef2bd21b658dc06112ec56486d0ca3b54",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/current-demo/timeline.json"
+    },
+    {
+      "digest": "sha256:b9531e6b028a15050a67a6bba5867ecd6d94733cf374a0f8018890c62520600f",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/current-demo/world-diff.json"
+    },
+    {
+      "digest": "sha256:e78e439b465b8a63dfac6dee3f1a7a2b59a96129fc04dfecbc5a8821dc95929e",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/current-deployment.json"
+    },
+    {
+      "digest": "sha256:97fef3467ad17ad6ee8806354d30c5e9488c8c5aae9a65cd9e3e87bded12c7db",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/current-guarded.json"
+    },
+    {
+      "digest": "sha256:e0648b7819359fb4c56dc7f1ad75dae2fea9891cfb07565a816c9eee8fae0d05",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/current-local.json"
+    },
+    {
+      "digest": "sha256:4474c918b7537697cb1445295b6cff081ca7397475a7bf0c45d5ee21c617ee17",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/current-operational.json"
+    },
+    {
+      "digest": "sha256:a05b83e8b0f11c98280cddab808efb295000b3412fad626685efbe4d254e6053",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/current-overhead/results.json"
+    },
+    {
+      "digest": "sha256:fc85c160b58a29a46fcfa8ad0f40ad23b813b157cd99bb19c38d136756906e86",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/current-postgres.json"
+    },
+    {
+      "digest": "sha256:dcc2dc4bfd3dc4daa95373684aee9e8174892ec1373a9b7b7373831868b6ee8e",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/current-proof.json"
+    },
+    {
+      "digest": "sha256:7fc78bdc6e4f81cf03285b5c8139b23f3d719cc6aa0c8c0e8d89eb273661c414",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/current-scale/definition.json"
+    },
+    {
+      "digest": "sha256:2beb145a8a0de8effea42121d7ac8d7718b45fe8fe4fc14fc16257fef807dc66",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/current-scale/results.json"
+    },
+    {
+      "digest": "sha256:53c4566d5a26b6be642ed1e60f674db592c04b5a4d829029fdbedde64ee851fb",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/current-search-revalidation.json"
+    },
+    {
+      "digest": "sha256:94bf2a24a50b3b4efe3e3eb737c0821ff83aa1b9484e1004f877a65d42330156",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/current-timeline-3k.json"
+    },
+    {
+      "digest": "sha256:340d25f636504d37fc9cc696979346eb86928264575361b1de8383d718a5cb72",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/current-timeline-50k.json"
+    },
+    {
+      "digest": "sha256:ccbff34b230fcf4125de53c547e7419bc43d3a28c95efd226ce5f394d9fdcd70",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/current-ui-build.json"
+    },
+    {
+      "digest": "sha256:44169ede6d4f2ad4d93e1e2416dce905759d8c3ec45790a9c125882426f78a81",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/hosted-ci-complete.json"
+    },
+    {
+      "digest": "sha256:5ab285622ab11342c3b1f07758a1870b684a83558e64675f63cdc34f0e3166a3",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/pre-adoption-repeat/qualification-summary.json"
+    },
+    {
+      "digest": "sha256:a4522350df21d75a670a7c5e76bd1567c20eddd42cfc07060069e7b67f690db9",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/pre-adoption-repeat/results.json"
+    },
+    {
+      "digest": "sha256:dc72d7cf427080e4557e58a3e69e9c8359c53c44e84832e2db17d479123b6f19",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/provenance-pending.json"
+    },
+    {
+      "digest": "sha256:b051c3928abc5098092fea6a5814ec7a806afe2fe62d50cbdcadca6d044519b7",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/public-mit-complete.json"
+    },
+    {
+      "digest": "sha256:c3729ac61081e8a5f739526d94d62df14be6adacc88e67ca2e1738a6f9f62528",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/qualification-summary.json"
+    },
+    {
+      "digest": "sha256:7fc78bdc6e4f81cf03285b5c8139b23f3d719cc6aa0c8c0e8d89eb273661c414",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/scale-with-docker-access/definition.json"
+    },
+    {
+      "digest": "sha256:2f97488bd3baefc4c30993c6edf1492939d66c7cab5aca4df498b0e9a6ac9bb7",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/scale-with-docker-access/results.json"
+    },
+    {
+      "digest": "sha256:59f839db07aa2f96d3864cdbc48dd456e66cc151a774fa3d2f133772a434fdc4",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/archive_evidence.py"
+    },
+    {
+      "digest": "sha256:e2ba8e85cc7e6499d95f386fc2426247ff0cf0c7d44906b083c486e94cac4ec9",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/build_manifest.py"
+    },
+    {
+      "digest": "sha256:52169a23338819104c1ce5ab8bd3d1a87748f1c5b7dda220dd691144ab856cae",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/current-source.json"
+    },
+    {
+      "digest": "sha256:b2a6fb0aa6debd88459580182afb6a7ddf50e4da8a82c81030b687db082b2fb8",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/derive_evidence.py"
+    },
+    {
+      "digest": "sha256:bb53917e3812adf05a4463d69cd81d482728c27d6f0f25d76d46c903a9e18dbd",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validate.py"
+    },
+    {
+      "digest": "sha256:09440f79a9a452c7c196ee0be15fb658bbf76f9149d9106944d12d694e51d32c",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-browser/command.log"
+    },
+    {
+      "digest": "sha256:ab9a39248190bc953d1a1cd80a3a7e0a955ba7ab2ce0cfe02e543a58bd716494",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-browser/receipt.json"
+    },
+    {
+      "digest": "sha256:52169a23338819104c1ce5ab8bd3d1a87748f1c5b7dda220dd691144ab856cae",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-browser/source.json"
+    },
+    {
+      "digest": "sha256:2d1cb7d551266b7743069f71570213ff24dc85cc05183bb0602e24eecd0d2b6e",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-corpus/command.log"
+    },
+    {
+      "digest": "sha256:51bb3ad60f1dbe19d2c28c0fa9d9abd7c675621ea1e6c7d78009ad46d44331f0",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-corpus/receipt.json"
+    },
+    {
+      "digest": "sha256:52169a23338819104c1ce5ab8bd3d1a87748f1c5b7dda220dd691144ab856cae",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-corpus/source.json"
+    },
+    {
+      "digest": "sha256:2380c2bdb647b38baa2e61925a033fa4ac37ff5ca652649419c21dcedd88b402",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-demo/command.log"
+    },
+    {
+      "digest": "sha256:aa1918f57c90f6d0184ed18f93f7af4d8cd323676e749086f22dd9c03cda6e6e",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-demo/receipt.json"
+    },
+    {
+      "digest": "sha256:52169a23338819104c1ce5ab8bd3d1a87748f1c5b7dda220dd691144ab856cae",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-demo/source.json"
+    },
+    {
+      "digest": "sha256:775a21c42b86f2b9c7d80cfb20d25737622e27e6c990e2568a0dae871ce26f9b",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-deployment/command.log"
+    },
+    {
+      "digest": "sha256:ddd82f7afc76e21c75d5cc32f10b958e4d759c1c6680cd6fb12a52c7d4d352f3",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-deployment/receipt.json"
+    },
+    {
+      "digest": "sha256:52169a23338819104c1ce5ab8bd3d1a87748f1c5b7dda220dd691144ab856cae",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-deployment/source.json"
+    },
+    {
+      "digest": "sha256:813023d8b6ec401537355ec6cfb15e23af27caff22dea020a2a43d9f75248928",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-guarded/command.log"
+    },
+    {
+      "digest": "sha256:9cb5ae1968eebe7ee98d2bb3a614795eac84403ca907f721233b7d45c65afe72",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-guarded/receipt.json"
+    },
+    {
+      "digest": "sha256:52169a23338819104c1ce5ab8bd3d1a87748f1c5b7dda220dd691144ab856cae",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-guarded/source.json"
+    },
+    {
+      "digest": "sha256:abb25b970879f40c9f50c8c3ba305e93b8d52aa9e65e11e33d6431b0bf74ee99",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-local/command.log"
+    },
+    {
+      "digest": "sha256:bef597fd8328b94c4722268cf2a75389f0b64d225c48fdc80695c5a096440114",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-local/receipt.json"
+    },
+    {
+      "digest": "sha256:52169a23338819104c1ce5ab8bd3d1a87748f1c5b7dda220dd691144ab856cae",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-local/source.json"
+    },
+    {
+      "digest": "sha256:e8d7dc3272506040e76c875fe8c5dba7db2a7dda7ac5c38c53746d978cab3cff",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-operational/command.log"
+    },
+    {
+      "digest": "sha256:09ad089a0a2da92d868fc96cd1d3ae3020acb585579c6706b644708c85fb3be0",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-operational/receipt.json"
+    },
+    {
+      "digest": "sha256:52169a23338819104c1ce5ab8bd3d1a87748f1c5b7dda220dd691144ab856cae",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-operational/source.json"
+    },
+    {
+      "digest": "sha256:bf4afc69c20b9cfb0294c42c560dbbde2e42652851b9498e15eb7025ecd5637d",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-overhead/command.log"
+    },
+    {
+      "digest": "sha256:fc237761e7b65e3bd88326be8eb9a5d3a30c2bc3a83a6e22475dea8f58021b30",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-overhead/receipt.json"
+    },
+    {
+      "digest": "sha256:52169a23338819104c1ce5ab8bd3d1a87748f1c5b7dda220dd691144ab856cae",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-overhead/source.json"
+    },
+    {
+      "digest": "sha256:7849b4a5906d2fbd75eebc64dd5168b17466bcce383851c0a6cf312a0434e991",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-postgres/command.log"
+    },
+    {
+      "digest": "sha256:9a6b3360161b129c327a764551b75f99eec5e49acb9485d7a5931d7b39a81f1c",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-postgres/receipt.json"
+    },
+    {
+      "digest": "sha256:52169a23338819104c1ce5ab8bd3d1a87748f1c5b7dda220dd691144ab856cae",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-postgres/source.json"
+    },
+    {
+      "digest": "sha256:34d499ff1b42b2753812e2448695ca460863d23bea6c6e01c16020f3b572f30a",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-proof/command.log"
+    },
+    {
+      "digest": "sha256:e1b34f3f5101021244f95c7cf99c2ec6c39afb85adfc7fc341de65d4e6d44284",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-proof/receipt.json"
+    },
+    {
+      "digest": "sha256:52169a23338819104c1ce5ab8bd3d1a87748f1c5b7dda220dd691144ab856cae",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-proof/source.json"
+    },
+    {
+      "digest": "sha256:a64931a3bb51a2ceb0c048ada02e4c7349d9f1bc6d2544e5b40b1dc80b46de85",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-scale/command.log"
+    },
+    {
+      "digest": "sha256:731d709777887b6e2b59fb5a75330428932236194d3bd7ce24127b91a184ca05",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-scale/receipt.json"
+    },
+    {
+      "digest": "sha256:52169a23338819104c1ce5ab8bd3d1a87748f1c5b7dda220dd691144ab856cae",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-scale/source.json"
+    },
+    {
+      "digest": "sha256:698a922c0c37738a6a7cb77ba84a8227a410a69273542bc71de0cdd31dc919b7",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-search/command.log"
+    },
+    {
+      "digest": "sha256:3d0762268be9bf54dc56a524e5493a7ad739fb6d9d17bd5636bda9d145928d23",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-search/receipt.json"
+    },
+    {
+      "digest": "sha256:52169a23338819104c1ce5ab8bd3d1a87748f1c5b7dda220dd691144ab856cae",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-search/source.json"
+    },
+    {
+      "digest": "sha256:17bc90889b818251e18ad9a80a4d402b5221a34baf9025eccef4915d2c40190d",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-ui-build/command.log"
+    },
+    {
+      "digest": "sha256:8489071be0634479e2de224b1e04df4c4f6bfa8b42243d462cfdcae050f011f7",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-ui-build/receipt.json"
+    },
+    {
+      "digest": "sha256:52169a23338819104c1ce5ab8bd3d1a87748f1c5b7dda220dd691144ab856cae",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-ui-build/source.json"
+    },
+    {
+      "digest": "sha256:76cf24969dcd47af154629db51720cf421cf7f4da9562b04fd0ebcf87401b260",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/scale-with-docker-access/command.log"
+    },
+    {
+      "digest": "sha256:b4ca01dde8d3f230136b2db9c132038651ff0475ed36bd82f19c64e90edc1472",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/scale-with-docker-access/receipt.json"
+    },
+    {
+      "digest": "sha256:52169a23338819104c1ce5ab8bd3d1a87748f1c5b7dda220dd691144ab856cae",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/scale-with-docker-access/source.json"
+    },
+    {
+      "digest": "sha256:e078aee4abb58258866ac8dba27c1378523248d66b06099d9cada60dda990dfd",
+      "path": "docs/PRODUCTION_EVIDENCE_2026-11-14.md"
+    },
+    {
+      "digest": "sha256:50747abb29fe5bacb5e7b795f3e40e37efb60c3c68ca1992bab6a100256d9e1e",
+      "path": "docs/STATUS.md"
+    },
+    {
+      "digest": "sha256:e05af093e0e16df39d317effc584036c89556c78d99a5ed9eaa0df3f3029df3f",
+      "path": "docs/V1_ACCEPTANCE.md"
+    },
+    {
+      "digest": "sha256:0bf7056d443b732e81903dc712882dede4bd76377bde45fab57271b3ccfa645c",
+      "path": "docs/assets/investigation-v3.png"
+    },
+    {
+      "digest": "sha256:82d55113389081205cf692306c2e06a0dd399e4c3cb216dc77b0a4ff375ca16d",
+      "path": "docs/assets/sentinel-replay-proof-v3.webm"
+    }
+  ],
+  "hits": [],
+  "known_private_values_checked": 87,
+  "schema_version": 1,
+  "scope": "Exact-value scan against locally retained operator signing/storage keys and password/token environment values, plus PEM private-key markers. New tar payloads and owner metadata inspected without extraction. Not a universal secret detector. Initial scan excludes subsequently derived release manifests/review receipts and this scan report; final staged payload is rechecked separately before commit. Private career/learning/operator files are excluded by the publication allowlist.",
+  "selected_files_checked": 101,
+  "tar_members_checked": 3759
+}

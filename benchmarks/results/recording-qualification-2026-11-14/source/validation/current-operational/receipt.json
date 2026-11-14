@@ -1,0 +1,25 @@
+{
+  "artifact": {
+    "digest": "sha256:4474c918b7537697cb1445295b6cff081ca7397475a7bf0c45d5ee21c617ee17",
+    "path": "benchmarks/results/recording-qualification-2026-11-14/current-operational.json"
+  },
+  "command": [
+    ".venv/bin/python",
+    "benchmarks/results/recording-qualification-2026-11-14/source/derive_evidence.py",
+    "operational"
+  ],
+  "command_exit_code": 0,
+  "elapsed_seconds": "0.307896292",
+  "exit_code": 0,
+  "log": {
+    "digest": "sha256:e8d7dc3272506040e76c875fe8c5dba7db2a7dda7ac5c38c53746d978cab3cff",
+    "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-operational/command.log"
+  },
+  "schema_version": 1,
+  "scope": "local execution receipt; no independent authentication of experimenter identity",
+  "source_root": "sha256:76c1c6744a9166cfde434aad3448e3794391a2918d8f9c0d4f4fff8264e77607",
+  "source_root_after": "sha256:76c1c6744a9166cfde434aad3448e3794391a2918d8f9c0d4f4fff8264e77607",
+  "source_root_before": "sha256:76c1c6744a9166cfde434aad3448e3794391a2918d8f9c0d4f4fff8264e77607",
+  "source_unchanged": true,
+  "started_at_utc": "2026-11-14T18:22:34.388940+00:00"
+}

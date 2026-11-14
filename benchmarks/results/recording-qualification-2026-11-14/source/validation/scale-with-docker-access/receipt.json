@@ -1,0 +1,26 @@
+{
+  "artifact": {
+    "digest": "sha256:2f97488bd3baefc4c30993c6edf1492939d66c7cab5aca4df498b0e9a6ac9bb7",
+    "path": "benchmarks/results/recording-qualification-2026-11-14/scale-with-docker-access/results.json"
+  },
+  "command": [
+    ".venv/bin/python",
+    "benchmarks/product_scale.py",
+    "--output",
+    "benchmarks/results/recording-qualification-2026-11-14/scale-with-docker-access"
+  ],
+  "command_exit_code": 0,
+  "elapsed_seconds": "41.941926625",
+  "exit_code": 0,
+  "log": {
+    "digest": "sha256:76cf24969dcd47af154629db51720cf421cf7f4da9562b04fd0ebcf87401b260",
+    "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/scale-with-docker-access/command.log"
+  },
+  "schema_version": 1,
+  "scope": "local execution receipt; no independent authentication of experimenter identity",
+  "source_root": "sha256:76c1c6744a9166cfde434aad3448e3794391a2918d8f9c0d4f4fff8264e77607",
+  "source_root_after": "sha256:76c1c6744a9166cfde434aad3448e3794391a2918d8f9c0d4f4fff8264e77607",
+  "source_root_before": "sha256:76c1c6744a9166cfde434aad3448e3794391a2918d8f9c0d4f4fff8264e77607",
+  "source_unchanged": true,
+  "started_at_utc": "2026-11-14T18:16:06.953944+00:00"
+}

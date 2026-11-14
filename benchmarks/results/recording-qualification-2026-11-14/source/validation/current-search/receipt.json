@@ -1,0 +1,25 @@
+{
+  "artifact": {
+    "digest": "sha256:53c4566d5a26b6be642ed1e60f674db592c04b5a4d829029fdbedde64ee851fb",
+    "path": "benchmarks/results/recording-qualification-2026-11-14/current-search-revalidation.json"
+  },
+  "command": [
+    "/Users/usmanmehboobmohammed/Documents/SentinelReplay/.venv/bin/python",
+    "-c",
+    "import subprocess,json,shutil;from pathlib import Path;p=Path('benchmarks/results/production-hardening-2026-11-13/release-search/progress.json');before=p.read_bytes();subprocess.run(['.venv/bin/sentinel','policy-search',str(p.parent),'--resume'],check=True);assert before==p.read_bytes();shutil.copyfile(p,'benchmarks/results/recording-qualification-2026-11-14/current-search-revalidation.json')"
+  ],
+  "command_exit_code": 0,
+  "elapsed_seconds": "2.378368917",
+  "exit_code": 0,
+  "log": {
+    "digest": "sha256:698a922c0c37738a6a7cb77ba84a8227a410a69273542bc71de0cdd31dc919b7",
+    "path": "benchmarks/results/recording-qualification-2026-11-14/source/validation/current-search/command.log"
+  },
+  "schema_version": 1,
+  "scope": "local execution receipt; no independent authentication of experimenter identity",
+  "source_root": "sha256:76c1c6744a9166cfde434aad3448e3794391a2918d8f9c0d4f4fff8264e77607",
+  "source_root_after": "sha256:76c1c6744a9166cfde434aad3448e3794391a2918d8f9c0d4f4fff8264e77607",
+  "source_root_before": "sha256:76c1c6744a9166cfde434aad3448e3794391a2918d8f9c0d4f4fff8264e77607",
+  "source_unchanged": true,
+  "started_at_utc": "2026-11-14T18:19:05.799541+00:00"
+}
