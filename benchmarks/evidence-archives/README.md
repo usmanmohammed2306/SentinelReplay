@@ -13,3 +13,6 @@ tar -xzf benchmarks/evidence-archives/product-scale-final-2026-11-13.tar.gz -C b
 The example restores the50k capsule used by the deployment/HTTP probe. Repeat with another archive for raw policy-search resume or per-case inspection. The already published integrated demo capsule and small unit/browser fixtures need no extraction. Prior-attempt summary/source snapshots remain in Git; larger historical raw attempts remain local and are not silently relabeled as final results.
 
 These are known synthetic fixtures, not independent provenance labels or unseen live-agent efficacy. The production release audit still reports its unresolved requirements.
+
+
+The November 14 current-source hardening evidence is separately indexed in [sentinel-hardening-manifest-2026-11-13.json](sentinel-hardening-manifest-2026-11-13.json). Its five `sentinel-hardening-*` archives restore paths under `production-hardening-2026-11-13/`. They omit generated Git hook templates, private key files and caches; normalize tar uid/gid/owner metadata; and preserve included file bytes. The original archives above remain unchanged. The directory date identifies the cohort, while execution receipts record actual UTC timestamps. Full release remains gated.

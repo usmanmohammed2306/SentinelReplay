@@ -1,0 +1,26 @@
+{
+  "artifact": {
+    "digest": "sha256:b8f7cf282af8ab5facaa57347a09c76ef76917c51009db01bda14140354ee764",
+    "path": "benchmarks/results/production-hardening-2026-11-13/current-demo/demo-report.json"
+  },
+  "command": [
+    ".venv/bin/sentinel",
+    "demo",
+    "--destination",
+    "benchmarks/results/production-hardening-2026-11-13/current-demo"
+  ],
+  "command_exit_code": 0,
+  "elapsed_seconds": "12.568443875",
+  "exit_code": 0,
+  "log": {
+    "digest": "sha256:97450927515daaba6be2b6739a6ddfa72f5aabf7aa840fa592120a7874fd2973",
+    "path": "benchmarks/results/production-hardening-2026-11-13/source/validation/current-demo/command.log"
+  },
+  "schema_version": 1,
+  "scope": "local execution receipt; no independent authentication of experimenter identity",
+  "source_root": "sha256:9febd570b27787b9f83f5d4c25c5edf359a744c8ce8379c96d6eff7d57963f57",
+  "source_root_after": "sha256:9febd570b27787b9f83f5d4c25c5edf359a744c8ce8379c96d6eff7d57963f57",
+  "source_root_before": "sha256:9febd570b27787b9f83f5d4c25c5edf359a744c8ce8379c96d6eff7d57963f57",
+  "source_unchanged": true,
+  "started_at_utc": "2026-11-14T15:02:39.411481+00:00"
+}

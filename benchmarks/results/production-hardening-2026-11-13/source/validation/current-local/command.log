@@ -1,0 +1,82 @@
+UV_CACHE_DIR=.uv-cache .venv/bin/uv run --frozen ruff format --check .
+177 files already formatted
+UV_CACHE_DIR=.uv-cache .venv/bin/uv run --frozen ruff check .
+All checks passed!
+UV_CACHE_DIR=.uv-cache .venv/bin/uv run --frozen mypy
+Success: no issues found in 132 source files
+UV_CACHE_DIR=.uv-cache .venv/bin/uv run --frozen pytest -m "not aws_optional and not postgres_integration and not opa_integration"
+============================= test session starts ==============================
+platform darwin -- Python 3.12.14, pytest-9.1.1, pluggy-1.6.0
+rootdir: /Users/usmanmehboobmohammed/Documents/SentinelReplay
+configfile: pyproject.toml
+testpaths: tests
+plugins: hypothesis-6.168.3, anyio-4.15.1
+collected 257 items / 12 deselected / 245 selected
+
+tests/test_access_audit.py .                                             [  0%]
+tests/test_agent_coverage.py ...                                         [  1%]
+tests/test_api.py ....                                                   [  3%]
+tests/test_benchmark.py ...                                              [  4%]
+tests/test_bisection.py ..                                               [  5%]
+tests/test_blob_bank.py .......                                          [  8%]
+tests/test_branch_analysis.py ....                                       [  9%]
+tests/test_branch_model.py .....                                         [ 11%]
+tests/test_canonical_wire.py .                                           [ 12%]
+tests/test_capsule.py ..........                                         [ 16%]
+tests/test_capsule_privacy.py .                                          [ 16%]
+tests/test_capsule_witness.py ..                                         [ 17%]
+tests/test_cli.py .......                                                [ 20%]
+tests/test_codex_trace.py ...                                            [ 21%]
+tests/test_divergence.py .                                               [ 22%]
+tests/test_encrypted_store.py ..                                         [ 22%]
+tests/test_environment_pack.py .....                                     [ 24%]
+tests/test_evidence.py .........................                         [ 35%]
+tests/test_experiment_capsule.py .                                       [ 35%]
+tests/test_future_api.py .                                               [ 35%]
+tests/test_futures.py .                                                  [ 36%]
+tests/test_gateway_audit.py ...........                                  [ 40%]
+tests/test_gateway_mcp.py .                                              [ 41%]
+tests/test_gateway_reconcile.py ......                                   [ 43%]
+tests/test_git_snapshot.py ..                                            [ 44%]
+tests/test_incident_rules.py .                                           [ 44%]
+tests/test_investigation.py ...                                          [ 46%]
+tests/test_investigation_api.py ..                                       [ 46%]
+tests/test_isolated_branch.py ..........sssss                            [ 53%]
+tests/test_isolation.py ..s                                              [ 54%]
+tests/test_local_anchor.py .......                                       [ 57%]
+tests/test_migration.py .                                                [ 57%]
+tests/test_mini_forensics.py ...                                         [ 58%]
+tests/test_operations.py ..                                              [ 59%]
+tests/test_pack_capsule.py ....                                          [ 61%]
+tests/test_pack_comparison.py .                                          [ 61%]
+tests/test_policy.py ........                                            [ 64%]
+tests/test_policy_language.py .                                          [ 65%]
+tests/test_policy_search.py ...                                          [ 66%]
+tests/test_product_cli.py .                                              [ 66%]
+tests/test_progress_anchor.py ...                                        [ 68%]
+tests/test_provenance.py ......                                          [ 70%]
+tests/test_provenance_eval.py .....                                      [ 72%]
+tests/test_provision_storage.py .                                        [ 73%]
+tests/test_query_index.py ..                                             [ 73%]
+tests/test_release_audit.py ...                                          [ 75%]
+tests/test_release_quality.py ............                               [ 80%]
+tests/test_replay_profiles.py ...                                        [ 81%]
+tests/test_retention.py .....                                            [ 83%]
+tests/test_signed_capsule.py .........                                   [ 86%]
+tests/test_sqlite_snapshot.py ..                                         [ 87%]
+tests/test_store.py .                                                    [ 88%]
+tests/test_telemetry.py ..                                               [ 88%]
+tests/test_timeline.py ......                                            [ 91%]
+tests/test_tool_gateway.py .......                                       [ 94%]
+tests/test_trust_registry.py ..                                          [ 95%]
+tests/test_validation_receipt.py ..                                      [ 95%]
+tests/test_workspace_snapshot.py ..........                              [100%]
+
+=========================== short test summary info ============================
+SKIPPED [1] tests/test_isolated_branch.py:99: requires explicit isolated Docker branch validation
+SKIPPED [1] tests/test_isolated_branch.py:140: requires explicit isolated Docker branch validation
+SKIPPED [1] tests/test_isolated_branch.py:166: requires explicit isolated Docker branch validation
+SKIPPED [1] tests/test_isolated_branch.py:182: requires explicit isolated Docker branch validation
+SKIPPED [1] tests/test_isolated_branch.py:206: requires explicit isolated Docker branch validation
+SKIPPED [1] tests/test_isolation.py:37: requires explicit local Docker isolation conformance run
+================ 239 passed, 6 skipped, 12 deselected in 12.50s ================

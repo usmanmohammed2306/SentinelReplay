@@ -1,0 +1,24 @@
+{
+  "artifact": {
+    "digest": "sha256:138b4ae27f2605b07fc1f963fa74be61ece2f35009ac7245de7ffcd082bc8d91",
+    "path": "benchmarks/results/production-hardening-2026-11-13/current-guarded.json"
+  },
+  "command": [
+    "make",
+    "branch-contract"
+  ],
+  "command_exit_code": 0,
+  "elapsed_seconds": "23.341189917",
+  "exit_code": 0,
+  "log": {
+    "digest": "sha256:2fcae31ed19680c122dcc4d953acb87e12643ac2d692dce1e48f52e4d80a27f3",
+    "path": "benchmarks/results/production-hardening-2026-11-13/source/validation/current-guarded/command.log"
+  },
+  "schema_version": 1,
+  "scope": "local execution receipt; no independent authentication of experimenter identity",
+  "source_root": "sha256:9febd570b27787b9f83f5d4c25c5edf359a744c8ce8379c96d6eff7d57963f57",
+  "source_root_after": "sha256:9febd570b27787b9f83f5d4c25c5edf359a744c8ce8379c96d6eff7d57963f57",
+  "source_root_before": "sha256:9febd570b27787b9f83f5d4c25c5edf359a744c8ce8379c96d6eff7d57963f57",
+  "source_unchanged": true,
+  "started_at_utc": "2026-11-14T15:02:40.288454+00:00"
+}

@@ -10,9 +10,9 @@ Sentinel Replay turns that trace into an investigation. Collapse the routine ste
 
 The implementation runs locally with an investigation UI, PostgreSQL, encrypted evidence storage, OPA enforcement, and bounded background operations. **Full V1 release remains gated** by independent validation, representative performance evidence and owner review. [Current status and results](docs/STATUS.md) make those boundaries explicit.
 
-![A real Sentinel Replay investigation showing the declared secret-to-export dependency](docs/assets/investigation.png)
+![A real Sentinel Replay investigation showing the declared secret-to-export dependency](docs/assets/investigation-v2.png)
 
-[Watch the continuous 75-second product recording](docs/assets/sentinel-replay-proof.webm) · [Inspect the executable demo report](benchmarks/results/product-demo-final-2026-11-13/demo-report.json) · [Read the coverage contract](docs/ENVIRONMENT_PACK_CONTRACT.md)
+[Watch the continuous 75-second product recording](docs/assets/sentinel-replay-proof-v2.webm) · [Inspect the executable demo report](benchmarks/results/production-hardening-2026-11-13/current-demo/demo-report.json) · [Read the coverage contract](docs/ENVIRONMENT_PACK_CONTRACT.md)
 
 ## Run an investigation
 
@@ -50,11 +50,13 @@ Python/FastAPI, SQLAlchemy/Alembic, PostgreSQL, Next.js/React/TypeScript, React 
 
 ## Measured, with denominators
 
-The [twelve-case deterministic corpus](benchmarks/results/environment-pack-corpus-final-2026-11-13/results.json) contains **nine supported incident cases, one unsupported native-effect case, and two controls**. Across 36 branches, all 33 supported strict replays passed. Targeted policy removed all nine observed supported incidents and preserved all 11 supported legitimate tasks; blanket denial preserved none. The native-effect case remains unknown in every arm. These are known synthetic fixtures, not unseen attack efficacy.
+The [twelve-case deterministic corpus](benchmarks/results/production-hardening-2026-11-13/current-corpus/results.json) contains **nine supported incident cases, one unsupported native-effect case, and two controls**. Across 36 branches, all 33 supported strict replays passed. Targeted policy removed all nine observed supported incidents and preserved all 11 supported legitimate tasks; blanket denial preserved none. The native-effect case remains unknown in every arm. These are known synthetic fixtures, not unseen attack efficacy.
 
-The [bounded policy search](benchmarks/results/policy-search-final-2026-11-13/progress.json) evaluated 41 candidates across 492 case branches without failures, yielding two frontier points. The best task-preserving candidate used eight rules versus the eleven-rule seed. That establishes a result within the executed greedy neighborhood, not a global minimum.
+The [bounded policy search](benchmarks/results/production-hardening-2026-11-13/release-search/progress.json) evaluated 41 candidates across 492 case branches without failures, yielding two frontier points. The best task-preserving candidate used eight rules versus the eleven-rule seed. That establishes a result within the executed greedy neighborhood, not a global minimum.
 
-At 50,000 boundaries, [25 warm in-process samples](benchmarks/results/product-scale-final-2026-11-13/results.json) measured **0.69 ms median first-page lookup** and **1.07 ms median sparse-neighborhood lookup**. Journal verification median was 0.79 seconds. These exclude HTTP, browser time and dense graph workloads. A separate [128-step localization comparison](benchmarks/results/recording-overhead-final-2026-11-13/results.json) used nine restored prefixes versus 129 for the linear baseline. Its near-zero-cost stub workload also exposed high relative recording overhead; representative live-agent overhead is still unestablished.
+At 50,000 boundaries, [25 warm in-process samples](benchmarks/results/production-hardening-2026-11-13/current-scale/results.json) measured **0.718 seconds p95 journal verification** and **1.39 ms p95 sparse-neighborhood lookup**. A separate browser fixture measured **0.104 seconds p95 timeline interaction after data arrival**, with **3.07 seconds cold navigation-to-data**. That UI virtualizes a selected page rather than rendering all 50k events. These are local synthetic measurements, not a concurrent service SLO.
+
+The [recorder comparison](benchmarks/results/production-hardening-2026-11-13/recorder-optimization-source-bound.json) reduced median recording time **30.3%** in five paired 3k fixed-stub trials while retaining per-event fsync. A separate [128-step localization comparison](benchmarks/results/production-hardening-2026-11-13/current-overhead/results.json) used nine restored prefixes versus 129 for the linear baseline. Its near-zero-work recording overhead still exceeded the 20% target. The [evidence note](docs/PRODUCTION_EVIDENCE_2026-11-14.md) keeps these separate claims and negative findings visible.
 
 The retained [live-agent cohort](docs/BRANCH_EVIDENCE_2026-11-13.md) is separate: nine branches, three known scenarios, one Qwen2.5-Coder-3B revision/seed. Targeted denial preserved 3/3 legitimate tasks and prevented both observed protected exports. An earlier cohort completed 0/9 legitimate tasks and remains part of the evidence.
 
@@ -75,7 +77,7 @@ pnpm --dir ui test:e2e      # requires the matching Playwright Chromium install
 uv run --frozen sentinel release-check --stage release
 ```
 
-The release command audits exact source and artifact bytes and returns nonzero while required evidence or reviews remain missing. It does not publish or accept a learning slice. [Hosted CI](https://github.com/usmanmohammed2306/SentinelReplay/actions/runs/43552561371) now passes Python, the production UI image, PostgreSQL integration and OPA conformance on `c895b0f`. Browser E2E and the broader isolation suite were validated locally. The first hosted OPA permission failure is retained with its fix.
+The release command audits exact source and artifact bytes and returns nonzero while required evidence or reviews remain missing. It does not publish or accept a learning slice. [All six hosted CI jobs](https://github.com/usmanmohammed2306/SentinelReplay/actions/runs/43562514638) passed on `541a09d`: Python checks, full guarded Docker/OPA, PostgreSQL integration, production UI image, six Chromium journeys with 3k/50k interaction budgets, and fresh-checkout encrypted crash/backup recovery. The [current evidence bundle](benchmarks/results/production-hardening-2026-11-13/README.md) binds the same code and fixture bytes. Independent human review and full release acceptance remain separate.
 
 Start with the [frozen product charter](docs/FROZEN_PRODUCT_CHARTER.md), [coverage contract](docs/ENVIRONMENT_PACK_CONTRACT.md), [acceptance matrix](docs/V1_ACCEPTANCE.md), [threat model](docs/THREAT_MODEL.md), and [deployment/recovery runbook](docs/SELF_HOSTED_PREVIEW.md). The separate local sixty-slice guide maps daily builds, tests, reading, teach-backs and user-owned commits to this reference implementation. Engineering progress does not certify independent authorship or learning completion.
 

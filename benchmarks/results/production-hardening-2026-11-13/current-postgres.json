@@ -1,0 +1,23 @@
+{
+  "api_role": {
+    "current_user": "sentinel_api",
+    "delete": false,
+    "insert": true,
+    "select": true,
+    "update": false
+  },
+  "changed_archive_status": 422,
+  "completed": true,
+  "container_removed": true,
+  "duplicate_import_status": 200,
+  "journal_root": "sha256:c6d64bf2beed31ee3bd9b8d5beb84d43f98447c2c1869aad7e8f79aa35634fb1",
+  "postgres_image": "postgres:17.12-alpine@sha256:34261f594522cf41dfcb76aefd42b9d201098b0e6b23c9c68733f169e4218b6f",
+  "postgres_integration_passed": true,
+  "postgres_version": "17.12",
+  "real_http_signed_capsule_round_trip": true,
+  "records": 3186,
+  "run_id": "pack-d19570f6d5ec72a89600cc462ef0f0628216f345a3a356e38af2ac7911e128f5",
+  "schema_version": 1,
+  "scope": "disposable_local_postgresql_http_signed_capsule",
+  "unauthenticated_list_status": 401
+}

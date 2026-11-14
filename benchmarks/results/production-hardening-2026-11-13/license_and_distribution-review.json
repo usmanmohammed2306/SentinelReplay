@@ -1,0 +1,24 @@
+{
+  "decision": "accepted",
+  "evidence": [
+    {
+      "digest": "sha256:5b68431fe003a49e7605beaea82568527d597c828b3a078edbad21388dcc9425",
+      "path": "LICENSE"
+    },
+    {
+      "digest": "sha256:ccc788616502e3e33f29d1355cc11794eaa23b28b17b335cc0b6fe19430fea98",
+      "path": "benchmarks/results/production-hardening-2026-11-13/public-mit-complete.json"
+    },
+    {
+      "digest": "sha256:86172adc474132af412bae80552511f6f3852ef3e1a61057cc79c3a54e1d55ae",
+      "path": "benchmarks/results/production-hardening-2026-11-13/publication-scan.json"
+    },
+    {
+      "digest": "sha256:bdb304613526fb11638080faf3b7a0139a02f8b8b0320851f26b5402fb0dfd3a",
+      "path": "benchmarks/evidence-archives/THIRD_PARTY_NOTICES.md"
+    }
+  ],
+  "reviewer": "Explicit owner MIT/public-main authorization; mechanical verification",
+  "scope": "Only the named mechanically verified gate; no independent human adjudication, mastery or general production guarantee.",
+  "source_root": "sha256:9febd570b27787b9f83f5d4c25c5edf359a744c8ce8379c96d6eff7d57963f57"
+}

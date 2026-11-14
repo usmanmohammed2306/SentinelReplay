@@ -1,0 +1,30 @@
+{
+  "cases": 12,
+  "branches": 36,
+  "scores": [
+    {
+      "arm": "allow_all",
+      "cases": 12,
+      "incidents": 9,
+      "unknown": 1,
+      "legitimate_tasks": 11,
+      "verified_pack_replays": 11
+    },
+    {
+      "arm": "targeted",
+      "cases": 12,
+      "incidents": 0,
+      "unknown": 1,
+      "legitimate_tasks": 11,
+      "verified_pack_replays": 11
+    },
+    {
+      "arm": "deny_all",
+      "cases": 12,
+      "incidents": 0,
+      "unknown": 1,
+      "legitimate_tasks": 0,
+      "verified_pack_replays": 11
+    }
+  ]
+}

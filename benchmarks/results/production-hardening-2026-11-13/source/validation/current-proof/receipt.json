@@ -1,0 +1,25 @@
+{
+  "artifact": {
+    "digest": "sha256:e4b873baeb8c05df960498cfae4c898995d762f081dfeb07bcf228e3ba175b63",
+    "path": "benchmarks/results/production-hardening-2026-11-13/current-proof.json"
+  },
+  "command": [
+    ".venv/bin/python",
+    ".local-controller/production-hardening-2026-11-13/derive_evidence.py",
+    "proof"
+  ],
+  "command_exit_code": 0,
+  "elapsed_seconds": "0.334432250",
+  "exit_code": 0,
+  "log": {
+    "digest": "sha256:34d499ff1b42b2753812e2448695ca460863d23bea6c6e01c16020f3b572f30a",
+    "path": "benchmarks/results/production-hardening-2026-11-13/source/validation/current-proof/command.log"
+  },
+  "schema_version": 1,
+  "scope": "local execution receipt; no independent authentication of experimenter identity",
+  "source_root": "sha256:9febd570b27787b9f83f5d4c25c5edf359a744c8ce8379c96d6eff7d57963f57",
+  "source_root_after": "sha256:9febd570b27787b9f83f5d4c25c5edf359a744c8ce8379c96d6eff7d57963f57",
+  "source_root_before": "sha256:9febd570b27787b9f83f5d4c25c5edf359a744c8ce8379c96d6eff7d57963f57",
+  "source_unchanged": true,
+  "started_at_utc": "2026-11-14T15:08:33.317615+00:00"
+}

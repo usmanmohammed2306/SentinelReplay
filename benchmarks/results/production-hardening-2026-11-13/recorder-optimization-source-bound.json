@@ -1,0 +1,86 @@
+{
+  "baseline_revision": "584d9f903058c64fab073429427f5e87f4accca9",
+  "median_after_seconds": 0.272362499992596,
+  "median_before_seconds": 0.39078833398525603,
+  "median_reduction_percent": 30.304342195928523,
+  "publication_normalization": "Absolute local module paths replaced with retained relative source paths. Numeric observations and source digests unchanged; original receipt remains private.",
+  "reproduction": "Fresh subprocess per arm; measure_pair.py with PYTHONPATH selecting the retained baseline or installed source. Zero-cost fixed stub; per-event fsync retained. This is recording walltime reduction, not relative agent overhead.",
+  "rows": [
+    {
+      "after": {
+        "records": 3000,
+        "seconds": 0.2771819999907166,
+        "source_file": "source/package/environment_pack.py"
+      },
+      "before": {
+        "records": 3000,
+        "seconds": 0.39077345898840576,
+        "source_file": "source/baseline/environment_pack.py"
+      },
+      "trial": 0
+    },
+    {
+      "after": {
+        "records": 3000,
+        "seconds": 0.27202375000342727,
+        "source_file": "source/package/environment_pack.py"
+      },
+      "before": {
+        "records": 3000,
+        "seconds": 0.39078833398525603,
+        "source_file": "source/baseline/environment_pack.py"
+      },
+      "trial": 1
+    },
+    {
+      "after": {
+        "records": 3000,
+        "seconds": 0.272362499992596,
+        "source_file": "source/package/environment_pack.py"
+      },
+      "before": {
+        "records": 3000,
+        "seconds": 0.3882323330035433,
+        "source_file": "source/baseline/environment_pack.py"
+      },
+      "trial": 2
+    },
+    {
+      "after": {
+        "records": 3000,
+        "seconds": 0.2884353339904919,
+        "source_file": "source/package/environment_pack.py"
+      },
+      "before": {
+        "records": 3000,
+        "seconds": 0.3909398340038024,
+        "source_file": "source/baseline/environment_pack.py"
+      },
+      "trial": 3
+    },
+    {
+      "after": {
+        "records": 3000,
+        "seconds": 0.2721691250044387,
+        "source_file": "source/package/environment_pack.py"
+      },
+      "before": {
+        "records": 3000,
+        "seconds": 0.39195799999288283,
+        "source_file": "source/baseline/environment_pack.py"
+      },
+      "trial": 4
+    }
+  ],
+  "scope": "5 alternating fresh-process 3000-step fixed model-stub recordings, same host; all recorder/OTel/report costs, no OPA in timed region",
+  "source_bindings": {
+    "after": {
+      "canonical.py": "sha256:022a3ee9b91de7e735526af75352303f9206e7a3f6c4e781052315b99202d101",
+      "environment_pack.py": "sha256:cf59b3dfc9559a6a8d9127780f74c9324b544cdd1be490d3b0cf6c1fdc5c3f46"
+    },
+    "before": {
+      "canonical.py": "sha256:c3be227ce5bc3dc92189904246e6b417dbbb5cfa43934f107074a62ce7d91005",
+      "environment_pack.py": "sha256:e4daeec70477a0342a5ff9b88f876659f8dd62115aefea2778c6eeaaa20a4d96"
+    }
+  }
+}

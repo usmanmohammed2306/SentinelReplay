@@ -1,0 +1,22 @@
+{
+  "run_id": 43559117743,
+  "head_sha": "1bfa8ee07a7b8d8f45387dc6ab4c57e21d80628a",
+  "url": "https://github.com/usmanmohammed2306/SentinelReplay/actions/runs/43559117743",
+  "passed_jobs": [
+    "Python",
+    "production UI image",
+    "PostgreSQL",
+    "guarded Docker/OPA"
+  ],
+  "failures_observed_in_job_UI": [
+    {
+      "job": "clean-room",
+      "reason": "compose up --pull never exited1 before service startup; the cold job had not fetched its PostgreSQL image. Explicit image preparation and sanitized failure diagnostics added; cause confirmation awaits rerun."
+    },
+    {
+      "job": "3k/50k Chromium",
+      "reason": "Five journeys passed.50k first timeline readiness exceeded the default5-second assertion before rendering measurement. Cold navigation-to-data timing is now recorded separately, with unchanged1-second after-data budget and per-run clock binding."
+    }
+  ],
+  "status": "failure_retained_not_waived"
+}

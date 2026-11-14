@@ -1,0 +1,48 @@
+{
+  "head_sha": "541a09da11b356b343bb61a7596bb791d058d5d4",
+  "run_id": 43562514638,
+  "url": "https://github.com/usmanmohammed2306/SentinelReplay/actions/runs/43562514638",
+  "status": "completed",
+  "conclusion": "success",
+  "source_root": "sha256:9febd570b27787b9f83f5d4c25c5edf359a744c8ce8379c96d6eff7d57963f57",
+  "retrieved_at_utc": "2026-11-14T15:03:19.533835+00:00",
+  "jobs": [
+    {
+      "id": 132349109577,
+      "name": "Guarded Docker isolation and OPA 1.0",
+      "conclusion": "success",
+      "html_url": "https://github.com/usmanmohammed2306/SentinelReplay/actions/runs/43562514638/job/132349109577"
+    },
+    {
+      "id": 132349109734,
+      "name": "Clean-checkout encrypted deployment and crash recovery",
+      "conclusion": "success",
+      "html_url": "https://github.com/usmanmohammed2306/SentinelReplay/actions/runs/43562514638/job/132349109734"
+    },
+    {
+      "id": 132349109755,
+      "name": "Python 3.12 checks",
+      "conclusion": "success",
+      "html_url": "https://github.com/usmanmohammed2306/SentinelReplay/actions/runs/43562514638/job/132349109755"
+    },
+    {
+      "id": 132349109760,
+      "name": "Production UI image",
+      "conclusion": "success",
+      "html_url": "https://github.com/usmanmohammed2306/SentinelReplay/actions/runs/43562514638/job/132349109760"
+    },
+    {
+      "id": 132349109778,
+      "name": "PostgreSQL 17 signed-ingest integration",
+      "conclusion": "success",
+      "html_url": "https://github.com/usmanmohammed2306/SentinelReplay/actions/runs/43562514638/job/132349109778"
+    },
+    {
+      "id": 132349109783,
+      "name": "Production Chromium journeys and 3k/50k interaction budgets",
+      "conclusion": "success",
+      "html_url": "https://github.com/usmanmohammed2306/SentinelReplay/actions/runs/43562514638/job/132349109783"
+    }
+  ],
+  "scope": "Six actual GitHub-hosted Linux jobs, including no-dependency-cache encrypted Compose recovery, six browser journeys, PostgreSQL and guarded Docker/OPA. Automated validation is not independent human label adjudication or owner mastery."
+}

@@ -1,0 +1,12 @@
+{
+  "decision": "accepted",
+  "evidence": [
+    {
+      "digest": "sha256:c0bd81fa07263bd71c27236c79cfb267da884c2b4fa1e27b506b9384e1ae3be6",
+      "path": "benchmarks/results/production-hardening-2026-11-13/hosted-ci-complete.json"
+    }
+  ],
+  "reviewer": "GitHub Actions (automated; not human peer review)",
+  "scope": "Only the named mechanically verified gate; no independent human adjudication, mastery or general production guarantee.",
+  "source_root": "sha256:9febd570b27787b9f83f5d4c25c5edf359a744c8ce8379c96d6eff7d57963f57"
+}

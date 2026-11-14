@@ -1,0 +1,452 @@
+{
+  "accepted_student_slices": "unchanged_by_this_command",
+  "current_source_execution": {
+    "browser_tests": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:2e1f9f2554d04681f53497ffc3fec90186ef44ee7719b524c255280b1b1ba8b7",
+        "path": "benchmarks/results/production-hardening-2026-11-13/source/validation/current-browser/receipt.json"
+      }
+    },
+    "corpus": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:d2b0060c40d4de26ae91235b0cb6df78442b1eb3c12d87682cac3262ef6039af",
+        "path": "benchmarks/results/production-hardening-2026-11-13/source/validation/current-corpus/receipt.json"
+      }
+    },
+    "deployment_recovery": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:4377b3424e8862c0f48b027365b6cc30f269082c4f6b21c43e35a22d28fb2f65",
+        "path": "benchmarks/results/production-hardening-2026-11-13/source/validation/current-deployment/receipt.json"
+      }
+    },
+    "guarded_tests": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:8299b2081f689866cd32ad5c3485ba5bb4ad8cd956c554c1c1980c456d165661",
+        "path": "benchmarks/results/production-hardening-2026-11-13/source/validation/current-guarded/receipt.json"
+      }
+    },
+    "local_tests": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:66d3c9905f731a56ea21611e0385b55e124505fac3b93de307834a8cea7732b9",
+        "path": "benchmarks/results/production-hardening-2026-11-13/source/validation/current-local/receipt.json"
+      }
+    },
+    "operational_validation": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:a83075c08bf867d426c1bad0355499286c9b95c3848928c3ed733362ea13455c",
+        "path": "benchmarks/results/production-hardening-2026-11-13/source/validation/current-operational/receipt.json"
+      }
+    },
+    "policy_search": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:fd13696fed2a23ce6893d14a1c686214db691ad638d1074667876bfc40fd385e",
+        "path": "benchmarks/results/production-hardening-2026-11-13/source/validation/current-search/receipt.json"
+      }
+    },
+    "postgres_http": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:f6cfe7609afa42a7dfd5e1848bf9bfa2d4a67b28df17a5c3466c116222f68c4c",
+        "path": "benchmarks/results/production-hardening-2026-11-13/source/validation/current-postgres/receipt.json"
+      }
+    },
+    "product_demo": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:8b7469ae5e7a625648bab9bfc6ac7fa1987ec66437fdeea94c43941be5e99605",
+        "path": "benchmarks/results/production-hardening-2026-11-13/source/validation/current-demo/receipt.json"
+      }
+    },
+    "proof_video": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:4a2530dd99f3db5a6d42e94497b3ec597d9107b36bbfa4510b3a64c8b085c7e8",
+        "path": "benchmarks/results/production-hardening-2026-11-13/source/validation/current-proof/receipt.json"
+      }
+    },
+    "provenance_validation": {
+      "passed": false,
+      "reason": "missing current-source execution receipt"
+    },
+    "recording_overhead": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:a3d80a28e39472474445358658e88e59eaaa45a6e8a06abc4bcf42b82025635c",
+        "path": "benchmarks/results/production-hardening-2026-11-13/source/validation/current-overhead/receipt.json"
+      }
+    },
+    "scale": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:a52346681a4f0295347f0866a4b4f89fc477f43b6dd2a7fa3147d1f46402035d",
+        "path": "benchmarks/results/production-hardening-2026-11-13/source/validation/current-scale/receipt.json"
+      }
+    },
+    "ui_build": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:89ff71d7ed6cad778834be21e8a78591487c0674e7c8045090530336118297e7",
+        "path": "benchmarks/results/production-hardening-2026-11-13/source/validation/current-ui-build/receipt.json"
+      }
+    }
+  },
+  "engineering_checks": {
+    "browser_tests": {
+      "evidence": {
+        "digest": "sha256:cb724441f6108cf3ef670872eb1b1b408040c821fccf68bf4d8a7e7a57061559",
+        "path": "benchmarks/results/production-hardening-2026-11-13/current-browser.json"
+      },
+      "passed": true
+    },
+    "corpus": {
+      "evidence": {
+        "digest": "sha256:7d9d37c1e59b5349eb3a88f9079931fbc998943acac562ae797dd970316d9883",
+        "path": "benchmarks/results/production-hardening-2026-11-13/current-corpus/results.json"
+      },
+      "passed": true
+    },
+    "deployment_recovery": {
+      "evidence": {
+        "digest": "sha256:c06a6453b183e802f2abb5185a4d8d7f1240ac024a5662f2a70e3cbe70224800",
+        "path": "benchmarks/results/production-hardening-2026-11-13/current-deployment.json"
+      },
+      "passed": true
+    },
+    "guarded_tests": {
+      "evidence": {
+        "digest": "sha256:138b4ae27f2605b07fc1f963fa74be61ece2f35009ac7245de7ffcd082bc8d91",
+        "path": "benchmarks/results/production-hardening-2026-11-13/current-guarded.json"
+      },
+      "passed": true
+    },
+    "local_tests": {
+      "evidence": {
+        "digest": "sha256:9af3c064d392d89b5e988222c17f8e9a012184b276ad41e28e95031582372c97",
+        "path": "benchmarks/results/production-hardening-2026-11-13/current-local.json"
+      },
+      "passed": true
+    },
+    "operational_validation": {
+      "evidence": {
+        "digest": "sha256:dc38e2a17d0ba5d421810f35f3737b980c393809b7a4d1e2fe1a3be86bce4b6e",
+        "path": "benchmarks/results/production-hardening-2026-11-13/current-operational.json"
+      },
+      "passed": true
+    },
+    "policy_search": {
+      "evidence": {
+        "digest": "sha256:53c4566d5a26b6be642ed1e60f674db592c04b5a4d829029fdbedde64ee851fb",
+        "path": "benchmarks/results/production-hardening-2026-11-13/release-search/progress.json"
+      },
+      "passed": true
+    },
+    "postgres_http": {
+      "evidence": {
+        "digest": "sha256:158e9a5df4a7987a9afcc6390fb8f6147ce6549622013b80eafbd33a30520d6c",
+        "path": "benchmarks/results/production-hardening-2026-11-13/current-postgres.json"
+      },
+      "passed": true
+    },
+    "product_demo": {
+      "evidence": {
+        "digest": "sha256:b8f7cf282af8ab5facaa57347a09c76ef76917c51009db01bda14140354ee764",
+        "path": "benchmarks/results/production-hardening-2026-11-13/current-demo/demo-report.json"
+      },
+      "passed": true
+    },
+    "proof_video": {
+      "evidence": {
+        "digest": "sha256:e4b873baeb8c05df960498cfae4c898995d762f081dfeb07bcf228e3ba175b63",
+        "path": "benchmarks/results/production-hardening-2026-11-13/current-proof.json"
+      },
+      "passed": true
+    },
+    "provenance_validation": {
+      "evidence": {
+        "digest": "sha256:dc72d7cf427080e4557e58a3e69e9c8359c53c44e84832e2db17d479123b6f19",
+        "path": "benchmarks/results/production-hardening-2026-11-13/provenance-pending.json"
+      },
+      "passed": false
+    },
+    "recording_overhead": {
+      "evidence": {
+        "digest": "sha256:62db14fe05e6bcc3a238e7aa78f2f5a5efc40dbb5612230764654ec4d9a9d014",
+        "path": "benchmarks/results/production-hardening-2026-11-13/current-overhead/results.json"
+      },
+      "passed": true
+    },
+    "scale": {
+      "evidence": {
+        "digest": "sha256:8c891a4942c686a1909df76d83218d998b054cbd2ec29fa7f0bac4f140d67558",
+        "path": "benchmarks/results/production-hardening-2026-11-13/current-scale/results.json"
+      },
+      "passed": true
+    },
+    "ui_build": {
+      "evidence": {
+        "digest": "sha256:c3a221e1806d1f8ab507feb8bf741109c763b039e4f2dbd521bc65b4570e6bb3",
+        "path": "benchmarks/results/production-hardening-2026-11-13/current-ui-build.json"
+      },
+      "passed": true
+    }
+  },
+  "limitation": "Local artifact audit and declared reviews; not independent validation of reviewer identity, publication, latest-root freshness or a production safety guarantee.",
+  "quality_budgets": {
+    "journal_verification_50k": {
+      "observed": "0.7179462920175865",
+      "passed": true,
+      "required": "p95 <=1s (50k/s)"
+    },
+    "provenance_and_blast_radius": {
+      "observed": "missing or invalid independent label evidence",
+      "passed": false,
+      "required": "F1>=0.85, nonempty positives, root-bound labels and blast-radius adjudication"
+    },
+    "recording_overhead_3k": {
+      "observed": "4045.609920033879606887180254",
+      "passed": false,
+      "required": "median <=20%, no model latency"
+    },
+    "selected_graph_50k": {
+      "observed": "0.0013912499998696148",
+      "passed": true,
+      "required": "p95 <=0.3s"
+    },
+    "timeline_first_page_3k": {
+      "observed": "0.000801417016191408",
+      "passed": true,
+      "required": "p95 <=0.3s"
+    },
+    "timeline_interactive_3k": {
+      "observed": "0.29110000002384184",
+      "passed": true,
+      "required": "p95 <=1s after data arrival; >=3k boundaries"
+    }
+  },
+  "review_gates": {
+    "clean_room_reproduction": {
+      "evidence": {
+        "digest": "sha256:63380d44cc7036cdc0e3ea85bb45f0154a4a5ade280d2256b08b022260c23b43",
+        "path": "benchmarks/results/production-hardening-2026-11-13/clean_room_reproduction-review.json"
+      },
+      "reviewer": "Fresh Ubuntu CI checkout and empty volumes (automated transcript)",
+      "state": "DECLARED_EXTERNAL_REVIEW"
+    },
+    "end_to_end_load_and_latency": {
+      "state": "PENDING"
+    },
+    "hosted_ci": {
+      "evidence": {
+        "digest": "sha256:c14158a91b07b8ee92b1786a543dee01be13874d86a41f65545eca6a09349f77",
+        "path": "benchmarks/results/production-hardening-2026-11-13/hosted_ci-review.json"
+      },
+      "reviewer": "GitHub Actions (automated; not human peer review)",
+      "state": "DECLARED_EXTERNAL_REVIEW"
+    },
+    "independent_provenance": {
+      "state": "PENDING"
+    },
+    "license_and_distribution": {
+      "evidence": {
+        "digest": "sha256:7424a7f882c184e4abda0c5226e248d703d742fb8e07a2ecf87c558aa1af7ba7",
+        "path": "benchmarks/results/production-hardening-2026-11-13/license_and_distribution-review.json"
+      },
+      "reviewer": "Explicit owner MIT/public-main authorization; mechanical verification",
+      "state": "DECLARED_EXTERNAL_REVIEW"
+    },
+    "owner_teach_back": {
+      "state": "PENDING"
+    },
+    "representative_recording_overhead": {
+      "state": "PENDING"
+    },
+    "signer_boundary_and_freshness": {
+      "state": "PENDING"
+    }
+  },
+  "schema_version": 2,
+  "scope_traceability": {
+    "1": {
+      "passed": true,
+      "title": "Exact problem"
+    },
+    "10": {
+      "passed": true,
+      "title": "Incident compression"
+    },
+    "11": {
+      "passed": false,
+      "title": "Provenance DAG"
+    },
+    "12": {
+      "passed": false,
+      "title": "Blast-radius engine"
+    },
+    "13": {
+      "passed": true,
+      "title": "Replay engine"
+    },
+    "14": {
+      "passed": true,
+      "title": "Structural/effect divergence"
+    },
+    "15": {
+      "passed": true,
+      "title": "Incident bisect"
+    },
+    "16": {
+      "passed": true,
+      "title": "Policy engine"
+    },
+    "17": {
+      "passed": true,
+      "title": "Policy DSL"
+    },
+    "18": {
+      "passed": true,
+      "title": "Alternate Futures"
+    },
+    "19": {
+      "passed": true,
+      "title": "Minimal Intervention"
+    },
+    "2": {
+      "passed": true,
+      "title": "Six signature capabilities"
+    },
+    "20": {
+      "passed": true,
+      "title": "Pareto frontier"
+    },
+    "21": {
+      "passed": true,
+      "title": "Benign regression suite"
+    },
+    "22": {
+      "passed": true,
+      "title": "Causal World Diff"
+    },
+    "23": {
+      "passed": true,
+      "title": "Incident Capsules"
+    },
+    "24": {
+      "passed": true,
+      "title": "Capsule verification"
+    },
+    "25": {
+      "passed": true,
+      "title": "Storage architecture"
+    },
+    "26": {
+      "passed": true,
+      "title": "Main data models"
+    },
+    "27": {
+      "passed": true,
+      "title": "API surface"
+    },
+    "28": {
+      "passed": true,
+      "title": "CLI"
+    },
+    "29": {
+      "passed": true,
+      "title": "Frontend"
+    },
+    "3": {
+      "passed": true,
+      "title": "End-to-end workflow"
+    },
+    "30": {
+      "passed": true,
+      "title": "Product screens"
+    },
+    "31": {
+      "passed": true,
+      "title": "Exact homepage"
+    },
+    "32": {
+      "passed": true,
+      "title": "Demo corpus"
+    },
+    "33": {
+      "passed": false,
+      "title": "Metrics"
+    },
+    "34": {
+      "passed": false,
+      "title": "Testing"
+    },
+    "35": {
+      "passed": true,
+      "title": "Tech stack"
+    },
+    "36": {
+      "passed": true,
+      "title": "Innovation framing"
+    },
+    "37": {
+      "passed": true,
+      "title": "Explicit non-goals"
+    },
+    "38": {
+      "passed": true,
+      "title": "Job-market rationale"
+    },
+    "39": {
+      "passed": true,
+      "title": "Relation to AutoSeal"
+    },
+    "4": {
+      "passed": true,
+      "title": "Recorder architecture"
+    },
+    "40": {
+      "passed": true,
+      "title": "Resume positioning"
+    },
+    "41": {
+      "passed": false,
+      "title": "Build schedule"
+    },
+    "42": {
+      "passed": false,
+      "title": "Mandatory definition of done"
+    },
+    "43": {
+      "passed": true,
+      "title": "75-second video"
+    },
+    "5": {
+      "passed": true,
+      "title": "Conformance ladder"
+    },
+    "6": {
+      "passed": true,
+      "title": "OTel ingestion"
+    },
+    "7": {
+      "passed": true,
+      "title": "Snapshot engine"
+    },
+    "8": {
+      "passed": true,
+      "title": "Tamper-evident journal"
+    },
+    "9": {
+      "passed": true,
+      "title": "Incident classifier"
+    }
+  },
+  "source_mismatches": [],
+  "source_root": "sha256:9febd570b27787b9f83f5d4c25c5edf359a744c8ce8379c96d6eff7d57963f57",
+  "status": "RELEASE_BLOCKED"
+}

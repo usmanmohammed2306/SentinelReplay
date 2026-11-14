@@ -1,0 +1,6 @@
+SENTINEL_TEST_ISOLATED_BRANCHES=1 SENTINEL_TEST_DOCKER_ISOLATION=1 SENTINEL_TEST_OPA_DOCKER=1 UV_CACHE_DIR=.uv-cache .venv/bin/uv run --frozen pytest -q -m "not aws_optional and not postgres_integration"
+........................................................................ [ 29%]
+........................................................................ [ 58%]
+........................................................................ [ 87%]
+................................                                         [100%]
+248 passed, 9 deselected in 22.85s

@@ -1,0 +1,25 @@
+{
+  "artifact": {
+    "digest": "sha256:158e9a5df4a7987a9afcc6390fb8f6147ce6549622013b80eafbd33a30520d6c",
+    "path": "benchmarks/results/production-hardening-2026-11-13/current-postgres.json"
+  },
+  "command": [
+    ".venv/bin/python",
+    "-c",
+    "import subprocess,shutil; subprocess.run([\".venv/bin/python\",\"scripts/validate_branch_api.py\",\"--capsule\",\"benchmarks/results/production-hardening-2026-11-13/current-demo/investigation.sentinel\",\"--output\",\".local-controller/current-postgres-2026-11-13\"],check=True); shutil.copyfile(\".local-controller/current-postgres-2026-11-13/receipt.json\",\"benchmarks/results/production-hardening-2026-11-13/current-postgres.json\")"
+  ],
+  "command_exit_code": 0,
+  "elapsed_seconds": "4.110502542",
+  "exit_code": 0,
+  "log": {
+    "digest": "sha256:3b3aa9d5b9a99c0464b83217d9ce80996a5592fc6bb9cc7217ba6ddef8958298",
+    "path": "benchmarks/results/production-hardening-2026-11-13/source/validation/current-postgres/command.log"
+  },
+  "schema_version": 1,
+  "scope": "local execution receipt; no independent authentication of experimenter identity",
+  "source_root": "sha256:9febd570b27787b9f83f5d4c25c5edf359a744c8ce8379c96d6eff7d57963f57",
+  "source_root_after": "sha256:9febd570b27787b9f83f5d4c25c5edf359a744c8ce8379c96d6eff7d57963f57",
+  "source_root_before": "sha256:9febd570b27787b9f83f5d4c25c5edf359a744c8ce8379c96d6eff7d57963f57",
+  "source_unchanged": true,
+  "started_at_utc": "2026-11-14T15:05:12.405769+00:00"
+}

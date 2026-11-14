@@ -1,0 +1,25 @@
+{
+  "artifact": {
+    "digest": "sha256:dc38e2a17d0ba5d421810f35f3737b980c393809b7a4d1e2fe1a3be86bce4b6e",
+    "path": "benchmarks/results/production-hardening-2026-11-13/current-operational.json"
+  },
+  "command": [
+    ".venv/bin/python",
+    ".local-controller/production-hardening-2026-11-13/derive_evidence.py",
+    "operational"
+  ],
+  "command_exit_code": 0,
+  "elapsed_seconds": "0.334449709",
+  "exit_code": 0,
+  "log": {
+    "digest": "sha256:e8d7dc3272506040e76c875fe8c5dba7db2a7dda7ac5c38c53746d978cab3cff",
+    "path": "benchmarks/results/production-hardening-2026-11-13/source/validation/current-operational/command.log"
+  },
+  "schema_version": 1,
+  "scope": "local execution receipt; no independent authentication of experimenter identity",
+  "source_root": "sha256:9febd570b27787b9f83f5d4c25c5edf359a744c8ce8379c96d6eff7d57963f57",
+  "source_root_after": "sha256:9febd570b27787b9f83f5d4c25c5edf359a744c8ce8379c96d6eff7d57963f57",
+  "source_root_before": "sha256:9febd570b27787b9f83f5d4c25c5edf359a744c8ce8379c96d6eff7d57963f57",
+  "source_unchanged": true,
+  "started_at_utc": "2026-11-14T15:08:33.317620+00:00"
+}

@@ -1,0 +1,18 @@
+{
+  "head_sha": "0ce9461fc91bd33a655ae4b26cfd022b171eef0e",
+  "run_id": 43557794589,
+  "url": "https://github.com/usmanmohammed2306/SentinelReplay/actions/runs/43557794589",
+  "passed_jobs": [
+    "Python3.12",
+    "Production UI image",
+    "PostgreSQL17",
+    "full guarded Docker/OPA"
+  ],
+  "failed_job": "Production Chromium journeys and3k interaction budget",
+  "observed_in_authenticated_job_UI": {
+    "passed_journeys": 4,
+    "failure": "The performance fixture discovery request expected200 and received429 before the first measured navigation.",
+    "fix": "Bounded429 discovery retries, matching the existing client/other journey; render budget remains1s and all25 measurements remain mandatory."
+  },
+  "status": "failure_retained_not_waived"
+}

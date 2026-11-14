@@ -1,0 +1,26 @@
+{
+  "artifact": {
+    "digest": "sha256:e41f0b021ca93b51ff5320050d853701bf73286a6bafcaaecc4093b93baf4330",
+    "path": "benchmarks/results/production-hardening-2026-11-13/release-scale/results.json"
+  },
+  "command": [
+    ".venv/bin/python",
+    "benchmarks/product_scale.py",
+    "--output",
+    "benchmarks/results/production-hardening-2026-11-13/release-scale"
+  ],
+  "command_exit_code": 0,
+  "elapsed_seconds": "84.105292042",
+  "exit_code": 0,
+  "log": {
+    "digest": "sha256:76cf24969dcd47af154629db51720cf421cf7f4da9562b04fd0ebcf87401b260",
+    "path": "benchmarks/results/production-hardening-2026-11-13/source/validation/scale-final/command.log"
+  },
+  "schema_version": 1,
+  "scope": "local execution receipt; no independent authentication of experimenter identity",
+  "source_root": "sha256:39ba2a34a993365b97da6457441868b77a85568e3c17237d4006a5c8ddf3377b",
+  "source_root_after": "sha256:39ba2a34a993365b97da6457441868b77a85568e3c17237d4006a5c8ddf3377b",
+  "source_root_before": "sha256:39ba2a34a993365b97da6457441868b77a85568e3c17237d4006a5c8ddf3377b",
+  "source_unchanged": true,
+  "started_at_utc": "2026-11-14T04:37:04.858926+00:00"
+}

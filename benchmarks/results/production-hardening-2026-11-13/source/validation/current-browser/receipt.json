@@ -1,0 +1,25 @@
+{
+  "artifact": {
+    "digest": "sha256:cb724441f6108cf3ef670872eb1b1b408040c821fccf68bf4d8a7e7a57061559",
+    "path": "benchmarks/results/production-hardening-2026-11-13/current-browser.json"
+  },
+  "command": [
+    ".venv/bin/python",
+    "-c",
+    "import subprocess,shutil; from pathlib import Path; subprocess.run([\"pnpm\",\"--dir\",\"ui\",\"test:e2e\"],check=True); b=Path(\"benchmarks/results/production-hardening-2026-11-13\"); p=Path(\".local-controller/ui-validation\"); shutil.copyfile(p/\"results.json\",b/\"current-browser.json\"); shutil.copyfile(p/\"timeline-performance.json\",b/\"current-timeline-3k.json\"); shutil.copyfile(p/\"timeline-performance-50000.json\",b/\"current-timeline-50k.json\")"
+  ],
+  "command_exit_code": 0,
+  "elapsed_seconds": "63.548411792",
+  "exit_code": 0,
+  "log": {
+    "digest": "sha256:7a75890f414df47d0b89b00fa0d6791c0e0804ddbf6e748cebb03de8abde6476",
+    "path": "benchmarks/results/production-hardening-2026-11-13/source/validation/current-browser/command.log"
+  },
+  "schema_version": 1,
+  "scope": "local execution receipt; no independent authentication of experimenter identity",
+  "source_root": "sha256:9febd570b27787b9f83f5d4c25c5edf359a744c8ce8379c96d6eff7d57963f57",
+  "source_root_after": "sha256:9febd570b27787b9f83f5d4c25c5edf359a744c8ce8379c96d6eff7d57963f57",
+  "source_root_before": "sha256:9febd570b27787b9f83f5d4c25c5edf359a744c8ce8379c96d6eff7d57963f57",
+  "source_unchanged": true,
+  "started_at_utc": "2026-11-14T15:03:45.858903+00:00"
+}
