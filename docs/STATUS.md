@@ -7,7 +7,7 @@ The frozen forty-three-section product charter and the sixty-slice learning plan
 
 ## Publication and first hosted CI
 
-Source/evidence commit `d52f502` was pushed normally to `origin/main`. Repository visibility remains private; the license choice is still pending. The [first hosted CI run](https://github.com/usmanmohammed2306/SentinelReplay/actions/runs/43552119885) passed Python, the production UI image and PostgreSQL integration. OPA failed because its default container UID could not read owner-only Linux temporary input directories. The caller-UID/GID mapping fix retains private permissions, read-only mounts and network isolation. Local required checks215 passed, actual OPA checks3 passed, and a fresh integrated demo passed all17 checks after the fix. The [second hosted run](https://github.com/usmanmohammed2306/SentinelReplay/actions/runs/43552561371) passed all four jobs on `c895b0f`: Python, production UI image, PostgreSQL integration and real OPA. Its [receipt](../benchmarks/results/release-local-2026-11-13/hosted-ci.json) names the exact source commit; browser journeys and broader guarded isolation remain locally validated.
+Source/evidence commit `d52f502` was pushed normally to `origin/main`. The user selected MIT after this publication; the MIT license is being added before the authorized public-visibility change. Public visibility is recorded only after verification. The [first hosted CI run](https://github.com/usmanmohammed2306/SentinelReplay/actions/runs/43552119885) passed Python, the production UI image and PostgreSQL integration. OPA failed because its default container UID could not read owner-only Linux temporary input directories. The caller-UID/GID mapping fix retains private permissions, read-only mounts and network isolation. Local required checks215 passed, actual OPA checks3 passed, and a fresh integrated demo passed all17 checks after the fix. The [second hosted run](https://github.com/usmanmohammed2306/SentinelReplay/actions/runs/43552561371) passed all four jobs on `c895b0f`: Python, production UI image, PostgreSQL integration and real OPA. Its [receipt](../benchmarks/results/release-local-2026-11-13/hosted-ci.json) names the exact source commit; browser journeys and broader guarded isolation remain locally validated.
 
 The original release manifest and measurements remain frozen at their recorded source. The current default release audit therefore also reports source mismatches after this runtime change; it must be rebaselined with fresh source-bound validation before release. Old strict finite-pack capsules require their recorded runtime version; use `sentinel demo` for a fresh current-runtime run. This is an engineering/reproducibility gap, not a request for permission or an accepted V1 gate. See the [post-CI proof](../benchmarks/results/release-local-2026-11-13/post-ci-portability-fix.json).
 
@@ -70,7 +70,7 @@ The [paired overhead/localization report](../benchmarks/results/recording-overhe
 - Independently reviewed provenance/dependency labels, blast-radius overreach and ambiguity evidence.
 - Representative live-agent recording overhead, repeated end-to-end HTTP/UI latency and concurrent-load/resource evidence.
 - Independently reproduced clean installation and a separately witnessed signer/freshness recovery review. Local relative-head rollback controls do not establish global latest-state freshness.
-- Fresh source-bound release baseline after the CI portability fix, plus final license/distribution review before public visibility. Hosted four-job CI passes; it is not the complete release suite.
+- Fresh source-bound release baseline after the CI portability fix, plus verification of the authorized MIT/public publication. Hosted four-job CI passes; it is not the complete release suite.
 - Owner review, day-by-day rebuild and teach-back. Full native-agent semantic replay remains outside the declared adapter; the real coding-agent adapter uses boundary matching.
 
 The completed local tests and source rebuild narrow these gaps; they do not erase them. No AWS deployment, new GPU allocation, new model call, Git commit/push, license decision or public visibility change occurred in this continuation.
@@ -79,7 +79,7 @@ The completed local tests and source rebuild narrow these gaps; they do not eras
 
 - Active task: **S01 — Project pulse**; Stage 1 gate **TODO**.
 - Accepted student slices: **0/60**. No personal mastery or independent authorship is certified by engineering receipts.
-- Existing repository: `usmanmohammed2306/SentinelReplay`; historical initial import and README publication are recorded in the private handoff. Hosted CI and public license decision remain unverified/pending.
+- Existing repository: `usmanmohammed2306/SentinelReplay`; historical initial import and README publication are recorded in the private handoff. Hosted CI passed on `c895b0f`; MIT was selected by the user. Public visibility is recorded after verification.
 - The local `BUILD_LEARN_COMMIT_GUIDE.md` maps every working day/slice to a small build, a failure to test, official reading, teach-back and a real user-owned commit. Sixty slices are not sixty guaranteed elapsed days.
 
 The single active plan remains4.2. Scope and evidence thresholds are not reduced to protect a date.
@@ -101,4 +101,4 @@ These are substantive engineering/evidence gaps; they are not all requests for h
 | Operational reliability | Eight-client/32-request backpressure and same-host restoration are narrow proofs | Repeat UI/load/failure/recovery tests against explicit capacity/resource targets on a clean environment |
 | Signer/freshness trust | Local ledger detects rollback relative to a retained head, not whole-controller rollback | Validate separate signer/witness ownership and recovery under the declared attacker identity |
 
-Most implementation and test work can continue without new credentials, AWS or a GPU. License selection affects public visibility only. Independent adjudication and owner teach-back cannot be self-certified by the implementation assistant. The source publication is complete; the production/learner release is not.
+Most implementation and test work can continue without new credentials, AWS or a GPU. MIT/public publication affects distribution only; it does not accept production-readiness gates. Independent adjudication and owner teach-back cannot be self-certified by the implementation assistant. The source publication is complete; the production/learner release is not.

@@ -80,3 +80,7 @@ The release command audits exact source and artifact bytes and returns nonzero w
 Start with the [frozen product charter](docs/FROZEN_PRODUCT_CHARTER.md), [coverage contract](docs/ENVIRONMENT_PACK_CONTRACT.md), [acceptance matrix](docs/V1_ACCEPTANCE.md), [threat model](docs/THREAT_MODEL.md), and [deployment/recovery runbook](docs/SELF_HOSTED_PREVIEW.md). The separate local sixty-slice guide maps daily builds, tests, reading, teach-backs and user-owned commits to this reference implementation. Engineering progress does not certify independent authorship or learning completion.
 
 The archived benchmark capsules bind their original runtime source. The Linux OPA portability fix changed that identity; use `sentinel demo` to generate a fresh current-runtime investigation, or the recorded source revision to reproduce an older capsule. The frozen release audit deliberately names this source mismatch until the full evidence baseline is refreshed.
+
+## License
+
+[MIT](LICENSE). Third-party components retain their respective licenses; bundled fixture notices are listed [here](benchmarks/evidence-archives/THIRD_PARTY_NOTICES.md).
