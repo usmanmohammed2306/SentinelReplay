@@ -1,0 +1,121 @@
+{
+  "accepted_student_slices": "unchanged_by_this_command",
+  "engineering_checks": {
+    "browser_tests": {
+      "evidence": {
+        "digest": "sha256:664bf7590406ae38d640c1fee51cc532c6ff67722083517969696741d0f674a5",
+        "path": "benchmarks/results/release-local-2026-11-13/browser-tests.json"
+      },
+      "passed": true
+    },
+    "corpus": {
+      "evidence": {
+        "digest": "sha256:7faa84c05587a14b447122640f6f0dad9ee52b374fc4f677a8112d4f8fb1e905",
+        "path": "benchmarks/results/environment-pack-corpus-final-2026-11-13/results.json"
+      },
+      "passed": true
+    },
+    "deployment_recovery": {
+      "evidence": {
+        "digest": "sha256:b562ab40173e64e2734ef5d56840a96a3f003e899860547fbc31509cc09b05a3",
+        "path": "benchmarks/results/release-local-2026-11-13/deployment_recovery.json"
+      },
+      "passed": true
+    },
+    "guarded_tests": {
+      "evidence": {
+        "digest": "sha256:98e1d008f62841eb819a8cb421c476438ed56fe0bce3959caab18b8690321e3f",
+        "path": "benchmarks/results/release-local-2026-11-13/guarded-tests.json"
+      },
+      "passed": true
+    },
+    "local_tests": {
+      "evidence": {
+        "digest": "sha256:64c2d19e01b40bed473af3607c5f82f83bdffb4d07654ab7ad7e78b37a7f80d3",
+        "path": "benchmarks/results/release-local-2026-11-13/local-tests.json"
+      },
+      "passed": true
+    },
+    "policy_search": {
+      "evidence": {
+        "digest": "sha256:326728d57e458e4789b8a2aa2239a8aca755ec124e932fe85d4521c87abba15d",
+        "path": "benchmarks/results/policy-search-final-2026-11-13/progress.json"
+      },
+      "passed": true
+    },
+    "postgres_http": {
+      "evidence": {
+        "digest": "sha256:235950bfa2e79cd28a899c7d4cf4773fcac1eeec57b7e9c21364b88c1b935518",
+        "path": "benchmarks/results/release-local-2026-11-13/postgres_http.json"
+      },
+      "passed": true
+    },
+    "product_demo": {
+      "evidence": {
+        "digest": "sha256:e33b174a329a0e3463126b910c4274fc0fe45906dac170516f088618465a23b5",
+        "path": "benchmarks/results/product-demo-final-2026-11-13/demo-report.json"
+      },
+      "passed": true
+    },
+    "proof_video": {
+      "evidence": {
+        "digest": "sha256:bfced57c5b984e5549379eac08e199437cecd776657812a97cf64ef69df614c8",
+        "path": "benchmarks/results/release-local-2026-11-13/proof-video.json"
+      },
+      "passed": true
+    },
+    "recording_overhead": {
+      "evidence": {
+        "digest": "sha256:e89d5a3c5c090a665520c11204e616f153693d48322bcfe4325e4afd2d5e8779",
+        "path": "benchmarks/results/recording-overhead-final-2026-11-13/results.json"
+      },
+      "passed": true
+    },
+    "scale": {
+      "evidence": {
+        "digest": "sha256:e9111635c01d551cd0aa6af74c4ea77e9868eab0f1bf158f2e8317705804dac5",
+        "path": "benchmarks/results/product-scale-final-2026-11-13/results.json"
+      },
+      "passed": true
+    },
+    "ui_build": {
+      "evidence": {
+        "digest": "sha256:66217522f079620c4062f7098dfe2bed0547faf86f14922973ceab3da79ad339",
+        "path": "benchmarks/results/release-local-2026-11-13/ui-build.json"
+      },
+      "passed": true
+    }
+  },
+  "limitation": "Local artifact audit and declared reviews; not independent validation of reviewer identity, publication, latest-root freshness or a production safety guarantee.",
+  "requested_stage": "release",
+  "review_gates": {
+    "clean_room_reproduction": {
+      "state": "PENDING"
+    },
+    "end_to_end_load_and_latency": {
+      "state": "PENDING"
+    },
+    "hosted_ci": {
+      "state": "PENDING"
+    },
+    "independent_provenance": {
+      "state": "PENDING"
+    },
+    "license_and_distribution": {
+      "state": "PENDING"
+    },
+    "owner_teach_back": {
+      "state": "PENDING"
+    },
+    "representative_recording_overhead": {
+      "state": "PENDING"
+    },
+    "signer_boundary_and_freshness": {
+      "state": "PENDING"
+    }
+  },
+  "schema_version": 1,
+  "source_mismatches": [],
+  "source_root": "sha256:b01a6f48332b1da6a55756f0443a69dab648ad44c4d5e29fae59f2018f7d3724",
+  "status": "RELEASE_BLOCKED"
+}

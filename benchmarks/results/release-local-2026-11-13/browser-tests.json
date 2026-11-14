@@ -1,0 +1,13 @@
+{
+  "errors": [],
+  "raw_result_digest": "sha256:8c7a4f9134e909b380e7eebe46903616bc4c2902af1d9d7cdf175ae8fb455ed2",
+  "source_root": "sha256:b01a6f48332b1da6a55756f0443a69dab648ad44c4d5e29fae59f2018f7d3724",
+  "stats": {
+    "duration": 12465.969000000001,
+    "expected": 3,
+    "flaky": 0,
+    "skipped": 0,
+    "startTime": "2026-11-14T03:14:55.913Z",
+    "unexpected": 0
+  }
+}

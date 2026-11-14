@@ -1,0 +1,43 @@
+{
+  "source_root": "sha256:4073e2eda61a5d89caf8036fd4e96786f59c60905b110223ccdf549c703939eb",
+  "scope": "isolated_source_tree_new_noneditable_venv_same_host",
+  "dependency_downloads": "locked_PyPI_dependencies_only",
+  "completed": true,
+  "checks": [
+    {
+      "program": "uv",
+      "exit_code": 0
+    },
+    {
+      "program": "python",
+      "exit_code": 0
+    },
+    {
+      "program": "sentinel",
+      "exit_code": 0
+    },
+    {
+      "program": "sentinel",
+      "exit_code": 0
+    }
+  ],
+  "replay": {
+    "mode": "VERIFIED_REPLAY",
+    "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+    "definition_digest": "sha256:4ec2b0b243ddb57ed3b8b715c82cf4aba6b24ae7fac3af9f6942efc12e3ef069",
+    "journal_root": "sha256:339f370df676763780159ed889a90a2de44225d5b95840a5dc38fd17a1dac41a",
+    "matched": 3186,
+    "through_program_steps": 3184,
+    "complete_run": true,
+    "effects_reexecuted": 2,
+    "checkpoint_verified": true,
+    "checkpoints": {
+      "workspace": true,
+      "sqlite": true,
+      "git": true
+    },
+    "final_state_verified": true,
+    "live_nondeterministic_calls": 0,
+    "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay."
+  }
+}

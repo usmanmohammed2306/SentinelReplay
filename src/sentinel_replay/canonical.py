@@ -3,6 +3,7 @@
 import base64
 import hashlib
 import json
+from collections.abc import Iterator
 from datetime import UTC, datetime
 from enum import Enum
 from typing import Any
@@ -12,12 +13,14 @@ class CanonicalizationError(ValueError):
     """A value cannot be represented under the current evidence contract."""
 
 
-def _normalize(value: object) -> object:
+def _normalize(value: object, depth: int = 0) -> object:
+    if depth > 64:
+        raise CanonicalizationError("canonical nesting exceeds64 levels")
     if value is None:
         return ["null"]
     if isinstance(value, Enum):
         enum_name = f"{type(value).__module__}.{type(value).__qualname__}"
-        return ["enum", enum_name, _normalize(value.value)]
+        return ["enum", enum_name, _normalize(value.value, depth + 1)]
     if isinstance(value, bool):
         return ["bool", value]
     if isinstance(value, int):
@@ -34,11 +37,11 @@ def _normalize(value: object) -> object:
         utc = value.astimezone(UTC)
         return ["datetime", utc.isoformat(timespec="microseconds")]
     if isinstance(value, (list, tuple)):
-        return ["list", [_normalize(item) for item in value]]
+        return ["list", [_normalize(item, depth + 1) for item in value]]
     if isinstance(value, dict):
         if not all(isinstance(key, str) for key in value):
             raise CanonicalizationError("map keys must be strings")
-        return ["map", [[key, _normalize(value[key])] for key in sorted(value)]]
+        return ["map", [[key, _normalize(value[key], depth + 1)] for key in sorted(value)]]
     raise CanonicalizationError(f"unsupported type: {type(value).__name__}")
 
 
@@ -72,11 +75,32 @@ def load_json_unique(text: str) -> Any:
         raise CanonicalizationError(f"nonfinite JSON value is unsupported: {value}")
 
     try:
-        return json.loads(
+        parsed = json.loads(
             text,
             object_pairs_hook=pairs_to_map,
             parse_float=reject_float,
             parse_constant=reject_constant,
         )
+        stack: list[tuple[Iterator[object], int]] = [(iter((parsed,)), 0)]
+        while stack:
+            iterator, depth = stack[-1]
+            try:
+                value = next(iterator)
+            except StopIteration:
+                stack.pop()
+                continue
+            if depth > 64:
+                raise CanonicalizationError("JSON nesting exceeds64 levels")
+            if isinstance(value, dict):
+                stack.append((iter(value.values()), depth + 1))
+            elif isinstance(value, list):
+                stack.append((iter(value), depth + 1))
+        return parsed
+    except RecursionError as error:
+        raise CanonicalizationError("JSON nesting exceeds parser budget") from error
     except json.JSONDecodeError as error:
         raise CanonicalizationError(f"invalid JSON: {error.msg}") from error
+    except CanonicalizationError:
+        raise
+    except ValueError as error:
+        raise CanonicalizationError("JSON scalar exceeds parser budget") from error

@@ -1,0 +1,42 @@
+{
+  "boundary_records": 4,
+  "boundary_replay": "BOUNDARY_REPLAY_MATCHED",
+  "capsule_import_boundary_replay": "BOUNDARY_REPLAY_MATCHED",
+  "capsule_import_checkpoint_restore": {
+    "fixture": true,
+    "workspace": true
+  },
+  "correlated_gateway_requests": 2,
+  "limitation": "Derived declared graph; no native dataflow or independent provenance F1. Capsule integrity and boundary matching do not establish authenticated author/freshness or restored-effect VERIFIED_REPLAY.",
+  "native_actions_not_semantically_intercepted": 2,
+  "normalized_root": "sha256:4df076fefc1bb8754a8f07c35d710a96d249d824220b7434e99026abaa8b12c3",
+  "provenance": {
+    "blast_radius": [],
+    "edges": [
+      {
+        "kind": "chronological",
+        "rationale": "ordered in the verified journal; not a dependency claim",
+        "source": 0,
+        "target": 1
+      },
+      {
+        "kind": "chronological",
+        "rationale": "ordered in the verified journal; not a dependency claim",
+        "source": 1,
+        "target": 2
+      },
+      {
+        "kind": "chronological",
+        "rationale": "ordered in the verified journal; not a dependency claim",
+        "source": 2,
+        "target": 3
+      }
+    ],
+    "journal_root": "sha256:4df076fefc1bb8754a8f07c35d710a96d249d824220b7434e99026abaa8b12c3",
+    "limitation": "Edges come from declared boundary metadata, not observed causal proof. Chronology is excluded from reachability; untyped carriers produce no dependency. Uninstrumented actions and agent adaptation remain outside this graph.",
+    "mode": "DECLARED_PROVENANCE_PREVIEW",
+    "nodes": 4,
+    "root_step": 0,
+    "untyped_carrier_steps": []
+  }
+}

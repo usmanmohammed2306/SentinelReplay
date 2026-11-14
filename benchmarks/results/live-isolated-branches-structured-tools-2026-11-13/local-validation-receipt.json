@@ -1,0 +1,33 @@
+{
+  "fresh_postgresql_integration": {
+    "passed": 1,
+    "source": "scripts/validate_branch_api.py"
+  },
+  "guarded_docker_opa": {
+    "command": "SENTINEL_TEST_ISOLATED_BRANCHES=1 SENTINEL_TEST_DOCKER_ISOLATION=1 SENTINEL_TEST_OPA_DOCKER=1 UV_OFFLINE=1 UV_CACHE_DIR=.uv-cache .venv/bin/uv run --frozen pytest -q -m 'not aws_optional and not postgres_integration'",
+    "deselected": 9,
+    "passed": 162
+  },
+  "limitations": "The final live cohort used its own archived nine-module snapshot. Later unique-ID and analyzer fixes were validated by local tests and a separate nine-branch scripted run, not a new live-model cohort. No hosted CI or release acceptance.",
+  "local_checks_only": true,
+  "make_check": {
+    "deselected": 11,
+    "format": "passed",
+    "guarded_skipped": 6,
+    "lint": "passed",
+    "passed": 154,
+    "strict_mypy": "passed"
+  },
+  "post_measurement_source_sha256": {
+    "scripts/validate_branch_api.py": "a97430df39d75ac8a6bbc241da6613628af527fd62f5cc976de08de00d3b5f63",
+    "src/sentinel_replay/branch_analysis.py": "9d374caedd60568013d5d5796ef2fad55219da66ebb7ea60a60dc83cb9f8fcb9",
+    "src/sentinel_replay/branch_evidence.py": "2c7e0f6491c3cd5bcc53b3e087abc143fd8874dc3df20ac61e7beabd86ec92fb",
+    "uv.lock": "d0ca9b69472ccea6ae834c34d8ce1c0a059e7ecd9cc89eb4cccb025d2c56b788"
+  },
+  "raw_local_receipt_sha256": {
+    ".local-controller/api-proof-2026-11-13-attempt01/postgres-tests.xml": "9b8f2140f6d3aec58d992fceeab834ebeaa9b432cb0a55eac67fe92c7572ce73",
+    ".local-controller/validation/local-docker-2026-11-13.log": "5eb278a92efcf13b672acd004021a4b94a935a1edd7fd354de80473d97755f2e",
+    ".local-controller/validation/local-docker-2026-11-13.xml": "9db9bde5c5c5bc9806bad4bd152e491888e8ed13b5057cbcc9c4a4c584860a18"
+  },
+  "recorded_at_utc": "2026-11-13T23:02:40.128301+00:00"
+}

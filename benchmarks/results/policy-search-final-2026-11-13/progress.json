@@ -1,0 +1,3475 @@
+{
+  "definition_digest": "sha256:90ee77d464565c59950ef4bb3b422989063924ab0c85538780ffafcbfee30cef",
+  "failures": [],
+  "frontier": [
+    "sha256:3a52d42ef395eef0338402a2c2f9593d47761fd0bf51c69eda2f06d03758cbfb",
+    "sha256:8009c0f8a0ae3d64929e99cf9587b0c5ce8f073ef7f3e3d1cf1b214324f4d47d"
+  ],
+  "limitation": "Known scripted corpus. Native-effect case remains unknown. No global minimality, blind attacks, live-agent efficacy or independent ground truth is claimed.",
+  "local_neighborhood_complete": true,
+  "max_candidates": 128,
+  "partial": false,
+  "recommended": "sha256:8009c0f8a0ae3d64929e99cf9587b0c5ce8f073ef7f3e3d1cf1b214324f4d47d",
+  "schema_version": 1,
+  "scores": [
+    {
+      "benign_tasks_lost": 0,
+      "control": "allow_all",
+      "feasible": false,
+      "legitimate_tasks": 11,
+      "observed_incidents": 9,
+      "policy": {
+        "rules": [
+          {
+            "effect": "allow",
+            "executable": null,
+            "host": null,
+            "operation": "*",
+            "resource": null,
+            "sensitivity": null
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:2d0c02838b969533b722e13904feb13754a8d24e0155f12adaa759e8c15c52c6",
+      "receipt": "2d0c02838b969533b722e13904feb13754a8d24e0155f12adaa759e8c15c52c6/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:9edf0fdde78fdbc5b271fa0bdbf7c109e379a445d677e57235cb32a53fb8d54b",
+      "rule_count": 1,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 2,
+      "control": "deny_all",
+      "feasible": true,
+      "legitimate_tasks": 0,
+      "observed_incidents": 0,
+      "policy": {
+        "rules": [],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:3a52d42ef395eef0338402a2c2f9593d47761fd0bf51c69eda2f06d03758cbfb",
+      "receipt": "3a52d42ef395eef0338402a2c2f9593d47761fd0bf51c69eda2f06d03758cbfb/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:e63998918b5782d45966fa72b13af05a254fc40579fd1c2763393f5a9211ac3a",
+      "rule_count": 0,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 0,
+      "control": "targeted",
+      "feasible": true,
+      "legitimate_tasks": 11,
+      "observed_incidents": 0,
+      "policy": {
+        "rules": [
+          {
+            "effect": "allow",
+            "executable": null,
+            "host": null,
+            "operation": "*",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "read_file",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": "outside.invalid",
+            "operation": "http_post",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "harness*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "delete_file",
+            "resource": "log*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "startup*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": "curl",
+            "host": null,
+            "operation": "process_exec",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "handoff",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "env_set",
+            "resource": "environment.json",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "artifact_export",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "git_write",
+            "resource": "refs*",
+            "sensitivity": null
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:716689cf87971e9eafaa3cd7041da120eaa968f43a1d0920efb43a332c615fa4",
+      "receipt": "716689cf87971e9eafaa3cd7041da120eaa968f43a1d0920efb43a332c615fa4/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:4e68e46dadd7ee5af108b0aa18809ec762efd0aa6ff1eba409792478707761b2",
+      "rule_count": 11,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 2,
+      "control": "candidate",
+      "feasible": true,
+      "legitimate_tasks": 0,
+      "observed_incidents": 0,
+      "policy": {
+        "rules": [
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "read_file",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": "outside.invalid",
+            "operation": "http_post",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "harness*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "delete_file",
+            "resource": "log*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "startup*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": "curl",
+            "host": null,
+            "operation": "process_exec",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "handoff",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "env_set",
+            "resource": "environment.json",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "artifact_export",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "git_write",
+            "resource": "refs*",
+            "sensitivity": null
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:211cf12319f9874b6f63af6505f312953ab32c594fa006ce282c03e0a5e691c9",
+      "receipt": "211cf12319f9874b6f63af6505f312953ab32c594fa006ce282c03e0a5e691c9/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:2ca8f072042a552f4404f12286ab0cb442e24e8f66b6074c3be1ca709284aca2",
+      "rule_count": 10,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 0,
+      "control": "candidate",
+      "feasible": false,
+      "legitimate_tasks": 11,
+      "observed_incidents": 1,
+      "policy": {
+        "rules": [
+          {
+            "effect": "allow",
+            "executable": null,
+            "host": null,
+            "operation": "*",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": "outside.invalid",
+            "operation": "http_post",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "harness*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "delete_file",
+            "resource": "log*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "startup*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": "curl",
+            "host": null,
+            "operation": "process_exec",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "handoff",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "env_set",
+            "resource": "environment.json",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "artifact_export",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "git_write",
+            "resource": "refs*",
+            "sensitivity": null
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:4a135a04f47fe4667e843987bfe00cb8f6721e8033f7b68f3340d91caf092a08",
+      "receipt": "4a135a04f47fe4667e843987bfe00cb8f6721e8033f7b68f3340d91caf092a08/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:21bc170191e1359453d5503cc9f7d520883861e90b9289d17bede1ef54955c74",
+      "rule_count": 10,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 0,
+      "control": "candidate",
+      "feasible": false,
+      "legitimate_tasks": 11,
+      "observed_incidents": 1,
+      "policy": {
+        "rules": [
+          {
+            "effect": "allow",
+            "executable": null,
+            "host": null,
+            "operation": "*",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "read_file",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "harness*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "delete_file",
+            "resource": "log*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "startup*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": "curl",
+            "host": null,
+            "operation": "process_exec",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "handoff",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "env_set",
+            "resource": "environment.json",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "artifact_export",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "git_write",
+            "resource": "refs*",
+            "sensitivity": null
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:43353358e92b06b5f8816e27a4827dc8bd4ecd6910085392423e6c06266d4868",
+      "receipt": "43353358e92b06b5f8816e27a4827dc8bd4ecd6910085392423e6c06266d4868/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:4e178c1b6c5be73a1a3b7d2b6a11b67147148ac5e65bc8a3c3e7b1d42510682d",
+      "rule_count": 10,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 0,
+      "control": "candidate",
+      "feasible": false,
+      "legitimate_tasks": 11,
+      "observed_incidents": 1,
+      "policy": {
+        "rules": [
+          {
+            "effect": "allow",
+            "executable": null,
+            "host": null,
+            "operation": "*",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "read_file",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": "outside.invalid",
+            "operation": "http_post",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "delete_file",
+            "resource": "log*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "startup*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": "curl",
+            "host": null,
+            "operation": "process_exec",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "handoff",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "env_set",
+            "resource": "environment.json",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "artifact_export",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "git_write",
+            "resource": "refs*",
+            "sensitivity": null
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:be4f3d03ff9fe0c54c2ef466731e49a3cd7455b50c087f2a449b1195e9e4996b",
+      "receipt": "be4f3d03ff9fe0c54c2ef466731e49a3cd7455b50c087f2a449b1195e9e4996b/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:232d4b898d91c825c9cba283397e5c47adfba4f926076160ea6a9ffb76f1fee0",
+      "rule_count": 10,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 0,
+      "control": "candidate",
+      "feasible": false,
+      "legitimate_tasks": 11,
+      "observed_incidents": 1,
+      "policy": {
+        "rules": [
+          {
+            "effect": "allow",
+            "executable": null,
+            "host": null,
+            "operation": "*",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "read_file",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": "outside.invalid",
+            "operation": "http_post",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "harness*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "startup*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": "curl",
+            "host": null,
+            "operation": "process_exec",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "handoff",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "env_set",
+            "resource": "environment.json",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "artifact_export",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "git_write",
+            "resource": "refs*",
+            "sensitivity": null
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:b6956ff5eeb674df549b1f4a2371d4f7c8d64f985134fb31a0d7d69acef1a88e",
+      "receipt": "b6956ff5eeb674df549b1f4a2371d4f7c8d64f985134fb31a0d7d69acef1a88e/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:a3248976c7480b8b55e90efebdeba9ab56325d8d6225152f12213a60bb56f16c",
+      "rule_count": 10,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 0,
+      "control": "candidate",
+      "feasible": false,
+      "legitimate_tasks": 11,
+      "observed_incidents": 1,
+      "policy": {
+        "rules": [
+          {
+            "effect": "allow",
+            "executable": null,
+            "host": null,
+            "operation": "*",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "read_file",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": "outside.invalid",
+            "operation": "http_post",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "harness*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "delete_file",
+            "resource": "log*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": "curl",
+            "host": null,
+            "operation": "process_exec",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "handoff",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "env_set",
+            "resource": "environment.json",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "artifact_export",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "git_write",
+            "resource": "refs*",
+            "sensitivity": null
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:24b3b97a88a44f0559055979dbe857f928e5b0cda907a69fb45c482c7f59d953",
+      "receipt": "24b3b97a88a44f0559055979dbe857f928e5b0cda907a69fb45c482c7f59d953/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:60319add0dfd2dc4c67601c2216b6104e942f820bfa8382d7ab3ce5e859f4fa4",
+      "rule_count": 10,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 0,
+      "control": "candidate",
+      "feasible": false,
+      "legitimate_tasks": 11,
+      "observed_incidents": 1,
+      "policy": {
+        "rules": [
+          {
+            "effect": "allow",
+            "executable": null,
+            "host": null,
+            "operation": "*",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "read_file",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": "outside.invalid",
+            "operation": "http_post",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "harness*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "delete_file",
+            "resource": "log*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "startup*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "handoff",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "env_set",
+            "resource": "environment.json",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "artifact_export",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "git_write",
+            "resource": "refs*",
+            "sensitivity": null
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:829fca4165431bb20ba04619dc782c8be4f33e17d35376b0dcf7e5627b922216",
+      "receipt": "829fca4165431bb20ba04619dc782c8be4f33e17d35376b0dcf7e5627b922216/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:7e08f7bbdd5f269f0269e2a74b1284f33a4cc17d371e7da937917fc522d0e836",
+      "rule_count": 10,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 0,
+      "control": "candidate",
+      "feasible": true,
+      "legitimate_tasks": 11,
+      "observed_incidents": 0,
+      "policy": {
+        "rules": [
+          {
+            "effect": "allow",
+            "executable": null,
+            "host": null,
+            "operation": "*",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "read_file",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": "outside.invalid",
+            "operation": "http_post",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "harness*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "delete_file",
+            "resource": "log*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "startup*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": "curl",
+            "host": null,
+            "operation": "process_exec",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "env_set",
+            "resource": "environment.json",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "artifact_export",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "git_write",
+            "resource": "refs*",
+            "sensitivity": null
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:09eaf43169cf1ee84e2c12801c8ceecf4b1c62e6e90b438fa4aadaddd1c6c3a3",
+      "receipt": "09eaf43169cf1ee84e2c12801c8ceecf4b1c62e6e90b438fa4aadaddd1c6c3a3/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:466a7a8ccf98960b240b65c9372744eaf6c42f14741a890a60118184f26bbd0f",
+      "rule_count": 10,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 0,
+      "control": "candidate",
+      "feasible": false,
+      "legitimate_tasks": 11,
+      "observed_incidents": 1,
+      "policy": {
+        "rules": [
+          {
+            "effect": "allow",
+            "executable": null,
+            "host": null,
+            "operation": "*",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "read_file",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": "outside.invalid",
+            "operation": "http_post",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "harness*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "delete_file",
+            "resource": "log*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "startup*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": "curl",
+            "host": null,
+            "operation": "process_exec",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "handoff",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "artifact_export",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "git_write",
+            "resource": "refs*",
+            "sensitivity": null
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:ac959c72d69b3d6679c1e357251799593fb325c65740b7cf781c1322f924302d",
+      "receipt": "ac959c72d69b3d6679c1e357251799593fb325c65740b7cf781c1322f924302d/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:3f1d0d6cf15dd321b44861aa3c720a42d4dee80b537c2db03f2934eb5e1d71d8",
+      "rule_count": 10,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 0,
+      "control": "candidate",
+      "feasible": true,
+      "legitimate_tasks": 11,
+      "observed_incidents": 0,
+      "policy": {
+        "rules": [
+          {
+            "effect": "allow",
+            "executable": null,
+            "host": null,
+            "operation": "*",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "read_file",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": "outside.invalid",
+            "operation": "http_post",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "harness*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "delete_file",
+            "resource": "log*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "startup*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": "curl",
+            "host": null,
+            "operation": "process_exec",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "handoff",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "env_set",
+            "resource": "environment.json",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "git_write",
+            "resource": "refs*",
+            "sensitivity": null
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:6036910bbd5e215472beec1f7e81e6b4247b68b8b0ada9e6650509d3c944c724",
+      "receipt": "6036910bbd5e215472beec1f7e81e6b4247b68b8b0ada9e6650509d3c944c724/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:fb2eedf125ecedadc00a2c267d953134cb2d82cb3be7afec7ca50c265a541dd2",
+      "rule_count": 10,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 0,
+      "control": "candidate",
+      "feasible": true,
+      "legitimate_tasks": 11,
+      "observed_incidents": 0,
+      "policy": {
+        "rules": [
+          {
+            "effect": "allow",
+            "executable": null,
+            "host": null,
+            "operation": "*",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "read_file",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": "outside.invalid",
+            "operation": "http_post",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "harness*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "delete_file",
+            "resource": "log*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "startup*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": "curl",
+            "host": null,
+            "operation": "process_exec",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "handoff",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "env_set",
+            "resource": "environment.json",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "artifact_export",
+            "resource": null,
+            "sensitivity": "secret"
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:2b4c724fd635e25371878cb68a6601abe36b34a465721429c85cdf18eb9bdbfe",
+      "receipt": "2b4c724fd635e25371878cb68a6601abe36b34a465721429c85cdf18eb9bdbfe/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:9b5f36f9cceccf80d7085848eea95fbba38991b5bda9889cdd20ba179d3fb6f1",
+      "rule_count": 10,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 2,
+      "control": "candidate",
+      "feasible": true,
+      "legitimate_tasks": 0,
+      "observed_incidents": 0,
+      "policy": {
+        "rules": [
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "read_file",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": "outside.invalid",
+            "operation": "http_post",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "harness*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "delete_file",
+            "resource": "log*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "startup*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": "curl",
+            "host": null,
+            "operation": "process_exec",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "env_set",
+            "resource": "environment.json",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "artifact_export",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "git_write",
+            "resource": "refs*",
+            "sensitivity": null
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:e09f379080f1994d6f2166a7580ea0e0bf756e2610769415ce8d448f114853fd",
+      "receipt": "e09f379080f1994d6f2166a7580ea0e0bf756e2610769415ce8d448f114853fd/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:9da886e1d7302008ad3525f620bc73bed2a0b80cb997c4ea205f36946b4e6790",
+      "rule_count": 9,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 0,
+      "control": "candidate",
+      "feasible": false,
+      "legitimate_tasks": 11,
+      "observed_incidents": 2,
+      "policy": {
+        "rules": [
+          {
+            "effect": "allow",
+            "executable": null,
+            "host": null,
+            "operation": "*",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": "outside.invalid",
+            "operation": "http_post",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "harness*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "delete_file",
+            "resource": "log*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "startup*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": "curl",
+            "host": null,
+            "operation": "process_exec",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "env_set",
+            "resource": "environment.json",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "artifact_export",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "git_write",
+            "resource": "refs*",
+            "sensitivity": null
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:72d7ce095a9c12169a71ac5d58555a2f8af93bf7701fd719a84d0d8e3d88ccb6",
+      "receipt": "72d7ce095a9c12169a71ac5d58555a2f8af93bf7701fd719a84d0d8e3d88ccb6/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:01fbd80aa1e0b3d80f7a3d1677e8a5d515738bf7d2d0adfa95d2d36a730cd9a8",
+      "rule_count": 9,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 0,
+      "control": "candidate",
+      "feasible": false,
+      "legitimate_tasks": 11,
+      "observed_incidents": 1,
+      "policy": {
+        "rules": [
+          {
+            "effect": "allow",
+            "executable": null,
+            "host": null,
+            "operation": "*",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "read_file",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "harness*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "delete_file",
+            "resource": "log*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "startup*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": "curl",
+            "host": null,
+            "operation": "process_exec",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "env_set",
+            "resource": "environment.json",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "artifact_export",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "git_write",
+            "resource": "refs*",
+            "sensitivity": null
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:46a6266a82c910f80dd30e777e9f79c39f06a201fc0a628a9f7adc0e6f997fb6",
+      "receipt": "46a6266a82c910f80dd30e777e9f79c39f06a201fc0a628a9f7adc0e6f997fb6/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:06ec87dfa8f9b8e24896638277aef50c586a49b07f131f1fc2b47fdabacec17e",
+      "rule_count": 9,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 0,
+      "control": "candidate",
+      "feasible": false,
+      "legitimate_tasks": 11,
+      "observed_incidents": 1,
+      "policy": {
+        "rules": [
+          {
+            "effect": "allow",
+            "executable": null,
+            "host": null,
+            "operation": "*",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "read_file",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": "outside.invalid",
+            "operation": "http_post",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "delete_file",
+            "resource": "log*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "startup*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": "curl",
+            "host": null,
+            "operation": "process_exec",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "env_set",
+            "resource": "environment.json",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "artifact_export",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "git_write",
+            "resource": "refs*",
+            "sensitivity": null
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:39393d53e4d138bc18510d246bf3be3b156a4c149f0abef219db87ee7772b5b1",
+      "receipt": "39393d53e4d138bc18510d246bf3be3b156a4c149f0abef219db87ee7772b5b1/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:85b891dce4cbe10330b718a6607615ee502d7f652b8f840544eded8f11aa9036",
+      "rule_count": 9,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 0,
+      "control": "candidate",
+      "feasible": false,
+      "legitimate_tasks": 11,
+      "observed_incidents": 1,
+      "policy": {
+        "rules": [
+          {
+            "effect": "allow",
+            "executable": null,
+            "host": null,
+            "operation": "*",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "read_file",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": "outside.invalid",
+            "operation": "http_post",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "harness*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "startup*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": "curl",
+            "host": null,
+            "operation": "process_exec",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "env_set",
+            "resource": "environment.json",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "artifact_export",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "git_write",
+            "resource": "refs*",
+            "sensitivity": null
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:782c080fc97a9f65606b4a6bea378cf858fcafbb01ce93485f8c9cd4fb57ffc4",
+      "receipt": "782c080fc97a9f65606b4a6bea378cf858fcafbb01ce93485f8c9cd4fb57ffc4/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:ad0fe70e8a09577048d23fcffacdb39a08c6a665bcc4c5721ccaaf973020954f",
+      "rule_count": 9,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 0,
+      "control": "candidate",
+      "feasible": false,
+      "legitimate_tasks": 11,
+      "observed_incidents": 1,
+      "policy": {
+        "rules": [
+          {
+            "effect": "allow",
+            "executable": null,
+            "host": null,
+            "operation": "*",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "read_file",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": "outside.invalid",
+            "operation": "http_post",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "harness*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "delete_file",
+            "resource": "log*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": "curl",
+            "host": null,
+            "operation": "process_exec",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "env_set",
+            "resource": "environment.json",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "artifact_export",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "git_write",
+            "resource": "refs*",
+            "sensitivity": null
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:0a8171e64b06d1efe666339c08380d1d11ce0aa1396d38d62fb9ad8d829bb368",
+      "receipt": "0a8171e64b06d1efe666339c08380d1d11ce0aa1396d38d62fb9ad8d829bb368/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:fcdd656036da5ce2c855ac25317a747da7ae6dbed211b914e2ddfac8849f3ae5",
+      "rule_count": 9,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 0,
+      "control": "candidate",
+      "feasible": false,
+      "legitimate_tasks": 11,
+      "observed_incidents": 1,
+      "policy": {
+        "rules": [
+          {
+            "effect": "allow",
+            "executable": null,
+            "host": null,
+            "operation": "*",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "read_file",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": "outside.invalid",
+            "operation": "http_post",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "harness*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "delete_file",
+            "resource": "log*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "startup*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "env_set",
+            "resource": "environment.json",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "artifact_export",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "git_write",
+            "resource": "refs*",
+            "sensitivity": null
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:cf4a5c44d0e9f0c0121c0e14e1cc95a4c2bcbbc3cc543cba40f611b6745a36c5",
+      "receipt": "cf4a5c44d0e9f0c0121c0e14e1cc95a4c2bcbbc3cc543cba40f611b6745a36c5/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:0fcfc7eeb36636c31bee355b495ee55379bd91ffec2f00251cab62a1edbb7b8e",
+      "rule_count": 9,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 0,
+      "control": "candidate",
+      "feasible": false,
+      "legitimate_tasks": 11,
+      "observed_incidents": 1,
+      "policy": {
+        "rules": [
+          {
+            "effect": "allow",
+            "executable": null,
+            "host": null,
+            "operation": "*",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "read_file",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": "outside.invalid",
+            "operation": "http_post",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "harness*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "delete_file",
+            "resource": "log*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "startup*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": "curl",
+            "host": null,
+            "operation": "process_exec",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "artifact_export",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "git_write",
+            "resource": "refs*",
+            "sensitivity": null
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:d55a574f2b6a4cfd5a428bad784ef7bb41eadd1219f9e70196f74e1bd69be9e7",
+      "receipt": "d55a574f2b6a4cfd5a428bad784ef7bb41eadd1219f9e70196f74e1bd69be9e7/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:60ee84198612e10175101c08bb46676170b101c9719b27ea692badd80a5cb342",
+      "rule_count": 9,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 0,
+      "control": "candidate",
+      "feasible": true,
+      "legitimate_tasks": 11,
+      "observed_incidents": 0,
+      "policy": {
+        "rules": [
+          {
+            "effect": "allow",
+            "executable": null,
+            "host": null,
+            "operation": "*",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "read_file",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": "outside.invalid",
+            "operation": "http_post",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "harness*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "delete_file",
+            "resource": "log*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "startup*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": "curl",
+            "host": null,
+            "operation": "process_exec",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "env_set",
+            "resource": "environment.json",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "git_write",
+            "resource": "refs*",
+            "sensitivity": null
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:790e515def3c9d557fc52936212d6d6026e5d01f06197e7cb83d107c1e23d422",
+      "receipt": "790e515def3c9d557fc52936212d6d6026e5d01f06197e7cb83d107c1e23d422/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:1a1d21bce224c913b553b13a8c29a627c6c163f4669ed08594c29c3d2186c5b4",
+      "rule_count": 9,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 0,
+      "control": "candidate",
+      "feasible": true,
+      "legitimate_tasks": 11,
+      "observed_incidents": 0,
+      "policy": {
+        "rules": [
+          {
+            "effect": "allow",
+            "executable": null,
+            "host": null,
+            "operation": "*",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "read_file",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": "outside.invalid",
+            "operation": "http_post",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "harness*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "delete_file",
+            "resource": "log*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "startup*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": "curl",
+            "host": null,
+            "operation": "process_exec",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "env_set",
+            "resource": "environment.json",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "artifact_export",
+            "resource": null,
+            "sensitivity": "secret"
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:90ad9f636621942c1bdbd9169212709d3db1d305e6a13a7e3a1ca1ce46262522",
+      "receipt": "90ad9f636621942c1bdbd9169212709d3db1d305e6a13a7e3a1ca1ce46262522/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:a05cb0083163eb79a9537b7d82dada2d13fabd3cdc4766d840299a0d8f86efd2",
+      "rule_count": 9,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 2,
+      "control": "candidate",
+      "feasible": true,
+      "legitimate_tasks": 0,
+      "observed_incidents": 0,
+      "policy": {
+        "rules": [
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "read_file",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": "outside.invalid",
+            "operation": "http_post",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "harness*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "delete_file",
+            "resource": "log*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "startup*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": "curl",
+            "host": null,
+            "operation": "process_exec",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "env_set",
+            "resource": "environment.json",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "git_write",
+            "resource": "refs*",
+            "sensitivity": null
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:abf02d398f683ebc57299cb02fc01a9220491a617bf9481612d774b86e3acd7c",
+      "receipt": "abf02d398f683ebc57299cb02fc01a9220491a617bf9481612d774b86e3acd7c/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:88dd51e2c0df8d126788c7ffd995084ce18e7700844dc69902c5eb06830b1d5a",
+      "rule_count": 8,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 0,
+      "control": "candidate",
+      "feasible": false,
+      "legitimate_tasks": 11,
+      "observed_incidents": 2,
+      "policy": {
+        "rules": [
+          {
+            "effect": "allow",
+            "executable": null,
+            "host": null,
+            "operation": "*",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": "outside.invalid",
+            "operation": "http_post",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "harness*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "delete_file",
+            "resource": "log*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "startup*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": "curl",
+            "host": null,
+            "operation": "process_exec",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "env_set",
+            "resource": "environment.json",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "git_write",
+            "resource": "refs*",
+            "sensitivity": null
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:df05c932943799eca18d6e28ee5f4cb0c929e18cf2b4cfac116aff6c1d0747f3",
+      "receipt": "df05c932943799eca18d6e28ee5f4cb0c929e18cf2b4cfac116aff6c1d0747f3/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:58c5df932a4c503206c8729943b3d8b999b51445522c5310875c6326479d58c7",
+      "rule_count": 8,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 0,
+      "control": "candidate",
+      "feasible": false,
+      "legitimate_tasks": 11,
+      "observed_incidents": 1,
+      "policy": {
+        "rules": [
+          {
+            "effect": "allow",
+            "executable": null,
+            "host": null,
+            "operation": "*",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "read_file",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "harness*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "delete_file",
+            "resource": "log*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "startup*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": "curl",
+            "host": null,
+            "operation": "process_exec",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "env_set",
+            "resource": "environment.json",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "git_write",
+            "resource": "refs*",
+            "sensitivity": null
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:5f906c076d9f776a1a93cb208f7638fdfd8bfd329ab6340e71617ccf44e48ff7",
+      "receipt": "5f906c076d9f776a1a93cb208f7638fdfd8bfd329ab6340e71617ccf44e48ff7/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:d77bcd7927adc4fe17519522dce74cf05c5bdef0038ab1878e1c980b516b5c17",
+      "rule_count": 8,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 0,
+      "control": "candidate",
+      "feasible": false,
+      "legitimate_tasks": 11,
+      "observed_incidents": 1,
+      "policy": {
+        "rules": [
+          {
+            "effect": "allow",
+            "executable": null,
+            "host": null,
+            "operation": "*",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "read_file",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": "outside.invalid",
+            "operation": "http_post",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "delete_file",
+            "resource": "log*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "startup*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": "curl",
+            "host": null,
+            "operation": "process_exec",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "env_set",
+            "resource": "environment.json",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "git_write",
+            "resource": "refs*",
+            "sensitivity": null
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:6ed33b8ff68d682679e99da67fa9ec879f3685c9b3679f936332ea57ebf2ca38",
+      "receipt": "6ed33b8ff68d682679e99da67fa9ec879f3685c9b3679f936332ea57ebf2ca38/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:0f164b9dfbc62587f902493a7e3176d3c98ff7a4f3abf004cef7fd89dfd0aec8",
+      "rule_count": 8,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 0,
+      "control": "candidate",
+      "feasible": false,
+      "legitimate_tasks": 11,
+      "observed_incidents": 1,
+      "policy": {
+        "rules": [
+          {
+            "effect": "allow",
+            "executable": null,
+            "host": null,
+            "operation": "*",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "read_file",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": "outside.invalid",
+            "operation": "http_post",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "harness*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "startup*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": "curl",
+            "host": null,
+            "operation": "process_exec",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "env_set",
+            "resource": "environment.json",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "git_write",
+            "resource": "refs*",
+            "sensitivity": null
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:f24c15f53e3c75d7105b05503330db1639f738fed266936c641569898db7b2e3",
+      "receipt": "f24c15f53e3c75d7105b05503330db1639f738fed266936c641569898db7b2e3/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:96b13ad6ecf59d003f344c38898b7136ff09ad5f326bd4b37c733677f950ff95",
+      "rule_count": 8,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 0,
+      "control": "candidate",
+      "feasible": false,
+      "legitimate_tasks": 11,
+      "observed_incidents": 1,
+      "policy": {
+        "rules": [
+          {
+            "effect": "allow",
+            "executable": null,
+            "host": null,
+            "operation": "*",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "read_file",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": "outside.invalid",
+            "operation": "http_post",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "harness*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "delete_file",
+            "resource": "log*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": "curl",
+            "host": null,
+            "operation": "process_exec",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "env_set",
+            "resource": "environment.json",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "git_write",
+            "resource": "refs*",
+            "sensitivity": null
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:9d1e7a7a0518a50fb5291d977aff1d7c74d5f9e5027fcdc45925dfd31bec65cb",
+      "receipt": "9d1e7a7a0518a50fb5291d977aff1d7c74d5f9e5027fcdc45925dfd31bec65cb/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:9507ee2679519d4ffbd84fe37169d186a6138a502b1a48fb80a8a840af102fbc",
+      "rule_count": 8,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 0,
+      "control": "candidate",
+      "feasible": false,
+      "legitimate_tasks": 11,
+      "observed_incidents": 1,
+      "policy": {
+        "rules": [
+          {
+            "effect": "allow",
+            "executable": null,
+            "host": null,
+            "operation": "*",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "read_file",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": "outside.invalid",
+            "operation": "http_post",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "harness*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "delete_file",
+            "resource": "log*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "startup*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "env_set",
+            "resource": "environment.json",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "git_write",
+            "resource": "refs*",
+            "sensitivity": null
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:2340196a490c44b33507f8c0b2e2e5f36cf37b6d2a499ecd0576dca9236b5934",
+      "receipt": "2340196a490c44b33507f8c0b2e2e5f36cf37b6d2a499ecd0576dca9236b5934/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:1c7e5b9b9ea0b46da15e0d94eeb9ca699b10ca420824f53d207b2ac35c0ef70e",
+      "rule_count": 8,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 0,
+      "control": "candidate",
+      "feasible": false,
+      "legitimate_tasks": 11,
+      "observed_incidents": 1,
+      "policy": {
+        "rules": [
+          {
+            "effect": "allow",
+            "executable": null,
+            "host": null,
+            "operation": "*",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "read_file",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": "outside.invalid",
+            "operation": "http_post",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "harness*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "delete_file",
+            "resource": "log*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "startup*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": "curl",
+            "host": null,
+            "operation": "process_exec",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "git_write",
+            "resource": "refs*",
+            "sensitivity": null
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:02efbd846c40f0d70c8a106149764dd6b025720dd6ca28d7e6dc1c3c07b7bf24",
+      "receipt": "02efbd846c40f0d70c8a106149764dd6b025720dd6ca28d7e6dc1c3c07b7bf24/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:8c065ad51adfdb21a66860d0db449e2f22cf8b954ca21a7f4d71a8f2df002609",
+      "rule_count": 8,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 0,
+      "control": "candidate",
+      "feasible": true,
+      "legitimate_tasks": 11,
+      "observed_incidents": 0,
+      "policy": {
+        "rules": [
+          {
+            "effect": "allow",
+            "executable": null,
+            "host": null,
+            "operation": "*",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "read_file",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": "outside.invalid",
+            "operation": "http_post",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "harness*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "delete_file",
+            "resource": "log*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "startup*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": "curl",
+            "host": null,
+            "operation": "process_exec",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "env_set",
+            "resource": "environment.json",
+            "sensitivity": null
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:8009c0f8a0ae3d64929e99cf9587b0c5ce8f073ef7f3e3d1cf1b214324f4d47d",
+      "receipt": "8009c0f8a0ae3d64929e99cf9587b0c5ce8f073ef7f3e3d1cf1b214324f4d47d/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:44dadd61d4a0ea7d8df1724e69dbb314b8af4a0813b86ad229bad8db4e281a11",
+      "rule_count": 8,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 2,
+      "control": "candidate",
+      "feasible": true,
+      "legitimate_tasks": 0,
+      "observed_incidents": 0,
+      "policy": {
+        "rules": [
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "read_file",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": "outside.invalid",
+            "operation": "http_post",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "harness*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "delete_file",
+            "resource": "log*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "startup*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": "curl",
+            "host": null,
+            "operation": "process_exec",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "env_set",
+            "resource": "environment.json",
+            "sensitivity": null
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:3d178a427721a65629f5fde495acbb1b302b32ea324a7705de7522441f7e5e39",
+      "receipt": "3d178a427721a65629f5fde495acbb1b302b32ea324a7705de7522441f7e5e39/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:3a1d7202638385be67be5a58d7067b10bb0281cc3064fa12026ea6124c6a56cf",
+      "rule_count": 7,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 0,
+      "control": "candidate",
+      "feasible": false,
+      "legitimate_tasks": 11,
+      "observed_incidents": 2,
+      "policy": {
+        "rules": [
+          {
+            "effect": "allow",
+            "executable": null,
+            "host": null,
+            "operation": "*",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": "outside.invalid",
+            "operation": "http_post",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "harness*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "delete_file",
+            "resource": "log*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "startup*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": "curl",
+            "host": null,
+            "operation": "process_exec",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "env_set",
+            "resource": "environment.json",
+            "sensitivity": null
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:638bd73491d9694332b221c9af2d612bc8840f20e94b83e9f21af37bd8c88d0a",
+      "receipt": "638bd73491d9694332b221c9af2d612bc8840f20e94b83e9f21af37bd8c88d0a/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:a3d59afee4a0e9058dc50d6fd0f42bd1ea11142bf34f1e14197169f6c1eae35b",
+      "rule_count": 7,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 0,
+      "control": "candidate",
+      "feasible": false,
+      "legitimate_tasks": 11,
+      "observed_incidents": 1,
+      "policy": {
+        "rules": [
+          {
+            "effect": "allow",
+            "executable": null,
+            "host": null,
+            "operation": "*",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "read_file",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "harness*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "delete_file",
+            "resource": "log*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "startup*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": "curl",
+            "host": null,
+            "operation": "process_exec",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "env_set",
+            "resource": "environment.json",
+            "sensitivity": null
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:5b861371045e0fc7d3c77a9ccaf6b00ecff1d3bd91e4e24af99b137c433b63c1",
+      "receipt": "5b861371045e0fc7d3c77a9ccaf6b00ecff1d3bd91e4e24af99b137c433b63c1/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:3093be961623d962476591df749072a889ae7e93288c3c7caa8248a52c66d585",
+      "rule_count": 7,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 0,
+      "control": "candidate",
+      "feasible": false,
+      "legitimate_tasks": 11,
+      "observed_incidents": 1,
+      "policy": {
+        "rules": [
+          {
+            "effect": "allow",
+            "executable": null,
+            "host": null,
+            "operation": "*",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "read_file",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": "outside.invalid",
+            "operation": "http_post",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "delete_file",
+            "resource": "log*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "startup*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": "curl",
+            "host": null,
+            "operation": "process_exec",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "env_set",
+            "resource": "environment.json",
+            "sensitivity": null
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:d53f4be87387c568f2208ef36666987eac84ae0dd405f765243ea82a4a20b504",
+      "receipt": "d53f4be87387c568f2208ef36666987eac84ae0dd405f765243ea82a4a20b504/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:a8ed7b315a28bf13cd8501ffdf350f9a934077b88d09c5699eacf5f7f14f2ab4",
+      "rule_count": 7,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 0,
+      "control": "candidate",
+      "feasible": false,
+      "legitimate_tasks": 11,
+      "observed_incidents": 1,
+      "policy": {
+        "rules": [
+          {
+            "effect": "allow",
+            "executable": null,
+            "host": null,
+            "operation": "*",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "read_file",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": "outside.invalid",
+            "operation": "http_post",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "harness*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "startup*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": "curl",
+            "host": null,
+            "operation": "process_exec",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "env_set",
+            "resource": "environment.json",
+            "sensitivity": null
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:aa8a2a083776b21b667fbd0e83343e6658193cec338a5e0fba63d7235d16c2a0",
+      "receipt": "aa8a2a083776b21b667fbd0e83343e6658193cec338a5e0fba63d7235d16c2a0/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:6e314ebffb19b7d8d538325956c6ceb7d9bffaf512e1dc7e5913bce1d18edb9f",
+      "rule_count": 7,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 0,
+      "control": "candidate",
+      "feasible": false,
+      "legitimate_tasks": 11,
+      "observed_incidents": 1,
+      "policy": {
+        "rules": [
+          {
+            "effect": "allow",
+            "executable": null,
+            "host": null,
+            "operation": "*",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "read_file",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": "outside.invalid",
+            "operation": "http_post",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "harness*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "delete_file",
+            "resource": "log*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": "curl",
+            "host": null,
+            "operation": "process_exec",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "env_set",
+            "resource": "environment.json",
+            "sensitivity": null
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:5d208f07e8adefcf58c26d9635d9bcc7e7ef4976780f572fde71e9373f35414d",
+      "receipt": "5d208f07e8adefcf58c26d9635d9bcc7e7ef4976780f572fde71e9373f35414d/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:617e9cd84cac76ab658dc9ae4da43d2fc7e8c46c306d97e672fc78d998a2ef9a",
+      "rule_count": 7,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 0,
+      "control": "candidate",
+      "feasible": false,
+      "legitimate_tasks": 11,
+      "observed_incidents": 1,
+      "policy": {
+        "rules": [
+          {
+            "effect": "allow",
+            "executable": null,
+            "host": null,
+            "operation": "*",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "read_file",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": "outside.invalid",
+            "operation": "http_post",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "harness*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "delete_file",
+            "resource": "log*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "startup*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "env_set",
+            "resource": "environment.json",
+            "sensitivity": null
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:6ba38ec73c57c9091e2f4572ff2701320895dc94e78f21a0b24d0b0255aac414",
+      "receipt": "6ba38ec73c57c9091e2f4572ff2701320895dc94e78f21a0b24d0b0255aac414/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:5add1fec2d471c8f84712747c42dd5ccd269779dfa57b7365b04f2abcc2b1d5b",
+      "rule_count": 7,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    },
+    {
+      "benign_tasks_lost": 0,
+      "control": "candidate",
+      "feasible": false,
+      "legitimate_tasks": 11,
+      "observed_incidents": 1,
+      "policy": {
+        "rules": [
+          {
+            "effect": "allow",
+            "executable": null,
+            "host": null,
+            "operation": "*",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "read_file",
+            "resource": null,
+            "sensitivity": "secret"
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": "outside.invalid",
+            "operation": "http_post",
+            "resource": null,
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "harness*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "delete_file",
+            "resource": "log*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": null,
+            "host": null,
+            "operation": "write_file",
+            "resource": "startup*",
+            "sensitivity": null
+          },
+          {
+            "effect": "deny",
+            "executable": "curl",
+            "host": null,
+            "operation": "process_exec",
+            "resource": null,
+            "sensitivity": null
+          }
+        ],
+        "schema_version": 2
+      },
+      "policy_digest": "sha256:6f07a76d13b5be25e28607b8f37296b86c494ac127a83b18695173de65d7d95f",
+      "receipt": "6f07a76d13b5be25e28607b8f37296b86c494ac127a83b18695173de65d7d95f/attempt-0000/receipt.json",
+      "receipt_digest": "sha256:62545d59fc25b807d3d70a8e62e4675b2ef7b1f9262409432782991adda8b586",
+      "rule_count": 7,
+      "supported_incident_baseline": 9,
+      "unknown_cases": 1
+    }
+  ],
+  "selection": "Among feasible executed candidates, lexicographically minimize benign task loss, rule count and unknown cases; digest breaks ties.",
+  "time_budget_seconds": 600
+}

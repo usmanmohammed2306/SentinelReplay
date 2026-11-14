@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "status": "failed_during_packaging",
+  "observed_error": "floating point value is unsupported: 1.2165968339832034",
+  "cause": "The report used float timing values, which the canonical evidence loader correctly rejects.",
+  "interpretation": "The prepared branch report and protocol remain retained, but the integrated experiment did not complete. This is not an accepted capsule-round-trip or comparison result."
+}

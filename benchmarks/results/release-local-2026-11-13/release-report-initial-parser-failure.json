@@ -1,0 +1,97 @@
+{
+  "accepted_student_slices": "unchanged_by_this_command",
+  "engineering_checks": {
+    "browser_tests": {
+      "passed": false,
+      "reason": "CanonicalizationError: missing, changed or invalid evidence"
+    },
+    "corpus": {
+      "passed": false,
+      "reason": "CanonicalizationError: missing, changed or invalid evidence"
+    },
+    "deployment_recovery": {
+      "evidence": {
+        "digest": "sha256:5c963049088a7d12046e4ad72d146c3eb197d3147dbe2d1e4491bb1dae5c523d",
+        "path": "benchmarks/results/release-local-2026-11-13/deployment_recovery.json"
+      },
+      "passed": true
+    },
+    "guarded_tests": {
+      "passed": false,
+      "reason": "CanonicalizationError: missing, changed or invalid evidence"
+    },
+    "local_tests": {
+      "passed": false,
+      "reason": "CanonicalizationError: missing, changed or invalid evidence"
+    },
+    "policy_search": {
+      "evidence": {
+        "digest": "sha256:326728d57e458e4789b8a2aa2239a8aca755ec124e932fe85d4521c87abba15d",
+        "path": "benchmarks/results/policy-search-final-2026-11-13/progress.json"
+      },
+      "passed": true
+    },
+    "postgres_http": {
+      "evidence": {
+        "digest": "sha256:dd5a074de7d07e87587554668f75772911254810e7f1b614269804c4bbc51bc7",
+        "path": "benchmarks/results/release-local-2026-11-13/postgres_http.json"
+      },
+      "passed": true
+    },
+    "product_demo": {
+      "evidence": {
+        "digest": "sha256:e33b174a329a0e3463126b910c4274fc0fe45906dac170516f088618465a23b5",
+        "path": "benchmarks/results/product-demo-final-2026-11-13/demo-report.json"
+      },
+      "passed": true
+    },
+    "proof_video": {
+      "passed": false,
+      "reason": "CanonicalizationError: missing, changed or invalid evidence"
+    },
+    "recording_overhead": {
+      "passed": false,
+      "reason": "CanonicalizationError: missing, changed or invalid evidence"
+    },
+    "scale": {
+      "passed": false,
+      "reason": "CanonicalizationError: missing, changed or invalid evidence"
+    },
+    "ui_build": {
+      "passed": false,
+      "reason": "CanonicalizationError: missing, changed or invalid evidence"
+    }
+  },
+  "limitation": "Local artifact audit and declared reviews; not independent validation of reviewer identity, publication, latest-root freshness or a production safety guarantee.",
+  "requested_stage": "release",
+  "review_gates": {
+    "clean_room_reproduction": {
+      "state": "PENDING"
+    },
+    "end_to_end_load_and_latency": {
+      "state": "PENDING"
+    },
+    "hosted_ci": {
+      "state": "PENDING"
+    },
+    "independent_provenance": {
+      "state": "PENDING"
+    },
+    "license_and_distribution": {
+      "state": "PENDING"
+    },
+    "owner_teach_back": {
+      "state": "PENDING"
+    },
+    "representative_recording_overhead": {
+      "state": "PENDING"
+    },
+    "signer_boundary_and_freshness": {
+      "state": "PENDING"
+    }
+  },
+  "schema_version": 1,
+  "source_mismatches": [],
+  "source_root": "sha256:7c2644197112a52456afa2589cbe7ef6cea8d6fb9f9b60c4856196adfaa2406b",
+  "status": "RELEASE_BLOCKED"
+}

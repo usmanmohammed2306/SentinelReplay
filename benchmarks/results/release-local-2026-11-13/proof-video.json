@@ -1,0 +1,11 @@
+{
+  "capture_source_digest": "sha256:243774d8c0e8566e3580d67de09bd6be59dad05a09706a5ac2139d66588a2d53",
+  "continuous_capture": true,
+  "duration_seconds": 75.24,
+  "journal_root": "sha256:339f370df676763780159ed889a90a2de44225d5b95840a5dc38fd17a1dac41a",
+  "measurement": "Playwright continuous VP9 capture; duration inspected with matching bundled FFmpeg",
+  "video": {
+    "digest": "sha256:d9458b679a0e0d366d170236857c6ead81b6b2a287e5ac7e7197d0a476d56c37",
+    "path": "docs/assets/sentinel-replay-proof.webm"
+  }
+}

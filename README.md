@@ -1,110 +1,80 @@
 <p align="center">
-  <img src="docs/assets/sentinel-replay-banner.svg" alt="Sentinel Replay — Counterfactual Incident Forensics for Autonomous AI Agents" width="100%" />
+  <img src="docs/assets/sentinel-replay-banner.svg" alt="Sentinel Replay — Counterfactual Agent Incident Forensics" width="100%" />
 </p>
 
-<p align="center">
-  <strong>Reconstruct the incident. Inspect the evidence. Test the boundary.</strong>
-</p>
+<p align="center"><strong>The trace tells you what happened. The investigation asks what would have changed it.</strong></p>
 
-An agent reads a credential. A few steps later, the value appears in an outbound request. The trace records both actions, buried among thousands of others. Finding the suspicious line is only the beginning: which later actions depend on it, what state can be restored, and what would a different policy actually change?
+An agent reads a credential. Two steps later, its value reaches an outbound request. Between those events sit thousands of ordinary actions, a changing workspace, and a question the log alone cannot answer: what would a different policy have changed?
 
-Sentinel Replay builds an investigation around those questions. Its current implementation combines a hash-chained recorder, fail-closed boundary matching, workspace snapshots, incident analysis, signed evidence capsules, and a policy-controlled tool gateway.
+Sentinel Replay turns that trace into an investigation. Collapse the routine steps. Follow a declared dependency. Restore the covered state. Replay the recorded path, then execute a supported alternate future and compare the resulting files. Carry the investigation to another installation in a signed capsule.
 
-The repository contains runnable components and retained experiment reports. The full investigation UI, comprehensive agent containment, and production release remain under development.
+The implementation runs locally with a professional investigation UI, PostgreSQL, encrypted evidence storage, OPA enforcement, and bounded background operations. **Full V1 release remains gated** by independent validation, representative performance evidence, hosted CI, and owner review. [Current status and results](docs/STATUS.md) make those boundaries explicit.
 
-## What runs today
+![A real Sentinel Replay investigation showing the declared secret-to-export dependency](docs/assets/investigation.png)
 
-| Capability | Implemented behavior |
-| --- | --- |
-| Evidence journal | Canonical event hashes, hash-chain verification, bounded batch append, and durable per-event writing |
-| Boundary replay | Matches recorded call identity and request digests; missing or mismatched evidence raises `ReplayMiss` |
-| Incident analysis | Redacted timeline phases, declared dependency graphs, blast radius, and a synthetic three-policy comparison |
-| Workspace recovery | Captures bounded regular files to content-addressed storage, restores into a new directory, and verifies covered bytes |
-| Portable evidence | Bounded capsule export/import, archive verification, and optional detached development Ed25519 signatures |
-| Persistent API | Signed-capsule ingestion and verified read-back through FastAPI, PostgreSQL 17, and filesystem content-addressed storage |
-| Policy gateway | One named-copy MCP tool enforces an OPA decision before its effect and records a digest-bound intent |
-| Effect reconciliation | Checks actual outbox bytes after an interrupted operation and can finalize a matching missing receipt once |
+[Watch the continuous 75-second product recording](docs/assets/sentinel-replay-proof.webm) · [Inspect the executable demo report](benchmarks/results/product-demo-final-2026-11-13/demo-report.json) · [Read the coverage contract](docs/ENVIRONMENT_PACK_CONTRACT.md)
 
-The implementation is Python 3.12 with Typer, Pydantic, FastAPI, SQLAlchemy, Alembic, cryptography, and OPA/Rego. Local deployment uses Docker Compose. AWS evidence adapters are optional, offline-tested components; no AWS deployment is claimed.
+## Run an investigation
 
-## Run the evidence path
-
-With Python 3.12 and uv 0.12.17:
+Requirements: Python 3.12, uv 0.12.17, and Docker for the real OPA evaluator. The pinned OPA image must be available locally; the evaluator refuses a silent substitute.
 
 ```bash
 uv sync --frozen
-uv run --frozen sentinel version
 make check
 
-# Use a fresh directory for each demonstration.
-uv run --frozen sentinel demo-mini /tmp/sentinel-first-investigation
+# Fetch the declared evaluator once; recording itself uses --pull never.
+docker pull openpolicyagent/opa:1.0.0@sha256:c0609fecc0924743f8648dc4a035d2f57ca163dc723ed1d13f3197ba5bd122b3
+
+# Each run creates a fresh private output directory.
+uv run --frozen sentinel demo
 ```
 
-The mini-agent records separate incident and benign trajectories, verifies their journals, and matches their recorded boundaries without live fallback. Its output is labeled `BOUNDARY_REPLAY_MATCHED`.
+The demo records 3,184 synthetic program actions, compresses 3,186 boundaries into six phases, restores workspace/Git/SQLite checkpoints, executes three policies, localizes a file effect, and signs, imports and replays the resulting capsule. Its report deliberately distinguishes workflow success from release acceptance.
 
-Inspect the incident and compare policies:
+For the full browser application, follow the [self-hosted runbook](docs/SELF_HOSTED_PREVIEW.md). It starts the API and UI on loopback, keeps PostgreSQL internal, and requires a private encryption key and operator trust registry. AWS is optional and unused by this workflow.
+
+## What the system does
+
+| Path | Implemented behavior |
+| --- | --- |
+| Record | Source-bound finite programs; recorded clock/RNG inputs; durable effect intents; unique recording identities; optional periodic signed prefixes |
+| Restore and replay | Verified regular-file, Git and SQLite snapshots; fail-closed replay; exact covered state/effect checks; no live fallback |
+| Investigate | Deterministic incident rules, collapsed phases, virtualized timeline, declared provenance, bounded blast radius and journal-bound OpenTelemetry enrichment |
+| Compare policies | Typed policy DSL compiled to Rego; real OPA; executed alternate futures; bounded resumable search; explicit cost vectors and Pareto frontier |
+| Inspect divergence | Ordered structural mismatch, input/output differences, declared effect receipts, and covered file/executable-bit changes |
+| Retain evidence | Bounded portable capsules, detached Ed25519 statements, AES-GCM storage and export, scoped run access, durable audit and signer revocation |
+| Operate locally | PostgreSQL migrations, persistent job history and resumable SSE, queue/deadline limits, logical retirement, offline collection and stopped-writer recovery |
+| Observe a real agent | Custom coding-agent adapter in pinned offline Docker, controller-brokered model requests and OPA-controlled named effects |
+
+Python/FastAPI, SQLAlchemy/Alembic, PostgreSQL, Next.js/React/TypeScript, React Flow, Monaco, OpenTelemetry, OPA/Rego, Docker and cryptography form the implementation. Models and cloud accounts are unnecessary for the deterministic demo.
+
+## Measured, with denominators
+
+The [twelve-case deterministic corpus](benchmarks/results/environment-pack-corpus-final-2026-11-13/results.json) contains **nine supported incident cases, one unsupported native-effect case, and two controls**. Across 36 branches, all 33 supported strict replays passed. Targeted policy removed all nine observed supported incidents and preserved all 11 supported legitimate tasks; blanket denial preserved none. The native-effect case remains unknown in every arm. These are known synthetic fixtures, not unseen attack efficacy.
+
+The [bounded policy search](benchmarks/results/policy-search-final-2026-11-13/progress.json) evaluated 41 candidates across 492 case branches without failures, yielding two frontier points. The best task-preserving candidate used eight rules versus the eleven-rule seed. That establishes a result within the executed greedy neighborhood, not a global minimum.
+
+At 50,000 boundaries, [25 warm in-process samples](benchmarks/results/product-scale-final-2026-11-13/results.json) measured **0.69 ms median first-page lookup** and **1.07 ms median sparse-neighborhood lookup**. Journal verification median was 0.79 seconds. These exclude HTTP, browser time and dense graph workloads. A separate [128-step localization comparison](benchmarks/results/recording-overhead-final-2026-11-13/results.json) used nine restored prefixes versus 129 for the linear baseline. Its near-zero-cost stub workload also exposed high relative recording overhead; representative live-agent overhead is still unestablished.
+
+The retained [live-agent cohort](docs/BRANCH_EVIDENCE_2026-11-13.md) is separate: nine branches, three known scenarios, one Qwen2.5-Coder-3B revision/seed. Targeted denial preserved 3/3 legitimate tasks and prevented both observed protected exports. An earlier cohort completed 0/9 legitimate tasks and remains part of the evidence.
+
+## Know what a replay result means
+
+`VERIFIED_REPLAY` applies only to the finite environment pack's declared restored state and covered local effects. Its network, model, process, handoff and environment actions are explicit simulations or stubs. Imported capsules execute no arbitrary commands.
+
+The custom live-agent adapter reports `BOUNDARY_REPLAY_MATCHED`; its native Python execution is contained, not semantically replayed. An older native Codex bypass experiment remains valid for that uncovered adapter. Provenance follows declared evidence carriers and dependencies; it is not independently measured causal inference. Archive integrity, trusted authorship and latest-state freshness are separate checks.
+
+## Verify and learn
 
 ```bash
-uv run --frozen sentinel timeline \
-  /tmp/sentinel-first-investigation/incident.jsonl \
-  --approved-host internal.demo.invalid --output /tmp/sentinel-timeline.json
-
-uv run --frozen sentinel provenance \
-  /tmp/sentinel-first-investigation/incident.jsonl 2 \
-  --output /tmp/sentinel-provenance.json
-
-uv run --frozen sentinel mini investigate \
-  /tmp/sentinel-first-investigation/incident.jsonl \
-  /tmp/sentinel-first-investigation/benign.jsonl \
-  --output /tmp/sentinel-policy-report.json
+make check
+make branch-contract       # guarded local Docker / real OPA checks
+pnpm --dir ui install --frozen-lockfile
+pnpm --dir ui build
+pnpm --dir ui test:e2e      # requires the matching Playwright Chromium install
+uv run --frozen sentinel release-check --stage release
 ```
 
-The policy comparison is labeled `TRACE_POLICY_EVALUATION`: it tests recorded actions against three policies on the declared synthetic incident/benign pair. It does not measure how a live agent adapts after a block. The demonstration uses deliberately fake data; do not put real secrets into its unencrypted recordings.
+The release command audits exact source and artifact bytes and returns nonzero while required evidence or reviews remain missing. It does not publish or accept a learning slice. Local checks are not a hosted CI result.
 
-For capsule signing and the HTTP storage path, follow the [capsule contract](docs/CAPSULE_CONTRACT.md) and [local API guide](docs/SELF_HOSTED_PREVIEW.md). The API is a localhost preview with static-token access and one configured trusted public key.
-
-## The result that exposed the boundary
-
-A real Codex/MCP/OPA experiment first established that the named-copy gateway could deny a fake credential copy and allow a public-file copy. A later same-run experiment made the limitation concrete: OPA denied the MCP request, then the agent used one native command to copy separate fake bytes outside the gateway.
-
-The protected outbox remained empty. The broader agent execution was still uncovered.
-
-That negative result is retained alongside the successful integration. The coverage manifest labels the run `partial` and refuses strict-replay eligibility. A separate Docker fixture checks host-file and network separation, but the real agent has not yet run inside that container.
-
-Read the [gateway experiment and limitations](docs/MCP_GATEWAY.md), [retained native-action report](benchmarks/results/codex-mcp-native-gap-2026-10-10.json), and [observation contract](docs/CODEX_OBSERVER.md).
-
-## Evidence you can inspect
-
-| Evidence | Scope |
-| --- | --- |
-| Local checks, October 10 | 135 tests passed, one guarded Docker test skipped, and 11 optional/integration tests deselected; format, lint, and strict typing passed |
-| Real OPA integration | Two guarded local tests passed; one explicitly routed MCP tool is covered |
-| Crash-gap reconciliation | Six focused tests include terminal-result-write failure, missing/mismatched bytes, symlink refusal, and repeated finalization |
-| Historical 50K-event journal comparison | Five paired fresh-process trials measured 29.65% lower median whole-process peak RSS against a reconstructed former writer |
-| Native-tool coverage experiment | One explicit synthetic run observed one denied MCP request and one uncovered native command |
-
-The 50K figures belong to the source revision recorded in the raw reports. The current journal source differs; those figures are not current-checkout or production throughput measurements. The [performance note](docs/PERFORMANCE_EVIDENCE.md) retains the full source bindings, commands, environment, trial counts, and limits. Tests were not rerun for the October 20 repository import, and successful hosted CI remains pending.
-
-## Guarantees and open boundaries
-
-- Journal hashes establish internal consistency of presented bytes. Author identity and freshness require a separately trusted signing/anchoring boundary.
-- Recorded call matching and verified workspace restoration are separate checks. The current mini-agent does not earn `VERIFIED_REPLAY`.
-- Workspace snapshots cover bounded regular-file bytes and executable flags. Git state, databases, processes, and remote effects are outside that adapter.
-- Provenance represents declared dependency candidates. Chronological edges do not expand contamination reachability; independent release-corpus F1 remains unmeasured.
-- The MCP gateway covers one routed tool. Native shell, other tools, and arbitrary external effects are not comprehensively intercepted.
-- Capsule signatures authenticate exact bytes against a supplied trusted key. Production key isolation, freshness, encryption, scoped authorization, and recovery gates remain open.
-
-The [frozen product charter](docs/FROZEN_PRODUCT_CHARTER.md) defines the complete target: recording, incident compression, provenance, verified restoration/replay, alternate futures, intervention search, and an integrated investigation interface. [Project status](docs/STATUS.md) distinguishes implemented components from the remaining acceptance work.
-
-## Technical documentation
-
-- [Threat model](docs/THREAT_MODEL.md)
-- [Replay and counterfactual modes](docs/adr/0001-replay-and-counterfactual-modes.md)
-- [Policy grammar](docs/POLICY_PREVIEW.md)
-- [Provenance evaluation protocol](docs/PROVENANCE_EVALUATION.md)
-- [Scope traceability](docs/SCOPE_TRACEABILITY.md)
-- [Local-first deployment decision](docs/adr/0003-local-first-release.md)
-
-## License
-
-No open-source license has been selected yet. Repository access does not grant permission to reuse, modify, or distribute the source.
+Start with the [frozen product charter](docs/FROZEN_PRODUCT_CHARTER.md), [coverage contract](docs/ENVIRONMENT_PACK_CONTRACT.md), [acceptance matrix](docs/V1_ACCEPTANCE.md), [threat model](docs/THREAT_MODEL.md), and [deployment/recovery runbook](docs/SELF_HOSTED_PREVIEW.md). The separate local sixty-slice guide maps daily builds, tests, reading, teach-backs and user-owned commits to this reference implementation. Engineering progress does not certify independent authorship or learning completion.

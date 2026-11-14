@@ -75,3 +75,7 @@ The product cannot be called complete while any traceability row lacks its prima
 ## Optional AWS experiment after the local-first decision
 
 The earlier AWS extension was additive to the original forty-three source rows, not part of those original requirements. On 2026-10-07, the user removed AWS from V1 scope. ADR-0003 and charter revision 1.7 make the self-hosted profile the required release path. The S3/KMS adapter, CLI, offline tests, and template remain optional experiments under ADR-0002; no AWS row or live-account check may fail the local V1 release gate. Independent local signing/anchoring, encryption, authorization, privacy, recovery, and clean-room proof are still required by the original evidence and deployment contract.
+
+## November13 implementation reconciliation
+
+The updated [sixteen-clause matrix](V1_ACCEPTANCE.md) and [current status](STATUS.md) now point to the integrated implementation, actual corpus/search/scale results, UI/API/SSE paths, three checkpoint adapters, encryption, trust/retention and recovery. The original43 rows above remain requirements rather than self-certified completion marks. The local release manifest binds exact source/artifact bytes; declared external and owner reviews remain separate. The product proof video is an actual75.24-second recording, not a mock interface.

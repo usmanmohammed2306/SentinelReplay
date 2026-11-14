@@ -1,7 +1,7 @@
 UV ?= $(if $(wildcard .venv/bin/uv),.venv/bin/uv,uv)
 UV_CACHE_DIR ?= .uv-cache
 
-.PHONY: check format-check lint typecheck unit postgres-integration opa-contract isolation-contract benchmark-journal benchmark-journal-stream aws-contract aws-infra
+.PHONY: check format-check lint typecheck unit postgres-integration opa-contract isolation-contract branch-contract benchmark-journal benchmark-journal-stream aws-contract aws-infra
 
 check: format-check lint typecheck unit
 
@@ -25,6 +25,9 @@ opa-contract:
 
 isolation-contract:
 	SENTINEL_TEST_DOCKER_ISOLATION=1 UV_CACHE_DIR=$(UV_CACHE_DIR) $(UV) run --frozen pytest -q tests/test_isolation.py::test_real_docker_container_cannot_read_unmounted_controller_or_use_network
+
+branch-contract:
+	SENTINEL_TEST_ISOLATED_BRANCHES=1 SENTINEL_TEST_DOCKER_ISOLATION=1 SENTINEL_TEST_OPA_DOCKER=1 UV_CACHE_DIR=$(UV_CACHE_DIR) $(UV) run --frozen pytest -q -m "not aws_optional and not postgres_integration"
 
 benchmark-journal:
 	UV_CACHE_DIR=$(UV_CACHE_DIR) $(UV) run --frozen python benchmarks/journal_scale.py --events 3000

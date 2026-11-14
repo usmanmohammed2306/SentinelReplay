@@ -1,0 +1,38 @@
+{
+  "binary_restores": 14,
+  "boundary_records": 3186,
+  "checks": {
+    "capsule_export": true,
+    "collapsed_timeline": true,
+    "detected_incident": true,
+    "development_root_anchor": true,
+    "imported_pack_replay": true,
+    "labeled_alternate_branch": true,
+    "pareto_ranked_result": true,
+    "recorded_3000_steps": true,
+    "restored_checkpoint": true,
+    "root_provenance_view": true,
+    "scoped_metrics_report": true,
+    "signed_import": true,
+    "strict_pack_replay": true,
+    "three_evaluated_policies": true,
+    "typed_blast_radius": true,
+    "world_diff": true
+  },
+  "collapsed_phases": 6,
+  "definition_digest": "sha256:7ee3b437e8503dfc75da3dff745bf77df2c7a624c8dfb1865ec02f466bf3a18e",
+  "end_to_end_seconds": "6.978179167",
+  "journal_root": "sha256:279888f8da073999a60a79a0dee6cbcee539647f2c22f39a071a0135979f77c6",
+  "limitation": "Synthetic environment pack only. Development anchor has no independently established freshness. This16-part workflow is not full V1 release, real-agent efficacy, UI/operations validation or student acceptance.",
+  "linear_restores_measured": false,
+  "policy_frontier": [
+    "targeted",
+    "deny_all"
+  ],
+  "program_actions": 3184,
+  "recommended": "targeted",
+  "release_status": "PARTIAL",
+  "root_step": 3181,
+  "schema_version": 1,
+  "status": "WORKFLOW_DEMO_PASS"
+}

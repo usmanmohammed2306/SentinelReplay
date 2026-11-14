@@ -1,0 +1,26 @@
+{
+  "component_bindings": {
+    "demo": {
+      "mismatches": {},
+      "recorded_files": 15
+    },
+    "corpus": {
+      "mismatches": {},
+      "recorded_files": 7
+    },
+    "search": {
+      "mismatches": {},
+      "recorded_files": 4
+    },
+    "scale": {
+      "mismatches": {
+        "product_cli.py": {
+          "recorded": "sha256:29ebd9a46fc68d5500192efca6f1b03bea3b867f5dcd69e3a74ead719b3bfe20",
+          "current": "sha256:82a86cb80e5662910fa7e640c0f37044b5b08c20b9cc8c2102cce7b89ecb6fa2"
+        }
+      },
+      "recorded_files": 65
+    }
+  },
+  "limitation": "Each artifact retains its own complete recorded source snapshot. A source inventory mismatch is not retroactively rewritten; non-executed CLI/release tooling changed after the scale run."
+}

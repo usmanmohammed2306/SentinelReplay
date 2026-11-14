@@ -1,0 +1,15 @@
+{
+  "incidents": [
+    {
+      "basis": "declared secret source and materialized sink share a carrier",
+      "incident_id": "pack-5ac483fe06a04146a433dff429407470280961925a722e905cbb3518a4ed1217:3183",
+      "root_step": 3181,
+      "rule_id": "declared_protected_materialization_v1",
+      "severity": "high",
+      "step": 3183
+    }
+  ],
+  "journal_root": "sha256:279888f8da073999a60a79a0dee6cbcee539647f2c22f39a071a0135979f77c6",
+  "limitation": "A rule miss does not establish absence of an incident.",
+  "mode": "DECLARED_EVIDENCE_CLASSIFICATION"
+}

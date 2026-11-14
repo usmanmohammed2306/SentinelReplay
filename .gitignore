@@ -22,6 +22,10 @@ dist/
 .env.*
 !.env.example
 *.ed25519.key
+*.aes.key
+*.key
+storage.key
+.local-controller/
 
 # Editors
 .idea/
@@ -30,9 +34,14 @@ dist/
 # Frontend dependencies and build output
 node_modules/
 .next/
+*.tsbuildinfo
+ui/public/monaco/
+/ui/playwright-report/
+/ui/test-results/
 
 # Local guidance, career records, and student lab notes
 /AGENTS.md
+/ui/AGENTS.md
 /docs/CAREER_EVIDENCE.md
 /docs/learning/
 /docs/BUILD_LEARN_COMMIT_GUIDE.md

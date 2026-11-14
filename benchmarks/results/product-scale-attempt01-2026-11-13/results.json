@@ -1,0 +1,180 @@
+{
+  "attempts": [
+    {
+      "boundaries": 3000,
+      "capsule_bytes": 3131862,
+      "capsule_export_seconds": 0.10687170800520107,
+      "cold_index_build_seconds": 0.11587191701983102,
+      "completed": true,
+      "journal_verification": {
+        "n": 5,
+        "p50_seconds": 0.04783829199732281,
+        "p95_seconds": 0.05412674997933209,
+        "samples_seconds": [
+          0.04777566701523028,
+          0.049871666997205466,
+          0.05412674997933209,
+          0.04783829199732281,
+          0.04735966701991856
+        ]
+      },
+      "raw_archive_load_verify_seconds": 0.07068699999945238,
+      "record_seconds_including_OPA_telemetry_snapshots": 0.8452593749971129,
+      "selected_graph": {
+        "n": 5,
+        "p50_seconds": 0.0011156669934280217,
+        "p95_seconds": 0.0019066249951720238,
+        "samples_seconds": [
+          0.0019066249951720238,
+          0.0011902080150321126,
+          0.0011129999766126275,
+          0.0011156669934280217,
+          0.001063416013494134
+        ]
+      },
+      "target_boundaries": 3000,
+      "timeline_first_page": {
+        "n": 5,
+        "p50_seconds": 0.0007261669961735606,
+        "p95_seconds": 0.0010312499944120646,
+        "samples_seconds": [
+          0.0010312499944120646,
+          0.000764083000831306,
+          0.0007261669961735606,
+          0.0007134169864002615,
+          0.0007222080021165311
+        ]
+      },
+      "timeline_tail_page": {
+        "n": 5,
+        "p50_seconds": 0.0007027499959804118,
+        "p95_seconds": 0.0007140410016290843,
+        "samples_seconds": [
+          0.0007140410016290843,
+          0.0007027499959804118,
+          0.0007030830020084977,
+          0.0006965000065974891,
+          0.0006995420262683183
+        ]
+      }
+    },
+    {
+      "boundaries": 10000,
+      "capsule_bytes": 10438216,
+      "capsule_export_seconds": 0.344201083004009,
+      "cold_index_build_seconds": 0.3989035840204451,
+      "completed": true,
+      "journal_verification": {
+        "n": 5,
+        "p50_seconds": 0.1591077079938259,
+        "p95_seconds": 0.1595525830052793,
+        "samples_seconds": [
+          0.15880445900256746,
+          0.1595525830052793,
+          0.1591077079938259,
+          0.1594573339971248,
+          0.15851662500062957
+        ]
+      },
+      "raw_archive_load_verify_seconds": 0.21264904100098647,
+      "record_seconds_including_OPA_telemetry_snapshots": 1.687894333008444,
+      "selected_graph": {
+        "n": 5,
+        "p50_seconds": 0.0010940829815808684,
+        "p95_seconds": 0.001785125001333654,
+        "samples_seconds": [
+          0.001785125001333654,
+          0.00110862500150688,
+          0.0010940829815808684,
+          0.0010517080081626773,
+          0.0010676250094547868
+        ]
+      },
+      "target_boundaries": 10000,
+      "timeline_first_page": {
+        "n": 5,
+        "p50_seconds": 0.0007143749971874058,
+        "p95_seconds": 0.0009405419987160712,
+        "samples_seconds": [
+          0.0009405419987160712,
+          0.0007218750251922756,
+          0.0007143749971874058,
+          0.000697541021509096,
+          0.0007082090014591813
+        ]
+      },
+      "timeline_tail_page": {
+        "n": 5,
+        "p50_seconds": 0.0006779579853173345,
+        "p95_seconds": 0.0007245000160764903,
+        "samples_seconds": [
+          0.0007245000160764903,
+          0.0006779579853173345,
+          0.0006796670204494148,
+          0.000676875002682209,
+          0.0006760830001439899
+        ]
+      }
+    },
+    {
+      "boundaries": 50000,
+      "capsule_bytes": 52392532,
+      "capsule_export_seconds": 1.7168076660018414,
+      "cold_index_build_seconds": 1.9617234999896027,
+      "completed": true,
+      "journal_verification": {
+        "n": 5,
+        "p50_seconds": 0.7924664159945678,
+        "p95_seconds": 0.8280375829781406,
+        "samples_seconds": [
+          0.7924664159945678,
+          0.7884459159977268,
+          0.7895817919925321,
+          0.792581165995216,
+          0.8280375829781406
+        ]
+      },
+      "raw_archive_load_verify_seconds": 1.086143666994758,
+      "record_seconds_including_OPA_telemetry_snapshots": 7.379329834016971,
+      "selected_graph": {
+        "n": 5,
+        "p50_seconds": 0.0011633750109467655,
+        "p95_seconds": 0.001699459011433646,
+        "samples_seconds": [
+          0.001699459011433646,
+          0.0011465419956948608,
+          0.0013306670007295907,
+          0.001146958995377645,
+          0.0011633750109467655
+        ]
+      },
+      "target_boundaries": 50000,
+      "timeline_first_page": {
+        "n": 5,
+        "p50_seconds": 0.000705459009623155,
+        "p95_seconds": 0.0009627090184949338,
+        "samples_seconds": [
+          0.0009627090184949338,
+          0.0007384580094367266,
+          0.000705459009623155,
+          0.0006962920015212148,
+          0.0006832079961895943
+        ]
+      },
+      "timeline_tail_page": {
+        "n": 5,
+        "p50_seconds": 0.0006960419996175915,
+        "p95_seconds": 0.0007082079828251153,
+        "samples_seconds": [
+          0.0007082079828251153,
+          0.0006968329835217446,
+          0.0006899159925524145,
+          0.0006907079950906336,
+          0.0006960419996175915
+        ]
+      }
+    }
+  ],
+  "definition_digest": "sha256:6068d85ac6c1d5c2d50f039a8f3a678534382552603ad35ad964d04031d5a215",
+  "limitation": "Source-bound synthetic recorder/index scale, with cold and warm costs separated.\n\nUses real cached OPA, real fsync journal writes, a file-backed SQLite derived index\nand CAS. Warm query latencies exclude HTTP/browser/network time; they are not\nproduction throughput. Every attempted size and failure is retained.\n"
+}

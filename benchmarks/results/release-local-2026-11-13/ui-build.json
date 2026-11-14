@@ -1,0 +1,15 @@
+{
+  "command": [
+    "pnpm",
+    "--dir",
+    "ui",
+    "build"
+  ],
+  "command_exit_code": 0,
+  "elapsed_seconds": 19.006418540986488,
+  "exit_code": 0,
+  "schema_version": 1,
+  "source_root": "sha256:b01a6f48332b1da6a55756f0443a69dab648ad44c4d5e29fae59f2018f7d3724",
+  "source_unchanged": true,
+  "started_at_utc": "2026-11-14T03:13:57.363345+00:00"
+}

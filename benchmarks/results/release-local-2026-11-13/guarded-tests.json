@@ -1,0 +1,15 @@
+{
+  "command": [
+    "make",
+    "branch-contract"
+  ],
+  "command_exit_code": 0,
+  "elapsed_seconds": 30.873857083002804,
+  "exit_code": 0,
+  "passed": 224,
+  "private_log_digest": "sha256:6a6052040351ff12489cbb458e9852a0f9242c4a59011c4d2d55ff17d46d579d",
+  "schema_version": 1,
+  "source_root": "sha256:b01a6f48332b1da6a55756f0443a69dab648ad44c4d5e29fae59f2018f7d3724",
+  "source_unchanged": true,
+  "started_at_utc": "2026-11-14T03:13:56.191315+00:00"
+}

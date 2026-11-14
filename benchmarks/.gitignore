@@ -1,0 +1,19 @@
+# Keep generated raw outputs local; reviewed summaries and measured sources are
+# directly readable. Final raw fixtures are retained in evidence-archives/.
+/results/*-2026-11-13/*
+!/results/*-2026-11-13/*.json
+!/results/*-2026-11-13/*.md
+!/results/*-2026-11-13/*.pub
+!/results/*-2026-11-13/source/
+!/results/*-2026-11-13/source/**
+
+# Small recorded fixtures required by the unit/browser tests and negative cohort.
+!/results/isolated-branches-*/**
+!/results/live-isolated-branches-*/**
+!/results/product-demo-final-2026-11-13/*.sentinel
+
+# Never negate the private-key/environment exclusions above the repository root.
+**/*.key
+**/.env
+**/.env.*
+**/__pycache__/

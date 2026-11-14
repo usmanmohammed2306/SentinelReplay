@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "archives": [
+    {
+      "archive": "benchmarks/evidence-archives/environment-pack-corpus-final-2026-11-13.tar.gz",
+      "sha256": "74f37968bb80a448fdcda32b32ae8f0cfad49f3e3f39d315f0865d10465e33e8",
+      "files": 1078,
+      "uncompressed_bytes": 16993500,
+      "archive_bytes": 1594554,
+      "destination": "benchmarks/results",
+      "scope": "synthetic fixture outputs and measurement-source snapshots; no private signing/storage keys or operator environment"
+    },
+    {
+      "archive": "benchmarks/evidence-archives/policy-search-final-2026-11-13.tar.gz",
+      "sha256": "46313a1fbb44f4af2820c2caf712e8f453dd1e654f70337740b770b29534f1da",
+      "files": 9843,
+      "uncompressed_bytes": 210735825,
+      "archive_bytes": 19946046,
+      "destination": "benchmarks/results",
+      "scope": "synthetic fixture outputs and measurement-source snapshots; no private signing/storage keys or operator environment"
+    },
+    {
+      "archive": "benchmarks/evidence-archives/product-demo-final-2026-11-13.tar.gz",
+      "sha256": "f617b31c4bd8e07aab858c8d73dfe0468ac00bec4fa9a97213488341d808b55f",
+      "files": 583,
+      "uncompressed_bytes": 55085013,
+      "archive_bytes": 5554347,
+      "destination": "benchmarks/results",
+      "scope": "synthetic fixture outputs and measurement-source snapshots; no private signing/storage keys or operator environment"
+    },
+    {
+      "archive": "benchmarks/evidence-archives/product-scale-final-2026-11-13.tar.gz",
+      "sha256": "4da838f7196cbf9a516692c743a1bc9445d562e11318c9fcf9cc5ab570cba06a",
+      "files": 233,
+      "uncompressed_bytes": 248564471,
+      "archive_bytes": 23120190,
+      "destination": "benchmarks/results",
+      "scope": "synthetic fixture outputs and measurement-source snapshots; no private signing/storage keys or operator environment"
+    },
+    {
+      "archive": "benchmarks/evidence-archives/recording-overhead-final-2026-11-13.tar.gz",
+      "sha256": "5a03c31703687787b522c00ec4506682021f8ad2b68cc0be750dd341b9c9a9c1",
+      "files": 657,
+      "uncompressed_bytes": 49161092,
+      "archive_bytes": 4596669,
+      "destination": "benchmarks/results",
+      "scope": "synthetic fixture outputs and measurement-source snapshots; no private signing/storage keys or operator environment"
+    }
+  ],
+  "note": "Extract into benchmarks/results to restore original paths. Root reports remain directly readable in Git. These are known synthetic fixtures, not private real incident data."
+}

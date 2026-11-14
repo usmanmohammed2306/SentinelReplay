@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "status": "failed_before_report_finalization",
+  "observed_error": "floating point values are unsupported; use a decimal string",
+  "cause": "Raw model exchange timings used floats and could not be bound with the canonical digest function.",
+  "interpretation": "The partial model exchanges and protocol are retained. No complete live comparison or prevention rate is established by this attempt."
+}

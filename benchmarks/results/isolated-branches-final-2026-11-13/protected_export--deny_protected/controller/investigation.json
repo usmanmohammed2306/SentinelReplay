@@ -1,0 +1,60 @@
+{
+  "boundary_records": 5,
+  "boundary_replay": "BOUNDARY_REPLAY_MATCHED",
+  "capsule_import_boundary_replay": "BOUNDARY_REPLAY_MATCHED",
+  "capsule_import_checkpoint_restore": {
+    "fixture": true,
+    "workspace": true
+  },
+  "correlated_gateway_requests": 2,
+  "limitation": "Derived declared graph; no native dataflow or independent provenance F1. Capsule integrity and boundary matching do not establish authenticated author/freshness or restored-effect VERIFIED_REPLAY.",
+  "native_actions_not_semantically_intercepted": 2,
+  "normalized_root": "sha256:51b77949ef247bef980f3ee7acd56ca8b529b4d5989b1f61b996337e72fb44d1",
+  "provenance": {
+    "blast_radius": [],
+    "edges": [
+      {
+        "kind": "chronological",
+        "rationale": "ordered in the verified journal; not a dependency claim",
+        "source": 0,
+        "target": 1
+      },
+      {
+        "kind": "chronological",
+        "rationale": "ordered in the verified journal; not a dependency claim",
+        "source": 1,
+        "target": 2
+      },
+      {
+        "kind": "chronological",
+        "rationale": "ordered in the verified journal; not a dependency claim",
+        "source": 2,
+        "target": 3
+      },
+      {
+        "kind": "chronological",
+        "rationale": "ordered in the verified journal; not a dependency claim",
+        "source": 3,
+        "target": 4
+      },
+      {
+        "kind": "declared_carrier",
+        "rationale": "recorder-declared source and sink share a keyed carrier marker",
+        "source": 3,
+        "target": 4
+      },
+      {
+        "kind": "declared_control",
+        "rationale": "recorder-declared control dependency on an earlier call",
+        "source": 3,
+        "target": 4
+      }
+    ],
+    "journal_root": "sha256:51b77949ef247bef980f3ee7acd56ca8b529b4d5989b1f61b996337e72fb44d1",
+    "limitation": "Edges come from declared boundary metadata, not observed causal proof. Chronology is excluded from reachability; untyped carriers produce no dependency. Uninstrumented actions and agent adaptation remain outside this graph.",
+    "mode": "DECLARED_PROVENANCE_PREVIEW",
+    "nodes": 5,
+    "root_step": 0,
+    "untyped_carrier_steps": []
+  }
+}

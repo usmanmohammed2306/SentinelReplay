@@ -1,0 +1,67 @@
+{
+  "blast_radius": [
+    2
+  ],
+  "edges": [
+    {
+      "kind": "chronological",
+      "rationale": "ordered in the verified journal; not a dependency claim",
+      "source": 0,
+      "target": 1
+    },
+    {
+      "kind": "chronological",
+      "rationale": "ordered in the verified journal; not a dependency claim",
+      "source": 1,
+      "target": 2
+    },
+    {
+      "kind": "declared_carrier",
+      "rationale": "recorder-declared source and sink share a keyed carrier marker",
+      "source": 1,
+      "target": 2
+    },
+    {
+      "kind": "declared_control",
+      "rationale": "recorder-declared control dependency on an earlier call",
+      "source": 1,
+      "target": 2
+    },
+    {
+      "kind": "chronological",
+      "rationale": "ordered in the verified journal; not a dependency claim",
+      "source": 2,
+      "target": 3
+    },
+    {
+      "kind": "chronological",
+      "rationale": "ordered in the verified journal; not a dependency claim",
+      "source": 3,
+      "target": 4
+    },
+    {
+      "kind": "chronological",
+      "rationale": "ordered in the verified journal; not a dependency claim",
+      "source": 4,
+      "target": 5
+    },
+    {
+      "kind": "declared_carrier",
+      "rationale": "recorder-declared source and sink share a keyed carrier marker",
+      "source": 4,
+      "target": 5
+    },
+    {
+      "kind": "declared_control",
+      "rationale": "recorder-declared control dependency on an earlier call",
+      "source": 4,
+      "target": 5
+    }
+  ],
+  "journal_root": "sha256:641f79bd9a43d07aa6b3831e95092cb66a43dba44139382259a322c78ebba438",
+  "limitation": "Edges come from declared boundary metadata, not observed causal proof. Chronology is excluded from reachability; untyped carriers produce no dependency. Uninstrumented actions and agent adaptation remain outside this graph.",
+  "mode": "DECLARED_PROVENANCE_PREVIEW",
+  "nodes": 6,
+  "root_step": 1,
+  "untyped_carrier_steps": []
+}

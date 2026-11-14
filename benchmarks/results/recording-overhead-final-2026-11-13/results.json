@@ -1,0 +1,3238 @@
+{
+  "localization": {
+    "binary_restores": 9,
+    "first_true_prefix": 128,
+    "incident_program_step": 127,
+    "limitation": "Localization of the supplied file predicate; not independent causal root discovery.",
+    "linear_restores": 129,
+    "mode": "VERIFIED_REPLAY",
+    "monotonicity": "validated_by_finite_mutation_contract",
+    "predicate": {
+      "kind": "file_exists",
+      "path": "report.txt"
+    },
+    "probes": [
+      {
+        "method": "binary",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 0,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 0
+        },
+        "through": 0
+      },
+      {
+        "method": "binary",
+        "predicate": true,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": true,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 1,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 129,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 128
+        },
+        "through": 128
+      },
+      {
+        "method": "binary",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 64,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 64
+        },
+        "through": 64
+      },
+      {
+        "method": "binary",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 96,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 96
+        },
+        "through": 96
+      },
+      {
+        "method": "binary",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 112,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 112
+        },
+        "through": 112
+      },
+      {
+        "method": "binary",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 120,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 120
+        },
+        "through": 120
+      },
+      {
+        "method": "binary",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 124,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 124
+        },
+        "through": 124
+      },
+      {
+        "method": "binary",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 126,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 126
+        },
+        "through": 126
+      },
+      {
+        "method": "binary",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 127,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 127
+        },
+        "through": 127
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 0,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 0
+        },
+        "through": 0
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 1,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 1
+        },
+        "through": 1
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 2,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 2
+        },
+        "through": 2
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 3,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 3
+        },
+        "through": 3
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 4,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 4
+        },
+        "through": 4
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 5,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 5
+        },
+        "through": 5
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 6,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 6
+        },
+        "through": 6
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 7,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 7
+        },
+        "through": 7
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 8,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 8
+        },
+        "through": 8
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 9,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 9
+        },
+        "through": 9
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 10,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 10
+        },
+        "through": 10
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 11,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 11
+        },
+        "through": 11
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 12,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 12
+        },
+        "through": 12
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 13,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 13
+        },
+        "through": 13
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 14,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 14
+        },
+        "through": 14
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 15,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 15
+        },
+        "through": 15
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 16,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 16
+        },
+        "through": 16
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 17,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 17
+        },
+        "through": 17
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 18,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 18
+        },
+        "through": 18
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 19,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 19
+        },
+        "through": 19
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 20,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 20
+        },
+        "through": 20
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 21,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 21
+        },
+        "through": 21
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 22,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 22
+        },
+        "through": 22
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 23,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 23
+        },
+        "through": 23
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 24,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 24
+        },
+        "through": 24
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 25,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 25
+        },
+        "through": 25
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 26,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 26
+        },
+        "through": 26
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 27,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 27
+        },
+        "through": 27
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 28,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 28
+        },
+        "through": 28
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 29,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 29
+        },
+        "through": 29
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 30,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 30
+        },
+        "through": 30
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 31,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 31
+        },
+        "through": 31
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 32,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 32
+        },
+        "through": 32
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 33,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 33
+        },
+        "through": 33
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 34,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 34
+        },
+        "through": 34
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 35,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 35
+        },
+        "through": 35
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 36,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 36
+        },
+        "through": 36
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 37,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 37
+        },
+        "through": 37
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 38,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 38
+        },
+        "through": 38
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 39,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 39
+        },
+        "through": 39
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 40,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 40
+        },
+        "through": 40
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 41,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 41
+        },
+        "through": 41
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 42,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 42
+        },
+        "through": 42
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 43,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 43
+        },
+        "through": 43
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 44,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 44
+        },
+        "through": 44
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 45,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 45
+        },
+        "through": 45
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 46,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 46
+        },
+        "through": 46
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 47,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 47
+        },
+        "through": 47
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 48,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 48
+        },
+        "through": 48
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 49,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 49
+        },
+        "through": 49
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 50,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 50
+        },
+        "through": 50
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 51,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 51
+        },
+        "through": 51
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 52,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 52
+        },
+        "through": 52
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 53,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 53
+        },
+        "through": 53
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 54,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 54
+        },
+        "through": 54
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 55,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 55
+        },
+        "through": 55
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 56,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 56
+        },
+        "through": 56
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 57,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 57
+        },
+        "through": 57
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 58,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 58
+        },
+        "through": 58
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 59,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 59
+        },
+        "through": 59
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 60,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 60
+        },
+        "through": 60
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 61,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 61
+        },
+        "through": 61
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 62,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 62
+        },
+        "through": 62
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 63,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 63
+        },
+        "through": 63
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 64,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 64
+        },
+        "through": 64
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 65,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 65
+        },
+        "through": 65
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 66,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 66
+        },
+        "through": 66
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 67,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 67
+        },
+        "through": 67
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 68,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 68
+        },
+        "through": 68
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 69,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 69
+        },
+        "through": 69
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 70,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 70
+        },
+        "through": 70
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 71,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 71
+        },
+        "through": 71
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 72,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 72
+        },
+        "through": 72
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 73,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 73
+        },
+        "through": 73
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 74,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 74
+        },
+        "through": 74
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 75,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 75
+        },
+        "through": 75
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 76,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 76
+        },
+        "through": 76
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 77,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 77
+        },
+        "through": 77
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 78,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 78
+        },
+        "through": 78
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 79,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 79
+        },
+        "through": 79
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 80,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 80
+        },
+        "through": 80
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 81,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 81
+        },
+        "through": 81
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 82,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 82
+        },
+        "through": 82
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 83,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 83
+        },
+        "through": 83
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 84,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 84
+        },
+        "through": 84
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 85,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 85
+        },
+        "through": 85
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 86,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 86
+        },
+        "through": 86
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 87,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 87
+        },
+        "through": 87
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 88,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 88
+        },
+        "through": 88
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 89,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 89
+        },
+        "through": 89
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 90,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 90
+        },
+        "through": 90
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 91,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 91
+        },
+        "through": 91
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 92,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 92
+        },
+        "through": 92
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 93,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 93
+        },
+        "through": 93
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 94,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 94
+        },
+        "through": 94
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 95,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 95
+        },
+        "through": 95
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 96,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 96
+        },
+        "through": 96
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 97,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 97
+        },
+        "through": 97
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 98,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 98
+        },
+        "through": 98
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 99,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 99
+        },
+        "through": 99
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 100,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 100
+        },
+        "through": 100
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 101,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 101
+        },
+        "through": 101
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 102,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 102
+        },
+        "through": 102
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 103,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 103
+        },
+        "through": 103
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 104,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 104
+        },
+        "through": 104
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 105,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 105
+        },
+        "through": 105
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 106,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 106
+        },
+        "through": 106
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 107,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 107
+        },
+        "through": 107
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 108,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 108
+        },
+        "through": 108
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 109,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 109
+        },
+        "through": 109
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 110,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 110
+        },
+        "through": 110
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 111,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 111
+        },
+        "through": 111
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 112,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 112
+        },
+        "through": 112
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 113,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 113
+        },
+        "through": 113
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 114,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 114
+        },
+        "through": 114
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 115,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 115
+        },
+        "through": 115
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 116,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 116
+        },
+        "through": 116
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 117,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 117
+        },
+        "through": 117
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 118,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 118
+        },
+        "through": 118
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 119,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 119
+        },
+        "through": 119
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 120,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 120
+        },
+        "through": 120
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 121,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 121
+        },
+        "through": 121
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 122,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 122
+        },
+        "through": 122
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 123,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 123
+        },
+        "through": 123
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 124,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 124
+        },
+        "through": 124
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 125,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 125
+        },
+        "through": 125
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 126,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 126
+        },
+        "through": 126
+      },
+      {
+        "method": "linear",
+        "predicate": false,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": false,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 0,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 127,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 127
+        },
+        "through": 127
+      },
+      {
+        "method": "linear",
+        "predicate": true,
+        "replay": {
+          "checkpoint_verified": true,
+          "checkpoints": {
+            "workspace": true
+          },
+          "complete_run": true,
+          "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
+          "definition_digest": "sha256:afd928ce110217d106f9a58933cc4e5cfe2316ee5d4ad98a0faf2178ea8fba49",
+          "effects_reexecuted": 1,
+          "final_state_verified": true,
+          "journal_root": "sha256:c9e968a78c43d3c3424344ed9508b2af31a3d63f4ae21c913c731597fa362583",
+          "limitation": "Only this finite pack's declared world; not native agent, real HTTP, process, Git or database replay.",
+          "live_nondeterministic_calls": 0,
+          "matched": 129,
+          "mode": "VERIFIED_REPLAY",
+          "through_program_steps": 128
+        },
+        "through": 128
+      }
+    ]
+  },
+  "median_overhead_percent": 5633.125416328472,
+  "program_steps": 3000,
+  "progress_signing": "not_enabled_in_either_arm",
+  "samples": [
+    {
+      "journal_root": "sha256:c0160c5a94cc014ccf133fafd0d6833adbba949391b2fcc18a1999a20f7f457d",
+      "order": [
+        "unrecorded",
+        "recorded"
+      ],
+      "overhead_percent": 5420.15597856734,
+      "recorded_seconds": 0.37784545798785985,
+      "trial": 0,
+      "unrecorded_seconds": 0.006844832998467609
+    },
+    {
+      "journal_root": "sha256:c0160c5a94cc014ccf133fafd0d6833adbba949391b2fcc18a1999a20f7f457d",
+      "order": [
+        "recorded",
+        "unrecorded"
+      ],
+      "overhead_percent": 5648.88608974796,
+      "recorded_seconds": 0.3728847079910338,
+      "trial": 1,
+      "unrecorded_seconds": 0.006486207974376157
+    },
+    {
+      "journal_root": "sha256:c0160c5a94cc014ccf133fafd0d6833adbba949391b2fcc18a1999a20f7f457d",
+      "order": [
+        "unrecorded",
+        "recorded"
+      ],
+      "overhead_percent": 5512.855199316477,
+      "recorded_seconds": 0.37763054101378657,
+      "trial": 2,
+      "unrecorded_seconds": 0.006727958010742441
+    },
+    {
+      "journal_root": "sha256:c0160c5a94cc014ccf133fafd0d6833adbba949391b2fcc18a1999a20f7f457d",
+      "order": [
+        "recorded",
+        "unrecorded"
+      ],
+      "overhead_percent": 5633.125416328472,
+      "recorded_seconds": 0.37158770801033825,
+      "trial": 3,
+      "unrecorded_seconds": 0.006481415999587625
+    },
+    {
+      "journal_root": "sha256:c0160c5a94cc014ccf133fafd0d6833adbba949391b2fcc18a1999a20f7f457d",
+      "order": [
+        "unrecorded",
+        "recorded"
+      ],
+      "overhead_percent": 5450.130525301053,
+      "recorded_seconds": 0.36784649998298846,
+      "trial": 4,
+      "unrecorded_seconds": 0.006627708993619308
+    },
+    {
+      "journal_root": "sha256:c0160c5a94cc014ccf133fafd0d6833adbba949391b2fcc18a1999a20f7f457d",
+      "order": [
+        "recorded",
+        "unrecorded"
+      ],
+      "overhead_percent": 5562.999841659477,
+      "recorded_seconds": 0.3686518329777755,
+      "trial": 5,
+      "unrecorded_seconds": 0.0065098330087494105
+    },
+    {
+      "journal_root": "sha256:c0160c5a94cc014ccf133fafd0d6833adbba949391b2fcc18a1999a20f7f457d",
+      "order": [
+        "unrecorded",
+        "recorded"
+      ],
+      "overhead_percent": 5527.349473857398,
+      "recorded_seconds": 0.3715762499778066,
+      "trial": 6,
+      "unrecorded_seconds": 0.006603042013011873
+    },
+    {
+      "journal_root": "sha256:c0160c5a94cc014ccf133fafd0d6833adbba949391b2fcc18a1999a20f7f457d",
+      "order": [
+        "recorded",
+        "unrecorded"
+      ],
+      "overhead_percent": 6034.47817789367,
+      "recorded_seconds": 0.4062915829999838,
+      "trial": 7,
+      "unrecorded_seconds": 0.006623083027079701
+    },
+    {
+      "journal_root": "sha256:c0160c5a94cc014ccf133fafd0d6833adbba949391b2fcc18a1999a20f7f457d",
+      "order": [
+        "unrecorded",
+        "recorded"
+      ],
+      "overhead_percent": 6254.249858969176,
+      "recorded_seconds": 0.42088962500565685,
+      "trial": 8,
+      "unrecorded_seconds": 0.006623749999562278
+    },
+    {
+      "journal_root": "sha256:c0160c5a94cc014ccf133fafd0d6833adbba949391b2fcc18a1999a20f7f457d",
+      "order": [
+        "recorded",
+        "unrecorded"
+      ],
+      "overhead_percent": 6481.092900462277,
+      "recorded_seconds": 0.43643616599729285,
+      "trial": 9,
+      "unrecorded_seconds": 0.006631666998146102
+    }
+  ],
+  "schema_version": 1,
+  "scope": "Paired finite-program overhead; no model latency is invented to dilute cost.\n\nBoth arms execute the same trusted interpreter, initial/final snapshots and real\nlocal file effects. The unrecorded arm omits durable journal, telemetry and report\npublication. This zero-work model stub is a deliberately harsh local CPU workload,\nnot representative live-agent overhead. Samples alternate order.\n",
+  "source_digests": {
+    "__init__.py": "sha256:e6e63f69ce9ae82a58d7727a0b1d35826c3e85db8b62e2ea35118f489a24c7d9",
+    "access.py": "sha256:80d76a15344b1f9d1f78dba3288a935fb1508e2a2b6f33abe3e3c78343a9430b",
+    "access_audit.py": "sha256:2ee01448b83f65b78dcdc22340dfb8bebf7f37c3051fbfddcca75d4f05d409ef",
+    "agent_coverage.py": "sha256:84579712064f16d347fa304e4e8020e630c869c3742083c269fb591deebe64ce",
+    "api.py": "sha256:02c46771525ada9c3a64a8664c31b7c6dc1d5ec941c0c639ee8b9b17a10fa23e",
+    "aws_evidence.py": "sha256:87945f5effbf749500f3d0a7d7de0bc2ab8277ef4987e11249531aea54ec37ae",
+    "bisection.py": "sha256:36dc6543ff73bf16826611cb545c37de8e5e826de6ad5b81a428dba23226f0f3",
+    "blob_bank.py": "sha256:c007292f33649fcbeb463d367a6ae8c8fe48ba67da131ad74f9b8f532fd4ee32",
+    "boundary.py": "sha256:739f54f9a9c4058e6668240729e5fe32b7885be94c91cd61e757e1115529fde1",
+    "branch_analysis.py": "sha256:9d374caedd60568013d5d5796ef2fad55219da66ebb7ea60a60dc83cb9f8fcb9",
+    "branch_evidence.py": "sha256:81c426aa5d52e0df956ca0c3bdc326552e74a3e1a9960e52fccbf80a7867e1d1",
+    "branch_experiment.py": "sha256:dafd6b71b412469a6bd6565e125eb592a4b08bbd6c82bc2f8f1d766e8b1495e2",
+    "branch_model.py": "sha256:0c385375b2e6b471d666b11ef1dea6a56b0d59bbc67d4aa4e85a8332e14a7b4b",
+    "canonical.py": "sha256:c3be227ce5bc3dc92189904246e6b417dbbb5cfa43934f107074a62ce7d91005",
+    "capsule.py": "sha256:3285d68499e3a2a5a14f7dca598c4cc4fe8263fea0eb7dc38cb500674b9fd854",
+    "capsule_privacy.py": "sha256:0790629f421fc2e04ad3c320b286a456c1b424c5f54b026b11a927c441986e3e",
+    "checkpoint_set.py": "sha256:421a03355241eb1f8f484a4ca9e4aa44126857961cec7574f489f3619bf5289a",
+    "cli.py": "sha256:bffb1d5552346cf966d1cd08d5f064ff3d673478ceeb0c8e8835e8960c863033",
+    "client_cli.py": "sha256:0fece884b7c1472527c893f8019dc5da091b0fb165a46a05fc73d9572698c1df",
+    "codex_trace.py": "sha256:ac621daaa523ac221073ca52f6a8c00e1d3b722b31ba0b404abd268b083401e4",
+    "contracts.py": "sha256:c5d54a3e243c177569ab8dfc4ba881348afcb953ed12a10ed6ffa48e533e324b",
+    "database.py": "sha256:1d510f62ff0a316290b81bb1913d10ef7b94463717e47a167e61c3c2d9cf14b3",
+    "demo_checkpoints.py": "sha256:6340599c0e45ddb67b2aa9f74c8ce8198155b582b07b37daac328a40c2dd277b",
+    "divergence.py": "sha256:fce811efb5738681e5d72e89bd445804ecc74b5198a11addcc0bbc2de2162994",
+    "encrypted_store.py": "sha256:d8e6a38262ccdfca8a44a9862b5ee9b673d4f9bad57fe5e2fbeb99d411a350a0",
+    "environment_pack.py": "sha256:e4daeec70477a0342a5ff9b88f876659f8dd62115aefea2778c6eeaaa20a4d96",
+    "evidence_store.py": "sha256:ec3fe3b83b808a0ffa93570eb469cd894a4685805d9b062a57ffcf449d203f9b",
+    "experiment_capsule.py": "sha256:f06f2a9c4cea6d116f2174244b55fae4b584409d42984e77f80157a6effc9412",
+    "futures.py": "sha256:909f00179a1114106931f565ec46123d01cd0b71eecb5c19a7e6497cf8b686b8",
+    "gateway_audit.py": "sha256:09e61dfc50456743acb0afadbce9deebd7dd8f2e54eb59f7a8999c3254bd34b3",
+    "gateway_reconcile.py": "sha256:5913d8ac3d4a1095c82eca0c5c91e6f3fcdcc8b971b4cfd50700c7790dba7031",
+    "gateway_server.py": "sha256:a9a7c62b2f106d42f645013f4195a7348ac2a75a6d2f0ef76f176cef797bc6e5",
+    "git_snapshot.py": "sha256:63766ee99c622a1ec82e1bf8b1c799fefb019b2571bd14e68176196b22d22c99",
+    "incident_rules.py": "sha256:48c5a80024cb421ef05f7c28f94e1efbda4b0afb999d37aa9c945fb480601229",
+    "investigation.py": "sha256:2fc08c1f23659c6cf14294d8a0a5e51aa388186e2a30c2fa5eef3c5c7f5b5138",
+    "isolated_branch.py": "sha256:aebfd3d890bbb1857d80586a594b85e449ee911f2a11e0fbd1dfdbc4309577bc",
+    "isolation.py": "sha256:cd4d29fb6b74d253853f7431b37ac2deb95c4be68b5e387bb2a2c62155324e18",
+    "journal.py": "sha256:7db379d869689761de2c4d99d69a1fdcc80308f7266c4d4d67edb0d57c7e08ff",
+    "local_anchor.py": "sha256:8fc9dbfa473e48ec0f8fc38ba3fdb6fd50241fcdd22332741a86e44b5a542959",
+    "mini_forensics.py": "sha256:20325e1dd5346a4d391639277af0b03c5bb64aacafb44228db27c8334c411fcb",
+    "operations.py": "sha256:57ab3fac33caa252a240c2b7514d0cb9f7ee76b0a7fc0f5fa47151796ed51d0e",
+    "pack_capsule.py": "sha256:2b20e9174bdd08b077d1e455fbbb773d0ca02e18787f4e866f839ee5e6b9bd50",
+    "pack_comparison.py": "sha256:675206e9f211db60197aae15dd3e88c09b9f8e37f707374b49e8413901df217a",
+    "policy.py": "sha256:ea5bf40a10d9d5df349adffad93d6882780bfbeb1032161384eefde1d6f240d0",
+    "policy_language.py": "sha256:cc090dbe470a37d5d448b406a421a21223fdd4022ea11cb7f24986a73464f1e0",
+    "policy_search.py": "sha256:64df1414d081250299b249e3cbce4068e0bb5605a1bb8b3e6417d199159bc8b2",
+    "product_cli.py": "sha256:29ebd9a46fc68d5500192efca6f1b03bea3b867f5dcd69e3a74ead719b3bfe20",
+    "product_demo.py": "sha256:4324ddfa83fa0a9e028029911c9ce7da60e311da9fc21ecc0311f1c9549fdb3c",
+    "progress_anchor.py": "sha256:7d53a1fee496ee538be5983da0843234701e5b4bc4f56944201b8a1ae32e6eab",
+    "provenance.py": "sha256:1df8cc7d7f88d7e0942f5b574b0bce18d9cbf5398a6c2eb705d3e041b59ce05d",
+    "provenance_eval.py": "sha256:93024a6d2fbbde5e6cd45ca5dfc2a41bb2075776c04a34f4c1c4db3f454e9f57",
+    "provision_storage.py": "sha256:6890b172229a2d2d4fca40329fa6c887fb9a4cb993b54516525956c50e45d025",
+    "query_index.py": "sha256:3651bdfa39ed68c8bf31ab0f089db32e52fdc2d0cd9124544addfce5ce131c16",
+    "request_budget.py": "sha256:418eaa349be41c7d2b85a92dc010ac90d1f796b0a8586c00f4c9a28a16db75f8",
+    "retention.py": "sha256:70b300246c2a1cbe5abf5e4b901c0ee28b060d281bb12fd06b59a8af234093cb",
+    "sandbox_worker.py": "sha256:57ac6d5be0e9a35096e94b7079454f3a136edcc1c390da5f78d782965303b4fb",
+    "scripted_agent.py": "sha256:ff4094f88870a5f0d5f5c91f64c2f440be40bb587316394b241ff2ef1cf26a78",
+    "security_corpus.py": "sha256:75ee31c3583e406ec5581f672e3da4f88cc92b5f01c96794480e911fd8815d48",
+    "signed_capsule.py": "sha256:1349638a45661f9d7595c6dce4f700febec15c5b24abedaa51cb94d16c307eaa",
+    "sqlite_snapshot.py": "sha256:83de966d003a829c83924848c63203f2d13f73e52d323b5e5af68f738847b75c",
+    "telemetry.py": "sha256:6d97994818598a0e877d8a96dcae329f792c4c8131dbf3bc0169f68a5142735d",
+    "timeline.py": "sha256:fab1daf2ec1277fb51c7cd71c25effe545b76a53471ee8382828a2d3eb850fc3",
+    "tool_gateway.py": "sha256:8951ba08865752e95f7fe58d2597e73521e895b52e078e9339daa0ca586dbda8",
+    "trust_registry.py": "sha256:23e73c1a56ba4bc16f1189afa2ef76ba589e2873e0ee2bdfbe4a01482772f714",
+    "workspace_snapshot.py": "sha256:d681c01dcde5af8bc94b41bfd484b2aeaee3fd8d7082d148f6a415b91f2e5c81"
+  },
+  "trials": 10
+}

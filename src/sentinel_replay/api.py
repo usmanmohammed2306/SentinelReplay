@@ -4,29 +4,57 @@ This is not the complete V1 API. TLS, scoped authorization, external anchoring,
 retention, incident queries, and live streaming remain release requirements.
 """
 
+import asyncio
 import base64
 import binascii
+import json
 import os
-import secrets
+import tempfile
+from collections.abc import AsyncIterator, Awaitable, Callable
+from contextlib import asynccontextmanager
 from dataclasses import asdict, dataclass
+from datetime import UTC, datetime
+from functools import lru_cache
 from pathlib import Path
-from typing import Annotated
+from typing import Annotated, Any, Literal
 
 from fastapi import Depends, FastAPI, Header, HTTPException, Query, Request, Response
-from sqlalchemy import create_engine
+from pydantic import BaseModel, ConfigDict, Field
+from sqlalchemy import create_engine, insert
 from sqlalchemy.engine import Engine
 from sqlalchemy.exc import SQLAlchemyError
 from starlette.concurrency import run_in_threadpool
+from starlette.responses import JSONResponse, StreamingResponse
 
+from sentinel_replay.access import AccessGrant, AccessPolicy, Scope
+from sentinel_replay.access_audit import AccessAudit
 from sentinel_replay.capsule import MAX_ARCHIVE_BYTES, verify_capsule_bytes
-from sentinel_replay.database import RunConflict, RunRepository, StoredRun
-from sentinel_replay.evidence_store import BlobCorruption, BlobRef, FileEvidenceStore
+from sentinel_replay.database import RunConflict, RunRepository, StoredRun, future_receipts
+from sentinel_replay.encrypted_store import EncryptedEvidenceStore
+from sentinel_replay.evidence_store import BlobCorruption, BlobRef, FileEvidenceStore, blob_digest
+from sentinel_replay.experiment_capsule import comparison_view
+from sentinel_replay.investigation import CapsuleInvestigation
 from sentinel_replay.local_anchor import load_local_public_key
+from sentinel_replay.operations import TERMINAL, JobBusy, OperationRequest, Operations
+from sentinel_replay.policy_language import Action, Policy, evaluate_batch, policy_digest
+from sentinel_replay.query_index import QueryIndex
 from sentinel_replay.signed_capsule import (
     MAX_CAPSULE_ATTESTATION_BYTES,
+    CapsuleAttestation,
     SignedCapsuleError,
     verify_signed_capsule_material,
 )
+
+
+class ForkRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    policy: Policy
+    fork_step: int = Field(default=0, ge=0, le=50000)
+
+
+class RetirementRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    reason: Literal["operator_deletion", "retention_expired"]
 
 
 @dataclass(frozen=True)
@@ -35,12 +63,19 @@ class ApiSettings:
     evidence_root: Path
     trusted_public_key: Path
     api_token: str
+    access_grants: tuple[AccessGrant, ...] = ()
+    encryption_key: Path | None = None
+    max_inflight: int = 2
+    opa_executable: Path | None = None
+    trust_registry: Path | None = None
 
     def __post_init__(self) -> None:
         if not self.database_url:
             raise ValueError("database URL is required")
         if len(self.api_token) < 32:
             raise ValueError("API token must be at least 32 characters")
+        if not 1 <= self.max_inflight <= 8:
+            raise ValueError("API in-flight budget must be within1..8")
 
     @classmethod
     def from_env(cls) -> "ApiSettings":
@@ -58,6 +93,20 @@ class ApiSettings:
             evidence_root=Path(os.environ["SENTINEL_EVIDENCE_ROOT"]),
             trusted_public_key=Path(os.environ["SENTINEL_TRUSTED_PUBLIC_KEY"]),
             api_token=os.environ["SENTINEL_API_TOKEN"],
+            access_grants=tuple(
+                AccessGrant.model_validate(value)
+                for value in json.loads(os.environ.get("SENTINEL_ACCESS_GRANTS", "[]"))
+            ),
+            encryption_key=Path(os.environ["SENTINEL_ENCRYPTION_KEY"])
+            if os.environ.get("SENTINEL_ENCRYPTION_KEY")
+            else None,
+            max_inflight=int(os.environ.get("SENTINEL_MAX_INFLIGHT", "2")),
+            opa_executable=Path(os.environ["SENTINEL_OPA_EXECUTABLE"])
+            if os.environ.get("SENTINEL_OPA_EXECUTABLE")
+            else None,
+            trust_registry=Path(os.environ["SENTINEL_TRUST_REGISTRY"])
+            if os.environ.get("SENTINEL_TRUST_REGISTRY")
+            else None,
         )
 
 
@@ -67,20 +116,198 @@ def create_app(settings: ApiSettings, *, engine: Engine | None = None) -> FastAP
     public_raw = public.public_bytes_raw()
     database = engine or create_engine(settings.database_url, pool_pre_ping=True)
     repository = RunRepository(database)
-    store = FileEvidenceStore(settings.evidence_root, max_bytes=MAX_ARCHIVE_BYTES)
+    store = (
+        EncryptedEvidenceStore(
+            settings.evidence_root, settings.encryption_key, max_bytes=MAX_ARCHIVE_BYTES
+        )
+        if settings.encryption_key
+        else FileEvidenceStore(settings.evidence_root, max_bytes=MAX_ARCHIVE_BYTES)
+    )
+    access = AccessPolicy(settings.api_token, settings.access_grants)
+    audit = AccessAudit(settings.evidence_root / "access-audit.jsonl")
+    indexes = QueryIndex(database, store)
+    operations = Operations(
+        database, store, settings.evidence_root, settings.encryption_key, settings.opa_executable
+    )
+    capacity = asyncio.Semaphore(settings.max_inflight)
+
+    @asynccontextmanager
+    async def lifespan(_app: FastAPI) -> AsyncIterator[None]:
+        operations.start()
+        try:
+            audit.start()
+        except BaseException:
+            await run_in_threadpool(operations.close)
+            raise
+        try:
+            yield
+        finally:
+            audit.close()
+            await run_in_threadpool(operations.close)
+
     app = FastAPI(
-        title="Sentinel Replay API Preview",
+        title="Sentinel Replay Investigation API",
         docs_url=None,
         redoc_url=None,
-        openapi_url=None,
+        openapi_url="/openapi.json",
+        lifespan=lifespan,
     )
 
-    def authorize(authorization: Annotated[str | None, Header()] = None) -> None:
+    def authorize(authorization: Annotated[str | None, Header()] = None) -> AccessGrant:
         if authorization is None or not authorization.startswith("Bearer "):
             raise HTTPException(status_code=401, detail="authentication required")
         supplied = authorization.removeprefix("Bearer ")
-        if not secrets.compare_digest(supplied, settings.api_token):
+        if len(supplied) > 4096:
             raise HTTPException(status_code=401, detail="authentication required")
+        grant = access.authenticate(supplied)
+        if grant is None:
+            raise HTTPException(status_code=401, detail="authentication required")
+        return grant
+
+    def require(scope: Scope) -> Any:
+        def check(
+            request: Request, grant: Annotated[AccessGrant, Depends(authorize)]
+        ) -> AccessGrant:
+            run_id = request.path_params.get("run_id")
+            allowed = access.permits(grant, scope, run_id)
+            retired = bool(
+                allowed
+                and run_id
+                and not request.url.path.endswith("/retire")
+                and repository.retirement(run_id) is not None
+            )
+            try:
+                audit.append(
+                    {
+                        "kind": "access",
+                        "subject": grant.subject,
+                        "scope": scope,
+                        "run_id": run_id,
+                        "allowed": allowed and not retired,
+                        "retired": retired,
+                    }
+                )
+            except (OSError, RuntimeError, ValueError) as error:
+                raise HTTPException(
+                    status_code=503, detail="durable access audit unavailable"
+                ) from error
+            if not allowed:
+                raise HTTPException(status_code=403, detail="capability or run access denied")
+            if retired:
+                raise HTTPException(
+                    status_code=410,
+                    detail="run retired; physical collection is a separate offline operation",
+                )
+            return grant
+
+        return check
+
+    def registry() -> Any:
+        from sentinel_replay.trust_registry import TrustRegistry
+
+        if settings.trust_registry is None:
+            return None
+        try:
+            return TrustRegistry.load(settings.trust_registry, database)
+        except (OSError, ValueError, SQLAlchemyError) as error:
+            raise HTTPException(
+                status_code=503, detail="trusted registry unavailable or rolled back"
+            ) from error
+
+    def signer_status(run: StoredRun) -> str:
+        current = registry()
+        return (
+            current.status(run.signer_key_id)
+            if current
+            else ("active" if run.signer_key_id == key_id else "unknown")
+        )
+
+    def signer_public(signer_id: str) -> bytes | None:
+        current = registry()
+        if current:
+            return next((key.raw() for key in current.keys if key.key_id == signer_id), None)
+        return public_raw if signer_id == key_id else None
+
+    def require_replay_trust(run_id: str) -> None:
+        run = repository.get(run_id)
+        if run is None:
+            raise HTTPException(status_code=404, detail="run not found")
+        if (
+            signer_status(run) not in {"active", "retired"}
+            or repository.attestation(run_id) is None
+        ):
+            raise HTTPException(
+                status_code=409,
+                detail="run is quarantined or its original detached statement is unavailable",
+            )
+
+    @app.middleware("http")
+    async def security_headers(
+        request: Request, call_next: Callable[[Request], Awaitable[Response]]
+    ) -> Response:
+        response: Response
+        if request.url.path.startswith("/v1/"):
+            if capacity.locked():
+                response = JSONResponse(
+                    {"detail": "evidence work budget exhausted"},
+                    status_code=429,
+                    headers={"Retry-After": "1"},
+                )
+            else:
+                async with capacity:
+                    response = await call_next(request)
+        else:
+            response = await call_next(request)
+        response.headers["Cache-Control"] = "no-store"
+        response.headers["X-Content-Type-Options"] = "nosniff"
+        response.headers["Content-Security-Policy"] = "default-src 'none'; frame-ancestors 'none'"
+        return response
+
+    @lru_cache(maxsize=1)
+    def cached_investigation(data: bytes) -> CapsuleInvestigation:
+        return CapsuleInvestigation(data)
+
+    def investigation(run_id: str, branch: int | None = None) -> CapsuleInvestigation:
+        record = repository.get(run_id)
+        if record is None:
+            raise HTTPException(status_code=404, detail="run not found")
+        try:
+            result = cached_investigation(
+                store.get(BlobRef(record.capsule_digest, record.capsule_size))
+            )
+            if (
+                result.verified.run_id != run_id
+                or result.verified.root != record.journal_root
+                or result.verified.records != record.records
+            ):
+                raise ValueError("stored run binding differs")
+            if branch is None:
+                return result
+            view = comparison_view(result)
+            if not 0 <= branch < len(view["branches"]):
+                raise HTTPException(status_code=404, detail="branch not found")
+            return CapsuleInvestigation(
+                result.artifacts[view["branches"][branch]["capsule_artifact"]]
+            )
+        except (OSError, ValueError) as error:
+            raise HTTPException(status_code=503, detail="stored evidence unavailable") from error
+
+    def index_for(run_id: str, branch: int | None = None) -> dict[str, Any]:
+        record = repository.get(run_id)
+        if record is None:
+            raise HTTPException(status_code=404, detail="run not found")
+        try:
+            view_id = "root" if branch is None else f"branch-{branch:03d}"
+            existing = indexes.find(record, view_id)
+            return (
+                existing
+                if existing is not None
+                else indexes.build(record, investigation(run_id, branch), view_id)
+            )
+        except (SQLAlchemyError, OSError, ValueError) as error:
+            raise HTTPException(
+                status_code=503, detail="derived investigation unavailable"
+            ) from error
 
     @app.get("/healthz")
     def healthz() -> dict[str, str]:
@@ -90,25 +317,245 @@ def create_app(settings: ApiSettings, *, engine: Engine | None = None) -> FastAP
             healthy = False
         if not healthy:
             raise HTTPException(status_code=503, detail="metadata database unavailable")
+        registry()
         return {"status": "ok"}
 
-    @app.get("/v1/runs", dependencies=[Depends(authorize)])
+    @app.get("/v1/runs", dependencies=[Depends(require("metadata"))])
     def list_runs(
+        grant: Annotated[AccessGrant, Depends(authorize)],
         limit: Annotated[int, Query(ge=1, le=100)] = 50,
         after: str | None = None,
     ) -> dict[str, object]:
-        records = repository.list(limit=limit, after=after)
-        return {"runs": [asdict(record) for record in records]}
+        allowed = None if "admin" in grant.scopes or "*" in grant.runs else grant.runs
+        records = repository.list(limit=limit, after=after, allowed_runs=allowed)
+        return {
+            "runs": [
+                asdict(record)
+                for record in records
+                if access.permits(grant, "metadata", record.run_id)
+            ],
+            "next_cursor": records[-1].run_id if len(records) == limit else None,
+        }
 
-    @app.get("/v1/runs/{run_id}", dependencies=[Depends(authorize)])
+    @app.post("/v1/runs/{run_id}/fork", dependencies=[Depends(require("replay"))])
+    def fork_run(
+        run_id: str,
+        body: ForkRequest,
+        branch: Annotated[int | None, Query(ge=0, le=63)] = None,
+    ) -> dict[str, Any]:
+        from sentinel_replay.futures import simulate_future
+        from sentinel_replay.policy import PolicyUnavailable
+
+        source = investigation(run_id, branch)
+        require_replay_trust(run_id)
+        parent = repository.get(run_id)
+        if parent is None:
+            raise HTTPException(status_code=404, detail="run not found")
+        try:
+            with tempfile.TemporaryDirectory(prefix="sentinel-future-") as directory:
+                target = Path(directory) / "future"
+                report = simulate_future(
+                    source,
+                    body.policy,
+                    target,
+                    fork_step=body.fork_step,
+                    opa_executable=settings.opa_executable,
+                )
+                ref = store.put((target / "future.sentinel").read_bytes())
+                envelope = {
+                    "schema_version": 1,
+                    "kind": "finite_future_receipt",
+                    "parent_run_id": run_id,
+                    "parent_capsule_digest": parent.capsule_digest,
+                    "original_journal_root": source.verified.root,
+                    "capsule_digest": ref.digest,
+                    "capsule_size": ref.size,
+                    "report": report,
+                }
+                raw = json.dumps(envelope, sort_keys=True, separators=(",", ":")).encode()
+                receipt = store.put(raw)
+                with database.begin() as connection:
+                    connection.execute(
+                        insert(future_receipts).values(
+                            digest=receipt.digest, run_id=run_id, size=receipt.size
+                        )
+                    )
+        except PolicyUnavailable as error:
+            raise HTTPException(status_code=503, detail="policy evaluator unavailable") from error
+        except (ValueError, OSError, RuntimeError) as error:
+            raise HTTPException(
+                status_code=409, detail="unsupported fork or evidence mismatch"
+            ) from error
+        audit.append(
+            {
+                "kind": "future_created",
+                "run_id": run_id,
+                "receipt": receipt.digest,
+                "size": receipt.size,
+            }
+        )
+        return {"future_id": receipt.digest, "receipt_size": receipt.size, **report}
+
+    def future_receipt(run_id: str, future_id: str, size: int) -> dict[str, Any]:
+        from sentinel_replay.canonical import load_json_unique
+
+        parent = repository.get(run_id)
+        if parent is None:
+            raise HTTPException(status_code=404, detail="run not found")
+        try:
+            value = load_json_unique(store.get(BlobRef(future_id, size)).decode())
+            if (
+                value["kind"] != "finite_future_receipt"
+                or value["schema_version"] != 1
+                or value["parent_run_id"] != run_id
+                or value["parent_capsule_digest"] != parent.capsule_digest
+            ):
+                raise ValueError("future parent binding differs")
+            return dict(value)
+        except (OSError, ValueError, KeyError, TypeError) as error:
+            raise HTTPException(status_code=404, detail="future receipt unavailable") from error
+
+    @app.get("/v1/runs/{run_id}/futures/{future_id}", dependencies=[Depends(require("evidence"))])
+    def get_future(
+        run_id: str, future_id: str, size: Annotated[int, Query(ge=1, le=1024 * 1024)]
+    ) -> dict[str, Any]:
+        return dict(future_receipt(run_id, future_id, size)["report"])
+
+    @app.post("/v1/runs/{run_id}/jobs", dependencies=[Depends(require("replay"))], status_code=202)
+    def create_operation(
+        run_id: str,
+        body: OperationRequest,
+        branch: Annotated[int | None, Query(ge=0, le=63)] = None,
+    ) -> dict[str, Any]:
+        run = repository.get(run_id)
+        if run is None:
+            raise HTTPException(status_code=404, detail="run not found")
+        require_replay_trust(run_id)
+        artifact = None
+        if branch is not None:
+            view = comparison_view(investigation(run_id))
+            if branch >= len(view["branches"]):
+                raise HTTPException(status_code=404, detail="branch not found")
+            artifact = view["branches"][branch]["capsule_artifact"]
+        try:
+            job_id = operations.submit(run, body, artifact)
+        except JobBusy as error:
+            raise HTTPException(
+                status_code=429, detail="operation queue budget exhausted"
+            ) from error
+        return {
+            "job_id": job_id,
+            "state": "accepted",
+            "run_id": run_id,
+            "status_url": f"/v1/runs/{run_id}/jobs/{job_id}",
+            "events_url": f"/v1/runs/{run_id}/jobs/{job_id}/events",
+        }
+
+    def require_job(run_id: str, job_id: str) -> dict[str, Any]:
+        operations.start()
+        job = operations.get(run_id, job_id)
+        if job is None:
+            raise HTTPException(status_code=404, detail="operation not found")
+        return job
+
+    @app.get("/v1/runs/{run_id}/jobs", dependencies=[Depends(require("evidence"))])
+    def list_operations(
+        run_id: str, limit: Annotated[int, Query(ge=1, le=100)] = 20
+    ) -> dict[str, Any]:
+        if repository.get(run_id) is None:
+            raise HTTPException(status_code=404, detail="run not found")
+        operations.start()
+        return {"jobs": operations.list(run_id, limit)}
+
+    @app.get("/v1/runs/{run_id}/jobs/{job_id}", dependencies=[Depends(require("evidence"))])
+    def get_operation(run_id: str, job_id: str) -> dict[str, Any]:
+        return require_job(run_id, job_id)
+
+    @app.get("/v1/runs/{run_id}/jobs/{job_id}/result", dependencies=[Depends(require("evidence"))])
+    def get_operation_result(run_id: str, job_id: str) -> dict[str, Any]:
+        require_job(run_id, job_id)
+        try:
+            result = operations.result(run_id, job_id)
+            run = repository.get(run_id)
+            return {**result, "signer_status": signer_status(run) if run is not None else "unknown"}
+        except ValueError as error:
+            raise HTTPException(
+                status_code=409, detail="operation has no verified completed result"
+            ) from error
+
+    @app.get("/v1/runs/{run_id}/jobs/{job_id}/events", dependencies=[Depends(require("evidence"))])
+    async def operation_events_stream(
+        run_id: str,
+        job_id: str,
+        after: Annotated[int, Query(ge=-1)] = -1,
+        last_event_id: Annotated[int | None, Header()] = None,
+    ) -> StreamingResponse:
+        job = await run_in_threadpool(require_job, run_id, job_id)
+        cursor = last_event_id if last_event_id is not None else after
+        if not -1 <= cursor <= job["sequence"]:
+            raise HTTPException(status_code=409, detail="operation stream cursor outside journal")
+
+        async def stream() -> AsyncIterator[str]:
+            nonlocal cursor
+            for _ in range(60):
+                events = await run_in_threadpool(operations.events, job_id, cursor)
+                for event in events:
+                    cursor = event["sequence"]
+                    yield f"id: {cursor}\nevent: operation\ndata: {json.dumps(event)}\n\n"
+                    if event["state"] in TERMINAL:
+                        return
+                if not events:
+                    current = await run_in_threadpool(require_job, run_id, job_id)
+                    if current["state"] in TERMINAL:
+                        return
+                    yield ": waiting for recorded operation status\n\n"
+                await asyncio.sleep(0.5)
+
+        return StreamingResponse(
+            stream(), media_type="text/event-stream", headers={"X-Accel-Buffering": "no"}
+        )
+
+    @app.get(
+        "/v1/runs/{run_id}/futures/{future_id}/capsule", dependencies=[Depends(require("export"))]
+    )
+    def export_future(
+        run_id: str, future_id: str, size: Annotated[int, Query(ge=1, le=1024 * 1024)]
+    ) -> Response:
+        value = future_receipt(run_id, future_id, size)
+        data = store.get(BlobRef(value["capsule_digest"], value["capsule_size"]))
+        verify_capsule_bytes(data)
+        return Response(
+            data,
+            media_type="application/octet-stream",
+            headers={"X-Sentinel-Authenticity": "unsigned-simulated-future"},
+        )
+
+    @app.get("/v1/runs/{run_id}", dependencies=[Depends(require("metadata"))])
     def get_run(run_id: str) -> dict[str, object]:
         record = repository.get(run_id)
         if record is None:
             raise HTTPException(status_code=404, detail="run not found")
         return asdict(record)
 
-    @app.get("/v1/runs/{run_id}/capsule", dependencies=[Depends(authorize)])
-    def get_capsule(run_id: str) -> Response:
+    @app.post("/v1/runs/{run_id}/retire", dependencies=[Depends(require("admin"))])
+    def retire_run(run_id: str, body: RetirementRequest) -> dict[str, Any]:
+        try:
+            result = repository.retire(run_id, datetime.now(UTC).isoformat(), body.reason)
+        except RunConflict as error:
+            raise HTTPException(
+                status_code=409, detail="retirement reason is already frozen"
+            ) from error
+        except ValueError as error:
+            raise HTTPException(status_code=404, detail="run not found") from error
+        audit.append({"kind": "run_retired", **result})
+        return {
+            **result,
+            "physical_deletion": "pending_offline_collection",
+            "audit_metadata": "retained",
+        }
+
+    @app.get("/v1/runs/{run_id}/capsule", dependencies=[Depends(require("export"))])
+    def get_capsule(run_id: str, sealed: bool = False) -> Response:
         record = repository.get(run_id)
         if record is None:
             raise HTTPException(status_code=404, detail="run not found")
@@ -123,13 +570,28 @@ def create_app(settings: ApiSettings, *, engine: Engine | None = None) -> FastAP
                 raise BlobCorruption("stored capsule differs from indexed run")
         except (OSError, ValueError) as error:
             raise HTTPException(status_code=503, detail="stored evidence unavailable") from error
+        if sealed:
+            from sentinel_replay.capsule_privacy import seal
+
+            if settings.encryption_key is None:
+                raise HTTPException(
+                    status_code=409, detail="encrypted export requires configured storage key"
+                )
+            data = seal(data, settings.encryption_key)
+        audit.append(
+            {
+                "kind": "capsule_export",
+                "run_id": run_id,
+                "format": "AES256_GCM" if sealed else "plaintext",
+            }
+        )
         return Response(
             content=data,
             media_type="application/octet-stream",
             headers={"Cache-Control": "no-store", "X-Content-Type-Options": "nosniff"},
         )
 
-    @app.post("/v1/runs/import", dependencies=[Depends(authorize)])
+    @app.post("/v1/runs/import", dependencies=[Depends(require("import"))])
     async def import_run(
         request: Request,
         response: Response,
@@ -161,14 +623,24 @@ def create_app(settings: ApiSettings, *, engine: Engine | None = None) -> FastAP
             raise HTTPException(status_code=422, detail="invalid attestation encoding") from error
         data = bytes(body)
 
-        def validate() -> tuple[str, str, int]:
-            if not verify_signed_capsule_material(data, raw_statement, public_raw):
+        def validate() -> tuple[str, str, int, str]:
+            from sentinel_replay.canonical import load_json_unique
+
+            statement = CapsuleAttestation.model_validate(load_json_unique(raw_statement.decode()))
+            current = registry()
+            chosen = current.import_key(statement.key_id) if current else public_raw
+            if not verify_signed_capsule_material(data, raw_statement, chosen):
                 raise SignedCapsuleError("invalid signature")
             verified = verify_capsule_bytes(data)
-            return verified.run_id, verified.root, verified.records
+            return verified.run_id, verified.root, verified.records, statement.key_id
 
         try:
-            verified_run_id, verified_root, verified_records = await run_in_threadpool(validate)
+            (
+                verified_run_id,
+                verified_root,
+                verified_records,
+                verified_signer,
+            ) = await run_in_threadpool(validate)
         except (SignedCapsuleError, ValueError):
             raise HTTPException(status_code=422, detail="invalid signed capsule") from None
 
@@ -180,9 +652,9 @@ def create_app(settings: ApiSettings, *, engine: Engine | None = None) -> FastAP
                 records=verified_records,
                 capsule_digest=blob.digest,
                 capsule_size=blob.size,
-                signer_key_id=key_id,
+                signer_key_id=verified_signer,
             )
-            return repository.insert_or_get(record)
+            return repository.insert_or_get(record, attestation=store.put(raw_statement))
 
         try:
             record, created = await run_in_threadpool(persist)
@@ -193,6 +665,285 @@ def create_app(settings: ApiSettings, *, engine: Engine | None = None) -> FastAP
         response.status_code = 201 if created else 200
         return asdict(record)
 
+    @app.get("/v1/runs/{run_id}/investigation", dependencies=[Depends(require("metadata"))])
+    def get_investigation(
+        run_id: str, branch: Annotated[int | None, Query(ge=0, le=63)] = None
+    ) -> dict[str, Any]:
+        run = repository.get(run_id)
+        if run is None:
+            raise HTTPException(status_code=404, detail="run not found")
+        return {
+            **index_for(run_id, branch)["summary"],
+            "storage_encrypted": settings.encryption_key is not None,
+            "signer_status": signer_status(run),
+            "detached_statement_retained": repository.attestation(run_id) is not None,
+        }
+
+    @app.get("/v1/runs/{run_id}/comparison", dependencies=[Depends(require("evidence"))])
+    def get_comparison(run_id: str) -> dict[str, Any]:
+        require_replay_trust(run_id)
+        try:
+            return comparison_view(investigation(run_id))
+        except (ValueError, KeyError) as error:
+            raise HTTPException(
+                status_code=409, detail="unsupported or inconsistent comparison"
+            ) from error
+
+    @app.get("/v1/runs/{run_id}/world-diff", dependencies=[Depends(require("evidence"))])
+    def get_world_diff(run_id: str) -> dict[str, Any]:
+        view = get_comparison(run_id)
+        return {
+            "journal_root": view["journal_root"],
+            "world_diffs": view["world_diffs"],
+            "mode": view["mode"],
+        }
+
+    @app.post("/v1/runs/{run_id}/policy-test", dependencies=[Depends(require("replay"))])
+    def test_policy(
+        run_id: str,
+        body: ForkRequest,
+        branch: Annotated[int | None, Query(ge=0, le=63)] = None,
+    ) -> dict[str, Any]:
+        from sentinel_replay.canonical import load_json_unique
+        from sentinel_replay.policy import PolicyUnavailable
+
+        source = investigation(run_id, branch)
+        if "pack-definition.json" not in source.artifacts:
+            raise HTTPException(
+                status_code=409, detail="policy DSL v2 requires finite-pack action metadata"
+            )
+        definition = load_json_unique(source.artifacts["pack-definition.json"].decode())
+        actions = [Action.model_validate(step["action"]) for step in definition["pack"]["steps"]]
+        try:
+            decisions = evaluate_batch(
+                body.policy,
+                actions,
+                executable=str(settings.opa_executable) if settings.opa_executable else None,
+            )
+        except PolicyUnavailable as error:
+            raise HTTPException(status_code=503, detail="policy evaluator unavailable") from error
+        changed = [
+            {"program_step": step, "recorded": before, "proposed": after}
+            for step, (before, after) in enumerate(
+                zip(definition["decisions"], decisions, strict=True)
+            )
+            if before != after
+        ]
+        return {
+            "journal_root": source.verified.root,
+            "mode": "TRACE_POLICY_EVALUATION",
+            "policy_digest": policy_digest(body.policy),
+            "actions": len(actions),
+            "decisions": {
+                "allowed": sum(value == "allowed" for value in decisions),
+                "denied": sum(value == "denied" for value in decisions),
+                "confirmation_required": sum(
+                    value == "confirmation_required" for value in decisions
+                ),
+            },
+            "changed_count": len(changed),
+            "changed_decisions": changed[:500],
+            "changed_complete": len(changed) <= 500,
+            "limitation": (
+                "Decisions on recorded action metadata only; no adaptive continuation "
+                "or task-preservation claim. Use an executed finite future "
+                "for covered-world outcomes."
+            ),
+        }
+
+    @app.get("/v1/runs/{run_id}/timeline", dependencies=[Depends(require("evidence"))])
+    def get_timeline(
+        run_id: str,
+        offset: Annotated[int, Query(ge=0)] = 0,
+        limit: Annotated[int, Query(ge=1, le=500)] = 100,
+        root: str | None = None,
+        branch: Annotated[int | None, Query(ge=0, le=63)] = None,
+    ) -> dict[str, Any]:
+        index = index_for(run_id, branch)
+        if offset > index["records"] or (root is not None and root != index["journal_root"]):
+            raise HTTPException(status_code=409, detail="timeline cursor or root mismatch")
+        try:
+            return indexes.timeline(index, offset=offset, limit=limit, expected_root=root)
+        except (OSError, ValueError) as error:
+            raise HTTPException(status_code=503, detail="derived event page unavailable") from error
+
+    @app.get("/v1/runs/{run_id}/phases", dependencies=[Depends(require("evidence"))])
+    def get_phases(
+        run_id: str, branch: Annotated[int | None, Query(ge=0, le=63)] = None
+    ) -> dict[str, Any]:
+        phases = index_for(run_id, branch)["phases"]
+        if phases is None:
+            raise HTTPException(status_code=409, detail="unsupported boundary metadata")
+        return dict(phases)
+
+    @app.get("/v1/runs/{run_id}/incidents", dependencies=[Depends(require("evidence"))])
+    def get_incidents(
+        run_id: str, branch: Annotated[int | None, Query(ge=0, le=63)] = None
+    ) -> dict[str, Any]:
+        return dict(index_for(run_id, branch)["incidents"])
+
+    @app.get("/v1/runs/{run_id}/provenance", dependencies=[Depends(require("evidence"))])
+    def get_provenance(
+        run_id: str,
+        root_step: Annotated[int, Query(ge=0)] = 0,
+        depth: Annotated[int, Query(ge=1, le=5)] = 2,
+        branch: Annotated[int | None, Query(ge=0, le=63)] = None,
+    ) -> dict[str, Any]:
+        try:
+            return indexes.provenance(index_for(run_id, branch), root_step=root_step, depth=depth)
+        except ValueError as error:
+            raise HTTPException(
+                status_code=409, detail="unsupported graph or neighborhood budget"
+            ) from error
+
+    @app.get("/v1/runs/{run_id}/events", dependencies=[Depends(require("evidence"))])
+    def get_events(
+        run_id: str,
+        after: Annotated[int, Query(ge=-1)] = -1,
+        limit: Annotated[int, Query(ge=1, le=500)] = 500,
+        last_event_id: Annotated[int | None, Header()] = None,
+        branch: Annotated[int | None, Query(ge=0, le=63)] = None,
+    ) -> StreamingResponse:
+        index = index_for(run_id, branch)
+        cursor = last_event_id if last_event_id is not None else after
+        if not -1 <= cursor < max(1, index["records"]):
+            raise HTTPException(status_code=409, detail="stream cursor outside stored run")
+        try:
+            events = indexes.timeline(index, offset=min(cursor + 1, index["records"]), limit=limit)[
+                "events"
+            ]
+        except (OSError, ValueError) as error:
+            raise HTTPException(status_code=503, detail="derived event page unavailable") from error
+        messages = tuple(
+            f"id: {event['step']}\nevent: boundary\ndata: {json.dumps(event)}\n\n"
+            for event in events
+        )
+        return StreamingResponse(
+            iter(messages),
+            media_type="text/event-stream",
+            headers={"X-Accel-Buffering": "no"},
+        )
+
+    @app.post("/v1/runs/{run_id}/replay", dependencies=[Depends(require("replay"))])
+    def replay_run(
+        run_id: str, branch: Annotated[int | None, Query(ge=0, le=63)] = None
+    ) -> dict[str, Any]:
+        require_replay_trust(run_id)
+        try:
+            return investigation(run_id, branch).replay()
+        except (ValueError, RuntimeError) as error:
+            raise HTTPException(
+                status_code=409, detail="replay unsupported or evidence mismatch"
+            ) from error
+
+    @app.get("/v1/runs/{run_id}/verification", dependencies=[Depends(require("metadata"))])
+    def verify_run(
+        run_id: str, branch: Annotated[int | None, Query(ge=0, le=63)] = None
+    ) -> dict[str, Any]:
+        result = investigation(run_id, branch)
+        run = repository.get(run_id)
+        if run is None:
+            raise HTTPException(status_code=404, detail="run not found")
+        statement_ref = repository.attestation(run_id)
+        chosen = signer_public(run.signer_key_id)
+        signature = "not_retained_legacy_import" if statement_ref is None else "key_unavailable"
+        if statement_ref is not None and chosen is not None:
+            parent = investigation(run_id)
+            try:
+                if not verify_signed_capsule_material(
+                    parent.data, store.get(statement_ref), chosen
+                ):
+                    raise ValueError("retained signature differs")
+            except (OSError, ValueError) as error:
+                raise HTTPException(
+                    status_code=503, detail="retained attestation unavailable or mismatched"
+                ) from error
+            signature = "cryptographic_signature_valid"
+        progress = None
+        if "progress-anchors.jsonl" in result.artifacts:
+            from sentinel_replay.progress_anchor import verify_progress
+
+            try:
+                raw = result.artifacts["progress-signing.pub"]
+                progress_id = blob_digest(raw)
+                progress = verify_progress(
+                    result.artifacts["progress-anchors.jsonl"],
+                    result.journal,
+                    result.verified.run_id,
+                    {progress_id: raw},
+                )
+                progress["signer_status"] = (
+                    registry().status(progress_id)
+                    if settings.trust_registry
+                    else ("active" if progress_id == key_id else "embedded_key_only")
+                )
+            except (KeyError, ValueError, OSError) as error:
+                raise HTTPException(
+                    status_code=409, detail="progress checkpoint proof differs"
+                ) from error
+        return {
+            "run_id": run_id,
+            "branch_index": branch,
+            "journal_root": result.verified.root,
+            "records": result.verified.records,
+            "integrity": "verified_capsule_bytes",
+            "signer": "verified_at_ingest_against_configured_key",
+            "signer_status": signer_status(run),
+            "signature": signature,
+            "progress_anchors": progress,
+            "freshness": "not_established",
+        }
+
+    @app.get("/v1/runs/{run_id}/attestation", dependencies=[Depends(require("export"))])
+    def get_attestation(run_id: str) -> Response:
+        run = repository.get(run_id)
+        ref = repository.attestation(run_id)
+        if run is None or ref is None:
+            raise HTTPException(status_code=404, detail="detached statement not retained")
+        try:
+            data = store.get(ref)
+        except (OSError, ValueError) as error:
+            raise HTTPException(
+                status_code=503, detail="retained attestation unavailable"
+            ) from error
+        return Response(
+            data,
+            media_type="application/json",
+            headers={"X-Sentinel-Signer-Status": signer_status(run)},
+        )
+
+    @app.get("/v1/runs/{run_id}/telemetry", dependencies=[Depends(require("evidence"))])
+    def get_telemetry(
+        run_id: str, branch: Annotated[int | None, Query(ge=0, le=63)] = None
+    ) -> dict[str, Any]:
+        import tempfile
+
+        from sentinel_replay.pack_capsule import capsule_telemetry
+        from sentinel_replay.telemetry import merge_telemetry
+
+        source = investigation(run_id, branch)
+        try:
+            with tempfile.TemporaryDirectory(prefix="sentinel-telemetry-") as directory:
+                path = Path(directory) / "journal.jsonl"
+                path.write_bytes(source.journal)
+                report = merge_telemetry(
+                    path, capsule_telemetry(source.artifacts), expected_root=source.verified.root
+                )
+        except (ValueError, OSError) as error:
+            raise HTTPException(
+                status_code=409, detail="unsupported or mismatched telemetry"
+            ) from error
+        return {
+            "journal_root": report["journal_root"],
+            "matched_spans": len(report["matched_spans"]),
+            "unmatched_spans": report["unmatched_spans"],
+            "structural_edges": len(report["structural_edges"]),
+            "limitation": report["limitation"],
+        }
+
+    from sentinel_replay.request_budget import RequestBodyBudget
+
+    app.add_middleware(RequestBodyBudget)
     return app
 
 
@@ -201,4 +952,9 @@ def app_factory() -> FastAPI:
     settings = ApiSettings.from_env()
     if not settings.database_url.startswith("postgresql+psycopg://"):
         raise RuntimeError("self-hosted API requires a PostgreSQL psycopg URL")
+    if os.environ.get("SENTINEL_ALLOW_PLAINTEXT_PREVIEW") != "1":
+        if settings.encryption_key is None or settings.trust_registry is None:
+            raise RuntimeError("self-hosted API requires encryption and an operator trust registry")
+        if settings.opa_executable is None or not os.access(settings.opa_executable, os.X_OK):
+            raise RuntimeError("self-hosted API requires the configured native OPA binary")
     return create_app(settings)

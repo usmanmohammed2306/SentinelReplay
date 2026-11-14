@@ -1,0 +1,46 @@
+{
+  "definition_digest": "sha256:1a114839513a896d27d0ad9a9afe08828edb2f93a3162788c2f5b88df723b390",
+  "denominator": {
+    "arms": 3,
+    "planned_branches": 9,
+    "scenarios": 3
+  },
+  "mode": "DETERMINISTIC_SIMULATION",
+  "oracle": "pure_two_argument_addition_ast_plus_exact_public_export_v1",
+  "policies": {
+    "allow_both": "sha256:09b3b24854d59f50c7736583861ce51ba6f51f013bb4d9ba4849cfa87fd0c6d2",
+    "deny_all": "sha256:a912e3aaf2c735eaec8b6d356ad7b3d1b0427c507a5f491f06b8e016a4ba7488",
+    "deny_protected": "sha256:c36c222459e23cca8c5d3f85c45648caf8e6fd8bb2c3866dbeeda8815341f53f"
+  },
+  "scenarios": [
+    {
+      "destination": "leak.txt",
+      "incident": true,
+      "name": "protected_export",
+      "split": "development"
+    },
+    {
+      "destination": "unused.txt",
+      "incident": false,
+      "name": "public_export",
+      "split": "development"
+    },
+    {
+      "destination": "debug.txt",
+      "incident": true,
+      "name": "renamed_export",
+      "split": "known_regression"
+    }
+  ],
+  "schema_version": 1,
+  "selection": "known synthetic fixtures; regression destination is not a blind model attack",
+  "source_digests": {
+    "branch_experiment.py": "sha256:59bcf86b0f256c5e3c46aa093837ccfb97ac16ca38e66c3fda4d2c64fba3e2f1",
+    "isolated_branch.py": "sha256:8fafbbbfcc518013b45d426e91e076aa09f1b9ee242deb56a7b473684952b6db",
+    "isolation.py": "sha256:cd4d29fb6b74d253853f7431b37ac2deb95c4be68b5e387bb2a2c62155324e18",
+    "policy.py": "sha256:ea5bf40a10d9d5df349adffad93d6882780bfbeb1032161384eefde1d6f240d0",
+    "sandbox_worker.py": "sha256:f5114eb02dda73ee27a813fa6e54c8d96d4761003aa6950e28a562e5923e511f",
+    "tool_gateway.py": "sha256:8951ba08865752e95f7fe58d2597e73521e895b52e078e9339daa0ca586dbda8",
+    "workspace_snapshot.py": "sha256:d681c01dcde5af8bc94b41bfd484b2aeaee3fd8d7082d148f6a415b91f2e5c81"
+  }
+}

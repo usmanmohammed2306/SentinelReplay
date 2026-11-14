@@ -12,6 +12,8 @@ import typer
 from sentinel_replay import __version__
 from sentinel_replay.aws_evidence import AnchorRef, KmsRootSigner, S3AnchorStore, S3EvidenceStore
 from sentinel_replay.boundary import BoundarySession, ReplayMiss
+from sentinel_replay.branch_analysis import analyze_branch_experiment
+from sentinel_replay.branch_experiment import run_branch_experiment
 from sentinel_replay.canonical import CanonicalizationError, event_digest, load_json_unique
 from sentinel_replay.capsule import (
     CapsuleError,
@@ -20,6 +22,7 @@ from sentinel_replay.capsule import (
     verify_capsule,
     verify_imported,
 )
+from sentinel_replay.client_cli import register_client_commands
 from sentinel_replay.codex_trace import CodexTraceError, summarize_codex_trace
 from sentinel_replay.evidence_store import FileEvidenceStore
 from sentinel_replay.gateway_audit import GatewayAuditError, audit_gateway_journal
@@ -34,6 +37,7 @@ from sentinel_replay.local_anchor import (
 )
 from sentinel_replay.mini_forensics import EvidenceShapeError, investigate_mini
 from sentinel_replay.policy import PolicySpec, policy_source_digest
+from sentinel_replay.product_cli import register_product_commands
 from sentinel_replay.provenance import ProvenanceShapeError, build_provenance
 from sentinel_replay.provenance_eval import LabelError, ProvenanceLabels, score_provenance
 from sentinel_replay.scripted_agent import run_scripted_agent
@@ -55,7 +59,10 @@ app = typer.Typer(
     add_completion=False,
     help="Counterfactual incident forensics for autonomous AI agents.",
     no_args_is_help=True,
+    pretty_exceptions_show_locals=False,
 )
+register_product_commands(app)
+register_client_commands(app)
 journal_app = typer.Typer(help="Append and verify evidence journals.")
 app.add_typer(journal_app, name="journal")
 mini_app = typer.Typer(help="Study a synthetic agent run one step at a time.")
@@ -72,6 +79,51 @@ codex_app = typer.Typer(help="Inspect bounded Codex CLI event streams without re
 app.add_typer(codex_app, name="codex")
 gateway_app = typer.Typer(help="Audit the limited MCP tool-gateway evidence grammar.")
 app.add_typer(gateway_app, name="gateway")
+branch_app = typer.Typer(help="Execute isolated synthetic branches and inspect actual effects.")
+app.add_typer(branch_app, name="branch")
+
+
+@branch_app.command("summarize")
+def branch_summarize(experiment: Path) -> None:
+    """Verify archived source bindings and compare independently inspected effects."""
+    try:
+        result = analyze_branch_experiment(experiment)
+    except (OSError, ValueError, KeyError) as error:
+        raise typer.BadParameter(str(error), param_hint="branch evidence") from error
+    typer.echo(
+        f"{result['mode']} branches={result['population']['branches']} "
+        f"world_diffs={len(result['world_diffs'])} report={experiment / 'analysis.json'}"
+    )
+
+
+@branch_app.command("compare")
+def branch_compare(
+    destination: Path,
+    endpoint: str | None = None,
+    served_model: str | None = None,
+    model_revision: str | None = None,
+    seed: int = 11,
+    token_file: Path | None = None,
+) -> None:
+    """Run frozen Docker/OPA branches, with optional trusted loopback inference."""
+    try:
+        result = run_branch_experiment(
+            destination,
+            endpoint=endpoint,
+            served_model=served_model,
+            model_revision=model_revision,
+            seed=seed,
+            token_file=token_file,
+        )
+    except (OSError, ValueError) as error:
+        raise typer.BadParameter(str(error), param_hint="branch experiment") from error
+    typer.echo(
+        f"{result['mode']} completed={result['completed_branches']}/"
+        f"{result['planned_branches']} unknown={result['unknown_branches']} "
+        f"report={destination / 'comparison.json'}"
+    )
+    if result["unknown_branches"]:
+        raise typer.Exit(code=1)
 
 
 @app.callback()

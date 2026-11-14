@@ -1,0 +1,15 @@
+{
+  "command": [
+    "make",
+    "check"
+  ],
+  "command_exit_code": 0,
+  "elapsed_seconds": 19.807575332990382,
+  "exit_code": 0,
+  "passed": 215,
+  "private_log_digest": "sha256:30056ef828b4cd1d3c5556af6144c8a74d14947dce4b9179fc4ae08c122fcb1c",
+  "schema_version": 1,
+  "source_root": "sha256:b01a6f48332b1da6a55756f0443a69dab648ad44c4d5e29fae59f2018f7d3724",
+  "source_unchanged": true,
+  "started_at_utc": "2026-11-14T03:13:51.380715+00:00"
+}

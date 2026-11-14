@@ -1,29 +1,83 @@
-# Local API deployment preview
+# Self-hosted local operation and recovery
 
-Sentinel can now accept a signed synthetic incident capsule over HTTP, verify its exact bytes against one server-configured public key, store the archive in local content-addressed storage, and index the run in PostgreSQL 17. This is a working self-hosted **preview**, not the complete V1 deployment. It does not yet run an agent, restore an incident environment, or enforce production identity and privacy controls.
+This runbook describes the implemented local profile. It is loopback-only, uses a trusted operator and keeps agent execution outside the controller's writable evidence/key boundary. The [release status](STATUS.md) lists the evidence still required before full V1 acceptance.
 
-## What the local stack runs
+## Services and trust
 
-The Compose stack starts PostgreSQL, creates a restricted `sentinel_api` database role, applies the Alembic migration using the bootstrap role, then starts the API as an unprivileged container user connected as `sentinel_api`. That role has `SELECT` and `INSERT` on the run index, not `UPDATE` or `DELETE`. PostgreSQL is reachable only on the private Compose network. The API is published on `127.0.0.1:8000`; it does not provide TLS. The API requires a bearer token for run endpoints and verifies detached capsule statements using a public key mounted read-only from the host. The corresponding private key must remain outside this stack and outside any agent workspace.
+Compose starts PostgreSQL 17, a one-shot migration service, a one-shot evidence/key initializer, the FastAPI controller and the Next.js UI. PostgreSQL has no published port. API8000 and UI3000 bind127.0.0.1. API/UI run as UID10001 with read-only roots, dropped capabilities, no-new-privileges and bounded temporary storage. Native OPA 1.0.0 is pinned in the API image. The database runtime role receives SELECT/INSERT on immutable product tables; bootstrap migrations use a separate role.
 
-An import follows this order: bound the request body; parse and verify the complete capsule; verify its detached Ed25519 statement against the configured key; durably put the exact archive bytes in the local content-addressed store; then insert immutable run metadata in PostgreSQL. Repeating the same import is idempotent. A different capsule under the same run ID returns a conflict. An authenticated `GET /v1/runs/{run_id}/capsule` checks the stored digest, size, and indexed run metadata before returning the bytes; corruption produces a service error, not a silently altered archive. A failed database insert may leave an unreferenced content-addressed blob, so a future retention job must reconcile those blobs.
+CAS payloads are AES-256-GCM encrypted, with identities checked against plaintext digests and sizes after decryption. The32-byte storage key lives in a separate private volume seeded from an operator-owned0600 file. It is never returned by the API. The original capsule signature statement is retained separately from the archive. The signer private key stays outside this stack; the API receives public trust configuration only.
 
-## Run the synthetic smoke test
+The operator registry supports active/retired/revoked keys and validity windows. New imports require an active key; retired keys may support historical replay, and revoked/unknown signers quarantine new replay/fork operations. An append-only SQL epoch ledger rejects registry rollback/equivocation relative to that ledger. Restoring the entire controller and ledger together can still roll back that view. Preserve a separately trusted latest checkpoint/registry witness for recovery.
 
-1. Create an empty throwaway agent directory and a separate controller directory. Run `sentinel local-anchor keygen CONTROLLER_DIR AGENT_DIR`. Keep `signing.ed25519.key` out of Git and out of any agent-writable directory.
-2. Copy [`deploy/local/.env.example`](../deploy/local/.env.example) to a private `deploy/local/.env`. Set **different** unique URL-safe passwords for the bootstrap and API database roles, a random API token of at least 32 characters, and the absolute path to `signing.ed25519.pub`. The `.env` file is ignored by Git. Never use the example values as credentials. The role-init script runs only when PostgreSQL initializes a new volume; adding it to an existing volume does not retrofit the role.
-3. From the repository root, run `docker compose --env-file deploy/local/.env -f deploy/local/compose.yaml up --build -d`. Check `curl --fail http://127.0.0.1:8000/healthz`; it should return `{"status":"ok"}`.
-4. Record only synthetic data with `sentinel demo-mini AGENT_DIR`. Export one recording with `sentinel capsule export run-001 AGENT_DIR/incident.jsonl CAPSULE.sentinel`, then sign it with `sentinel capsule sign-local CAPSULE.sentinel CONTROLLER_DIR/signing.ed25519.key ANCHOR_DIR AGENT_DIR`.
-5. With `SENTINEL_API_TOKEN` set in your shell to the same private token, run `python scripts/smoke_local_api.py --capsule CAPSULE.sentinel --attestation ANCHOR_DIR/capsules/run-001/CAPSULE.sentinel.sig.json`. The script checks health, imports the capsule, retrieves its metadata, and prints only the run ID, count, and root.
+## Prepare a private local installation
 
-`docker compose --env-file deploy/local/.env -f deploy/local/compose.yaml down` stops the stack while retaining PostgreSQL and evidence volumes. Do not use `down --volumes` unless you intend to delete the data in that specific deployment. Backups and recovery are not yet implemented.
+Use Python 3.12, uv 0.12.17, Docker Compose with `!override` support for the validation harness, and Node/pnpm only when developing the frontend outside Docker. Keep private configuration under `.local-controller/` or another operator-protected directory. Do not place it inside an agent workspace.
 
-## Claims this preview does not earn
+```bash
+uv sync --frozen
+mkdir -p .local-controller/operator/declared-agent
+uv run --frozen sentinel local-anchor keygen \
+  .local-controller/operator/keys .local-controller/operator/declared-agent
+uv run --frozen sentinel privacy keygen .local-controller/operator/storage.key
+uv run --frozen sentinel trust init \
+  .local-controller/operator/keys/signing.ed25519.pub \
+  .local-controller/operator/trust.json
+```
 
-- The static bearer token grants both import and full-archive read-back. It is not scoped authorization or user identity. Archives may contain sensitive incident evidence; the localhost endpoint needs a TLS-terminating, authenticated front end before remote exposure.
-- The API has a restricted database role, but this is not a comprehensive least-privilege review. Its evidence volume is not encrypted at rest.
-- The signer is a separate *path*, not yet a separately isolated identity or service. The configured public key has no rotation, revocation, or authoritative freshness policy.
-- The ordinary unsigned capsule import and imported replay commands still exist. The API requires a detached signature, but a later `replay-imported` invocation does not recheck that signature.
-- This stack contains no isolated agent runner, effect receipts, OTel collector, worker, UI, policy engine, backup job, or disaster-recovery proof. A healthy API is not `VERIFIED_REPLAY` or a passed release gate.
+Copy `deploy/local/.env.example` to a private `.env` file. Replace all three passwords/tokens with different cryptographically random values of at least32 URL-safe characters. Set the public-key, storage-key and trust-registry host paths to absolute paths. Restrict the `.env` and storage key to 0600. Never send credentials in a chat or commit them.
 
-The local tests cover malformed signatures, request limits, idempotence, run-ID conflict, corrupt read-back, SQL migration, and a guarded PostgreSQL integration case. A live synthetic Compose smoke passed on 2026-10-07. The private initial code import was pushed on 2026-10-20 with CI intentionally skipped; successful hosted CI remains pending. Follow [the status file](STATUS.md) and [the frozen charter](FROZEN_PRODUCT_CHARTER.md) for the remaining V1 gates.
+```bash
+docker compose --env-file .local-controller/operator/.env \
+  -f deploy/local/compose.yaml build
+docker compose --env-file .local-controller/operator/.env \
+  -f deploy/local/compose.yaml up --detach --wait
+```
+
+Open `http://127.0.0.1:3000` and enter the investigator bearer token. The browser stores it in an HttpOnly SameSite=Strict session cookie; it is not placed in localStorage. The BFF checks mutation origins, bounds bodies, prevents redirected bearer forwarding and proxies only run API routes. Use the configured public origin and TLS before designing any remote-access profile; remote exposure has not been validated here.
+
+The API factory requires PostgreSQL, encrypted storage, a registry and native OPA. `SENTINEL_ALLOW_PLAINTEXT_PREVIEW=1` is an explicit development escape hatch used by narrow disposable fixtures; it is not the documented production profile.
+
+## Import and inspect
+
+A new capsule import is streamed within a 65 MiB archive budget, fully verified, authenticated against an active configured key, put durably in encrypted CAS, then indexed in SQL. The same capsule import is idempotent; a conflicting archive under an existing run ID is rejected. A failed SQL insert can leave an orphan blob for the offline collector.
+
+Use the signed import commands shown by `sentinel capsule --help`, or the API's octet-stream `POST /v1/runs/import` with the base64 detached statement in `X-Sentinel-Attestation`. `/openapi.json` describes the current routes. Reads require bearer grants with the requested capability and run allowlist. `SENTINEL_ACCESS_GRANTS` accepts a JSON array of hashed token grants; the separate long operator token has admin scope. See `access.py` and its negative tests before configuring additional investigators.
+
+The UI presents timeline, provenance, replay, policies/futures, world diff and evidence. It paginates runs and events, loads Monaco assets locally, displays covered replay modes and allows inspection of completed operation receipts. Raw payload export is a separate capability. Encrypted stores default to sealed capsule downloads in the UI; the detached signature is a separate JSON file. Decrypt with `sentinel privacy decrypt` before verifying the original capsule signature.
+
+## Background work and limits
+
+Replay, supported forks, bisection and the fixed-corpus policy search can run as durable jobs. One controller holds the exclusive evidence-root lock; the queue is bounded, and each job runs in its own spawned process/group with a hard deadline. Requests/results are retained in encrypted CAS; status transitions and resumable SSE events are immutable SQL records. A restart marks unfinished work interrupted; completion is never inferred from a lost worker. Inspect history before retrying an uncertain operation.
+
+JSON requests are limited to 64 KiB; there are two admitted heavy requests, a queue of eight jobs and one execution worker. Search has a 1,000-candidate/600-second ceiling. Live operation status streams use bounded30-second windows and Last-Event-ID resumption. Recorded timeline streams are finite, ordered playback; they are not a claim that arbitrary live agents are captured continuously. The finite pack caps boundaries at 50k, seed files at 100 and seed bytes at 1MB. Capsule, shard, telemetry-decompression and graph budgets fail closed.
+
+## Backup and disaster rehearsal
+
+Stop API and UI writers before taking the consistency set. Back up the PostgreSQL database, complete encrypted evidence root, trust registry/epoch state, and separately protected storage key. Retain signer public-key history, original detached statements and externally retained checkpoint heads. A CAS-only copy is insufficient; losing the storage key makes encrypted evidence unrecoverable. Treat backups as sensitive and manage their retention separately.
+
+Restore into **new volumes**. Initialize schema and the same key, restore the database, copy the encrypted evidence tree, normalize ownership only on those new owned volumes, then start services. Check the expected run ID/root, exact original capsule bytes, signature, signer status, checkpoint adapters and strict covered-effect replay. Compare externally held latest witnesses before allowing operations; restored SQL alone cannot prove freshness.
+
+The executable own-project rehearsal is:
+
+```bash
+docker build --platform linux/amd64 -t sentinel-replay-api:validation-20261113 .
+docker build -t sentinel-replay-ui:validation-20261113 ui
+uv run --frozen python scripts/validate_deployment.py \
+  --capsule benchmarks/results/product-demo-final-2026-11-13/investigation.sentinel \
+  --output .local-controller/recovery-choose-a-fresh-name
+```
+
+It generates private keys/passwords, uses unique project names and loopback ports, verifies real HTTP investigation/replay, native OPA, sealed exports, persistent job/SSE recovery, and database/CAS restoration, then removes only its own stacks/volumes. Logs, encrypted backups and keys remain private. `--browser-proof` additionally requires installed Playwright Chromium and records the actual integrated UI. The retained first rehearsal failed on initializer key ownership; that failure was fixed and later rehearsals passed. Same-host fresh-volume recovery is not independent-machine reproduction.
+
+## Retention and audit
+
+`sentinel retire RUN_ID --reason ...` records an admin-only logical tombstone. Reads/operations return410 afterwards; physical collection is separate. Stop the controller before `sentinel retention collect`; it defaults to dry-run and requires explicit apply. It verifies live references first, preserves shared blobs, job results and future descendants, and refuses active writers/symlinks. SQL history and backups remain. Physical unlink is not secure SSD erasure.
+
+Access decisions are durably fsynced before access proceeds. The controller verifies its audit chain at startup and keeps an exclusive serialized writer during its lifetime; an audit outage rejects the request. Keep audits and private operator configuration outside agent mounts. Host-admin compromise and a malicious process running as the host operator remain outside the supported isolation claim.
+
+The database image is pinned to PostgreSQL 17.12 after reviewing the November 12,2026 [security and maintenance release](https://www.postgresql.org/docs/release/17.12/). Earlier retained17.11 runs remain historical evidence. New deployments use the updated digest; this version update is not a claim that every dependency/image has received an independent security audit.
+
+For the actual50k loopback HTTP and eight-client backpressure probe, add `--scale-capsule benchmarks/results/product-scale-final-2026-11-13/50000/scale.sentinel` to the rehearsal. It imports the separate signed50k archive, records 25 samples per query and every concurrent response status, then restores both database/CAS roots with the job history. This measures the warm sparse index over HTTP, not browser interactivity, dense graphs or a production SLO.
+
+The published repository keeps bulky generated outputs in verified synthetic evidence bundles. Before using the50k scale-capsule option on a fresh checkout, extract `benchmarks/evidence-archives/product-scale-final-2026-11-13.tar.gz` into `benchmarks/results` after checking its digest against the archive manifest. Small unit/browser fixtures and the integrated demonstration capsule are directly present. This packaging does not change any recorded result.

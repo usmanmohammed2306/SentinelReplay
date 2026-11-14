@@ -10,7 +10,10 @@
 !.env.example
 .local-controller
 *.ed25519.key
+*.key
+*.pem
 __pycache__
 tests
 benchmarks
 deploy/aws
+ui

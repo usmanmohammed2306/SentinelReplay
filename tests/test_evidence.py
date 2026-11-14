@@ -273,3 +273,15 @@ def test_streaming_boundary_session_replays_exactly(tmp_path: Path) -> None:
     for index in range(25):
         assert replay.call("tool", f"call-{index}", {"x": index}) == index
     replay.assert_complete()
+
+
+def test_excessive_nesting_is_a_controlled_evidence_error() -> None:
+    from sentinel_replay.canonical import CanonicalizationError, canonical_bytes, load_json_unique
+
+    value: object = "leaf"
+    for _ in range(80):
+        value = [value]
+    with pytest.raises(CanonicalizationError, match="nesting"):
+        canonical_bytes(value)
+    with pytest.raises(CanonicalizationError, match="nesting"):
+        load_json_unique("[" * 2000 + "0" + "]" * 2000)

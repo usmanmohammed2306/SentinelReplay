@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "status": "failed_before_container_launch",
+  "command": "sentinel branch compare benchmarks/results/isolated-branches-attempt01-2026-11-13",
+  "observed_error": "workspace must be an existing absolute non-symlink directory",
+  "cause": "The experiment accepted a relative output path, but the isolation command correctly requires a canonical absolute workspace.",
+  "completed_branches": 0,
+  "interpretation": "Setup failure only; no prevention, performance, or agent outcome established. The definition and prepared checkpoint artifacts are retained."
+}

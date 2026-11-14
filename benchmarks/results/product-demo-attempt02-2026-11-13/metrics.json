@@ -1,0 +1,25 @@
+{
+  "binary_restores": 14,
+  "boundary_records": 3186,
+  "linear_restores": null,
+  "logical_initial_plus_final_snapshot_bytes": 129,
+  "physical_snapshot_cas_bytes": 8844,
+  "program_actions": 3184,
+  "replay_denominator": 3,
+  "restored_adapters": [
+    "workspace",
+    "git",
+    "sqlite"
+  ],
+  "schema_version": 1,
+  "scope": "one_run_synthetic_environment_pack",
+  "strict_replay_passes": 3,
+  "telemetry_spans": 3186,
+  "unmeasured_release_metrics": [
+    "independent_provenance_accuracy",
+    "repeated_end_to_end_latency",
+    "recording_overhead",
+    "UI_scale_budgets",
+    "clean_room_recovery"
+  ]
+}

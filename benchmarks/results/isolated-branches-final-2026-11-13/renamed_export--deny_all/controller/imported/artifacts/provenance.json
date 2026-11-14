@@ -1,0 +1,29 @@
+{
+  "blast_radius": [],
+  "edges": [
+    {
+      "kind": "chronological",
+      "rationale": "ordered in the verified journal; not a dependency claim",
+      "source": 0,
+      "target": 1
+    },
+    {
+      "kind": "chronological",
+      "rationale": "ordered in the verified journal; not a dependency claim",
+      "source": 1,
+      "target": 2
+    },
+    {
+      "kind": "chronological",
+      "rationale": "ordered in the verified journal; not a dependency claim",
+      "source": 2,
+      "target": 3
+    }
+  ],
+  "journal_root": "sha256:554323125ed5e39a2821ac16ccf7da5ac702e4f1c7a4d0fc88bfa60a396708f0",
+  "limitation": "Edges come from declared boundary metadata, not observed causal proof. Chronology is excluded from reachability; untyped carriers produce no dependency. Uninstrumented actions and agent adaptation remain outside this graph.",
+  "mode": "DECLARED_PROVENANCE_PREVIEW",
+  "nodes": 4,
+  "root_step": 0,
+  "untyped_carrier_steps": []
+}
