@@ -88,6 +88,10 @@ def source_inventory(root: Path) -> dict[str, str]:
         "migrations/**/*.py",
         "tests/*.py",
         "tests/fixtures/**/*",
+        "benchmarks/results/isolated-branches-final-2026-11-13/**/*",
+        "benchmarks/results/live-isolated-branches-structured-tools-2026-11-13/**/*",
+        "benchmarks/results/product-demo-final-2026-11-13/investigation.sentinel",
+        "benchmarks/results/environment-pack-corpus-final-2026-11-13/results.json",
         "scripts/*.py",
         "benchmarks/*.py",
         "ui/src/**/*.ts",
@@ -113,7 +117,7 @@ def source_inventory(root: Path) -> dict[str, str]:
         "docs/FROZEN_PRODUCT_CHARTER.md",
         "docs/SCOPE_TRACEABILITY.md",
         "LICENSE",
-        "THIRD_PARTY_NOTICES.md",
+        "benchmarks/evidence-archives/THIRD_PARTY_NOTICES.md",
     )
     files = sorted({path for pattern in patterns for path in root.glob(pattern) if path.is_file()})
     if any(path.is_symlink() for path in files):

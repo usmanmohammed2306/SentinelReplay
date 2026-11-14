@@ -1,3 +1,4 @@
+import base64
 import json
 from pathlib import Path
 
@@ -7,15 +8,57 @@ from typer.testing import CliRunner
 import sentinel_replay.signed_capsule as signed_capsule_module
 from sentinel_replay.capsule import export_capsule, read_capsule_bytes, verify_capsule
 from sentinel_replay.cli import app
+from sentinel_replay.evidence_store import blob_digest
 from sentinel_replay.journal import Journal
 from sentinel_replay.local_anchor import create_keypair
 from sentinel_replay.signed_capsule import (
+    CapsuleAttestation,
     SignedCapsuleError,
     import_signed_capsule,
     sign_capsule,
     verify_signed_capsule,
     verify_signed_capsule_material,
 )
+
+
+def test_unauthenticated_archive_never_reaches_heavy_verification(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    agent, capsule, private, public, _ = _fixture(tmp_path)
+    attestation = sign_capsule(capsule, private, tmp_path / "anchors", agent)
+    statement = json.loads(attestation.read_text())
+    statement["signature_b64"] = "AAAA"
+
+    def forbidden(_data: bytes) -> None:
+        raise AssertionError("unauthenticated archive reached the parser")
+
+    monkeypatch.setattr(signed_capsule_module, "verify_capsule_bytes", forbidden)
+    assert not verify_signed_capsule_material(
+        capsule.read_bytes(), json.dumps(statement).encode(), public.read_bytes()
+    )
+    assert not verify_signed_capsule_material(
+        b"wrong opaque archive", attestation.read_bytes(), public.read_bytes()
+    )
+
+
+def test_authenticated_malformed_archive_still_requires_structural_verification(
+    tmp_path: Path,
+) -> None:
+    from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
+
+    agent, capsule, private, public, _ = _fixture(tmp_path)
+    path = sign_capsule(capsule, private, tmp_path / "anchors", agent)
+    statement = CapsuleAttestation.model_validate_json(path.read_bytes())
+    malformed = b"not a capsule"
+    changed = statement.model_copy(update={"capsule_digest": blob_digest(malformed)})
+    signature = Ed25519PrivateKey.from_private_bytes(private.read_bytes()).sign(
+        signed_capsule_module._message(changed.signed_fields())
+    )
+    changed = changed.model_copy(update={"signature_b64": base64.b64encode(signature).decode()})
+    with pytest.raises(SignedCapsuleError):
+        verify_signed_capsule_material(
+            malformed, changed.model_dump_json().encode(), public.read_bytes()
+        )
 
 
 def _fixture(tmp_path: Path) -> tuple[Path, Path, Path, Path, Path]:

@@ -15,6 +15,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from sentinel_replay.canonical import canonical_bytes, load_json_unique
 from sentinel_replay.capsule import (
+    MAX_ARCHIVE_BYTES,
     CapsuleError,
     CapsuleVerification,
     import_capsule_bytes,
@@ -134,8 +135,11 @@ def _verify_signed_bytes(data: bytes, attestation_path: Path, public_path: Path)
 def verify_signed_capsule_material(data: bytes, raw_statement: bytes, public_raw: bytes) -> bool:
     """Verify complete archive bytes against a server-selected trusted public key."""
     try:
-        result = verify_capsule_bytes(data)
-        if len(raw_statement) > MAX_CAPSULE_ATTESTATION_BYTES or len(public_raw) != 32:
+        if (
+            len(data) > MAX_ARCHIVE_BYTES
+            or len(raw_statement) > MAX_CAPSULE_ATTESTATION_BYTES
+            or len(public_raw) != 32
+        ):
             raise SignedCapsuleError("invalid attestation or public key size")
         statement = CapsuleAttestation.model_validate(
             load_json_unique(raw_statement.decode("utf-8"))
@@ -144,20 +148,24 @@ def verify_signed_capsule_material(data: bytes, raw_statement: bytes, public_raw
         key_id = blob_digest(public_raw)
     except (CapsuleError, LocalAnchorError, UnicodeDecodeError, ValueError) as error:
         raise SignedCapsuleError(str(error)) from error
-    if (
-        statement.run_id != result.run_id
-        or statement.records != result.records
-        or statement.root != result.root
-        or statement.capsule_digest != blob_digest(data)
-        or statement.key_id != key_id
-    ):
+    if statement.capsule_digest != blob_digest(data) or statement.key_id != key_id:
         return False
     try:
         signature = base64.b64decode(statement.signature_b64, validate=True)
         public.verify(signature, _message(statement.signed_fields()))
     except (InvalidSignature, ValueError):
         return False
-    return True
+    # Authenticate the bounded opaque archive before parsing its members/journal.
+    # A token without the trusted signing key cannot trigger expensive decoding.
+    try:
+        result = verify_capsule_bytes(data)
+    except CapsuleError as error:
+        raise SignedCapsuleError(str(error)) from error
+    return (
+        statement.run_id == result.run_id
+        and statement.records == result.records
+        and statement.root == result.root
+    )
 
 
 def verify_signed_capsule(capsule_path: Path, attestation_path: Path, public_path: Path) -> bool:

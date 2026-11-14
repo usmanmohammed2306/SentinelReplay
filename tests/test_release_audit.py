@@ -6,6 +6,19 @@ from sentinel_replay.evidence_store import blob_digest
 from sentinel_replay.release_audit import audit_release, source_inventory
 
 
+def test_changed_consumed_capsule_invalidates_a_frozen_release_source(tmp_path: Path) -> None:
+    relative = "benchmarks/results/product-demo-final-2026-11-13/investigation.sentinel"
+    capsule = tmp_path / relative
+    capsule.parent.mkdir(parents=True)
+    capsule.write_bytes(b"frozen test input")
+    manifest = tmp_path / "manifest.json"
+    manifest.write_text(json.dumps({"source_files": source_inventory(tmp_path), "artifacts": {}}))
+    assert relative in source_inventory(tmp_path)
+    assert audit_release(tmp_path, manifest)["source_mismatches"] == []
+    capsule.write_bytes(b"different test input, unchanged test code")
+    assert audit_release(tmp_path, manifest)["source_mismatches"] == [relative]
+
+
 def test_release_audit_refuses_missing_results_changed_sources_and_forged_artifact(
     tmp_path: Path,
 ) -> None:

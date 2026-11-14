@@ -658,12 +658,12 @@ def create_app(settings: ApiSettings, *, engine: Engine | None = None) -> FastAP
             chosen = current.import_key(statement.key_id) if current else public_raw
             if not verify_signed_capsule_material(data, raw_statement, chosen):
                 raise SignedCapsuleError("invalid signature")
-            verified = verify_capsule_bytes(data)
             if settings.witness_root is not None:
                 from sentinel_replay.capsule_witness import require_witness
 
                 require_witness(settings.witness_root, raw_statement)
-            return verified.run_id, verified.root, verified.records, statement.key_id
+            # These fields were checked against the authenticated archive above.
+            return statement.run_id, statement.root, statement.records, statement.key_id
 
         try:
             (
