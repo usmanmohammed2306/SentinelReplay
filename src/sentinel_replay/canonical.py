@@ -16,8 +16,21 @@ class CanonicalizationError(ValueError):
 def _normalize(value: object, depth: int = 0) -> object:
     if depth > 64:
         raise CanonicalizationError("canonical nesting exceeds64 levels")
+    kind = type(value)
     if value is None:
         return ["null"]
+    if kind is str:
+        return ["str", value]
+    if kind is bool:
+        return ["bool", value]
+    if kind is int:
+        return ["int", str(value)]
+    if type(value) is dict:
+        if not all(isinstance(key, str) for key in value):
+            raise CanonicalizationError("map keys must be strings")
+        return ["map", [[key, _normalize(value[key], depth + 1)] for key in sorted(value)]]
+    if type(value) is list or type(value) is tuple:
+        return ["list", [_normalize(item, depth + 1) for item in value]]
     if isinstance(value, Enum):
         enum_name = f"{type(value).__module__}.{type(value).__qualname__}"
         return ["enum", enum_name, _normalize(value.value, depth + 1)]

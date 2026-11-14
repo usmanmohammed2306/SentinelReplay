@@ -10,6 +10,8 @@ CAS payloads are AES-256-GCM encrypted, with identities checked against plaintex
 
 The operator registry supports active/retired/revoked keys and validity windows. New imports require an active key; retired keys may support historical replay, and revoked/unknown signers quarantine new replay/fork operations. An append-only SQL epoch ledger rejects registry rollback/equivocation relative to that ledger. Restoring the entire controller and ledger together can still roll back that view. Preserve a separately trusted latest checkpoint/registry witness for recovery.
 
+The production factory additionally requires an **operator-held capsule witness directory**. It contains one authenticated final capsule statement per run ID, published atomically with no replacement. Compose mounts it read-only outside the database, CAS and their backups. Imports must match its complete signed statement. Replay, comparison and fork admission recheck the retained statement and SQL identity against it. Missing or inconsistent witnesses quarantine operations. This detects per-run replacement relative to retained operator state; it does not prove that all runs are present, establish wall-clock freshness, prevent host-admin compromise or replace the registry epoch witness.
+
 ## Prepare a private local installation
 
 Use Python 3.12, uv 0.12.17, Docker Compose with `!override` support for the validation harness, and Node/pnpm only when developing the frontend outside Docker. Keep private configuration under `.local-controller/` or another operator-protected directory. Do not place it inside an agent workspace.
@@ -23,9 +25,11 @@ uv run --frozen sentinel privacy keygen .local-controller/operator/storage.key
 uv run --frozen sentinel trust init \
   .local-controller/operator/keys/signing.ed25519.pub \
   .local-controller/operator/trust.json
+mkdir -p .local-controller/operator/capsule-witness
+chmod 755 .local-controller/operator/capsule-witness
 ```
 
-Copy `deploy/local/.env.example` to a private `.env` file. Replace all three passwords/tokens with different cryptographically random values of at least32 URL-safe characters. Set the public-key, storage-key and trust-registry host paths to absolute paths. Restrict the `.env` and storage key to 0600. Never send credentials in a chat or commit them.
+Copy `deploy/local/.env.example` to a private `.env` file. Replace all three passwords/tokens with different cryptographically random values of at least32 URL-safe characters. Set the public-key, storage-key, trust-registry and operator-witness host paths to absolute paths. Restrict the `.env` and storage key to 0600. Never send credentials in a chat or commit them.
 
 ```bash
 docker compose --env-file .local-controller/operator/.env \
@@ -36,11 +40,25 @@ docker compose --env-file .local-controller/operator/.env \
 
 Open `http://127.0.0.1:3000` and enter the investigator bearer token. The browser stores it in an HttpOnly SameSite=Strict session cookie; it is not placed in localStorage. The BFF checks mutation origins, bounds bodies, prevents redirected bearer forwarding and proxies only run API routes. Use the configured public origin and TLS before designing any remote-access profile; remote exposure has not been validated here.
 
-The API factory requires PostgreSQL, encrypted storage, a registry and native OPA. `SENTINEL_ALLOW_PLAINTEXT_PREVIEW=1` is an explicit development escape hatch used by narrow disposable fixtures; it is not the documented production profile.
+The API factory requires PostgreSQL, encrypted storage, a registry, the operator witness root and native OPA. `SENTINEL_ALLOW_PLAINTEXT_PREVIEW=1` is an explicit development escape hatch used by narrow disposable fixtures; it is not the documented production profile.
 
 ## Import and inspect
 
 A new capsule import is streamed within a 65 MiB archive budget, fully verified, authenticated against an active configured key, put durably in encrypted CAS, then indexed in SQL. The same capsule import is idempotent; a conflicting archive under an existing run ID is rejected. A failed SQL insert can leave an orphan blob for the offline collector.
+
+Before importing, the operator signs the capsule outside the controller and pins its final identity:
+
+```bash
+uv run --frozen sentinel capsule sign-local RUN.sentinel \
+  .local-controller/operator/keys/signing.ed25519.key \
+  .local-controller/operator/anchors .local-controller/operator/declared-agent
+# Use the exact attestation path printed above as STATEMENT.json.
+uv run --frozen sentinel capsule witness RUN.sentinel STATEMENT.json \
+  .local-controller/operator/keys/signing.ed25519.pub \
+  .local-controller/operator/capsule-witness .local-controller/operator/declared-agent
+```
+
+Witness statements are public verification material (0444), never signing keys. Keep the directory under separate operator ownership and outside all agent mounts; do not let the controller publish or replace witnesses. Back up this directory independently and compare it during recovery. Repeating the same valid statement is idempotent; a different statement for the same run ID fails even if signed by a valid key.
 
 Use the signed import commands shown by `sentinel capsule --help`, or the API's octet-stream `POST /v1/runs/import` with the base64 detached statement in `X-Sentinel-Attestation`. `/openapi.json` describes the current routes. Reads require bearer grants with the requested capability and run allowlist. `SENTINEL_ACCESS_GRANTS` accepts a JSON array of hashed token grants; the separate long operator token has admin scope. See `access.py` and its negative tests before configuring additional investigators.
 

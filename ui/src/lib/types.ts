@@ -90,14 +90,19 @@ export interface Comparison {
 }
 export async function api<T>(path: string, options?: RequestInit): Promise<T> {
   let result: Response | undefined;
-  for (let attempt = 0; attempt < 4; attempt++) {
+  for (let attempt = 0; attempt < 5; attempt++) {
     result = await fetch("/api/backend/v1/runs" + path, {
       ...options,
       cache: "no-store",
     });
-    if (result.status !== 429 || attempt === 3) break;
+    if (result.status !== 429 || attempt === 4) break;
+    const retryAfter = Number(result.headers.get("Retry-After"));
+    const delay =
+      Number.isFinite(retryAfter) && retryAfter > 0
+        ? Math.max(250, Math.min(2000, retryAfter * 1000))
+        : Math.min(2000, 250 * 2 ** attempt);
     await result.body?.cancel();
-    await new Promise((resolve) => setTimeout(resolve, 250 * 2 ** attempt));
+    await new Promise((resolve) => setTimeout(resolve, delay));
     if (options?.signal?.aborted)
       throw new DOMException("Request aborted", "AbortError");
   }

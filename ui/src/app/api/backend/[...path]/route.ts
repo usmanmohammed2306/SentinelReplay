@@ -75,6 +75,9 @@ async function proxy(
           upstream.headers.get("content-type") ?? "application/json",
         "Cache-Control": "no-store",
         "X-Content-Type-Options": "nosniff",
+        ...(upstream.headers.has("retry-after")
+          ? { "Retry-After": upstream.headers.get("retry-after")! }
+          : {}),
       },
     });
   } catch {

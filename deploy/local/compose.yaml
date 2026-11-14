@@ -62,6 +62,7 @@ services:
       SENTINEL_API_TOKEN: ${SENTINEL_API_TOKEN:?set a 32-character or longer local token}
       SENTINEL_ENCRYPTION_KEY: /run/sentinel-secrets/storage.key
       SENTINEL_TRUST_REGISTRY: /run/sentinel-trust/registry.json
+      SENTINEL_WITNESS_ROOT: /run/sentinel-witness
       SENTINEL_MAX_INFLIGHT: "2"
       SENTINEL_ACCESS_GRANTS: ${SENTINEL_ACCESS_GRANTS:-[]}
     volumes:
@@ -69,6 +70,7 @@ services:
       - evidence_keys:/run/sentinel-secrets:ro
       - trust_config:/run/sentinel-trust:ro
       - ${SENTINEL_TRUSTED_PUBLIC_KEY_HOST:?point to a trusted public key file}:/run/sentinel/trusted.pub:ro
+      - ${SENTINEL_WITNESS_ROOT_HOST:?point to the operator-held capsule witness directory}:/run/sentinel-witness:ro
     depends_on:
       migrate:
         condition: service_completed_successfully

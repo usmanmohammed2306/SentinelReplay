@@ -444,6 +444,20 @@ def capsule_verify_signed(capsule_path: Path, attestation: Path, public_key: Pat
     typer.echo("DEV_LOCAL_CAPSULE_SIGNATURE_VALID")
 
 
+@capsule_app.command("witness")
+def capsule_witness(
+    capsule_path: Path, attestation: Path, public_key: Path, witness_root: Path, agent_root: Path
+) -> None:
+    """Authenticate and pin one final capsule per run in operator-held storage."""
+    from sentinel_replay.capsule_witness import publish_witness
+
+    try:
+        path = publish_witness(capsule_path, attestation, public_key, witness_root, agent_root)
+    except (OSError, ValueError) as error:
+        raise typer.BadParameter(str(error), param_hint="operator witness") from error
+    typer.echo(f"CAPSULE_WITNESSED path={path}")
+
+
 @capsule_app.command("import-signed")
 def capsule_import_signed(
     capsule_path: Path, attestation: Path, public_key: Path, destination: Path

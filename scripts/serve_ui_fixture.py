@@ -83,6 +83,9 @@ def main() -> None:
         pack_capsule = root / "pack.sentinel"
         export_pack(pack_source, pack_capsule)
         capsule_paths.append(pack_capsule)
+        capsule_paths.append(
+            ROOT / "benchmarks/results/product-demo-final-2026-11-13/investigation.sentinel"
+        )
         with TestClient(app) as client:
             for capsule in capsule_paths:
                 statement = sign_capsule(capsule, private, root / "anchors", agent)

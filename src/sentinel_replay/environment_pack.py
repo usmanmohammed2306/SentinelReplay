@@ -13,6 +13,7 @@ import random
 import re
 import secrets
 import sys
+import tempfile
 import time
 from collections.abc import Callable
 from pathlib import Path
@@ -26,6 +27,7 @@ from sentinel_replay.evidence_store import BlobRef, FileEvidenceStore, blob_dige
 from sentinel_replay.journal import Journal
 from sentinel_replay.policy_language import Action, Decision, Policy, evaluate_batch, policy_digest
 from sentinel_replay.progress_anchor import ProgressAnchors, verify_progress
+from sentinel_replay.replay_profiles import validate_replay_profile
 from sentinel_replay.telemetry import RecordingTelemetry, merge_telemetry
 from sentinel_replay.workspace_snapshot import (
     WorkspaceManifest,
@@ -54,6 +56,7 @@ def _runtime_digests() -> dict[str, str]:
             "evidence_store.py",
             "telemetry.py",
             "progress_anchor.py",
+            "replay_profiles.py",
         )
     }
 
@@ -101,7 +104,21 @@ class Pack(BaseModel):
 
 
 def _write_json(path: Path, value: object) -> None:
-    path.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n")
+    # Publish only fully flushed metadata, before any covered mutation can run.
+    with tempfile.NamedTemporaryFile(dir=path.parent, prefix=".metadata-", delete=False) as stream:
+        temporary = Path(stream.name)
+        try:
+            stream.write((json.dumps(value, indent=2, sort_keys=True) + "\n").encode())
+            stream.flush()
+            os.fsync(stream.fileno())
+            os.link(temporary, path, follow_symlinks=False)
+            directory = os.open(path.parent, os.O_RDONLY)
+            try:
+                os.fsync(directory)
+            finally:
+                os.close(directory)
+        finally:
+            temporary.unlink(missing_ok=True)
 
 
 def _run(
@@ -275,6 +292,8 @@ def record_pack(
     if not verify_workspace(initial, world):
         raise ValueError("initial pack restore failed")
     definition: dict[str, Any] = {
+        "schema_version": 2,
+        "replay_contract": "finite-pack/1",
         "recording_id": secrets.token_hex(16),
         "provenance_key": {"digest": key_ref.digest, "size": key_ref.size},
         "pack": pack.model_dump(),
@@ -332,6 +351,9 @@ def record_pack(
         outcome = _run(pack, world, store, decisions, emit, provenance_key)
         if anchors:
             anchors.checkpoint(destination / "journal.jsonl", run_id, sequence)
+        sealed = writer.verification
+        if sealed is None or sealed.records != sequence:
+            raise ValueError("recording writer has no complete durable root")
     progress_proof = None
     if anchors:
         ledger = anchors.path.read_bytes()
@@ -348,8 +370,10 @@ def record_pack(
     telemetry_merge = merge_telemetry(
         destination / "journal.jsonl",
         (destination / "telemetry.otlp.json").read_bytes(),
-        expected_root=Journal(destination / "journal.jsonl").verify().root,
+        expected_root=sealed.root,
     )
+    if telemetry_merge["journal_records"] != sequence:
+        raise ValueError("persisted recording count differs from its durable writer")
     _write_json(destination / "telemetry-merge.json", telemetry_merge)
     final = capture_workspace(world, store)
     report = {
@@ -358,7 +382,7 @@ def record_pack(
         "mode": "DETERMINISTIC_SIMULATION" if pack.seed is not None else "EXPLORATORY_BRANCH",
         "status": "unknown" if outcome["unsupported_steps"] else "completed",
         "definition_digest": definition["definition_digest"],
-        "journal_root": Journal(destination / "journal.jsonl").verify().root,
+        "journal_root": telemetry_merge["journal_root"],
         "records": sequence,
         "progress_anchors": progress_proof,
         "program_steps": len(pack.steps),
@@ -384,19 +408,21 @@ def replay_pack(
 ) -> dict[str, Any]:
     definition = load_json_unique((source / "definition.json").read_text())
     declared = definition.pop("definition_digest")
-    if event_digest(definition) != declared or definition["adapter_digest"] != blob_digest(
-        Path(__file__).read_bytes()
-    ):
-        raise ReplayMiss("pack definition or adapter identity mismatch")
+    if event_digest(definition) != declared:
+        raise ReplayMiss("pack definition identity mismatch")
+    compatibility = validate_replay_profile(
+        definition,
+        {
+            "adapter_digest": blob_digest(Path(__file__).read_bytes()),
+            "runtime_digests": _runtime_digests(),
+            "python_major_minor": list(sys.version_info[:2]),
+        },
+    )
     if (
         not isinstance(definition.get("recording_id"), str)
         or re.fullmatch(r"[0-9a-f]{32}", definition["recording_id"]) is None
     ):
         raise ReplayMiss("pack recording instance identity is invalid")
-    if definition.get("runtime_digests") != _runtime_digests() or definition.get(
-        "python_major_minor"
-    ) != list(sys.version_info[:2]):
-        raise ReplayMiss("pack runtime source or Python compatibility mismatch")
     report = load_json_unique((source / "report.json").read_text())
     report_digest = report.pop("report_digest")
     if event_digest(report) != report_digest or report["definition_digest"] != declared:
@@ -503,6 +529,7 @@ def replay_pack(
         raise ReplayMiss("pack final effect state differs")
     result = {
         "mode": "VERIFIED_REPLAY",
+        "compatibility": compatibility,
         "coverage": "environment_pack_v1_regular_files_and_simulated_effects",
         "definition_digest": declared,
         "journal_root": verified.root,

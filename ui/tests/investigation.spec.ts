@@ -34,7 +34,7 @@ test("evidence journey, mode labels, restored boundaries, comparison and logout"
     cookies.find((cookie) => cookie.name === "sentinel_session")?.httpOnly,
   ).toBe(true);
   const listing = await readJson(page, "/api/backend/v1/runs?limit=100");
-  expect(listing.runs.length).toBe(12);
+  expect(listing.runs.length).toBe(13);
   const live = listing.runs.find(
     (run: { run_id: string }) => run.run_id === "isolated-branch",
   );
@@ -88,8 +88,22 @@ test("evidence journey, mode labels, restored boundaries, comparison and logout"
   await expect(
     page.getByRole("heading", { name: "BOUNDARY_REPLAY_MATCHED" }),
   ).toBeVisible();
+  // A late comparison response must not override the tab the investigator selected.
+  let releaseComparison: () => void = () => {};
+  const heldComparison = new Promise<void>((resolve) => {
+    releaseComparison = resolve;
+  });
+  await page.route(
+    `**/api/backend/v1/runs/${experiment.run_id}/comparison`,
+    async (route) => {
+      await heldComparison;
+      await route.continue();
+    },
+    { times: 1 },
+  );
   await page.getByRole("button", { name: "Back to comparison" }).click();
   await page.getByRole("button", { name: "World diff", exact: true }).click();
+  releaseComparison();
   await expect(
     page.getByRole("heading", { name: "What changed in the covered world?" }),
   ).toBeVisible();
@@ -111,8 +125,13 @@ test("evidence journey, mode labels, restored boundaries, comparison and logout"
     ),
   ).toBe(true);
   await page.setViewportSize({ width: 1280, height: 900 });
-  const pack = listing.runs.find((run: { run_id: string }) =>
-    run.run_id.startsWith("pack-"),
+  const pack = listing.runs.find(
+    (run: { run_id: string }) =>
+      run.run_id.startsWith("pack-") &&
+      run.run_id !==
+        listing.runs.find(
+          (candidate: { records: number }) => candidate.records >= 3000,
+        )?.run_id,
   );
   await page.locator(`[data-run-id="${pack.run_id}"]`).click();
   await page.getByRole("button", { name: "Replay lab", exact: true }).click();
@@ -149,6 +168,43 @@ test("session rejects missing origin and invalid credentials", async ({
   expect((await page.request.get("/api/backend/v1/runs")).status()).toBe(401);
 });
 
+test("transient admission refusal preserves the investigator session", async ({
+  page,
+}) => {
+  const settled = page.waitForResponse((response) =>
+    response.url().endsWith("/phases"),
+  );
+  await page.goto("/");
+  await page.getByLabel("Investigator access token").fill(TOKEN);
+  await page.getByRole("button", { name: "Open investigation" }).click();
+  await expect(
+    page.getByRole("heading", { name: "Follow the evidence." }),
+  ).toBeVisible();
+  await (await settled).finished();
+  let attempts = 0;
+  await page.route("**/api/backend/v1/runs?limit=100", async (route) => {
+    attempts++;
+    if (attempts === 1) {
+      await route.fulfill({
+        status: 429,
+        headers: { "Retry-After": "1" },
+        contentType: "application/json",
+        body: JSON.stringify({ detail: "test admission refusal" }),
+      });
+    } else await route.continue();
+  });
+  await page.goto("/");
+  await expect(
+    page.getByRole("heading", { name: "Follow the evidence." }),
+  ).toBeVisible();
+  expect(attempts).toBe(2);
+  expect(
+    (await page.context().cookies()).some(
+      (cookie) => cookie.name === "sentinel_session",
+    ),
+  ).toBe(true);
+});
+
 test("recorded operation stream localizes a real restored file effect", async ({
   page,
 }) => {
@@ -159,8 +215,13 @@ test("recorded operation stream localizes a real restored file effect", async ({
     page.getByRole("heading", { name: "Follow the evidence." }),
   ).toBeVisible();
   const listing = await readJson(page, "/api/backend/v1/runs?limit=100");
-  const pack = listing.runs.find((run: { run_id: string }) =>
-    run.run_id.startsWith("pack-"),
+  const pack = listing.runs.find(
+    (run: { run_id: string }) =>
+      run.run_id.startsWith("pack-") &&
+      run.run_id !==
+        listing.runs.find(
+          (candidate: { records: number }) => candidate.records >= 3000,
+        )?.run_id,
   );
   await page.locator(`[data-run-id="${pack.run_id}"]`).click();
   await page.getByRole("button", { name: "Replay lab", exact: true }).click();

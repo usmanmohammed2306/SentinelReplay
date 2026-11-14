@@ -28,6 +28,8 @@ The browser uses HttpOnly SameSite=Strict cookies, mutation-origin checks, no lo
 
 Access audit records are fsynced before access proceeds. Startup verifies its chain once; a serialized exclusive writer avoids rescanning it per request. An audit outage rejects access. The controller and its filesystem are trusted; audit files are not immutable against the host administrator.
 
+The self-hosted factory also requires a separately operator-held final capsule witness. Compose mounts that directory read-only; no signing private key is mounted. A witnessed run ID cannot be replaced by another validly signed capsule after resetting SQL/CAS. Replay compares the retained statement and database identity with the witness and quarantines missing/mismatched witnesses. Real Docker checks exercise write refusal and removal/recovery. This is per-run consistency relative to retained operator state, not global latest-state freshness, complete run enumeration or protection against an administrator who controls both sides.
+
 ## Availability and recovery
 
 Archive member/byte bounds, no path traversal, duplicate-key rejection, bounded decompression, finite action/graph limits, two heavy requests, a bounded queue, one worker and hard job deadlines limit exposed work. SSE windows are bounded and resumable. This is not a concurrent-load/SLO proof.

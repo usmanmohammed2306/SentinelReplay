@@ -108,6 +108,11 @@ export default function Workspace() {
     null,
   );
   const scroller = useRef<HTMLDivElement>(null);
+  const tabRevision = useRef(0);
+  function navigateTab(next: string) {
+    tabRevision.current++;
+    setTab(next);
+  }
   const rows = timeline?.events ?? [];
   const virtual = useVirtualizer({
     count: rows.length,
@@ -168,6 +173,7 @@ export default function Workspace() {
   useEffect(() => {
     if (!selected) return;
     let active = true;
+    const selectionTabRevision = tabRevision.current;
     setSummary(null);
     setPhases([]);
     setTelemetry(null);
@@ -189,7 +195,8 @@ export default function Workspace() {
           const compared = await api<Comparison>(`/${selected}/comparison`);
           if (active) {
             setComparison(compared);
-            setTab("policies");
+            if (tabRevision.current === selectionTabRevision)
+              setTab("policies");
           }
         } else {
           const [events, findings] = await Promise.all([
@@ -201,7 +208,8 @@ export default function Workspace() {
             setIncidents(findings.incidents);
             setFocused(events.events[0] ?? null);
             setRoot(findings.incidents[0]?.root_step ?? 0);
-            setTab("timeline");
+            if (tabRevision.current === selectionTabRevision)
+              setTab("timeline");
           }
           const [compressed, compared] = await Promise.all([
             api<{ phases: typeof phases }>(evidencePath("phases")),
@@ -597,7 +605,7 @@ export default function Workspace() {
                     <button
                       key={item.id}
                       className={tab === item.id ? "active" : ""}
-                      onClick={() => setTab(item.id)}
+                      onClick={() => navigateTab(item.id)}
                     >
                       <item.icon size={15} />
                       {item.label}
@@ -660,7 +668,7 @@ export default function Workspace() {
                           className="incident-note"
                           onClick={() => {
                             setRoot(finding.root_step);
-                            setTab("graph");
+                            navigateTab("graph");
                           }}
                         >
                           <TriangleAlert size={16} />
@@ -775,7 +783,7 @@ export default function Workspace() {
                             variant="outline"
                             onClick={() => {
                               setRoot(focused.step);
-                              setTab("graph");
+                              navigateTab("graph");
                             }}
                           >
                             <Network size={15} /> Inspect dependencies
@@ -820,7 +828,7 @@ export default function Workspace() {
                             );
                             if (row) {
                               setFocused(row);
-                              setTab("timeline");
+                              navigateTab("timeline");
                             }
                           }}
                         />

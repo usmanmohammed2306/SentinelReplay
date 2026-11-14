@@ -68,6 +68,7 @@ class ApiSettings:
     max_inflight: int = 2
     opa_executable: Path | None = None
     trust_registry: Path | None = None
+    witness_root: Path | None = None
 
     def __post_init__(self) -> None:
         if not self.database_url:
@@ -107,12 +108,19 @@ class ApiSettings:
             trust_registry=Path(os.environ["SENTINEL_TRUST_REGISTRY"])
             if os.environ.get("SENTINEL_TRUST_REGISTRY")
             else None,
+            witness_root=Path(os.environ["SENTINEL_WITNESS_ROOT"])
+            if os.environ.get("SENTINEL_WITNESS_ROOT")
+            else None,
         )
 
 
 def create_app(settings: ApiSettings, *, engine: Engine | None = None) -> FastAPI:
     """Create an API only after the caller supplies an explicit trusted key and token."""
     public, key_id = load_local_public_key(settings.trusted_public_key)
+    if settings.witness_root is not None:
+        from sentinel_replay.capsule_witness import validate_witness_root
+
+        validate_witness_root(settings.witness_root)
     public_raw = public.public_bytes_raw()
     database = engine or create_engine(settings.database_url, pool_pre_ping=True)
     repository = RunRepository(database)
@@ -240,6 +248,25 @@ def create_app(settings: ApiSettings, *, engine: Engine | None = None) -> FastAP
                 status_code=409,
                 detail="run is quarantined or its original detached statement is unavailable",
             )
+        if settings.witness_root is not None:
+            from sentinel_replay.capsule_witness import require_witness
+
+            try:
+                reference = repository.attestation(run_id)
+                assert reference is not None
+                witnessed = require_witness(settings.witness_root, store.get(reference))
+                if (
+                    witnessed.run_id != run.run_id
+                    or witnessed.capsule_digest != run.capsule_digest
+                    or witnessed.root != run.journal_root
+                    or witnessed.records != run.records
+                    or witnessed.key_id != run.signer_key_id
+                ):
+                    raise ValueError("stored run differs from witnessed statement")
+            except (OSError, ValueError) as error:
+                raise HTTPException(
+                    status_code=503, detail="operator witness unavailable or mismatched"
+                ) from error
 
     @app.middleware("http")
     async def security_headers(
@@ -632,6 +659,10 @@ def create_app(settings: ApiSettings, *, engine: Engine | None = None) -> FastAP
             if not verify_signed_capsule_material(data, raw_statement, chosen):
                 raise SignedCapsuleError("invalid signature")
             verified = verify_capsule_bytes(data)
+            if settings.witness_root is not None:
+                from sentinel_replay.capsule_witness import require_witness
+
+                require_witness(settings.witness_root, raw_statement)
             return verified.run_id, verified.root, verified.records, statement.key_id
 
         try:
@@ -953,8 +984,14 @@ def app_factory() -> FastAPI:
     if not settings.database_url.startswith("postgresql+psycopg://"):
         raise RuntimeError("self-hosted API requires a PostgreSQL psycopg URL")
     if os.environ.get("SENTINEL_ALLOW_PLAINTEXT_PREVIEW") != "1":
-        if settings.encryption_key is None or settings.trust_registry is None:
-            raise RuntimeError("self-hosted API requires encryption and an operator trust registry")
+        if (
+            settings.encryption_key is None
+            or settings.trust_registry is None
+            or settings.witness_root is None
+        ):
+            raise RuntimeError(
+                "self-hosted API requires encryption, an operator trust registry and witness root"
+            )
         if settings.opa_executable is None or not os.access(settings.opa_executable, os.X_OK):
             raise RuntimeError("self-hosted API requires the configured native OPA binary")
     return create_app(settings)

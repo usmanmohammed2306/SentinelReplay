@@ -1,0 +1,7 @@
+{
+  "profile": "sha256:f89b9cd03ed97370d0bd118aa1cc20ee31aaf6f206cfe98441934c67bbc0c230",
+  "journal_root": "sha256:8be36fdcac617c7de70050567b65f782217871bc175d008aa9b5e6b813f2553d",
+  "records": 5,
+  "expected_file": "SYNTHETIC_ONLY",
+  "scope": "regression fixture; no real OPA enforcement measurement"
+}

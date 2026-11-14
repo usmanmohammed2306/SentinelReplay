@@ -103,5 +103,41 @@ jobs:
       - name: Install the locked project
         run: uv sync --frozen
 
-      - name: Compare compiled Rego decisions with pinned OPA
-        run: make opa-contract
+      - name: Test actual Docker isolation and compiled Rego decisions
+        run: |
+          uv run --frozen python - <<'PY'
+          import subprocess
+          from sentinel_replay.isolation import PYTHON_IMAGE
+          from sentinel_replay.policy import OPA_DOCKER_IMAGE
+          for image in (PYTHON_IMAGE, OPA_DOCKER_IMAGE):
+              subprocess.run(["docker", "pull", image], check=True)
+          PY
+          make branch-contract
+
+  browser:
+    name: Production Chromium journeys and 3k interaction budget
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Install the locked uv and Python toolchain
+        uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4 # v10.1.0
+        with:
+          version: "0.12.17"
+          python-version: "3.12"
+          enable-cache: true
+      - name: Install the locked API and browser dependencies
+        run: |
+          uv sync --frozen
+          node --version
+          npm install --global pnpm@12.6.0
+          cd ui
+          pnpm install --frozen-lockfile
+          pnpm exec playwright install --with-deps chromium
+      - name: Build the production application
+        working-directory: ui
+        run: pnpm build
+      - name: Exercise evidence journeys and repeated timeline interactions
+        working-directory: ui
+        run: pnpm test:e2e

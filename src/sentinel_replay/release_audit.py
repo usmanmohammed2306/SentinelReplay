@@ -14,6 +14,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from sentinel_replay.canonical import event_digest, load_json_unique
 from sentinel_replay.evidence_store import blob_digest
+from sentinel_replay.release_quality import quality_checks, valid_corpus, valid_demo
 
 
 def load_report_json(text: str) -> Any:
@@ -66,6 +67,8 @@ REQUIRED = (
     "deployment_recovery",
     "postgres_http",
     "proof_video",
+    "operational_validation",
+    "provenance_validation",
 )
 REVIEWS = (
     "independent_provenance",
@@ -84,6 +87,7 @@ def source_inventory(root: Path) -> dict[str, str]:
         "src/**/*.py",
         "migrations/**/*.py",
         "tests/*.py",
+        "tests/fixtures/**/*",
         "scripts/*.py",
         "benchmarks/*.py",
         "ui/src/**/*.ts",
@@ -101,10 +105,15 @@ def source_inventory(root: Path) -> dict[str, str]:
         "uv.lock",
         "alembic.ini",
         "deploy/local/compose.yaml",
+        "deploy/local/.env.example",
         "deploy/local/**/*.sh",
         ".dockerignore",
         "ui/.dockerignore",
         ".github/workflows/*.yml",
+        "docs/FROZEN_PRODUCT_CHARTER.md",
+        "docs/SCOPE_TRACEABILITY.md",
+        "LICENSE",
+        "THIRD_PARTY_NOTICES.md",
     )
     files = sorted({path for pattern in patterns for path in root.glob(pattern) if path.is_file()})
     if any(path.is_symlink() for path in files):
@@ -131,6 +140,8 @@ def _bytes(root: Path, reference: EvidenceRef) -> bytes:
 
 def audit_release(repository: Path, manifest_path: Path) -> dict[str, Any]:
     manifest = load_json_unique(manifest_path.read_text())
+    if not isinstance(manifest, dict):
+        raise ValueError("release manifest must be an object")
     sources = manifest.get("source_files", {})
     if not isinstance(sources, dict) or not sources:
         raise ValueError("release audit requires a nonempty frozen source inventory")
@@ -142,6 +153,7 @@ def audit_release(repository: Path, manifest_path: Path) -> dict[str, Any]:
         except (OSError, ValueError):
             source_failures.append(path)
     artifacts, gates = manifest.get("artifacts", {}), {}
+    reports: dict[str, dict[str, Any]] = {}
     for name in REQUIRED:
         try:
             value = load_report_json(
@@ -149,6 +161,7 @@ def audit_release(repository: Path, manifest_path: Path) -> dict[str, Any]:
             )
             if not isinstance(value, dict):
                 raise ValueError("release report must be a JSON object")
+            reports[name] = value
             if name in {"local_tests", "guarded_tests", "ui_build"}:
                 passed = (
                     value.get("exit_code") == 0
@@ -164,24 +177,9 @@ def audit_release(repository: Path, manifest_path: Path) -> dict[str, Any]:
                     and not value["errors"]
                 )
             elif name == "product_demo":
-                passed = (
-                    value["status"] == "WORKFLOW_DEMO_PASS"
-                    and value["program_actions"] >= 3000
-                    and len(value["checks"]) >= 16
-                    and all(value["checks"].values())
-                )
+                passed = valid_demo(value)
             elif name == "corpus":
-                rows = value["rows"]
-                passed = (
-                    value["case_denominator"] == 12
-                    and len(rows) == 36
-                    and sum(row["replay"] is not None for row in rows) == 33
-                    and all(
-                        row["incident"] is None
-                        for row in rows
-                        if row["case"] == "uncaptured_side_effect"
-                    )
-                )
+                passed = valid_corpus(value)
             elif name == "policy_search":
                 passed = (
                     not value["partial"]
@@ -216,6 +214,22 @@ def audit_release(repository: Path, manifest_path: Path) -> dict[str, Any]:
                     and not value["api_role"]["update"]
                     and not value["api_role"]["delete"]
                 )
+            elif name == "operational_validation":
+                passed = (
+                    value["completed"] is True
+                    and value["failure_recovery_verified"] is True
+                    and value["bounded_resources_verified"] is True
+                    and value["declared_capacity"] >= 1
+                )
+            elif name == "provenance_validation":
+                passed = (
+                    value["scope"] == "frozen_synthetic_dependency_review"
+                    and value["case_denominator"] == 12
+                    and value["unknown_cases"] == ["uncaptured_side_effect"]
+                    and bool(value["label_evidence"])
+                )
+                for item in value["label_evidence"]:
+                    _bytes(repository, EvidenceRef.model_validate(item))
             else:
                 video = _bytes(repository, EvidenceRef.model_validate(value["video"]))
                 passed = (
@@ -256,16 +270,66 @@ def audit_release(repository: Path, manifest_path: Path) -> dict[str, Any]:
             }
         except (OSError, ValueError, TypeError, KeyError):
             reviews[name] = {"state": "PENDING"}
+    budgets = quality_checks(reports)
+    bindings = {}
+    for name in REQUIRED:
+        try:
+            reference = EvidenceRef.model_validate(manifest["execution_receipts"][name])
+            receipt = load_json_unique(_bytes(repository, reference).decode())
+            log = EvidenceRef.model_validate(receipt["log"])
+            _bytes(repository, log)
+            passed = (
+                receipt["source_root_before"] == source_root
+                and receipt["source_root_after"] == source_root
+                and receipt["exit_code"] == 0
+                and bool(receipt["command"])
+                and receipt["artifact"] == artifacts[name]
+            )
+            bindings[name] = {"passed": passed, "receipt": reference.model_dump()}
+        except (OSError, ValueError, TypeError, KeyError):
+            bindings[name] = {"passed": False, "reason": "missing current-source execution receipt"}
+    traceability = {}
+    rows = manifest.get("traceability", [])
+    if isinstance(rows, list) and len(rows) == 43:
+        for row in rows:
+            try:
+                identifier = row["section"]
+                if type(identifier) is not int or identifier not in range(1, 44):
+                    raise ValueError("unknown scope section")
+                if str(identifier) in traceability:
+                    raise ValueError("duplicate scope section")
+                if not row["evidence"] or not row["checks"] or not row["title"]:
+                    raise ValueError("empty scope evidence")
+                for item in row["evidence"]:
+                    _bytes(repository, EvidenceRef.model_validate(item))
+                checks = {**gates, **budgets}
+                passed = row["state"] == "verified" and all(
+                    checks[name]["passed"] for name in row["checks"]
+                )
+                traceability[str(identifier)] = {"passed": passed, "title": row["title"]}
+            except (OSError, ValueError, TypeError, KeyError):
+                traceability["invalid"] = {"passed": False}
+    for identifier in range(1, 44):
+        traceability.setdefault(
+            str(identifier), {"passed": False, "reason": "missing scope evidence"}
+        )
     complete = (
         not source_failures
         and all(row["passed"] for row in gates.values())
+        and all(row["passed"] for row in budgets.values())
+        and all(row["passed"] for row in bindings.values())
+        and len(traceability) == 43
+        and all(row["passed"] for row in traceability.values())
         and all(row["state"] != "PENDING" for row in reviews.values())
     )
     return {
-        "schema_version": 1,
+        "schema_version": 2,
         "source_root": source_root,
         "source_mismatches": source_failures,
         "engineering_checks": gates,
+        "quality_budgets": budgets,
+        "current_source_execution": bindings,
+        "scope_traceability": traceability,
         "review_gates": reviews,
         "status": "READY_FOR_RELEASE_REVIEW" if complete else "RELEASE_BLOCKED",
         "accepted_student_slices": "unchanged_by_this_command",

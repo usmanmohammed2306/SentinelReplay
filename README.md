@@ -8,7 +8,7 @@ An agent reads a credential. Two steps later, its value reaches an outbound requ
 
 Sentinel Replay turns that trace into an investigation. Collapse the routine steps. Follow a declared dependency. Restore the covered state. Replay the recorded path, then execute a supported alternate future and compare the resulting files. Carry the investigation to another installation in a signed capsule.
 
-The implementation runs locally with a professional investigation UI, PostgreSQL, encrypted evidence storage, OPA enforcement, and bounded background operations. **Full V1 release remains gated** by independent validation, representative performance evidence, versioned replay compatibility, and owner review. [Current status and results](docs/STATUS.md) make those boundaries explicit.
+The implementation runs locally with an investigation UI, PostgreSQL, encrypted evidence storage, OPA enforcement, and bounded background operations. **Full V1 release remains gated** by independent validation, representative performance evidence and owner review. [Current status and results](docs/STATUS.md) make those boundaries explicit.
 
 ![A real Sentinel Replay investigation showing the declared secret-to-export dependency](docs/assets/investigation.png)
 
@@ -31,7 +31,7 @@ uv run --frozen sentinel demo
 
 The demo records 3,184 synthetic program actions, compresses 3,186 boundaries into six phases, restores workspace/Git/SQLite checkpoints, executes three policies, localizes a file effect, and signs, imports and replays the resulting capsule. Its report deliberately distinguishes workflow success from release acceptance.
 
-For the full browser application, follow the [self-hosted runbook](docs/SELF_HOSTED_PREVIEW.md). It starts the API and UI on loopback, keeps PostgreSQL internal, and requires a private encryption key and operator trust registry. AWS is optional and unused by this workflow.
+For the full browser application, follow the [self-hosted runbook](docs/SELF_HOSTED_PREVIEW.md). It starts the API and UI on loopback, keeps PostgreSQL internal, and requires encryption, an operator trust registry and a separately held, read-only capsule witness. AWS is optional and unused by this workflow.
 
 ## What the system does
 
@@ -79,7 +79,7 @@ The release command audits exact source and artifact bytes and returns nonzero w
 
 Start with the [frozen product charter](docs/FROZEN_PRODUCT_CHARTER.md), [coverage contract](docs/ENVIRONMENT_PACK_CONTRACT.md), [acceptance matrix](docs/V1_ACCEPTANCE.md), [threat model](docs/THREAT_MODEL.md), and [deployment/recovery runbook](docs/SELF_HOSTED_PREVIEW.md). The separate local sixty-slice guide maps daily builds, tests, reading, teach-backs and user-owned commits to this reference implementation. Engineering progress does not certify independent authorship or learning completion.
 
-The archived benchmark capsules bind their original runtime source. The Linux OPA portability fix changed that identity; use `sentinel demo` to generate a fresh current-runtime investigation, or the recorded source revision to reproduce an older capsule. The frozen release audit deliberately names this source mismatch until the full evidence baseline is refreshed.
+Historical capsules bind their original source. An [explicit compatibility registry](docs/REPLAY_COMPATIBILITY.md) now supports the two validated November13 finite-pack profiles, including the published three-adapter capsule. Unknown profiles still fail closed; archived code is never executed. The release verifier checks raw numeric budgets, exact named workflow/corpus checks, current-source execution receipts and all43 scope rows. A report that exists but misses its budget cannot pass release.
 
 ## License
 

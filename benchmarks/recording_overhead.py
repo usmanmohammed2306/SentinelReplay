@@ -9,6 +9,7 @@ not representative live-agent overhead. Samples alternate order.
 import argparse
 import json
 import secrets
+import statistics
 import time
 from pathlib import Path
 from typing import Any
@@ -112,7 +113,7 @@ def measure(output: Path, trials: int = 10) -> dict[str, Any]:
         "trials": trials,
         "program_steps": len(pack.steps),
         "samples": rows,
-        "median_overhead_percent": sorted(row["overhead_percent"] for row in rows)[len(rows) // 2],
+        "median_overhead_percent": statistics.median(row["overhead_percent"] for row in rows),
         "localization": localization,
         "scope": __doc__,
         "progress_signing": "not_enabled_in_either_arm",

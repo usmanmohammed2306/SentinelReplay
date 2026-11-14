@@ -91,3 +91,32 @@ def test_changed_checkpoint_or_missing_recording_fails_before_claiming_replay(
     path.write_bytes(b"")
     with pytest.raises((ValueError, RuntimeError)):
         replay_pack(tmp_path / "run", tmp_path / "replay")
+
+
+def test_unpublished_definition_never_allows_covered_effect(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    import os
+
+    original = os.link
+
+    def fail_definition(source: object, target: object, **kwargs: object) -> None:
+        if Path(str(target)).name == "definition.json":
+            raise OSError("injected metadata publication failure")
+        original(source, target, **kwargs)  # type: ignore[arg-type]
+
+    monkeypatch.setattr("sentinel_replay.environment_pack.os.link", fail_definition)
+    pack = Pack(
+        name="metadata",
+        files={},
+        steps=(
+            PackStep(
+                action=Action(operation="write_file", resource="effect.txt"), value="must-not-exist"
+            ),
+        ),
+    )
+    with pytest.raises(OSError, match="metadata publication"):
+        record_pack(pack, tmp_path / "run", Policy(), decisions=["allowed"])
+    assert not (tmp_path / "run/world/effect.txt").exists()
+    assert not (tmp_path / "run/definition.json").exists()
+    assert not (tmp_path / "run/report.json").exists()

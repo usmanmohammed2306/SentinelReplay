@@ -23,6 +23,7 @@ from uuid import uuid4
 
 from sentinel_replay.capsule import verify_capsule
 from sentinel_replay.capsule_privacy import unseal
+from sentinel_replay.capsule_witness import publish_witness
 from sentinel_replay.evidence_store import blob_digest
 from sentinel_replay.local_anchor import create_keypair
 from sentinel_replay.signed_capsule import sign_capsule
@@ -64,6 +65,8 @@ def validate(
     key.touch(mode=0o600)
     key.write_bytes(secrets.token_bytes(32))
     statement = sign_capsule(capsule, private, output / "anchors", agent)
+    witness_root = output / "operator-witness"
+    witnessed = publish_witness(capsule, statement, public, witness_root, agent)
     verified = verify_capsule(capsule)
     token = secrets.token_urlsafe(32)
     api_port, ui_port = free_port(), free_port()
@@ -76,6 +79,7 @@ def validate(
         f"SENTINEL_TRUSTED_PUBLIC_KEY_HOST={public}\n"
         f"SENTINEL_EVIDENCE_KEY_HOST={key}\n"
         f"SENTINEL_TRUST_REGISTRY_HOST={trust}\n"
+        f"SENTINEL_WITNESS_ROOT_HOST={witness_root}\n"
     )
     override = output / "override.yaml"
     override.write_text(
@@ -174,7 +178,7 @@ def validate(
 
     def exercise(stage: str) -> None:
         base = "/v1/runs/" + verified.run_id
-        results = {}
+        results: dict[str, Any] = {}
         for route in (
             "investigation",
             "timeline",
@@ -277,6 +281,7 @@ def validate(
             scale_statement = sign_capsule(
                 scale_capsule, private, output / "scale-statements", agent
             )
+            publish_witness(scale_capsule, scale_statement, public, witness_root, agent)
             scale = verify_capsule(scale_capsule)
             if scale.records != 50000:
                 raise ValueError("scale HTTP probe requires the declared50000-boundary capsule")
@@ -297,7 +302,7 @@ def validate(
                 "timeline_first_page": "/timeline?limit=100",
                 "sparse_graph": "/provenance?root_step=49996&depth=3",
             }
-            samples = {}
+            samples: dict[str, Any] = {}
             for label, suffix in paths.items():
                 values = []
                 for _ in range(25):
@@ -331,9 +336,10 @@ def validate(
                 "concurrent_clients": 8,
                 "concurrent_requests": 32,
                 "response_statuses": statuses,
+                "cold_first_timeline_seconds": samples["timeline_first_page"]["seconds"][0],
                 "scope": (
-                    "same_host_loopback_Docker_PostgreSQL_warm_index_sparse_graph_"
-                    "not_UI_or_production_SLO"
+                    "same_host_loopback_Docker_PostgreSQL_sparse_graph; first timeline sample "
+                    "includes cold index build, remaining samples warm; not UI or production SLO"
                 ),
             }
         if browser_proof:
@@ -428,6 +434,123 @@ def validate(
             capture=True,
         )
         receipt["checks"]["API_nonroot_public_key_readonly"] = isolation == b""
+        witness_isolation = compose(
+            projects[0],
+            "exec",
+            "-T",
+            "api",
+            "python",
+            "-c",
+            "import pathlib; p=pathlib.Path('/run/sentinel-witness'); "
+            f"w=p/{witnessed.name!r}; assert w.read_bytes();\n"
+            "for target in (w, p/'forged.json'):\n"
+            " try: target.write_bytes(b'forged')\n"
+            " except OSError: pass\n"
+            " else: raise AssertionError('operator witness is writable')\n",
+            capture=True,
+        )
+        receipt["checks"]["operator_witness_readonly"] = witness_isolation == b""
+        # A database/CAS rollback cannot erase the separately retained witness.
+        pinned = witnessed.read_bytes()
+        witnessed.unlink()
+        try:
+            try:
+                http(
+                    f"/v1/runs/{verified.run_id}/replay",
+                    method="POST",
+                    data=b"{}",
+                    headers={"Content-Type": "application/json"},
+                )
+            except HTTPError as error:
+                if error.code != 503:
+                    raise
+            else:
+                raise ValueError("missing operator witness did not quarantine replay")
+        finally:
+            witnessed.write_bytes(pinned)
+            witnessed.chmod(0o444)
+        receipt["checks"]["missing_operator_witness_quarantines_replay"] = True
+        before_crash_limits = json.loads(
+            compose(
+                projects[0],
+                "exec",
+                "-T",
+                "api",
+                "python",
+                "-c",
+                "import json,pathlib; p=pathlib.Path('/sys/fs/cgroup'); "
+                "print(json.dumps({name:(p/name).read_text().strip() for name in "
+                "['memory.max','memory.peak','memory.events','pids.max','pids.current']}))",
+                capture=True,
+            )
+        )
+        if (
+            before_crash_limits["memory.max"] != "1073741824"
+            or before_crash_limits["pids.max"] != "128"
+            or int(before_crash_limits["memory.peak"]) >= 1073741824
+            or "oom_kill 0" not in before_crash_limits["memory.events"].splitlines()
+        ):
+            raise ValueError("API resource boundary failed under the50k query workload")
+        receipt["checks"]["bounded_API_cgroup_before_crash"] = before_crash_limits
+        # Crash an actually admitted, running job; startup must mark uncertainty explicitly.
+        base = "/v1/runs/" + verified.run_id
+        status, accepted = http(
+            base + "/jobs",
+            method="POST",
+            data=b'{"kind":"policy_search"}',
+            headers={"Content-Type": "application/json"},
+        )
+        if status != 202:
+            raise ValueError("crash rehearsal job was not admitted")
+        interrupted_job_id = json.loads(accepted)["job_id"]
+        deadline = time.monotonic() + 20
+        while True:
+            job = json.loads(http(base + "/jobs/" + interrupted_job_id)[1])
+            if job["state"] == "running":
+                break
+            if (
+                job["state"] in {"completed", "failed", "interrupted"}
+                or time.monotonic() > deadline
+            ):
+                raise ValueError("crash rehearsal did not observe a running job")
+            time.sleep(0.1)
+        compose(projects[0], "kill", "--signal", "SIGKILL", "api")
+        compose(projects[0], "up", "--detach", "--no-build", "api")
+        wait_healthy()
+        recovered = json.loads(http(base + "/jobs/" + interrupted_job_id)[1])
+        if recovered["state"] != "interrupted":
+            raise ValueError("controller loss was silently resumed or reported successful")
+        events = http(base + "/jobs/" + interrupted_job_id + "/events")[1]
+        if b"interrupted" not in events:
+            raise ValueError("interruption receipt missing from resumable event stream")
+        receipt["checks"]["abrupt_running_job_recovery"] = {
+            "job_id": interrupted_job_id,
+            "state": recovered["state"],
+            "event_stream_digest": blob_digest(events),
+        }
+        exercise("restarted")
+        limits = json.loads(
+            compose(
+                projects[0],
+                "exec",
+                "-T",
+                "api",
+                "python",
+                "-c",
+                "import json,pathlib; p=pathlib.Path('/sys/fs/cgroup'); "
+                "print(json.dumps({name:(p/name).read_text().strip() for name in "
+                "['memory.max','memory.peak','memory.events','pids.max','pids.current']}))",
+                capture=True,
+            )
+        )
+        if (
+            limits["memory.max"] != "1073741824"
+            or limits["pids.max"] != "128"
+            or int(limits["memory.peak"]) >= 1073741824
+            or "oom_kill 0" not in limits["memory.events"].splitlines()
+        ):
+            raise ValueError("API resource limits or OOM boundary failed")
+        receipt["checks"]["bounded_API_cgroup"] = limits
         # Stop all evidence writers before taking the database/CAS consistency set.
         compose(projects[0], "stop", "ui", "api")
         backup = output / "backup"
@@ -499,6 +622,10 @@ def validate(
         compose(projects[1], "start", "api", "ui")
         wait_healthy()
         exercise("restored")
+        restored_job = json.loads(http(base + "/jobs/" + interrupted_job_id)[1])
+        if restored_job["state"] != "interrupted":
+            raise ValueError("backup restore changed the interrupted-job outcome")
+        receipt["checks"]["interrupted_job_survives_backup_restore"] = True
         receipt["completed"] = True
     except Exception as error:
         receipt["failure_type"] = type(error).__name__
