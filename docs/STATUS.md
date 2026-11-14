@@ -5,6 +5,12 @@ Updated **2026-11-13**. Plan **4.2.0**, local-first under ADR-0003.
 
 The frozen forty-three-section product charter and the sixty-slice learning plan remain binding. AWS is optional. Neither a passing demonstration nor assistant-produced reference code accepts a student slice.
 
+## Publication and first hosted CI
+
+Source/evidence commit `d52f502` was pushed normally to `origin/main`. Repository visibility remains private; the license choice is still pending. The [first hosted CI run](https://github.com/usmanmohammed2306/SentinelReplay/actions/runs/43552119885) passed Python, the production UI image and PostgreSQL integration. OPA failed because its default container UID could not read owner-only Linux temporary input directories. The caller-UID/GID mapping fix retains private permissions, read-only mounts and network isolation. Local required checks215 passed, actual OPA checks3 passed, and a fresh integrated demo passed all17 checks after the fix. The hosted rerun is verified separately.
+
+The original release manifest and measurements remain frozen at their recorded source. The current default release audit therefore also reports source mismatches after this runtime change; it must be rebaselined with fresh source-bound validation before release. Old strict finite-pack capsules require their recorded runtime version; use `sentinel demo` for a fresh current-runtime run. This is an engineering/reproducibility gap, not a request for permission or an accepted V1 gate. See the [post-CI proof](../benchmarks/results/release-local-2026-11-13/post-ci-portability-fix.json).
+
 ## Current implementation
 
 The local product connects recording, three declared checkpoint adapters, strict covered-effect replay, incident compression, provenance, OpenTelemetry enrichment, bisection, native OPA policy evaluation, alternate futures, policy search, world diff, signed capsules, encrypted storage, scoped authorization, persistent jobs/SSE, trust rotation/revocation, and retention. The Next.js UI exposes the investigation and execution paths. See the [acceptance matrix](V1_ACCEPTANCE.md), [environment contract](ENVIRONMENT_PACK_CONTRACT.md), and [operating runbook](SELF_HOSTED_PREVIEW.md).

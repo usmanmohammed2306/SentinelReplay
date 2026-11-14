@@ -43,6 +43,7 @@ def test_compiled_policy_decisions_on_real_opa(tmp_path: Path) -> None:
                 "run",
                 "--rm",
                 "--platform=linux/amd64",
+                f"--user={os.getuid()}:{os.getgid()}",
                 "--network=none",
                 "--read-only",
                 "--mount",

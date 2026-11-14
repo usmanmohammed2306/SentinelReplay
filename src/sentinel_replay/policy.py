@@ -6,6 +6,7 @@ not the complete V1 grammar or a substitute for an isolated agent tool gateway.
 
 import hashlib
 import json
+import os
 import subprocess
 import tempfile
 from collections.abc import Callable
@@ -186,6 +187,7 @@ class OpaDockerEvaluator:
                         "run",
                         "--rm",
                         "--platform=linux/amd64",
+                        f"--user={os.getuid()}:{os.getgid()}",
                         "--network=none",
                         "--read-only",
                         "--cap-drop=ALL",

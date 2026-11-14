@@ -1,6 +1,6 @@
 # Local validation evidence — November 13, 2026
 
-The final [release report](release-report.json) passes **12/12 artifact-based engineering checks**, with **zero source mismatches**, and returns **RELEASE_BLOCKED** for eight pending external/owner review gates. This is the expected fail-closed result. A local artifact audit cannot establish reviewer identity, personal mastery, global latest-root freshness or full production readiness.
+The pre-CI frozen [release report](release-report.json) passes **12/12 artifact-based engineering checks**, with **zero source mismatches**, and returns **RELEASE_BLOCKED** for eight pending external/owner review gates. This is the expected fail-closed result. A local artifact audit cannot establish reviewer identity, personal mastery, global latest-root freshness or full production readiness.
 
 The [manifest](manifest.json) binds181 source/config/test files and exact artifact digests. The active CLI defaults to the identical `../current-release-manifest.json`. Source-bound test receipts were captured before/after commands; private logs are hashed, not published with operator environment files.
 
@@ -34,3 +34,7 @@ uv run --frozen sentinel release-check --stage release
 ```
 
 The command returns nonzero until missing requirements are resolved and reviewed. It performs no publication, deployment, cloud/provider call or student-slice acceptance.
+
+## Hosted CI portability follow-up
+
+The first source push passed hosted Python/UI/PostgreSQL jobs and exposed an OPA Linux bind-mount permission failure. The caller-identity fix and fresh local integrated-demo proof are in `post-ci-portability-fix.json`. Frozen reports/source hashes remain unchanged; the current runtime now differs and the default audit correctly flags that mismatch. Rebaselining current source and defining supported replay-version compatibility remain release work. A report-presence pass is not a performance-budget pass.

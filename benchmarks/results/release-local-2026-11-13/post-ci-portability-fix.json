@@ -1,0 +1,61 @@
+{
+  "changed_source_digests": {
+    "src/sentinel_replay/policy.py": "sha256:3c2e6e460cf25c780d6d76754dcea312ae22d8b186d1386584bc86f29940e9fe",
+    "src/sentinel_replay/policy_language.py": "sha256:dd19545e116e8fb56c01aedd7a779829fbe9e77c393bf3405f79baae6c4a903b",
+    "tests/test_opa_contract.py": "sha256:17b5944752260f30214f3a6e27b5b7b5dfb33f702d2c1f9d0f8f12c563258169"
+  },
+  "first_hosted_ci": "https://github.com/usmanmohammed2306/SentinelReplay/actions/runs/43552119885",
+  "fix": "Run pinned Docker OPA as the calling UID/GID; keep private temporary directories, read-only mount, no network, dropped capabilities",
+  "fresh_demo": {
+    "binary_restores": 14,
+    "boundary_records": 3186,
+    "checks": {
+      "capsule_export": true,
+      "collapsed_timeline": true,
+      "detected_incident": true,
+      "development_root_anchor": true,
+      "imported_pack_replay": true,
+      "labeled_alternate_branch": true,
+      "pareto_ranked_result": true,
+      "periodic_signed_prefixes": true,
+      "recorded_3000_steps": true,
+      "restored_checkpoint": true,
+      "root_provenance_view": true,
+      "scoped_metrics_report": true,
+      "signed_import": true,
+      "strict_pack_replay": true,
+      "three_evaluated_policies": true,
+      "typed_blast_radius": true,
+      "world_diff": true
+    },
+    "collapsed_phases": 6,
+    "definition_digest": "sha256:d8b0a882f3784301653b76cdec0e92f40f093f25c7724f6ca1242a283e288194",
+    "end_to_end_seconds": "22.670459042",
+    "journal_root": "sha256:7c371a7c25fd82cef6ef1161bfd1bca603974f194ba4b4489de54776a2b24ea2",
+    "limitation": "Synthetic environment pack only. Development anchor has no independently established freshness. This16-part workflow is not full V1 release, real-agent efficacy, UI/operations validation or student acceptance.",
+    "linear_restores_measured": false,
+    "policy_frontier": [
+      "targeted",
+      "deny_all"
+    ],
+    "program_actions": 3184,
+    "recommended": "targeted",
+    "release_status": "PARTIAL",
+    "root_step": 3181,
+    "schema_version": 1,
+    "status": "WORKFLOW_DEMO_PASS"
+  },
+  "initial_hosted_result": "Python, UI image and PostgreSQL passed; OPA failed owner-only Linux bind mount permissions",
+  "local_actual_OPA_tests": {
+    "deselected": 230,
+    "passed": 3
+  },
+  "local_required_tests": {
+    "deselected": 12,
+    "guarded_skipped": 6,
+    "passed": 215
+  },
+  "schema_version": 1,
+  "scope": "Post-fix local proof; hosted rerun recorded separately. Original source-bound measurements and video are historical snapshots, not silently regenerated.",
+  "source_publication_commit": "d52f502edf6748cd30d5b12085c74ab343e4a6da"
+}

@@ -5,6 +5,7 @@ Confirmation is a terminal non-allow decision until a separate approval exists.
 """
 
 import json
+import os
 import re
 import subprocess
 import tempfile
@@ -137,6 +138,7 @@ def evaluate_batch(
                 "--pull=never",
                 "--interactive",
                 "--platform=linux/amd64",
+                f"--user={os.getuid()}:{os.getgid()}",
                 "--network=none",
                 "--read-only",
                 "--cap-drop=ALL",
