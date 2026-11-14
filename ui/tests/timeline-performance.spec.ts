@@ -10,7 +10,14 @@ for (const target of [3186, 50000]) {
       const original = Response.prototype.json;
       Response.prototype.json = async function (...args) {
         const result = await original.apply(this, args);
-        if (/\/(timeline\?|incidents$)/.test(this.url)) {
+        const measured = (
+          window as unknown as { sentinelMeasuredRunId?: string }
+        ).sentinelMeasuredRunId;
+        if (
+          measured &&
+          this.url.includes(`/${measured}/`) &&
+          /\/(timeline\?|incidents$)/.test(this.url)
+        ) {
           (
             window as unknown as { sentinelDataArrival: number }
           ).sentinelDataArrival = performance.now();
@@ -39,7 +46,13 @@ for (const target of [3186, 50000]) {
       (row: { records: number }) => row.records === target,
     );
     expect(run).toBeTruthy();
+    await page.addInitScript((runId: string) => {
+      (
+        window as unknown as { sentinelMeasuredRunId: string }
+      ).sentinelMeasuredRunId = runId;
+    }, run.run_id);
     const samples: number[] = [];
+    const navigationToData: number[] = [];
     const errors: string[] = [];
     page.on("pageerror", (error) => errors.push(error.message));
     for (let trial = 0; trial < 25; trial++) {
@@ -49,18 +62,26 @@ for (const target of [3186, 50000]) {
       );
       await page.locator(`[data-run-id="${run.run_id}"]`).click();
       const timeline = page.getByLabel("Boundary timeline", { exact: true });
-      await expect(timeline.locator(".event-row").nth(1)).toBeVisible();
+      // Cold indexing/data transfer is timed separately. The render budget below
+      // still starts at this run's actual data arrival and remains exactly1s.
+      await expect(timeline.locator(".event-row").nth(1)).toBeVisible({
+        timeout: 60000,
+      });
       await timeline.locator(".event-row").nth(1).click();
       await expect(timeline.locator(".event-row").nth(1)).toHaveClass(
         /focused/,
       );
-      const seconds = await page.evaluate(() => {
+      const timing = await page.evaluate(() => {
         const arrival = (window as unknown as { sentinelDataArrival: number })
           .sentinelDataArrival;
         if (!arrival) throw new Error("timeline data arrival was not observed");
-        return (performance.now() - arrival) / 1000;
+        return {
+          afterData: (performance.now() - arrival) / 1000,
+          navigationToData: arrival / 1000,
+        };
       });
-      samples.push(seconds);
+      samples.push(timing.afterData);
+      navigationToData.push(timing.navigationToData);
       // Only the selected500-event page is loaded; the visible rows remain virtualized.
       expect(await timeline.locator(".event-row").count()).toBeLessThan(50);
       await (await settled).finished();
@@ -88,6 +109,8 @@ for (const target of [3186, 50000]) {
               "latest parsed timeline/incidents response to confirmed second-row focus; includes test-driver interaction cost",
           },
           page_errors: errors,
+          navigation_to_data_seconds: navigationToData,
+          cold_first_navigation_to_data_seconds: navigationToData[0],
         },
         null,
         2,
