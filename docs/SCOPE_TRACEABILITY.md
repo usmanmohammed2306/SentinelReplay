@@ -79,3 +79,6 @@ The earlier AWS extension was additive to the original forty-three source rows, 
 ## November13 implementation reconciliation
 
 The updated [sixteen-clause matrix](V1_ACCEPTANCE.md) and [current status](STATUS.md) now point to the integrated implementation, actual corpus/search/scale results, UI/API/SSE paths, three checkpoint adapters, encryption, trust/retention and recovery. The original43 rows above remain requirements rather than self-certified completion marks. The local release manifest binds exact source/artifact bytes; declared external and owner reviews remain separate. The product proof video is an actual75.24-second recording, not a mock interface.
+
+
+November 14 performance-contract amendment: [ADR-0004](adr/0004-recording-performance-qualification.md), explicitly accepted by the owner, replaces the initial fixed-stub relative-overhead gate with two absolute qualifications: p95 complete recording <=0.5s and median paired amortized added wall time <=150us per actual boundary, across at least25 alternating pairs. The original20% failure remains a nonbinding diagnostic. No frozen capability, representative-load review, independent provenance requirement or learner gate is removed.

@@ -89,3 +89,17 @@ def test_measurement_parser_accepts_finite_decimals_without_weakening_event_cont
             load_report_json(malformed)
     with pytest.raises(ValueError):
         event_digest({"duration": 1.25})
+
+
+def test_recording_budget_adr_is_a_frozen_release_input(tmp_path: Path) -> None:
+    path = tmp_path / "docs/adr/0004-recording-performance-qualification.md"
+    path.parent.mkdir(parents=True)
+    path.write_text("Accepted: p95 <=0.5s; added median <=150us\n")
+    manifest = tmp_path / "manifest.json"
+    manifest.write_text(json.dumps({"source_files": source_inventory(tmp_path), "artifacts": {}}))
+    assert str(path.relative_to(tmp_path)) in source_inventory(tmp_path)
+    assert not audit_release(tmp_path, manifest)["source_mismatches"]
+    path.write_text("Changed performance promise without requalification\n")
+    assert audit_release(tmp_path, manifest)["source_mismatches"] == [
+        str(path.relative_to(tmp_path))
+    ]

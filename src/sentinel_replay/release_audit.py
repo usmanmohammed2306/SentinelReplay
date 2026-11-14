@@ -14,7 +14,13 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from sentinel_replay.canonical import event_digest, load_json_unique
 from sentinel_replay.evidence_store import blob_digest
-from sentinel_replay.release_quality import quality_checks, valid_corpus, valid_demo
+from sentinel_replay.release_quality import (
+    quality_checks,
+    recording_diagnostics,
+    recording_statistics,
+    valid_corpus,
+    valid_demo,
+)
 
 
 def load_report_json(text: str) -> Any:
@@ -115,6 +121,7 @@ def source_inventory(root: Path) -> dict[str, str]:
         "ui/.dockerignore",
         ".github/workflows/*.yml",
         "docs/FROZEN_PRODUCT_CHARTER.md",
+        "docs/adr/*.md",
         "docs/SCOPE_TRACEABILITY.md",
         "LICENSE",
         "benchmarks/evidence-archives/THIRD_PARTY_NOTICES.md",
@@ -198,11 +205,8 @@ def audit_release(repository: Path, manifest_path: Path) -> dict[str, Any]:
                     row["selected_graph"]["n"] >= 25 for row in value["attempts"]
                 )
             elif name == "recording_overhead":
-                passed = (
-                    value["trials"] >= 10
-                    and len(value["samples"]) == value["trials"]
-                    and value["localization"]["linear_restores"] > 0
-                )
+                recording_statistics(value)
+                passed = value["localization"]["linear_restores"] > 0
             elif name == "deployment_recovery":
                 passed = (
                     value["completed"]
@@ -332,6 +336,7 @@ def audit_release(repository: Path, manifest_path: Path) -> dict[str, Any]:
         "source_mismatches": source_failures,
         "engineering_checks": gates,
         "quality_budgets": budgets,
+        "diagnostic_targets": recording_diagnostics(reports),
         "current_source_execution": bindings,
         "scope_traceability": traceability,
         "review_gates": reviews,

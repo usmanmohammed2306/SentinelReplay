@@ -1,5 +1,7 @@
 """Paired finite-program overhead; no model latency is invented to dilute cost.
 
+ADR-0004 qualifies absolute recording latency and amortized added wall time;
+the superseded20% relative target remains a reported diagnostic.
 Both arms execute the same trusted interpreter, initial/final snapshots and real
 local file effects. The unrecorded arm omits durable journal, telemetry and report
 publication. This zero-work model stub is a deliberately harsh local CPU workload,
@@ -8,6 +10,9 @@ not representative live-agent overhead. Samples alternate order.
 
 import argparse
 import json
+import math
+import os
+import platform
 import secrets
 import statistics
 import time
@@ -17,11 +22,14 @@ from typing import Any
 from sentinel_replay.bisection import FilePredicate, localize_pack
 from sentinel_replay.environment_pack import Pack, PackStep, _run, record_pack
 from sentinel_replay.evidence_store import FileEvidenceStore, blob_digest
+from sentinel_replay.journal import Journal
 from sentinel_replay.policy_language import Action, Decision, Policy, Rule
 from sentinel_replay.workspace_snapshot import capture_workspace, restore_workspace
 
 
-def measure(output: Path, trials: int = 10) -> dict[str, Any]:
+def measure(output: Path, trials: int = 25) -> dict[str, Any]:
+    if type(trials) is not int or not 25 <= trials <= 100:
+        raise ValueError("qualification requires25..100 alternating pairs")
     output.mkdir(parents=True, exist_ok=False)
     pack = Pack(
         name="overhead-zero-work-model-stub",
@@ -92,8 +100,20 @@ def measure(output: Path, trials: int = 10) -> dict[str, Any]:
                 _run(pack, world, store, decisions, discard, secrets.token_bytes(32))
                 capture_workspace(world, store)
             row[arm + "_seconds"] = time.perf_counter() - start
+            if arm == "recorded":
+                row["journal_records"] = report["records"]
+                verification = Journal(root / "journal.jsonl").verify()
+                if (
+                    verification.root != row["journal_root"]
+                    or verification.records != row["journal_records"]
+                ):
+                    raise ValueError("recorded sample differs from the durable journal")
+            else:
+                row["unrecorded_boundary_calls"] = sequence
             if (root / "world/report.txt").read_text() != "public-report":
                 raise ValueError("benchmark arms did not preserve the same legitimate task")
+        if row["journal_records"] != 3001 or row["unrecorded_boundary_calls"] != 3001:
+            raise ValueError("benchmark arms did not execute the same3001 boundaries")
         row["overhead_percent"] = 100 * (row["recorded_seconds"] / row["unrecorded_seconds"] - 1)
         rows.append(row)
     small = pack.model_copy(
@@ -108,7 +128,23 @@ def measure(output: Path, trials: int = 10) -> dict[str, Any]:
         measure_linear=True,
     )
     result = {
-        "schema_version": 1,
+        "schema_version": 2,
+        "qualification_profile": "adr-0004-fixed-stub-v1",
+        "environment": {
+            "python": platform.python_version(),
+            "platform": platform.platform(),
+            "machine": platform.machine(),
+            "logical_cpus": os.cpu_count(),
+        },
+        "recording_summary": {
+            "p95_recorded_seconds": sorted(r["recorded_seconds"] for r in rows)[
+                math.ceil(0.95 * len(rows)) - 1
+            ],
+            "median_added_seconds_per_boundary": statistics.median(
+                (r["recorded_seconds"] - r["unrecorded_seconds"]) / r["journal_records"]
+                for r in rows
+            ),
+        },
         "source_digests": identities,
         "trials": trials,
         "program_steps": len(pack.steps),
@@ -125,8 +161,9 @@ def measure(output: Path, trials: int = 10) -> dict[str, Any]:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--trials", type=int, default=25)
     args = parser.parse_args()
-    result = measure(args.output)
+    result = measure(args.output, trials=args.trials)
     print(
         json.dumps(
             {

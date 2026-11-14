@@ -49,11 +49,18 @@ CONTROLS = frozenset(("unseeded_randomness", "long_benign"))
 ARMS = frozenset(("allow_all", "targeted", "deny_all"))
 
 
-def number(value: Any, *, positive: bool = False) -> Decimal:
+def _finite_number(value: Any) -> Decimal:
     if isinstance(value, bool) or not isinstance(value, (int, float, Decimal)):
         raise ValueError("measurement must be a finite number")
     result = Decimal(str(value))
-    if not result.is_finite() or result < 0 or (positive and result == 0):
+    if not result.is_finite():
+        raise ValueError("measurement must be finite")
+    return result
+
+
+def number(value: Any, *, positive: bool = False) -> Decimal:
+    result = _finite_number(value)
+    if result < 0 or (positive and result == 0):
         raise ValueError("measurement is outside its finite nonnegative domain")
     return result
 
@@ -110,6 +117,101 @@ def valid_corpus(report: dict[str, Any]) -> bool:
     return True
 
 
+def relative_recording_overhead(report: dict[str, Any]) -> Decimal:
+    """Keep the historical comparison truthful even when it no longer gates release."""
+    rows = report["samples"]
+    if (
+        not isinstance(rows, list)
+        or len(rows) < 10
+        or type(report["trials"]) is not int
+        or report["trials"] != len(rows)
+        or type(report["program_steps"]) is not int
+        or report["program_steps"] != 3000
+    ):
+        raise ValueError("exact paired workload and denominator required")
+    ratios = []
+    for row in rows:
+        ratio = 100 * (
+            number(row["recorded_seconds"], positive=True)
+            / number(row["unrecorded_seconds"], positive=True)
+            - 1
+        )
+        if "overhead_percent" in row:
+            declared_row = _finite_number(row["overhead_percent"])
+            if not declared_row.is_finite() or abs(declared_row - ratio) > Decimal("1e-6"):
+                raise ValueError("paired relative overhead differs from raw times")
+        ratios.append(ratio)
+    observed = median(ratios)
+    value = report["median_overhead_percent"]
+    if isinstance(value, bool) or not isinstance(value, (int, float, Decimal)):
+        raise ValueError("relative overhead must be numeric")
+    declared = Decimal(str(value))
+    if not declared.is_finite() or abs(declared - observed) > Decimal("1e-6"):
+        raise ValueError("overhead summary differs from raw paired samples")
+    return observed
+
+
+def recording_statistics(report: dict[str, Any]) -> dict[str, Decimal]:
+    """Validate ADR-0004's fixed workload, raw pairs and actual boundary denominator."""
+    relative = relative_recording_overhead(report)
+    rows = report["samples"]
+    if (
+        report["schema_version"] != 2
+        or report["qualification_profile"] != "adr-0004-fixed-stub-v1"
+        or report["progress_signing"] != "not_enabled_in_either_arm"
+        or len(rows) < 25
+    ):
+        raise ValueError("ADR-0004 requires at least25 pairs of the declared unsigned fixture")
+    added, recorded = [], []
+    for index, row in enumerate(rows):
+        expected = ["unrecorded", "recorded"] if index % 2 == 0 else ["recorded", "unrecorded"]
+        if type(row["trial"]) is not int or row["trial"] != index or row["order"] != expected:
+            raise ValueError("pairs must retain unique sequential trials and alternating order")
+        if any(
+            type(row[key]) is not int or row[key] != 3001
+            for key in ("journal_records", "unrecorded_boundary_calls")
+        ):
+            raise ValueError("the fixed3000-action fixture requires3001 boundaries in both arms")
+        elapsed = number(row["recorded_seconds"], positive=True)
+        baseline = number(row["unrecorded_seconds"], positive=True)
+        recorded.append(elapsed)
+        added.append((elapsed - baseline) / row["journal_records"])
+    p95 = sorted(recorded)[math.ceil(Decimal("0.95") * len(recorded)) - 1]
+    amortized = median(added)
+    summary = report["recording_summary"]
+    if abs(number(summary["p95_recorded_seconds"], positive=True) - p95) > Decimal("1e-9"):
+        raise ValueError("recording p95 differs from raw nearest-rank samples")
+    declared_added = _finite_number(summary["median_added_seconds_per_boundary"])
+    if not declared_added.is_finite() or abs(declared_added - amortized) > Decimal("1e-12"):
+        raise ValueError("amortized added time differs from raw pairs and actual boundaries")
+    return {
+        "p95_recorded_seconds": p95,
+        "median_added_seconds_per_boundary": amortized,
+        "median_relative_overhead_percent": relative,
+    }
+
+
+def recording_diagnostics(reports: dict[str, dict[str, Any]]) -> dict[str, dict[str, Any]]:
+    """Superseded target stays visible; its failure cannot be called an improvement."""
+    try:
+        observed = relative_recording_overhead(reports["recording_overhead"])
+        detail = {"passed": observed <= 20, "observed": str(observed)}
+    except (KeyError, ValueError, TypeError, ArithmeticError):
+        detail = {"passed": False, "observed": "missing or inconsistent paired measurements"}
+    return {
+        "legacy_recording_overhead_20pct": {
+            **detail,
+            "binding": False,
+            "required": "median <=20%, excluding model latency",
+            "superseded_by": "ADR-0004",
+            "scope": (
+                "Historical engineering target, explicitly superseded by owner-approved absolute "
+                "budgets; original failure retained. Not evidence of <=20% real-agent overhead."
+            ),
+        }
+    }
+
+
 def quality_checks(reports: dict[str, dict[str, Any]]) -> dict[str, dict[str, Any]]:
     checks: dict[str, dict[str, Any]] = {}
 
@@ -144,33 +246,32 @@ def quality_checks(reports: dict[str, dict[str, Any]]) -> dict[str, dict[str, An
                 name, False, "missing or inconsistent samples", "valid25-sample3k/10k/50k reports"
             )
     try:
-        overhead = reports["recording_overhead"]
-        rows = overhead["samples"]
-        if len(rows) < 10 or overhead["trials"] != len(rows) or overhead["program_steps"] != 3000:
-            raise ValueError("exact overhead denominator required")
-        ratios = [
-            100
-            * (
-                number(r["recorded_seconds"], positive=True)
-                / number(r["unrecorded_seconds"], positive=True)
-                - 1
-            )
-            for r in rows
-        ]
-        observed = median(ratios)
-        declared = Decimal(str(overhead["median_overhead_percent"]))
-        if not declared.is_finite() or abs(declared - observed) > Decimal("1e-6"):
-            raise ValueError("overhead summary differs from raw paired samples")
+        recording = recording_statistics(reports["recording_overhead"])
+        p95 = recording["p95_recorded_seconds"]
+        added = recording["median_added_seconds_per_boundary"]
         check(
-            "recording_overhead_3k", observed <= 20, str(observed), "median <=20%, no model latency"
+            "recording_latency_3k",
+            p95 <= Decimal("0.5"),
+            str(p95),
+            "ADR-0004: p95 <=0.5s for3000 fixed-stub actions; >=25 pairs",
+        )
+        check(
+            "recording_added_time_per_boundary",
+            added <= Decimal("0.00015"),
+            str(added),
+            "ADR-0004: median amortized added wall time <=150us per actual durable boundary",
         )
     except (KeyError, ValueError, TypeError, ArithmeticError):
-        check(
-            "recording_overhead_3k",
-            False,
-            "missing or inconsistent paired samples",
-            ">=10 pairs; true median <=20%, excluding model latency",
-        )
+        for name in ("recording_latency_3k", "recording_added_time_per_boundary"):
+            check(
+                name,
+                False,
+                "missing or inconsistent ADR-0004 measurements",
+                (
+                    ">=25 alternating pairs;3000 actions/3001 boundaries, exact summaries "
+                    "and no model latency"
+                ),
+            )
     try:
         browser = reports["operational_validation"]["timeline_interactive_after_data"]
         measured = samples(browser)
