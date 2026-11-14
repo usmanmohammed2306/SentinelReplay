@@ -1,0 +1,25 @@
+{
+  "artifact": {
+    "digest": "sha256:d5c592613f7b030bc65fabfaa44ac9d1df6bbae1dedf1a846dc87a295b2e46e5",
+    "path": "benchmarks/results/latency-remediation-2026-11-14/current-browser.json"
+  },
+  "command": [
+    "/Users/usmanmehboobmohammed/Documents/SentinelReplay/.venv/bin/python",
+    "-c",
+    "import subprocess,shutil;from pathlib import Path;subprocess.run(['pnpm','--dir','ui','test:e2e'],check=True);a=Path('.local-controller/ui-validation');b=Path('benchmarks/results/latency-remediation-2026-11-14');[(shutil.copyfile(a/x,b/y)) for x,y in [('results.json','current-browser.json'),('timeline-performance.json','current-timeline-3k.json'),('timeline-performance-50000.json','current-timeline-50k.json')]]"
+  ],
+  "command_exit_code": 0,
+  "elapsed_seconds": "62.780511125",
+  "exit_code": 0,
+  "log": {
+    "digest": "sha256:b59b5433cba03fc08af0b7e3a1a47957fe3d458a79d095dd64da3b65ca09946d",
+    "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-browser/command.log"
+  },
+  "schema_version": 1,
+  "scope": "local execution receipt; no independent authentication of experimenter identity",
+  "source_root": "sha256:dafea660efb0614de88a1eae8792b04387cc50715d6e7ce99a5fa61206c8de5d",
+  "source_root_after": "sha256:dafea660efb0614de88a1eae8792b04387cc50715d6e7ce99a5fa61206c8de5d",
+  "source_root_before": "sha256:dafea660efb0614de88a1eae8792b04387cc50715d6e7ce99a5fa61206c8de5d",
+  "source_unchanged": true,
+  "started_at_utc": "2026-11-14T19:30:35.080467+00:00"
+}

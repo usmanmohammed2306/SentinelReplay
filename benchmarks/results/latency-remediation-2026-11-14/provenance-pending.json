@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "scope": "frozen_synthetic_dependency_review",
+  "case_denominator": 12,
+  "unknown_cases": [
+    "uncaptured_side_effect"
+  ],
+  "review_status": "pending",
+  "reviewer": null,
+  "label_evidence": [],
+  "true_positive": null,
+  "false_positive": null,
+  "false_negative": null,
+  "f1": null,
+  "unresolved_ambiguities": null,
+  "blast_radius_roots_reviewed": 0,
+  "blast_radius_false_positive": null,
+  "blast_radius_false_negative": null,
+  "reason": "The12 root-bound traces and blank human-review forms exist privately. No independent labels or owner acceptance have been supplied. Templates and prompts are not completed evidence."
+}

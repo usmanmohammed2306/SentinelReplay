@@ -1,0 +1,25 @@
+{
+  "artifact": {
+    "digest": "sha256:cefca8cb7896d05e992583f36078a9a79e677fb71ce4f40b10eb845f4ba1a347",
+    "path": "benchmarks/results/latency-remediation-2026-11-14/current-proof.json"
+  },
+  "command": [
+    ".venv/bin/python",
+    "benchmarks/results/latency-remediation-2026-11-14/source/derive_evidence.py",
+    "proof"
+  ],
+  "command_exit_code": 0,
+  "elapsed_seconds": "0.321259292",
+  "exit_code": 0,
+  "log": {
+    "digest": "sha256:34d499ff1b42b2753812e2448695ca460863d23bea6c6e01c16020f3b572f30a",
+    "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-proof/command.log"
+  },
+  "schema_version": 1,
+  "scope": "local execution receipt; no independent authentication of experimenter identity",
+  "source_root": "sha256:dafea660efb0614de88a1eae8792b04387cc50715d6e7ce99a5fa61206c8de5d",
+  "source_root_after": "sha256:dafea660efb0614de88a1eae8792b04387cc50715d6e7ce99a5fa61206c8de5d",
+  "source_root_before": "sha256:dafea660efb0614de88a1eae8792b04387cc50715d6e7ce99a5fa61206c8de5d",
+  "source_unchanged": true,
+  "started_at_utc": "2026-11-14T19:37:39.253794+00:00"
+}

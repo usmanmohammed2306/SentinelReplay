@@ -1,0 +1,26 @@
+{
+  "artifact": {
+    "digest": "sha256:3952c2af40e6354f01d004f85036a33088ccc87dd8622c9f83b26f6b363cf43d",
+    "path": "benchmarks/results/latency-remediation-2026-11-14/current-demo/demo-report.json"
+  },
+  "command": [
+    "/Users/usmanmehboobmohammed/Documents/SentinelReplay/.venv/bin/sentinel",
+    "demo",
+    "--destination",
+    "/Users/usmanmehboobmohammed/Documents/SentinelReplay/benchmarks/results/latency-remediation-2026-11-14/current-demo"
+  ],
+  "command_exit_code": 0,
+  "elapsed_seconds": "7.407493750",
+  "exit_code": 0,
+  "log": {
+    "digest": "sha256:81bd1809776a66d8845fea1a6a105081cf92d81c10f9bf019b62d34be1e93ab2",
+    "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-demo/command.log"
+  },
+  "schema_version": 1,
+  "scope": "local execution receipt; no independent authentication of experimenter identity",
+  "source_root": "sha256:dafea660efb0614de88a1eae8792b04387cc50715d6e7ce99a5fa61206c8de5d",
+  "source_root_after": "sha256:dafea660efb0614de88a1eae8792b04387cc50715d6e7ce99a5fa61206c8de5d",
+  "source_root_before": "sha256:dafea660efb0614de88a1eae8792b04387cc50715d6e7ce99a5fa61206c8de5d",
+  "source_unchanged": true,
+  "started_at_utc": "2026-11-14T19:31:37.918409+00:00"
+}

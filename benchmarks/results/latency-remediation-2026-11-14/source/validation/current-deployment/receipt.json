@@ -1,0 +1,25 @@
+{
+  "artifact": {
+    "digest": "sha256:6054a0fda92e2f3b4f0cab9c8f0eb9f47344541646d31268f884b471571245e4",
+    "path": "benchmarks/results/latency-remediation-2026-11-14/current-deployment.json"
+  },
+  "command": [
+    "/Users/usmanmehboobmohammed/Documents/SentinelReplay/.venv/bin/python",
+    "-c",
+    "import subprocess,shutil;subprocess.run(['.venv/bin/python','scripts/validate_deployment.py','--capsule','benchmarks/results/latency-remediation-2026-11-14/current-demo/investigation.sentinel','--scale-capsule','benchmarks/results/latency-remediation-2026-11-14/current-scale/50000/scale.sentinel','--browser-proof','--output','.local-controller/latency-remediation-2026-11-14/deployment'],check=True);shutil.copyfile('.local-controller/latency-remediation-2026-11-14/deployment/receipt.json','benchmarks/results/latency-remediation-2026-11-14/current-deployment.json')"
+  ],
+  "command_exit_code": 0,
+  "elapsed_seconds": "181.911988750",
+  "exit_code": 0,
+  "log": {
+    "digest": "sha256:1abdc40679e961416d1c5c9f879750b9f29dcbb8c606e84d0ebcc4231771b535",
+    "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-deployment/command.log"
+  },
+  "schema_version": 1,
+  "scope": "local execution receipt; no independent authentication of experimenter identity",
+  "source_root": "sha256:dafea660efb0614de88a1eae8792b04387cc50715d6e7ce99a5fa61206c8de5d",
+  "source_root_after": "sha256:dafea660efb0614de88a1eae8792b04387cc50715d6e7ce99a5fa61206c8de5d",
+  "source_root_before": "sha256:dafea660efb0614de88a1eae8792b04387cc50715d6e7ce99a5fa61206c8de5d",
+  "source_unchanged": true,
+  "started_at_utc": "2026-11-14T19:32:36.214062+00:00"
+}

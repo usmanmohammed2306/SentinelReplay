@@ -1,0 +1,13 @@
+{
+  "default_branch": "main",
+  "full_name": "usmanmohammed2306/SentinelReplay",
+  "html_url": "https://github.com/usmanmohammed2306/SentinelReplay",
+  "license": {
+    "key": "mit",
+    "spdx_id": "MIT",
+    "url": "https://api.github.com/licenses/mit"
+  },
+  "private": false,
+  "scope": "Credential-free GitHub API readback; owner MIT/public-main authorization predates this validation.",
+  "updated_at": "2026-11-14T03:51:13Z"
+}

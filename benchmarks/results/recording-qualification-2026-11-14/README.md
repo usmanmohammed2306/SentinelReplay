@@ -1,4 +1,6 @@
-# Recording qualification and current engineering evidence
+# Historical recording qualification evidence
+
+Superseded by the [latency-remediation cohort](../latency-remediation-2026-11-14/README.md). Measurements below retain their original source and pass/fail results.
 
 Validated November 14, 2026 on commit **939de2a**: 948 frozen source, configuration, fixture and ADR files. The [owner-approved decision](../../../docs/adr/0004-recording-performance-qualification.md) changes the recording acceptance criterion. It does not change recorder durability or turn a missed target into a pass.
 

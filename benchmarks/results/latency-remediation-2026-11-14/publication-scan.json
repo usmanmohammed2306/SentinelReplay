@@ -1,0 +1,446 @@
+{
+  "files": [
+    {
+      "digest": "sha256:f782ea88030f974b66c98a7b17e030a0ffaaaa9e0f9d33de3c31a7e0d52aa767",
+      "path": "README.md"
+    },
+    {
+      "digest": "sha256:cfd537b640a19333275fdbbd94798aacbaab359267a04377aca10094ffa8ee10",
+      "path": "benchmarks/evidence-archives/README.md"
+    },
+    {
+      "digest": "sha256:426194e42588c56e8d8fa2fe535cc98d0d6202e48695c082e9ecf646b03efa1a",
+      "path": "benchmarks/evidence-archives/sentinel-latency-baseline-2026-11-14.tar.gz"
+    },
+    {
+      "digest": "sha256:b88c42ed5e19118e723364e9f873a8ca44623dc228ae12faa76783f59417d3fd",
+      "path": "benchmarks/evidence-archives/sentinel-latency-corpus-2026-11-14.tar.gz"
+    },
+    {
+      "digest": "sha256:fd610863096def2d57480e630bdea04cb5973ae91adeeccb06efa12cef1a4eb9",
+      "path": "benchmarks/evidence-archives/sentinel-latency-demo-2026-11-14.tar.gz"
+    },
+    {
+      "digest": "sha256:2ccd068256e2b2163654039b36d3b5ec3771f5f0973cdc77798be6502de54765",
+      "path": "benchmarks/evidence-archives/sentinel-latency-first-snapshot-2026-11-14.tar.gz"
+    },
+    {
+      "digest": "sha256:2242a9fa1bdd146addcefc1bf27504bc12989708b8ca9692d5a8ab9907d7a839",
+      "path": "benchmarks/evidence-archives/sentinel-latency-manifest-2026-11-14.json"
+    },
+    {
+      "digest": "sha256:03053536e0309e440c1f4d1a1713c6a7876441b496ed3d4e7c5ee20173b051a4",
+      "path": "benchmarks/evidence-archives/sentinel-latency-qualified-recording-2026-11-14.tar.gz"
+    },
+    {
+      "digest": "sha256:0de8474d8b0a41ac6c6ce1aa14de7df3699fed1d12b720f1328facba3add25e3",
+      "path": "benchmarks/evidence-archives/sentinel-latency-scale-2026-11-14.tar.gz"
+    },
+    {
+      "digest": "sha256:c4a3b50f56c55c6b6d7132cdfc95c8c2de5b5a91dda79e3485e9a13186318b4b",
+      "path": "benchmarks/evidence-archives/sentinel-latency-search-2026-11-14.tar.gz"
+    },
+    {
+      "digest": "sha256:0d9a7a239b56ff38a7ee0c5da54d7f5cad43e8b7e2de9b318cd8a407c62ab059",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/README.md"
+    },
+    {
+      "digest": "sha256:909572b521837ad5db2aaed96e0c15d66a02cfebe8fb4c0afda98a56213cae35",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/api-image-source.json"
+    },
+    {
+      "digest": "sha256:fac3ae12beae50d3a96498d1d03c02dbe7bdc6c2ef398b1380f48c7d2c3e03b6",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/baseline-control/results.json"
+    },
+    {
+      "digest": "sha256:d5c592613f7b030bc65fabfaa44ac9d1df6bbae1dedf1a846dc87a295b2e46e5",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/current-browser.json"
+    },
+    {
+      "digest": "sha256:89960df1c4a6407d71bd0cef805841d12fe84714c0096f3d202cc189ccbd7369",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/current-capture.json"
+    },
+    {
+      "digest": "sha256:97b23598eccc0fdc0d4a3fa5e34f5222b2de0197c7ff544859afe8e37356f915",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/current-corpus/definition.json"
+    },
+    {
+      "digest": "sha256:8cd53dd804b6d09a6c9bc4198d18a85ebccd57e0bd0768f3e6eea4d44f961f80",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/current-corpus/progress.json"
+    },
+    {
+      "digest": "sha256:b502d9c5d1e150aea00a707145f40946e94b2d2ed247939190413bfa93622811",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/current-corpus/results.json"
+    },
+    {
+      "digest": "sha256:536bc08b6ff620c96d71589290af6d97f378545bf15d4dc424125dfd44350720",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/current-demo/definition.json"
+    },
+    {
+      "digest": "sha256:3952c2af40e6354f01d004f85036a33088ccc87dd8622c9f83b26f6b363cf43d",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/current-demo/demo-report.json"
+    },
+    {
+      "digest": "sha256:4e1fbc11434e1311e6e2e103c3f0288e424edca34e526edd088f1c1bd973477c",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/current-demo/development-signing.pub"
+    },
+    {
+      "digest": "sha256:751e5eae28fc4798dfd0c9bb7d06a0f4b0ab79e0fac40e2ed8d01ecc42da5662",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/current-demo/incidents.json"
+    },
+    {
+      "digest": "sha256:bca711cdbfe906e46dc16aa3ace15b3c7aea3682c72e20711e3df1c3f74ee3a0",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/current-demo/investigation.sentinel"
+    },
+    {
+      "digest": "sha256:eea795d9fe33f9f7fc36267bd9bd7d919a71e30453d7fbf6034b83ea422a35d4",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/current-demo/investigation.sig.json"
+    },
+    {
+      "digest": "sha256:66606e4f8b8d3dbb90a5fbb247db7960f23f627fbd96e444a70bc978f7e419c7",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/current-demo/metrics.json"
+    },
+    {
+      "digest": "sha256:c5e5cad64826b0a6b09b081a8bd74ba4d739fe065bcb1dc0fa28b185d3808273",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/current-demo/policies.json"
+    },
+    {
+      "digest": "sha256:39e25aa644647c7c866381e8afa028f619ad396be1de2b2f80f666663bb9235a",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/current-demo/provenance.json"
+    },
+    {
+      "digest": "sha256:d6452e1f6c6230da04d26386f2ced37e0e6c609ecb0899462abfaa24b2427f8b",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/current-demo/timeline.json"
+    },
+    {
+      "digest": "sha256:b9531e6b028a15050a67a6bba5867ecd6d94733cf374a0f8018890c62520600f",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/current-demo/world-diff.json"
+    },
+    {
+      "digest": "sha256:6054a0fda92e2f3b4f0cab9c8f0eb9f47344541646d31268f884b471571245e4",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/current-deployment.json"
+    },
+    {
+      "digest": "sha256:3cee7829c97156878b3f15126478ccf1a5d2d705465d74992413e4f1ba8aceb4",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/current-guarded.json"
+    },
+    {
+      "digest": "sha256:b057ff13338f9f31965aacc2a03ddc53fe039120f29eb1df4ea60e2e9613075e",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/current-local-final.json"
+    },
+    {
+      "digest": "sha256:aa33f597a38a57a05d96d941504e5dee089245a99dc64b2fa1c95542b61872cb",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/current-local.json"
+    },
+    {
+      "digest": "sha256:f2a2301d2267dfd9e793e3962c86bc1091cbfd013363bf558c3a2f23995b3a9d",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/current-operational.json"
+    },
+    {
+      "digest": "sha256:e9d38ffe3bbd5e206b52d674c0a6aa8c2b270c7a5f802184c2cb22f315270430",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/current-overhead/results.json"
+    },
+    {
+      "digest": "sha256:a299ef76187fe10c6e140e048cfafad542fd458e62e4fe73ad58ce889b3d91a9",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/current-postgres.json"
+    },
+    {
+      "digest": "sha256:cefca8cb7896d05e992583f36078a9a79e677fb71ce4f40b10eb845f4ba1a347",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/current-proof.json"
+    },
+    {
+      "digest": "sha256:ce37c93da119e98dd72a3d85782e97d0b1337f3f04f195200e84f0843a8ef56a",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/current-scale/definition.json"
+    },
+    {
+      "digest": "sha256:3d8e72fc8a94b4189a345a2a23d4ec1fd5ca4d7d8baeb3cb58ce6953b48409c6",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/current-scale/results.json"
+    },
+    {
+      "digest": "sha256:cde0b2b12d866e4e818a48f91ff2567a175cfca25738c18cab674715616e5191",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/current-search-resume.json"
+    },
+    {
+      "digest": "sha256:93caf7c9ea9aa777a6187d93763ed014656c4e790edd5b9cdfd1542545c1f2b4",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/current-search/definition.json"
+    },
+    {
+      "digest": "sha256:cde0b2b12d866e4e818a48f91ff2567a175cfca25738c18cab674715616e5191",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/current-search/progress.json"
+    },
+    {
+      "digest": "sha256:ef97e023ac42fc7d016ab40a7e23b321310def1be49f38baae837068f9cdc2ec",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/current-timeline-3k.json"
+    },
+    {
+      "digest": "sha256:dec71afe0d0200b6b0bce1db83fae991de626b989e71e880056cd2e77aa1a31f",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/current-timeline-50k.json"
+    },
+    {
+      "digest": "sha256:6fcc2ef0793ba3628d3a2e3854224527c8edb297febf275043783acc7a0e59f4",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/current-ui-build.json"
+    },
+    {
+      "digest": "sha256:1ba0477046b812be0fbef23005cba7284c31037a32dd836e0f50e5c97d4bf218",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/final-overhead/results.json"
+    },
+    {
+      "digest": "sha256:c71572a0a96ae2dfe812c196a63e6ab428f6744f3cc8054d50663e0dab6c3e58",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/hosted-ci-complete.json"
+    },
+    {
+      "digest": "sha256:dc72d7cf427080e4557e58a3e69e9c8359c53c44e84832e2db17d479123b6f19",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/provenance-pending.json"
+    },
+    {
+      "digest": "sha256:601e851abd9ba6faa08ac80b547c9d98eaf8fa42fe67897545d4cfd555545036",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/public-mit-complete.json"
+    },
+    {
+      "digest": "sha256:b828705917b1491672a9fccecb03d286a913b372c09858bdc34406c60728d6d1",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/recording-comparison.json"
+    },
+    {
+      "digest": "sha256:9c14f9f7f1c52a003899446d0970be4c73b2e07fa36f7d9b37374e130a71fcaa",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/archive_evidence.py"
+    },
+    {
+      "digest": "sha256:edb4920fc9685e21b4936732e65c00d8e9356745249586164ff727d7f7989f90",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/build_manifest.py"
+    },
+    {
+      "digest": "sha256:6e414d4026ea629074bfa0c4761f341d8dbe28546ecef64b46d08171a776ef3c",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/current-source.json"
+    },
+    {
+      "digest": "sha256:ca8197457bce293205761f94081585bc5bb47ce0963178be0c7164ec98fd3738",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/derive_evidence.py"
+    },
+    {
+      "digest": "sha256:eae47f9c7100ba19e59678fc12225f7137ccf7272e2f846a23da3001fc924732",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validate.py"
+    },
+    {
+      "digest": "sha256:b59b5433cba03fc08af0b7e3a1a47957fe3d458a79d095dd64da3b65ca09946d",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-browser/command.log"
+    },
+    {
+      "digest": "sha256:6d7f299b85c8978024a530c28e9b06161e89292c489e04e5aac8da51027b6ff3",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-browser/receipt.json"
+    },
+    {
+      "digest": "sha256:6e414d4026ea629074bfa0c4761f341d8dbe28546ecef64b46d08171a776ef3c",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-browser/source.json"
+    },
+    {
+      "digest": "sha256:2d1cb7d551266b7743069f71570213ff24dc85cc05183bb0602e24eecd0d2b6e",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-corpus/command.log"
+    },
+    {
+      "digest": "sha256:eaa479f713dd389c58539ef579a03c857c80c0523d5329feef60b4b705aa40e2",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-corpus/receipt.json"
+    },
+    {
+      "digest": "sha256:6e414d4026ea629074bfa0c4761f341d8dbe28546ecef64b46d08171a776ef3c",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-corpus/source.json"
+    },
+    {
+      "digest": "sha256:81bd1809776a66d8845fea1a6a105081cf92d81c10f9bf019b62d34be1e93ab2",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-demo/command.log"
+    },
+    {
+      "digest": "sha256:b6098994f91cf32cd1e23c270a6f9b60ef06d89efcd6ccbcb6eb1591c89b9907",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-demo/receipt.json"
+    },
+    {
+      "digest": "sha256:6e414d4026ea629074bfa0c4761f341d8dbe28546ecef64b46d08171a776ef3c",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-demo/source.json"
+    },
+    {
+      "digest": "sha256:1abdc40679e961416d1c5c9f879750b9f29dcbb8c606e84d0ebcc4231771b535",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-deployment/command.log"
+    },
+    {
+      "digest": "sha256:e3accf5e362fe33679e948b765a75fff7278ffa5ca8006e66ce3016f1edee1df",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-deployment/receipt.json"
+    },
+    {
+      "digest": "sha256:6e414d4026ea629074bfa0c4761f341d8dbe28546ecef64b46d08171a776ef3c",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-deployment/source.json"
+    },
+    {
+      "digest": "sha256:6d7326682bedd56cad87db5c214897197f44f986d26a4febb8cdddf7c0483a0e",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-guarded/command.log"
+    },
+    {
+      "digest": "sha256:62830725e2e51127e19439de5aac3e4a53196ffa6cba01c461bba0ce07b2bfa0",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-guarded/receipt.json"
+    },
+    {
+      "digest": "sha256:6e414d4026ea629074bfa0c4761f341d8dbe28546ecef64b46d08171a776ef3c",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-guarded/source.json"
+    },
+    {
+      "digest": "sha256:30c0ba66de61f30742bb2cfdb89c3cd46d618005809591e557c753f987b57d1c",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-local-final/command.log"
+    },
+    {
+      "digest": "sha256:e42547528b88cb7f74232c34354cad46c00fc8104786d665a1c6748964c18c7d",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-local-final/receipt.json"
+    },
+    {
+      "digest": "sha256:6e414d4026ea629074bfa0c4761f341d8dbe28546ecef64b46d08171a776ef3c",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-local-final/source.json"
+    },
+    {
+      "digest": "sha256:0ce47787ef95837fc18509f035868952d6870bb455179e90c2dd2e8340c32087",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-local/command.log"
+    },
+    {
+      "digest": "sha256:eaa67c17999f2755623a3fc20f040af28b7d773f71f787a090bfe8b367d1233e",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-local/receipt.json"
+    },
+    {
+      "digest": "sha256:88428274997446647b070da58afa054ea3479e82c86018f4b264841ad3c8a6e4",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-local/source.json"
+    },
+    {
+      "digest": "sha256:e8d7dc3272506040e76c875fe8c5dba7db2a7dda7ac5c38c53746d978cab3cff",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-operational/command.log"
+    },
+    {
+      "digest": "sha256:307493d381a952e3ca99be0f1bf3aa44e4280f440c1f36f1d118a51549d89507",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-operational/receipt.json"
+    },
+    {
+      "digest": "sha256:6e414d4026ea629074bfa0c4761f341d8dbe28546ecef64b46d08171a776ef3c",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-operational/source.json"
+    },
+    {
+      "digest": "sha256:578a45666bf2eb18a17b383dfeaeed86aefe03beb5c07e424c654675ef436b31",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-overhead-final/command.log"
+    },
+    {
+      "digest": "sha256:9850b0b6c27082e6ad2212cacc734d9f33aba32ecfb4a7721fcf9d9be8d9b44e",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-overhead-final/receipt.json"
+    },
+    {
+      "digest": "sha256:6e414d4026ea629074bfa0c4761f341d8dbe28546ecef64b46d08171a776ef3c",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-overhead-final/source.json"
+    },
+    {
+      "digest": "sha256:716c070506c026fc2fe2c3f4b4b9d73b2b0951aedf7ab01e594175817552de83",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-overhead/command.log"
+    },
+    {
+      "digest": "sha256:3680a69e385ae37ae8832b86b9d76d6237277068d49600b2479174af40c7384f",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-overhead/receipt.json"
+    },
+    {
+      "digest": "sha256:88428274997446647b070da58afa054ea3479e82c86018f4b264841ad3c8a6e4",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-overhead/source.json"
+    },
+    {
+      "digest": "sha256:6736b970e3958180f3fdbfbe6b78bb13afdd96af629b60fa1304c6f6f590b5b5",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-postgres/command.log"
+    },
+    {
+      "digest": "sha256:74ad7f742436399e55bf73ab49786ba38c250b62fd6359c8301f02b05062cdc8",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-postgres/receipt.json"
+    },
+    {
+      "digest": "sha256:6e414d4026ea629074bfa0c4761f341d8dbe28546ecef64b46d08171a776ef3c",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-postgres/source.json"
+    },
+    {
+      "digest": "sha256:34d499ff1b42b2753812e2448695ca460863d23bea6c6e01c16020f3b572f30a",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-proof/command.log"
+    },
+    {
+      "digest": "sha256:5b0d3812df11cd002e05897ef9ebbe3df18d1647a0d28b92a398e60d859b9a0e",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-proof/receipt.json"
+    },
+    {
+      "digest": "sha256:6e414d4026ea629074bfa0c4761f341d8dbe28546ecef64b46d08171a776ef3c",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-proof/source.json"
+    },
+    {
+      "digest": "sha256:76cf24969dcd47af154629db51720cf421cf7f4da9562b04fd0ebcf87401b260",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-scale/command.log"
+    },
+    {
+      "digest": "sha256:f4d28cf26380f3e4a7f1db00612986f097b8b2235417755ae8d79cb763f6f717",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-scale/receipt.json"
+    },
+    {
+      "digest": "sha256:6e414d4026ea629074bfa0c4761f341d8dbe28546ecef64b46d08171a776ef3c",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-scale/source.json"
+    },
+    {
+      "digest": "sha256:b2babdaa601eeb0e898241ac0e76b44711a117269411d691932423d78e6a6f8b",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-search-resume/command.log"
+    },
+    {
+      "digest": "sha256:490794835d3dc8078eea96a544477170e5a4cde3d968537f73a521bec92c472c",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-search-resume/receipt.json"
+    },
+    {
+      "digest": "sha256:6e414d4026ea629074bfa0c4761f341d8dbe28546ecef64b46d08171a776ef3c",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-search-resume/source.json"
+    },
+    {
+      "digest": "sha256:bef6f2f52e13e707ffbe64e2199471add7f3d12e6ea2f602daa53de9a48d6375",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-search/command.log"
+    },
+    {
+      "digest": "sha256:a86894728ab733163f6a0b27a01a34ef21f928ad4e420de8dbf10b1e23de1880",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-search/receipt.json"
+    },
+    {
+      "digest": "sha256:6e414d4026ea629074bfa0c4761f341d8dbe28546ecef64b46d08171a776ef3c",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-search/source.json"
+    },
+    {
+      "digest": "sha256:c44edc799d2a65096af22c2927b2eb3ef3a4e50cf8b83548fe744dcd2501d937",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-ui-build/command.log"
+    },
+    {
+      "digest": "sha256:75c6f32624d7333e54b4defcdb208970b52853fd4eb89456d59729675925875c",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-ui-build/receipt.json"
+    },
+    {
+      "digest": "sha256:6e414d4026ea629074bfa0c4761f341d8dbe28546ecef64b46d08171a776ef3c",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-ui-build/source.json"
+    },
+    {
+      "digest": "sha256:6718838a555d50b1248cb243415c8d276061c3690a77d9aeef86552773664638",
+      "path": "benchmarks/results/recording-qualification-2026-11-14/README.md"
+    },
+    {
+      "digest": "sha256:2a3c0afcae157d9813f4c75eabde88706939bce3dffaaffb71b6a153fb31db33",
+      "path": "docs/PRODUCTION_EVIDENCE_2026-11-14.md"
+    },
+    {
+      "digest": "sha256:345c277c9bbb28a91f4fc3b845a3db2877c65c6e0120ce50ddf9ecdad8822d16",
+      "path": "docs/STATUS.md"
+    },
+    {
+      "digest": "sha256:1d945f68ae4e41537dd786479a5ebbbc2021b70221dfa4f54880eb84ce18c315",
+      "path": "docs/V1_ACCEPTANCE.md"
+    },
+    {
+      "digest": "sha256:f16df26478386b4111e46e289dfdde53df1040a352685656d838bd49ee1a9866",
+      "path": "docs/assets/investigation-v4.png"
+    },
+    {
+      "digest": "sha256:3f8c699af8672ffa0ac7675f28f7d86479edb1ce5b32d167b63ab57c69cf0a25",
+      "path": "docs/assets/sentinel-replay-proof-v4.webm"
+    }
+  ],
+  "hits": [],
+  "known_private_values_checked": 95,
+  "schema_version": 1,
+  "scope": "Exact-value scan against locally retained operator signing/storage keys and password/token environment values, plus PEM private-key markers. New tar payloads and owner metadata inspected without extraction. Not a universal secret detector. Initial scan excludes subsequently derived release manifests/review receipts and this scan report; final staged payload is rechecked separately before commit. Private career/learning/operator files are excluded by the publication allowlist.",
+  "selected_files_checked": 109,
+  "tar_members_checked": 14430
+}

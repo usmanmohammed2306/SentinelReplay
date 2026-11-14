@@ -1,0 +1,136 @@
+UV_CACHE_DIR=.uv-cache .venv/bin/uv run --frozen ruff format --check .
+179 files already formatted
+UV_CACHE_DIR=.uv-cache .venv/bin/uv run --frozen ruff check .
+I001 [*] Import block is un-sorted or un-formatted
+ --> src/sentinel_replay/canonical.py:3:1
+  |
+1 |   """Versioned, type aware serialization for evidence hashes."""
+2 |
+3 | / import base64
+4 | | import hashlib
+5 | | import json
+6 | | from collections.abc import Iterator
+7 | | from datetime import UTC, datetime
+8 | | from enum import Enum
+9 | | from typing import Any
+  | |______________________^
+help: Organize imports
+   |
+10 |
+   -
+11 | _ENCODER = json.JSONEncoder(ensure_ascii=False, separators=(",", ":"))
+   |
+
+E501 Line too long (104 > 100)
+  --> src/sentinel_replay/replay_profiles.py:86:101
+   |
+84 |         "contract": "finite-pack/1",
+85 |         "material": {
+86 |             "adapter_digest": "sha256:cf59b3dfc9559a6a8d9127780f74c9324b544cdd1be490d3b0cf6c1fdc5c3f46",
+   |                                                                                                     ^^^^
+87 |             "runtime_digests": {
+88 |                 "environment_pack.py": "sha256:cf59b3dfc9559a6a8d9127780f74c9324b544cdd1be490d3b0cf6c1fdc5c3f46",
+   |
+
+E501 Line too long (113 > 100)
+  --> src/sentinel_replay/replay_profiles.py:88:101
+   |
+86 |             "adapter_digest": "sha256:cf59b3dfc9559a6a8d9127780f74c9324b544cdd1be490d3b0cf6c1fdc5c3f46",
+87 |             "runtime_digests": {
+88 |                 "environment_pack.py": "sha256:cf59b3dfc9559a6a8d9127780f74c9324b544cdd1be490d3b0cf6c1fdc5c3f46",
+   |                                                                                                     ^^^^^^^^^^^^^
+89 |                 "policy_language.py": "sha256:dd19545e116e8fb56c01aedd7a779829fbe9e77c393bf3405f79baae6c4a903b",
+90 |                 "canonical.py": "sha256:022a3ee9b91de7e735526af75352303f9206e7a3f6c4e781052315b99202d101",
+   |
+
+E501 Line too long (112 > 100)
+  --> src/sentinel_replay/replay_profiles.py:89:101
+   |
+87 |             "runtime_digests": {
+88 |                 "environment_pack.py": "sha256:cf59b3dfc9559a6a8d9127780f74c9324b544cdd1be490d3b0cf6c1fdc5c3f46",
+89 |                 "policy_language.py": "sha256:dd19545e116e8fb56c01aedd7a779829fbe9e77c393bf3405f79baae6c4a903b",
+   |                                                                                                     ^^^^^^^^^^^^
+90 |                 "canonical.py": "sha256:022a3ee9b91de7e735526af75352303f9206e7a3f6c4e781052315b99202d101",
+91 |                 "journal.py": "sha256:7db379d869689761de2c4d99d69a1fdcc80308f7266c4d4d67edb0d57c7e08ff",
+   |
+
+E501 Line too long (106 > 100)
+  --> src/sentinel_replay/replay_profiles.py:90:101
+   |
+88 |                 "environment_pack.py": "sha256:cf59b3dfc9559a6a8d9127780f74c9324b544cdd1be490d3b0cf6c1fdc5c3f46",
+89 |                 "policy_language.py": "sha256:dd19545e116e8fb56c01aedd7a779829fbe9e77c393bf3405f79baae6c4a903b",
+90 |                 "canonical.py": "sha256:022a3ee9b91de7e735526af75352303f9206e7a3f6c4e781052315b99202d101",
+   |                                                                                                     ^^^^^^
+91 |                 "journal.py": "sha256:7db379d869689761de2c4d99d69a1fdcc80308f7266c4d4d67edb0d57c7e08ff",
+92 |                 "workspace_snapshot.py": "sha256:d681c01dcde5af8bc94b41bfd484b2aeaee3fd8d7082d148f6a415b91f2e5c81",
+   |
+
+E501 Line too long (104 > 100)
+  --> src/sentinel_replay/replay_profiles.py:91:101
+   |
+89 |                 "policy_language.py": "sha256:dd19545e116e8fb56c01aedd7a779829fbe9e77c393bf3405f79baae6c4a903b",
+90 |                 "canonical.py": "sha256:022a3ee9b91de7e735526af75352303f9206e7a3f6c4e781052315b99202d101",
+91 |                 "journal.py": "sha256:7db379d869689761de2c4d99d69a1fdcc80308f7266c4d4d67edb0d57c7e08ff",
+   |                                                                                                     ^^^^
+92 |                 "workspace_snapshot.py": "sha256:d681c01dcde5af8bc94b41bfd484b2aeaee3fd8d7082d148f6a415b91f2e5c81",
+93 |                 "evidence_store.py": "sha256:ec3fe3b83b808a0ffa93570eb469cd894a4685805d9b062a57ffcf449d203f9b",
+   |
+
+E501 Line too long (115 > 100)
+  --> src/sentinel_replay/replay_profiles.py:92:101
+   |
+90 |                 "canonical.py": "sha256:022a3ee9b91de7e735526af75352303f9206e7a3f6c4e781052315b99202d101",
+91 |                 "journal.py": "sha256:7db379d869689761de2c4d99d69a1fdcc80308f7266c4d4d67edb0d57c7e08ff",
+92 |                 "workspace_snapshot.py": "sha256:d681c01dcde5af8bc94b41bfd484b2aeaee3fd8d7082d148f6a415b91f2e5c81",
+   |                                                                                                     ^^^^^^^^^^^^^^^
+93 |                 "evidence_store.py": "sha256:ec3fe3b83b808a0ffa93570eb469cd894a4685805d9b062a57ffcf449d203f9b",
+94 |                 "telemetry.py": "sha256:6d97994818598a0e877d8a96dcae329f792c4c8131dbf3bc0169f68a5142735d",
+   |
+
+E501 Line too long (111 > 100)
+  --> src/sentinel_replay/replay_profiles.py:93:101
+   |
+91 |                 "journal.py": "sha256:7db379d869689761de2c4d99d69a1fdcc80308f7266c4d4d67edb0d57c7e08ff",
+92 |                 "workspace_snapshot.py": "sha256:d681c01dcde5af8bc94b41bfd484b2aeaee3fd8d7082d148f6a415b91f2e5c81",
+93 |                 "evidence_store.py": "sha256:ec3fe3b83b808a0ffa93570eb469cd894a4685805d9b062a57ffcf449d203f9b",
+   |                                                                                                     ^^^^^^^^^^^
+94 |                 "telemetry.py": "sha256:6d97994818598a0e877d8a96dcae329f792c4c8131dbf3bc0169f68a5142735d",
+95 |                 "progress_anchor.py": "sha256:7d53a1fee496ee538be5983da0843234701e5b4bc4f56944201b8a1ae32e6eab",
+   |
+
+E501 Line too long (106 > 100)
+  --> src/sentinel_replay/replay_profiles.py:94:101
+   |
+92 |                 "workspace_snapshot.py": "sha256:d681c01dcde5af8bc94b41bfd484b2aeaee3fd8d7082d148f6a415b91f2e5c81",
+93 |                 "evidence_store.py": "sha256:ec3fe3b83b808a0ffa93570eb469cd894a4685805d9b062a57ffcf449d203f9b",
+94 |                 "telemetry.py": "sha256:6d97994818598a0e877d8a96dcae329f792c4c8131dbf3bc0169f68a5142735d",
+   |                                                                                                     ^^^^^^
+95 |                 "progress_anchor.py": "sha256:7d53a1fee496ee538be5983da0843234701e5b4bc4f56944201b8a1ae32e6eab",
+96 |                 "replay_profiles.py": "sha256:509e82235894e69b95997f0ba898879fe2f91dbc6095b6817ba7178b8b69b2d9",
+   |
+
+E501 Line too long (112 > 100)
+  --> src/sentinel_replay/replay_profiles.py:95:101
+   |
+93 |                 "evidence_store.py": "sha256:ec3fe3b83b808a0ffa93570eb469cd894a4685805d9b062a57ffcf449d203f9b",
+94 |                 "telemetry.py": "sha256:6d97994818598a0e877d8a96dcae329f792c4c8131dbf3bc0169f68a5142735d",
+95 |                 "progress_anchor.py": "sha256:7d53a1fee496ee538be5983da0843234701e5b4bc4f56944201b8a1ae32e6eab",
+   |                                                                                                     ^^^^^^^^^^^^
+96 |                 "replay_profiles.py": "sha256:509e82235894e69b95997f0ba898879fe2f91dbc6095b6817ba7178b8b69b2d9",
+97 |             },
+   |
+
+E501 Line too long (112 > 100)
+  --> src/sentinel_replay/replay_profiles.py:96:101
+   |
+94 |                 "telemetry.py": "sha256:6d97994818598a0e877d8a96dcae329f792c4c8131dbf3bc0169f68a5142735d",
+95 |                 "progress_anchor.py": "sha256:7d53a1fee496ee538be5983da0843234701e5b4bc4f56944201b8a1ae32e6eab",
+96 |                 "replay_profiles.py": "sha256:509e82235894e69b95997f0ba898879fe2f91dbc6095b6817ba7178b8b69b2d9",
+   |                                                                                                     ^^^^^^^^^^^^
+97 |             },
+98 |             "python_major_minor": [3, 12],
+   |
+
+Found 11 errors.
+[*] 1 fixable with the `--fix` option.
+make: *** [lint] Error 1

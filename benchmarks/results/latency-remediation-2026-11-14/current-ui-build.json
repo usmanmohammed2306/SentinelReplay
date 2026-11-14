@@ -1,0 +1,22 @@
+{
+  "command": [
+    "pnpm",
+    "--dir",
+    "ui",
+    "build"
+  ],
+  "command_exit_code": 0,
+  "elapsed_seconds": "9.553820125",
+  "exit_code": 0,
+  "log": {
+    "digest": "sha256:c44edc799d2a65096af22c2927b2eb3ef3a4e50cf8b83548fe744dcd2501d937",
+    "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-ui-build/command.log"
+  },
+  "schema_version": 1,
+  "scope": "local execution receipt; no independent authentication of experimenter identity",
+  "source_root": "sha256:dafea660efb0614de88a1eae8792b04387cc50715d6e7ce99a5fa61206c8de5d",
+  "source_root_after": "sha256:dafea660efb0614de88a1eae8792b04387cc50715d6e7ce99a5fa61206c8de5d",
+  "source_root_before": "sha256:dafea660efb0614de88a1eae8792b04387cc50715d6e7ce99a5fa61206c8de5d",
+  "source_unchanged": true,
+  "started_at_utc": "2026-11-14T19:30:25.471779+00:00"
+}

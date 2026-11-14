@@ -1,0 +1,31 @@
+{
+  "cohorts": {
+    "baseline_control": {
+      "median_added_seconds_per_boundary": "0.00008524158646848197834055314895",
+      "median_recorded_seconds": 0.26162866697995923,
+      "median_relative_overhead_percent": "4396.368540787673622447785360",
+      "p95_recorded_seconds": "0.27721833300893195",
+      "pairs": 25
+    },
+    "pre_format_snapshot": {
+      "median_added_seconds_per_boundary": "0.00008228830655877531356214595135",
+      "median_recorded_seconds": 0.25378454200108536,
+      "median_relative_overhead_percent": "4035.027873278727521166642399",
+      "p95_recorded_seconds": "0.3203014169994276",
+      "pairs": 25
+    },
+    "qualified_source": {
+      "median_added_seconds_per_boundary": "0.00008153691836261934988337220926",
+      "median_recorded_seconds": 0.25191025002277456,
+      "median_relative_overhead_percent": "3963.861829921427034720655458",
+      "p95_recorded_seconds": "0.2624327919911593",
+      "pairs": 25
+    }
+  },
+  "historical_miss": "benchmarks/results/recording-qualification-2026-11-14/current-overhead/results.json",
+  "interpretation": "The final source qualifies this fixed-stub run at p95 .262433s and81.5369us median amortized added per boundary. This does not establish a representative-service tail-latency fix; historical .538334s miss remains visible. Per-event fsync, verification and telemetry remain enabled; periodic signing is disabled in both timed arms.",
+  "median_recording_time_reduction_percent": 3.714584135357424,
+  "schema_version": 1,
+  "scope": "One sequential25-pair cohort per source snapshot, one interpreter per cohort; no cross-version counterbalancing or population/causal guarantee. Baseline control also passes the absolute budgets. The first implementation snapshot passed numeric budgets but failed source lint; qualification uses the final formatted/tested source. All cohorts and raw samples remain retained.",
+  "source_commit": "6a9ee3c259ecf6971842a0c2f0db93f647cca7cb"
+}

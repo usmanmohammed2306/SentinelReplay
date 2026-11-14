@@ -1,0 +1,12 @@
+{
+  "decision": "accepted",
+  "evidence": [
+    {
+      "digest": "sha256:c71572a0a96ae2dfe812c196a63e6ab428f6744f3cc8054d50663e0dab6c3e58",
+      "path": "benchmarks/results/latency-remediation-2026-11-14/hosted-ci-complete.json"
+    }
+  ],
+  "reviewer": "Fresh Ubuntu CI checkout and empty volumes (automated transcript)",
+  "scope": "Only the named mechanically verified gate; no independent human adjudication, mastery or general production guarantee.",
+  "source_root": "sha256:dafea660efb0614de88a1eae8792b04387cc50715d6e7ce99a5fa61206c8de5d"
+}

@@ -1,0 +1,467 @@
+{
+  "accepted_student_slices": "unchanged_by_this_command",
+  "current_source_execution": {
+    "browser_tests": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:6d7f299b85c8978024a530c28e9b06161e89292c489e04e5aac8da51027b6ff3",
+        "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-browser/receipt.json"
+      }
+    },
+    "corpus": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:eaa479f713dd389c58539ef579a03c857c80c0523d5329feef60b4b705aa40e2",
+        "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-corpus/receipt.json"
+      }
+    },
+    "deployment_recovery": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:e3accf5e362fe33679e948b765a75fff7278ffa5ca8006e66ce3016f1edee1df",
+        "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-deployment/receipt.json"
+      }
+    },
+    "guarded_tests": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:62830725e2e51127e19439de5aac3e4a53196ffa6cba01c461bba0ce07b2bfa0",
+        "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-guarded/receipt.json"
+      }
+    },
+    "local_tests": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:e42547528b88cb7f74232c34354cad46c00fc8104786d665a1c6748964c18c7d",
+        "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-local-final/receipt.json"
+      }
+    },
+    "operational_validation": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:307493d381a952e3ca99be0f1bf3aa44e4280f440c1f36f1d118a51549d89507",
+        "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-operational/receipt.json"
+      }
+    },
+    "policy_search": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:a86894728ab733163f6a0b27a01a34ef21f928ad4e420de8dbf10b1e23de1880",
+        "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-search/receipt.json"
+      }
+    },
+    "postgres_http": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:74ad7f742436399e55bf73ab49786ba38c250b62fd6359c8301f02b05062cdc8",
+        "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-postgres/receipt.json"
+      }
+    },
+    "product_demo": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:b6098994f91cf32cd1e23c270a6f9b60ef06d89efcd6ccbcb6eb1591c89b9907",
+        "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-demo/receipt.json"
+      }
+    },
+    "proof_video": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:5b0d3812df11cd002e05897ef9ebbe3df18d1647a0d28b92a398e60d859b9a0e",
+        "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-proof/receipt.json"
+      }
+    },
+    "provenance_validation": {
+      "passed": false,
+      "reason": "missing current-source execution receipt"
+    },
+    "recording_overhead": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:9850b0b6c27082e6ad2212cacc734d9f33aba32ecfb4a7721fcf9d9be8d9b44e",
+        "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-overhead-final/receipt.json"
+      }
+    },
+    "scale": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:f4d28cf26380f3e4a7f1db00612986f097b8b2235417755ae8d79cb763f6f717",
+        "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-scale/receipt.json"
+      }
+    },
+    "ui_build": {
+      "passed": true,
+      "receipt": {
+        "digest": "sha256:75c6f32624d7333e54b4defcdb208970b52853fd4eb89456d59729675925875c",
+        "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-ui-build/receipt.json"
+      }
+    }
+  },
+  "diagnostic_targets": {
+    "legacy_recording_overhead_20pct": {
+      "binding": false,
+      "observed": "3963.861829921427034720655458",
+      "passed": false,
+      "required": "median <=20%, excluding model latency",
+      "scope": "Historical engineering target, explicitly superseded by owner-approved absolute budgets; original failure retained. Not evidence of <=20% real-agent overhead.",
+      "superseded_by": "ADR-0004"
+    }
+  },
+  "engineering_checks": {
+    "browser_tests": {
+      "evidence": {
+        "digest": "sha256:d5c592613f7b030bc65fabfaa44ac9d1df6bbae1dedf1a846dc87a295b2e46e5",
+        "path": "benchmarks/results/latency-remediation-2026-11-14/current-browser.json"
+      },
+      "passed": true
+    },
+    "corpus": {
+      "evidence": {
+        "digest": "sha256:b502d9c5d1e150aea00a707145f40946e94b2d2ed247939190413bfa93622811",
+        "path": "benchmarks/results/latency-remediation-2026-11-14/current-corpus/results.json"
+      },
+      "passed": true
+    },
+    "deployment_recovery": {
+      "evidence": {
+        "digest": "sha256:6054a0fda92e2f3b4f0cab9c8f0eb9f47344541646d31268f884b471571245e4",
+        "path": "benchmarks/results/latency-remediation-2026-11-14/current-deployment.json"
+      },
+      "passed": true
+    },
+    "guarded_tests": {
+      "evidence": {
+        "digest": "sha256:3cee7829c97156878b3f15126478ccf1a5d2d705465d74992413e4f1ba8aceb4",
+        "path": "benchmarks/results/latency-remediation-2026-11-14/current-guarded.json"
+      },
+      "passed": true
+    },
+    "local_tests": {
+      "evidence": {
+        "digest": "sha256:b057ff13338f9f31965aacc2a03ddc53fe039120f29eb1df4ea60e2e9613075e",
+        "path": "benchmarks/results/latency-remediation-2026-11-14/current-local-final.json"
+      },
+      "passed": true
+    },
+    "operational_validation": {
+      "evidence": {
+        "digest": "sha256:f2a2301d2267dfd9e793e3962c86bc1091cbfd013363bf558c3a2f23995b3a9d",
+        "path": "benchmarks/results/latency-remediation-2026-11-14/current-operational.json"
+      },
+      "passed": true
+    },
+    "policy_search": {
+      "evidence": {
+        "digest": "sha256:cde0b2b12d866e4e818a48f91ff2567a175cfca25738c18cab674715616e5191",
+        "path": "benchmarks/results/latency-remediation-2026-11-14/current-search/progress.json"
+      },
+      "passed": true
+    },
+    "postgres_http": {
+      "evidence": {
+        "digest": "sha256:a299ef76187fe10c6e140e048cfafad542fd458e62e4fe73ad58ce889b3d91a9",
+        "path": "benchmarks/results/latency-remediation-2026-11-14/current-postgres.json"
+      },
+      "passed": true
+    },
+    "product_demo": {
+      "evidence": {
+        "digest": "sha256:3952c2af40e6354f01d004f85036a33088ccc87dd8622c9f83b26f6b363cf43d",
+        "path": "benchmarks/results/latency-remediation-2026-11-14/current-demo/demo-report.json"
+      },
+      "passed": true
+    },
+    "proof_video": {
+      "evidence": {
+        "digest": "sha256:cefca8cb7896d05e992583f36078a9a79e677fb71ce4f40b10eb845f4ba1a347",
+        "path": "benchmarks/results/latency-remediation-2026-11-14/current-proof.json"
+      },
+      "passed": true
+    },
+    "provenance_validation": {
+      "evidence": {
+        "digest": "sha256:dc72d7cf427080e4557e58a3e69e9c8359c53c44e84832e2db17d479123b6f19",
+        "path": "benchmarks/results/latency-remediation-2026-11-14/provenance-pending.json"
+      },
+      "passed": false
+    },
+    "recording_overhead": {
+      "evidence": {
+        "digest": "sha256:1ba0477046b812be0fbef23005cba7284c31037a32dd836e0f50e5c97d4bf218",
+        "path": "benchmarks/results/latency-remediation-2026-11-14/final-overhead/results.json"
+      },
+      "passed": true
+    },
+    "scale": {
+      "evidence": {
+        "digest": "sha256:3d8e72fc8a94b4189a345a2a23d4ec1fd5ca4d7d8baeb3cb58ce6953b48409c6",
+        "path": "benchmarks/results/latency-remediation-2026-11-14/current-scale/results.json"
+      },
+      "passed": true
+    },
+    "ui_build": {
+      "evidence": {
+        "digest": "sha256:6fcc2ef0793ba3628d3a2e3854224527c8edb297febf275043783acc7a0e59f4",
+        "path": "benchmarks/results/latency-remediation-2026-11-14/current-ui-build.json"
+      },
+      "passed": true
+    }
+  },
+  "limitation": "Local artifact audit and declared reviews; not independent validation of reviewer identity, publication, latest-root freshness or a production safety guarantee.",
+  "quality_budgets": {
+    "journal_verification_50k": {
+      "observed": "0.7001120000204537",
+      "passed": true,
+      "required": "p95 <=1s (50k/s)"
+    },
+    "provenance_and_blast_radius": {
+      "observed": "missing or invalid independent label evidence",
+      "passed": false,
+      "required": "F1>=0.85, nonempty positives, root-bound labels and blast-radius adjudication"
+    },
+    "recording_added_time_per_boundary": {
+      "observed": "0.00008153691836261934988337220926",
+      "passed": true,
+      "required": "ADR-0004: median amortized added wall time <=150us per actual durable boundary"
+    },
+    "recording_latency_3k": {
+      "observed": "0.2624327919911593",
+      "passed": true,
+      "required": "ADR-0004: p95 <=0.5s for3000 fixed-stub actions; >=25 pairs"
+    },
+    "selected_graph_50k": {
+      "observed": "0.0012674580211751163",
+      "passed": true,
+      "required": "p95 <=0.3s"
+    },
+    "timeline_first_page_3k": {
+      "observed": "0.0008476660004816949",
+      "passed": true,
+      "required": "p95 <=0.3s"
+    },
+    "timeline_interactive_3k": {
+      "observed": "0.29140000000596045",
+      "passed": true,
+      "required": "p95 <=1s after data arrival; >=3k boundaries"
+    }
+  },
+  "review_gates": {
+    "clean_room_reproduction": {
+      "evidence": {
+        "digest": "sha256:ee85740bcd76b2d7561bfc8e77af5c95cfc9db294fc5e7c839e63b8cb9ad00b5",
+        "path": "benchmarks/results/latency-remediation-2026-11-14/clean_room_reproduction-review.json"
+      },
+      "reviewer": "Fresh Ubuntu CI checkout and empty volumes (automated transcript)",
+      "state": "DECLARED_EXTERNAL_REVIEW"
+    },
+    "end_to_end_load_and_latency": {
+      "state": "PENDING"
+    },
+    "hosted_ci": {
+      "evidence": {
+        "digest": "sha256:ea7296ed7ccc936026269dedaa9dea37c8f200dde96c8bcd51745f1da62d3b53",
+        "path": "benchmarks/results/latency-remediation-2026-11-14/hosted_ci-review.json"
+      },
+      "reviewer": "GitHub Actions (automated; not human peer review)",
+      "state": "DECLARED_EXTERNAL_REVIEW"
+    },
+    "independent_provenance": {
+      "state": "PENDING"
+    },
+    "license_and_distribution": {
+      "evidence": {
+        "digest": "sha256:daebc1bb052f022832890d1cde6891a6ea423305a2159b2b367f5b555291d491",
+        "path": "benchmarks/results/latency-remediation-2026-11-14/license_and_distribution-review.json"
+      },
+      "reviewer": "Explicit owner MIT/public-main authorization; mechanical verification",
+      "state": "DECLARED_EXTERNAL_REVIEW"
+    },
+    "owner_teach_back": {
+      "state": "PENDING"
+    },
+    "representative_recording_overhead": {
+      "state": "PENDING"
+    },
+    "signer_boundary_and_freshness": {
+      "state": "PENDING"
+    }
+  },
+  "schema_version": 2,
+  "scope_traceability": {
+    "1": {
+      "passed": true,
+      "title": "Exact problem"
+    },
+    "10": {
+      "passed": true,
+      "title": "Incident compression"
+    },
+    "11": {
+      "passed": false,
+      "title": "Provenance DAG"
+    },
+    "12": {
+      "passed": false,
+      "title": "Blast-radius engine"
+    },
+    "13": {
+      "passed": true,
+      "title": "Replay engine"
+    },
+    "14": {
+      "passed": true,
+      "title": "Structural/effect divergence"
+    },
+    "15": {
+      "passed": true,
+      "title": "Incident bisect"
+    },
+    "16": {
+      "passed": true,
+      "title": "Policy engine"
+    },
+    "17": {
+      "passed": true,
+      "title": "Policy DSL"
+    },
+    "18": {
+      "passed": true,
+      "title": "Alternate Futures"
+    },
+    "19": {
+      "passed": true,
+      "title": "Minimal Intervention"
+    },
+    "2": {
+      "passed": true,
+      "title": "Six signature capabilities"
+    },
+    "20": {
+      "passed": true,
+      "title": "Pareto frontier"
+    },
+    "21": {
+      "passed": true,
+      "title": "Benign regression suite"
+    },
+    "22": {
+      "passed": true,
+      "title": "Causal World Diff"
+    },
+    "23": {
+      "passed": true,
+      "title": "Incident Capsules"
+    },
+    "24": {
+      "passed": true,
+      "title": "Capsule verification"
+    },
+    "25": {
+      "passed": true,
+      "title": "Storage architecture"
+    },
+    "26": {
+      "passed": true,
+      "title": "Main data models"
+    },
+    "27": {
+      "passed": true,
+      "title": "API surface"
+    },
+    "28": {
+      "passed": true,
+      "title": "CLI"
+    },
+    "29": {
+      "passed": true,
+      "title": "Frontend"
+    },
+    "3": {
+      "passed": true,
+      "title": "End-to-end workflow"
+    },
+    "30": {
+      "passed": true,
+      "title": "Product screens"
+    },
+    "31": {
+      "passed": true,
+      "title": "Exact homepage"
+    },
+    "32": {
+      "passed": true,
+      "title": "Demo corpus"
+    },
+    "33": {
+      "passed": false,
+      "title": "Metrics"
+    },
+    "34": {
+      "passed": false,
+      "title": "Testing"
+    },
+    "35": {
+      "passed": true,
+      "title": "Tech stack"
+    },
+    "36": {
+      "passed": true,
+      "title": "Innovation framing"
+    },
+    "37": {
+      "passed": true,
+      "title": "Explicit non-goals"
+    },
+    "38": {
+      "passed": true,
+      "title": "Job-market rationale"
+    },
+    "39": {
+      "passed": true,
+      "title": "Relation to AutoSeal"
+    },
+    "4": {
+      "passed": true,
+      "title": "Recorder architecture"
+    },
+    "40": {
+      "passed": true,
+      "title": "Resume positioning"
+    },
+    "41": {
+      "passed": false,
+      "title": "Build schedule"
+    },
+    "42": {
+      "passed": false,
+      "title": "Mandatory definition of done"
+    },
+    "43": {
+      "passed": true,
+      "title": "75-second video"
+    },
+    "5": {
+      "passed": true,
+      "title": "Conformance ladder"
+    },
+    "6": {
+      "passed": true,
+      "title": "OTel ingestion"
+    },
+    "7": {
+      "passed": true,
+      "title": "Snapshot engine"
+    },
+    "8": {
+      "passed": true,
+      "title": "Tamper-evident journal"
+    },
+    "9": {
+      "passed": true,
+      "title": "Incident classifier"
+    }
+  },
+  "source_mismatches": [],
+  "source_root": "sha256:dafea660efb0614de88a1eae8792b04387cc50715d6e7ce99a5fa61206c8de5d",
+  "status": "RELEASE_BLOCKED"
+}

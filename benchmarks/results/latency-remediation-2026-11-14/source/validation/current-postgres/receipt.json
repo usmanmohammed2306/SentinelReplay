@@ -1,0 +1,25 @@
+{
+  "artifact": {
+    "digest": "sha256:a299ef76187fe10c6e140e048cfafad542fd458e62e4fe73ad58ce889b3d91a9",
+    "path": "benchmarks/results/latency-remediation-2026-11-14/current-postgres.json"
+  },
+  "command": [
+    "/Users/usmanmehboobmohammed/Documents/SentinelReplay/.venv/bin/python",
+    "-c",
+    "import subprocess,shutil;subprocess.run(['.venv/bin/python','scripts/validate_branch_api.py','--capsule','benchmarks/results/latency-remediation-2026-11-14/current-demo/investigation.sentinel','--output','.local-controller/latency-remediation-2026-11-14/postgres'],check=True);shutil.copyfile('.local-controller/latency-remediation-2026-11-14/postgres/receipt.json','benchmarks/results/latency-remediation-2026-11-14/current-postgres.json')"
+  ],
+  "command_exit_code": 0,
+  "elapsed_seconds": "4.412773708",
+  "exit_code": 0,
+  "log": {
+    "digest": "sha256:6736b970e3958180f3fdbfbe6b78bb13afdd96af629b60fa1304c6f6f590b5b5",
+    "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-postgres/command.log"
+  },
+  "schema_version": 1,
+  "scope": "local execution receipt; no independent authentication of experimenter identity",
+  "source_root": "sha256:dafea660efb0614de88a1eae8792b04387cc50715d6e7ce99a5fa61206c8de5d",
+  "source_root_after": "sha256:dafea660efb0614de88a1eae8792b04387cc50715d6e7ce99a5fa61206c8de5d",
+  "source_root_before": "sha256:dafea660efb0614de88a1eae8792b04387cc50715d6e7ce99a5fa61206c8de5d",
+  "source_unchanged": true,
+  "started_at_utc": "2026-11-14T19:32:31.666532+00:00"
+}

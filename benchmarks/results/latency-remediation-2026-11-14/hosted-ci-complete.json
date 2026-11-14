@@ -1,0 +1,65 @@
+{
+  "conclusion": "success",
+  "created_at": "2026-11-14T19:28:18Z",
+  "head_sha": "6a9ee3c259ecf6971842a0c2f0db93f647cca7cb",
+  "html_url": "https://github.com/usmanmohammed2306/SentinelReplay/actions/runs/43632258338",
+  "id": 43632258338,
+  "jobs": [
+    {
+      "completed_at": "2026-11-14T19:29:23Z",
+      "conclusion": "success",
+      "html_url": "https://github.com/usmanmohammed2306/SentinelReplay/actions/runs/43632258338/job/132561267024",
+      "id": 132561267024,
+      "name": "Guarded Docker isolation and OPA 1.0",
+      "started_at": "2026-11-14T19:28:20Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-11-14T19:31:24Z",
+      "conclusion": "success",
+      "html_url": "https://github.com/usmanmohammed2306/SentinelReplay/actions/runs/43632258338/job/132561267186",
+      "id": 132561267186,
+      "name": "Production Chromium journeys and 3k/50k interaction budgets",
+      "started_at": "2026-11-14T19:28:20Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-11-14T19:29:26Z",
+      "conclusion": "success",
+      "html_url": "https://github.com/usmanmohammed2306/SentinelReplay/actions/runs/43632258338/job/132561267293",
+      "id": 132561267293,
+      "name": "Python 3.12 checks",
+      "started_at": "2026-11-14T19:28:21Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-11-14T19:29:18Z",
+      "conclusion": "success",
+      "html_url": "https://github.com/usmanmohammed2306/SentinelReplay/actions/runs/43632258338/job/132561267304",
+      "id": 132561267304,
+      "name": "Production UI image",
+      "started_at": "2026-11-14T19:28:20Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-11-14T19:29:02Z",
+      "conclusion": "success",
+      "html_url": "https://github.com/usmanmohammed2306/SentinelReplay/actions/runs/43632258338/job/132561267312",
+      "id": 132561267312,
+      "name": "PostgreSQL 17 signed-ingest integration",
+      "started_at": "2026-11-14T19:28:21Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": "2026-11-14T19:31:32Z",
+      "conclusion": "success",
+      "html_url": "https://github.com/usmanmohammed2306/SentinelReplay/actions/runs/43632258338/job/132561267367",
+      "id": 132561267367,
+      "name": "Clean-checkout encrypted deployment and crash recovery",
+      "started_at": "2026-11-14T19:28:20Z",
+      "status": "completed"
+    }
+  ],
+  "status": "completed",
+  "updated_at": "2026-11-14T19:31:33Z"
+}

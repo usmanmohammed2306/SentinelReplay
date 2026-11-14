@@ -1,0 +1,26 @@
+{
+  "artifact": {
+    "digest": "sha256:e9d38ffe3bbd5e206b52d674c0a6aa8c2b270c7a5f802184c2cb22f315270430",
+    "path": "benchmarks/results/latency-remediation-2026-11-14/current-overhead/results.json"
+  },
+  "command": [
+    ".venv/bin/python",
+    "benchmarks/recording_overhead.py",
+    "--output",
+    "benchmarks/results/latency-remediation-2026-11-14/current-overhead"
+  ],
+  "command_exit_code": 0,
+  "elapsed_seconds": "9.079114041",
+  "exit_code": 0,
+  "log": {
+    "digest": "sha256:716c070506c026fc2fe2c3f4b4b9d73b2b0951aedf7ab01e594175817552de83",
+    "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-overhead/command.log"
+  },
+  "schema_version": 1,
+  "scope": "local execution receipt; no independent authentication of experimenter identity",
+  "source_root": "sha256:9176b62d0e3fc577f712e16abd8ee8c33846fa2f69564a6eeb59eb480e5a1502",
+  "source_root_after": "sha256:9176b62d0e3fc577f712e16abd8ee8c33846fa2f69564a6eeb59eb480e5a1502",
+  "source_root_before": "sha256:9176b62d0e3fc577f712e16abd8ee8c33846fa2f69564a6eeb59eb480e5a1502",
+  "source_unchanged": true,
+  "started_at_utc": "2026-11-14T19:26:31.992315+00:00"
+}

@@ -1,0 +1,24 @@
+{
+  "artifact": {
+    "digest": "sha256:3cee7829c97156878b3f15126478ccf1a5d2d705465d74992413e4f1ba8aceb4",
+    "path": "benchmarks/results/latency-remediation-2026-11-14/current-guarded.json"
+  },
+  "command": [
+    "make",
+    "branch-contract"
+  ],
+  "command_exit_code": 0,
+  "elapsed_seconds": "19.475682209",
+  "exit_code": 0,
+  "log": {
+    "digest": "sha256:6d7326682bedd56cad87db5c214897197f44f986d26a4febb8cdddf7c0483a0e",
+    "path": "benchmarks/results/latency-remediation-2026-11-14/source/validation/current-guarded/command.log"
+  },
+  "schema_version": 1,
+  "scope": "local execution receipt; no independent authentication of experimenter identity",
+  "source_root": "sha256:dafea660efb0614de88a1eae8792b04387cc50715d6e7ce99a5fa61206c8de5d",
+  "source_root_after": "sha256:dafea660efb0614de88a1eae8792b04387cc50715d6e7ce99a5fa61206c8de5d",
+  "source_root_before": "sha256:dafea660efb0614de88a1eae8792b04387cc50715d6e7ce99a5fa61206c8de5d",
+  "source_unchanged": true,
+  "started_at_utc": "2026-11-14T19:30:05.939935+00:00"
+}
