@@ -86,6 +86,25 @@ def main() -> None:
         capsule_paths.append(
             ROOT / "benchmarks/results/product-demo-final-2026-11-13/investigation.sentinel"
         )
+        scale_pack = Pack(
+            name="ui-scale-50000",
+            files={},
+            steps=tuple(
+                PackStep(action=Action(operation="model_call"), value="frozen-stub")
+                for _ in range(50000)
+            ),
+        )
+        scale_source = root / "scale-pack"
+        record_pack(
+            scale_pack,
+            scale_source,
+            Policy(),
+            decisions=["allowed"] * 50000,
+            decision_source="UI_scale_fixture_fixed_vector_no_live_model_or_OPA",
+        )
+        scale_capsule = root / "scale.sentinel"
+        export_pack(scale_source, scale_capsule)
+        capsule_paths.append(scale_capsule)
         with TestClient(app) as client:
             for capsule in capsule_paths:
                 statement = sign_capsule(capsule, private, root / "anchors", agent)

@@ -34,7 +34,7 @@ test("evidence journey, mode labels, restored boundaries, comparison and logout"
     cookies.find((cookie) => cookie.name === "sentinel_session")?.httpOnly,
   ).toBe(true);
   const listing = await readJson(page, "/api/backend/v1/runs?limit=100");
-  expect(listing.runs.length).toBe(13);
+  expect(listing.runs.length).toBe(14);
   const live = listing.runs.find(
     (run: { run_id: string }) => run.run_id === "isolated-branch",
   );
@@ -126,12 +126,8 @@ test("evidence journey, mode labels, restored boundaries, comparison and logout"
   ).toBe(true);
   await page.setViewportSize({ width: 1280, height: 900 });
   const pack = listing.runs.find(
-    (run: { run_id: string }) =>
-      run.run_id.startsWith("pack-") &&
-      run.run_id !==
-        listing.runs.find(
-          (candidate: { records: number }) => candidate.records >= 3000,
-        )?.run_id,
+    (run: { run_id: string; records: number }) =>
+      run.run_id.startsWith("pack-") && run.records < 3000,
   );
   await page.locator(`[data-run-id="${pack.run_id}"]`).click();
   await page.getByRole("button", { name: "Replay lab", exact: true }).click();
@@ -216,12 +212,8 @@ test("recorded operation stream localizes a real restored file effect", async ({
   ).toBeVisible();
   const listing = await readJson(page, "/api/backend/v1/runs?limit=100");
   const pack = listing.runs.find(
-    (run: { run_id: string }) =>
-      run.run_id.startsWith("pack-") &&
-      run.run_id !==
-        listing.runs.find(
-          (candidate: { records: number }) => candidate.records >= 3000,
-        )?.run_id,
+    (run: { run_id: string; records: number }) =>
+      run.run_id.startsWith("pack-") && run.records < 3000,
   );
   await page.locator(`[data-run-id="${pack.run_id}"]`).click();
   await page.getByRole("button", { name: "Replay lab", exact: true }).click();

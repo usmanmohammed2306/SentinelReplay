@@ -86,7 +86,7 @@ jobs:
         run: make postgres-integration
 
   opa:
-    name: OPA 1.0 policy conformance
+    name: Guarded Docker isolation and OPA 1.0
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -115,7 +115,7 @@ jobs:
           make branch-contract
 
   browser:
-    name: Production Chromium journeys and 3k interaction budget
+    name: Production Chromium journeys and 3k/50k interaction budgets
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -141,3 +141,43 @@ jobs:
       - name: Exercise evidence journeys and repeated timeline interactions
         working-directory: ui
         run: pnpm test:e2e
+
+  clean-room:
+    name: Clean-checkout encrypted deployment and crash recovery
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Install the locked uv and Python toolchain without a dependency cache
+        uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4 # v10.1.0
+        with:
+          version: "0.12.17"
+          python-version: "3.12"
+          enable-cache: false
+      - name: Install locked dependencies and fetch the declared policy evaluator
+        run: |
+          uv sync --frozen
+          uv run --frozen python - <<'PY'
+          import subprocess
+          from sentinel_replay.policy import OPA_DOCKER_IMAGE
+          subprocess.run(["docker", "pull", OPA_DOCKER_IMAGE], check=True)
+          PY
+      - name: Build both production images from this checkout
+        run: |
+          docker build --platform linux/amd64 --tag sentinel-replay-api:validation-20261113 .
+          docker build --tag sentinel-replay-ui:validation-20261113 ui
+      - name: Generate and replay the full demo from empty state
+        run: uv run --frozen sentinel demo --destination .local-controller/clean-room-demo
+      - name: Exercise encrypted import, witness, SIGKILL, backup and fresh-volume restore
+        run: |
+          uv run --frozen python scripts/validate_deployment.py \
+            --capsule .local-controller/clean-room-demo/investigation.sentinel \
+            --output .local-controller/clean-room-recovery
+          uv run --frozen python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path(".local-controller/clean-room-recovery/receipt.json").read_text())
+          assert report["completed"] and all(report["cleanup"].values())
+          print(json.dumps(report, indent=2, sort_keys=True))
+          PY

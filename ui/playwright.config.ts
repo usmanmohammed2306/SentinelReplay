@@ -22,7 +22,7 @@ export default defineConfig({
       command: "../.venv/bin/python ../scripts/serve_ui_fixture.py",
       url: "http://127.0.0.1:18771/healthz",
       reuseExistingServer: false,
-      timeout: 30000,
+      timeout: 90000,
       gracefulShutdown: { signal: "SIGTERM", timeout: 2000 },
     },
     {
